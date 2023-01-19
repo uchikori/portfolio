@@ -1,0 +1,106 @@
+@keyframes rotInner {
+    0% {
+        transform: rotateY(-0deg) rotateX(30deg);
+    }
+
+    50% {
+        transform: rotateY(-180deg) rotateX(210deg);
+    }
+
+    100% {
+        transform: rotateY(-360deg) rotateX(390deg);
+    }
+}
+
+@keyframes rotOuter {
+    0% {
+        transform: rotateY(0deg) rotateX(30deg);
+    }
+
+    50% {
+        transform: rotateY(180deg) rotateX(30deg);
+    }
+
+    100% {
+        transform: rotateY(360deg) rotateX(30deg);
+    }
+}
+
+.loading {
+    width: 100%;
+    height: 100vh;
+    background-color: #050523;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    visibility: visible;
+}
+
+.loading.loaded {
+    transition: visibility 0.3s ease;
+    -webkit-transition: visibility 0.3s ease;
+    visibility: collapse;
+}
+
+.loading .loading__inner {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.loading .loading__spin {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.loading .loading__spin .a1 {
+    border: solid 5px #c60069;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 0 3px 3px #c60069;
+    box-shadow: 0 0 3px 3px #c60069;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-animation: rotOuter 1.5s infinite linear;
+}
+
+.loading .loading__spin .a2 {
+    border: solid 5px #51127f;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 0 3px 3px #51127f;
+    box-shadow: 0 0 3px 3px #51127f;
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-animation: rotInner 1.5s infinite linear;
+}
+
+.loading .loading__text {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: "Orbitron", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

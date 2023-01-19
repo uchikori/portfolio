@@ -1,0 +1,250 @@
+.post-type-archive-web-tips, .tax-class{
+    .media01{
+        padding: 1.6rem 1rem;
+        border: solid 1px #cccccc;
+        background-color: transparent;
+        transition: background-color 0.3s ease;
+        @include wide-pc{
+            padding: 16px 0;
+        }
+        &:hover{
+            background-color: rgba(0,4,56, 0.1);
+            transition: background-color 0.3s ease;
+            .media01__thumbnail{
+                &:after{
+                    opacity: 0.7;
+                    transform: scale(1.0);
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                }
+                img{
+                    transform: scale(1.4) rotateZ(15deg);
+                    filter: brightness(140%);
+                    transition: transform 0.3s ease, filter 0.3s ease;
+                }
+                .media01__thumbnail-overlay{
+                    opacity: 1.0;
+                    transition: opacity 0.3s ease;
+                }
+            }
+            .media01__title{
+                &:before{
+                    width: 100%;
+                    transition: width 0.5s ease;
+                }
+            }
+            .term{
+                background-color: $color-pink;
+                transition: background-color 0.3s ease;
+            }
+        }
+        &__thumbnail{
+            aspect-ratio: 268/150;
+            overflow: hidden;
+            position:relative;
+            object-fit: cover;
+            @include tab{
+                width: 100%;
+                margin-bottom: 2.4rem;
+            }
+            &:after{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0; 
+                background-color: #000;
+                opacity: 0;
+                transform: scale(0.8);
+                transition: transform 0.5s ease, opacity 0.5s ease;
+            }
+            img{
+                transform: scale(1.0) rotateZ(0deg);
+                filter: brightness(100%);
+                transition: transform 0.3s ease, filter 0.3s ease;
+            }
+            &-overlay{
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                top: 50%;
+                transform: translateY(-50%);
+                opacity: 0;
+                font-family: $font-orbit;
+                @include font-style(1.8rem, $color-white,400);
+                transition: opacity 0.3s ease;
+                z-index: 10;
+                @include wide-pc{
+                    font-size: 18px;
+                }
+            }
+
+        }
+        &__body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        &__meta{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4rem;
+        }
+        &__title{
+            color: $color-navy;
+            margin-bottom: 0rem;
+            position: relative;
+            border-left: none;
+            padding-left: 0;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-weight: bold;
+        }
+        &__text{
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            -webkit-box-flex: 1;
+        }
+        time{
+            color: $color-navy;
+            font-weight: bold;
+        }
+    }
+    a{
+        text-decoration: none
+    }
+}
+//カスタムタクソノミーのタームスタイル
+.term{
+    display: block;
+    width: fit-content;
+    @include font-style(1.6rem, $color-white, 900);
+    background-color: $color-navy;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    &:hover{
+        background-color: $color-pink;
+        transition: all 0.3s ease;
+    }
+}
+
+//web-tips用サイドバー
+.sidebar{
+    @include tab{
+        margin-top: 4rem;
+    }
+    &__widget{
+        margin-top: 60px;
+        @include tab{
+            margin-top: 6rem;
+        }
+        &:first-child{
+            margin-top: 0;
+        }
+    }
+    h2{
+        font-family: $font-orbit;
+        margin-bottom: 0;
+        color: $color-navy;
+        font-weight: bold;
+        border-left: solid 4px $color-navy;
+        @include tab{
+            border-left: solid 2px $color-navy;
+        }
+    }
+    .wpp-list{
+        // margin-top: 40px;
+        // @include tab{
+        //     margin-top: 4rem;
+        // }
+        a{
+            display: block;
+        }
+        li{
+            margin-top: 24px;
+            position: relative;
+            @include tab{
+                margin-top: 2.4rem;
+            }
+            &:first-child{
+                &:after{
+                    content: "1";
+                    @include font-style(24px, $color-white, 700);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(204, 161, 31, 0.9);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+            }
+            &:nth-child(2){
+                &:after{
+                    content: "2";
+                    @include font-style(24px, $color-white, 700);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(177, 176, 180, 0.9);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+            }
+            &:nth-child(3){
+                &:after{
+                    content: "3";
+                    @include font-style(24px, $color-white, 700);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(179, 112, 54, 0.9);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+            }
+        }
+
+
+    }
+    .wpp-post-title{
+        @include font-style(14px, $color-navy, 400);
+        line-height: 1.5;
+        margin-top: 16px;
+        @include tab{
+            margin-top: 1.6rem;
+        }
+    }
+    &__term-list{
+        margin-top: 40px;
+        @include tab{
+            margin-top: 4rem;
+        }
+    }
+    &__term-item{
+        width: 100%;
+        line-height: 1.5;
+        margin-top: 24px;
+        text-align: center;
+        @include tab{
+            margin-top: 2.4rem;
+        }
+    }
+}

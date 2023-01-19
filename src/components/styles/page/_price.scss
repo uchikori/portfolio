@@ -1,0 +1,279 @@
+&.price{
+    &:before{
+        background-image: url('/images/price-background.webp');
+    }
+}
+.white-box{
+    width: 100%;
+    background-color: $color-white;
+    padding: 29px 24px;
+    @include pc{
+        padding: 2.9rem 2.4rem;
+    }
+    @include tab{
+        padding: 2.9rem 1.6rem;
+    }
+}
+.price{
+    &__title{
+        display: block;
+        width: 228px;
+        padding: 14px 0;
+        text-align: center;
+        background-color: $color-navy;
+        @include font-style(20px, $color-white, 700);
+        position: relative;
+        @include pc{
+            width: 22.8rem;
+            padding: 1.4rem 0;
+            font-size: 2rem;
+        }
+        @include tab{
+            margin: 0 auto;
+        }
+        &:before{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: solid 2px $color-navy;
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            @include pc{
+                left: 0.4rem;
+                top: 0.4rem;
+            }
+        }
+    }
+    &__table{
+        width: 100%;
+        tr{
+            width: 100%;
+            padding: 16px 0;
+            border-top: solid 1px $color-navy;
+            @include pc{
+                padding: 1.6rem 0;
+            }
+            @include tab{
+                border: solid 1px $color-navy;
+            }
+            &:last-child{
+                border-bottom: solid 1px $color-navy;
+            }
+        }
+        th{
+            width: 20%;
+            vertical-align: middle;
+            text-align: center;
+            font-feature-settings: 'palt';
+            @include font-style(16px, $color-navy, 700);
+            @include pc{
+                font-size: 1.6rem;
+            }
+            @include tab{
+                width: 100%;
+                display: block;
+                background-color: $color-trans-bg;
+                color: $color-white;
+                padding: 1.6rem 0;
+            }
+        }
+    }
+    &__description{
+        width: 50%;
+        padding: 16px;
+        vertical-align: middle;
+        text-align: left;
+        @include font-style(14px, $color-navy, 500);
+        line-height: 1.5;
+        background-color: #E0E1EC;
+        @include pc{
+            padding: 1.6rem;
+            font-size: 1.4rem;
+        }
+        @include tab{
+            width: 100%;
+            display: block;
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            @include pc{
+                gap: 0.8rem
+            }
+            li{
+                @include font-style(12px, $color-navy, 500);
+                display: flex;
+                align-items: center;
+                font-feature-settings: "palt";
+                line-height: 1;
+                @include pc{
+                    font-size: 1.2rem;
+                }
+                &:before{
+                    content: "";
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 100vh;
+                    background-color: $color-navy;
+                    margin-right: 5px;
+                    @include pc{
+                        width: 0.4rem;
+                        height: 0.4rem;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+    &__price{
+        width: 20%;
+        vertical-align: middle;
+        text-align: center;
+        @include font-style(16px, $color-navy, 700);
+        @include pc{
+            font-size: 1.6rem;
+        }
+        @include tab{
+            width: 100%;
+            display: block;
+            padding: 1.6rem 0;
+        }
+    }
+    &__count{
+        width: 10%;
+        vertical-align: middle;
+        text-align: center;
+        @include font-style(12px, $color-navy, 500);
+        @include pc{
+            font-size: 1.2rem;
+        }
+        @include tab{
+            width: 100%;
+            display: block;
+            padding: 1rem 0;
+        }
+    }
+
+}
+.caption{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &__item{
+        @include font-style(14px, $color-navy, 500);
+        display: flex;
+        font-feature-settings: "palt";
+        line-height: 1;
+        position: relative;
+        padding-left: 16px;
+        @include pc{
+            font-size: 1.4rem;
+        }
+        @include tab{
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        &:before{
+            content: "";
+            display: block;
+            width: 14px;
+            height: 14px;
+            background-color: $color-navy;
+            position: absolute;
+            left: 0;
+            top: 0;
+            @include pc{
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+            @include tab{
+                width: 1rem;
+                height: 1rem;
+                margin-top: 0.4rem;
+            }
+        }
+    }
+}
+.total-price{
+    width: 400px;
+    margin-left: auto;
+    @include tab{
+        width: 100%;
+    }
+    &__caption{
+        @include font-style(12px, #FC456A, 500);
+        line-height: 1;
+        margin-top: 6px;
+        letter-spacing: 0;
+    }
+}
+.sub-total{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: solid 1px $color-navy;
+    @include tab{
+        flex-direction: column;
+    }
+    &__label{
+        @include font-style(14px, $color-navy, 700);
+        line-height: 1;
+        font-feature-settings: "palt";
+        margin-top: 4px;
+    }
+    &__price{
+        @include font-style(24px, $color-navy, 700);
+        line-height: 1;
+        text-align: right;
+    }
+}
+.all-total{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: solid 1px $color-navy;
+    @include tab{
+        flex-direction: column;
+    }
+    &__label{
+        @include font-style(18px, $color-navy, 900);
+        line-height: 1;
+        font-feature-settings: "palt";
+        margin-top: 4px;
+    }
+    &__price{
+        @include font-style(40px, $color-navy, 700);
+        line-height: 1;
+        text-align: right;
+    }
+}
+.m-24{
+    margin: 24px 0;
+}
+.mt-100{
+    margin-top: 100px;
+}
+input[type="number"]{
+    width: 40px;
+    height: 40px;
+    border: solid 1px #cccccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    @include font-style(16px, $color-navy, 700);
+    text-align: center;
+    @include pc{
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.4rem;
+        margin-left: 1rem;
+        font-size: 1.6rem;
+    }
+}
