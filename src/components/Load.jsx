@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import * as styles from "./Load.module.scss";
 
@@ -7,10 +8,14 @@ export const Load = (props) => {
 
     const { data } = props;
 
-    const [ loading, setLoading] = useState(true);
-    setTimeout(() => {
+    const [loading, setLoading] = useState(true);
+    
+    useEffect(()=>{
+      
+      setTimeout(() => {
         setLoading(false)
-    }, 2000);
+      }, 2000);
+    },{});
 
     return (
         <>
