@@ -1,11 +1,95 @@
 import * as React from "react"
+import { useEffect } from "react";
 import { GlobalMenu } from "../components/GlobalMenu";
 import { Load } from "../components/Load";
 import { MouseCursor } from "../components/MouseCursor";
-import perlin from "../lib/perlin.js";
+import * as noise from "simplenoise"
+import { useState } from "react";
 
-export default function Home(props) {
-  const { data } = props;
+export default function Home() {
+
+  window.addEventListener('load', function () {
+      let elem = document.querySelector('.slides');
+      let vh = window.innerHeight;
+      elem.style.height = vh + 'px';
+  });
+  window.addEventListener('resize', function () {
+    let elem = document.querySelector('.slides');
+    let vh = window.innerHeight;
+    elem.style.height = vh + 'px';
+  });
+
+  useEffect(() => {
+    const canvas = document.getElementById('siteTopAnimation');
+    const canvasContext = canvas.getContext('2d');
+
+    noise.seed(Math.random());
+
+    let stageW = 0;
+    let stageH = 0;
+
+    //画面がリサイズされたとき、resize関数を流す
+    window.addEventListener('resize', resize);
+
+    //アニメーション描画の設定
+    function draw(time) {
+      //画面をリセット
+      canvasContext.clearRect(0, 0, stageW, stageH);
+
+      canvasContext.lineWidth = 1;//線の太さ
+      canvasContext.strokeStyle = "white";
+      const amplitude = stageH / 3;//振幅の大きさ
+      const lineNum = 150;//ラインの数
+      const segmentNum = 150;//分割数
+
+      //0からlineNum-1までの整数が順番に並んだ配列を得る
+      [...Array(lineNum).keys()].forEach(function (j) {
+
+        const coefficient = 50 + j;
+        canvasContext.beginPath();//線の開始
+
+        const h = Math.round(j / lineNum * 60) + 275;
+        const s = 100;
+        const l = Math.round(j / lineNum * 47);
+
+        canvasContext.strokeStyle = `hsl(${h}, ${s}%, ${l}%)`;
+
+        [...Array(segmentNum).keys()].forEach(function (i) {
+          const x = (i / (segmentNum - 1)) * stageW;
+          const px = i / (50 + j);//水平方向の距離
+          const py = j / 50 + time;//時間
+          const y = amplitude * noise.perlin2(px, py) + stageH / 2;//求めたいY座標=振幅*乱数（パーリンノイズ）
+
+          if (i === 0) {
+            canvasContext.moveTo(x, y);//開始点
+          } else {
+            canvasContext.lineTo(x, y);//終了点
+          }
+        });
+        canvasContext.stroke();//線を描く
+      });
+    }
+
+    //アニメーションのタイミング
+    function tick() {
+      requestAnimationFrame(tick);
+      const time = Date.now() / 2000
+      draw(time);
+    }
+
+    //リサイズ時
+    function resize() {
+      stageW = window.innerWidth * devicePixelRatio;
+      stageH = window.innerHeight * devicePixelRatio;
+
+      canvas.width = stageW;
+      canvas.height = stageH;
+    }
+
+    resize();
+    tick();
+
+  },[]);
 
   return (
     <>
@@ -30,13 +114,13 @@ export default function Home(props) {
             Scroll
           </div>
           <div className="sns-block">
-            <a href="<?php echo esc_url('https://www.facebook.com/WEBdesigner.uchiwa'); ?>" className="sns-icon" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/WEBdesigner.uchiwa" className="sns-icon" target="_blank" rel="noopener noreferrer">
               <img src="/images/icon-facebook.svg" alt="facebook" />
             </a>
-            <a href="<?php echo esc_url('https://www.instagram.com/uchiwa_cs'); ?>" className="sns-icon" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/uchiwa_cs" className="sns-icon" target="_blank" rel="noopener noreferrer">
               <img src="/images/icon-instagram.svg" alt="instagram" />
             </a>
-            <a href="<?php echo get_post_type_archive_link('web-tips'); ?>" className="sns-icon">
+            <a href="" className="sns-icon">
               <img src="/images/icon-blog.svg" alt="blog" />
             </a>
           </div>
@@ -47,93 +131,6 @@ export default function Home(props) {
                 <div className="slide__title">
                   <h1 className="title-line head-title head-title__main"><span><img src="/images/site-title.svg" alt="UCHIWA Creative Studio." /></span></h1>
                   <p className="title-line head-text"><span>自分自身の「好き」を使って、<br />”誰かの「心を動かす」モノを作りたい…”</span></p>
-                </div>
-              </header>
-            </div>
-          </section>
-          <section className="slide">
-            <div className="slide__content">
-              <figure className="slide__figure"><div className="slide__img" style={{backgroundImage: "url('/images/about-background.webp')"}}></div></figure>
-              <header className="slide__header">
-                <div className="slide__title">
-                  <h2 className="title-line head-title head-title__about"><span><img src="/images/h2-about.svg" alt="UCHIWA Creative Studioについて" /></span></h2>
-                  <p className="title-line head-text"><span>札幌市の個人事業のWebデザイナー。<br />「UCHIWA Creative Studio」という屋号で道内・道外問わず全国のお客様のWebサイト作りに携わらせて頂いております。</span></p>
-                  <a href="<?php echo esc_url(home_url('about')); ?>" className="title-line page-link"><span><img src="/images/link.svg" alt="View More" /></span></a>
-                </div>
-              </header>
-            </div>
-          </section>
-          <section className="slide">
-            <div className="slide__content">
-              <figure className="slide__figure"><canvas id="service-canvas" className="slide__img" style={{backgroundImage: "url('/images/service-background.jpg.webp')"}}></canvas></figure>              <header className="slide__header">
-                <div className="slide__title">
-                  <h2 className="title-line head-title head-title__service"><span><img src="/images/title-service.svg" alt="事業・サービス内容" /></span></h2>
-                  <p className="title-line head-text"><span>Webを中心に「コンセプトメイキング」「デザイン」「コーディング」等のサイト制作全般の業務を承っております</span></p>
-                  <a href="<?php echo esc_url(home_url('service')); ?>" className="title-line page-link"><span><img src="/images/link.svg" alt="View More" /></span></a>
-                </div>
-              </header>
-            </div>
-          </section>
-          <section className="slide">
-            <div className="slide__content">
-              <figure className="slide__figure"><div className="slide__img" style={{backgroundImage: "url('/images/price-background.jpg.webp')"}}></div></figure>
-              <header className="slide__header">
-                <div className="slide__title">
-                  <h2 className="title-line head-title head-title__works"><span><img src="/images/title-price.svg" alt="制作料金表" /></span></h2>
-                  <p className="title-line head-text"><span>Webサイト制作にかかる料金表を掲載しております。<br />ご検討の際の目安にぜひご参考ください。</span></p>
-                  <a href="<?php echo esc_url(home_url('price')); ?>" className="title-line page-link"><span><img src="/images/link.svg" alt="View More" /></span></a>
-                </div>
-              </header>
-            </div>
-          </section>
-          <section className="slide">
-            <div className="slide__content">
-              <figure className="slide__figure"><div className="slide__img" style={{backgroundImage: "url('/images/gallery-background.jpg.webp')"}}></div></figure>
-              <header className="slide__header">
-                <div className="slide__title">
-                  <h2 className="title-line head-title head-title__works"><span><img src="/images/title-works.svg" alt="制作実績" /></span></h2>
-                  <p className="title-line head-text"><span>これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載</span></p>
-                  <a href="<?php echo esc_url(home_url('gallery')); ?>" className="title-line page-link"><span><img src="/images/link.svg" alt="View More" /></span></a>
-                </div>
-              </header>
-            </div>
-          </section>
-          <section className="slide">
-            <div className="slide__content">
-              <figure className="slide__figure"><div className="slide__img" style={{backgroundImage: "url('/images/blog-background.jpg.webp')"}}></div></figure>
-              <header className="slide__header">
-                <div className="slide__title">
-                  <h2 className="title-line head-title head-title__blog"><span><img src="/images/title-blog.svg" alt="ブログ" /></span></h2>
-                  <p className="title-line head-text"><span>Web運用や制作に役立つ情報発信メディア。<br />お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。</span></p>
-                  <a href="<?php echo get_post_type_archive_link('web-tips'); ?>" className="title-line page-link" ><span><img src="/images/link.svg" alt="View More" /></span></a>
-                </div>
-                <div className="slide__swiper swiper-container">
-                  <a className="blog-item swiper-slide" href="<?php the_permalink(); ?>">
-                    <div className="blog-item__image">
-                      <img />
-                      <div className="blog-item__overlay">
-                        READ MORE
-                      </div>
-                    </div>
-                    <div className="blog-item__text-box">
-                      <h3 className="blog-title">
-                        WordPressで自作のWebサイトを開設する方法【①ドメイン取得とサーバー契約編】                
-                      </h3>
-                      <time className="blog-postTime" dateTime="<?php the_time('Y-m-d'); ?>"></time>
-                    </div>
-                  </a>
-                </div>
-              </header>
-            </div>
-          </section>
-          <section className="slide">
-            <div className="slide__content">
-              <figure className="slide__figure"><div className="slide__img" style={{backgroundImage: "url('/images/contact-background.jpg.webp')"}}></div></figure>
-              <header className="slide__header">
-                <div className="slide__title">
-                  <h2 className="title-line head-title head-title__service"><span><img src="/images/title-contact.svg" alt="お問い合わせ" /></span></h2>
-                  <p className="title-line head-text"><span>Webサイト立ち上げのご相談、お見積りのご依頼（無料）などお気軽にお問い合わせください</span></p>
-                  <a href="<?php echo esc_url(home_url('contact')); ?>" className="title-line page-link"><span><img src="/images/link.svg" alt="View More" /></span></a>
                 </div>
               </header>
             </div>

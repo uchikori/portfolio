@@ -1,11 +1,6 @@
 .container{
     width: 100vw;
-    // overflow: hidden;
-    opacity: 0;
-    body.appear &{
-        animation: PageAnimeAppear 1s 0.8s forwards;
-        opacity: 0;
-    }
+    opacity: 1;
 }
 .g-menu{
     width: 100%;

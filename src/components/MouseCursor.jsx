@@ -1,12 +1,7 @@
 import React from "react";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { useEffect, useState } from "react";
 
 export const MouseCursor = (props) => {
-
-    const { data } = props;
 
     //マウス動かしたときの挙動
     const [mouseX, setMouseX] = useState(0);//マウスX座標
@@ -15,9 +10,6 @@ export const MouseCursor = (props) => {
         const mouseMoveListener = (event) => {
             setMouseX(event.clientX);
             setMouseY(event.clientY);
-
-
-
         }
 
         window.addEventListener('mousemove', mouseMoveListener);
@@ -26,7 +18,7 @@ export const MouseCursor = (props) => {
             window.addEventListener('mousemove', mouseMoveListener);
         };
 
-    }, []);
+    },[]);
 
     //マウスがリンクにホバーした際の挙動
     const [hover, setHover] = useState(false);//カーソルがターゲットに乗った際のトグル
