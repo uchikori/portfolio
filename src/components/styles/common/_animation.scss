@@ -38,9 +38,9 @@
 }
 
 @keyframes hide{
-    0% { opacity: 1; transform: translateX(0px); }
-    80%{ opacity: 0; transform: translateX(20%); }
-    100%{opacity: 0; transform: translateX(500%);}
+    0% { transform: translateX(0px); }
+    80%{ transform: translateX(20%); }
+    100%{transform: translateX(500%);}
 }
 
 @keyframes scroll-lead{
