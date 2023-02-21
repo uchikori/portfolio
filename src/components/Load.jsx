@@ -27,7 +27,7 @@ export const Load = (props) => {
                 </div>
             </div>
             :
-            ''
+            null
             }
         </>
     )

@@ -2,36 +2,42 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
+
 export const GlobalMenu = () => {
 
   const [open, setOpen] = useState(false);
+  const [bodyFixed, setBodyFixed] = useState(false);
 
   const menuOpen = (event) => {
-
-    function noScroll(event) {
-      event.preventDefault();
-    }
-
-    setOpen(!open)
-
-    //メニューが開いた状態でのスクロール禁止
-    if (document.body.classList.contains('fixed')) {
-      // スクロール禁止(SP)
-      document.addEventListener('touchmove', noScroll, { passive: false });
-      // スクロール禁止(PC)
-      document.addEventListener('mousewheel', noScroll, { passive: false });
-    } else {
-      // スクロール禁止(SP)
-      document.removeEventListener('touchmove', noScroll, { passive: false });
-      // スクロール禁止(PC)
-      document.removeEventListener('mousewheel', noScroll, { passive: false });
-    }
-
+    setOpen((open) => {
+      return !open;
+    });
+    setBodyFixed((bodyFixed) => {
+      return !bodyFixed;
+    });
   }
+
+  useEffect(() => {
+    bodyFixed ? document.body.classList.add('fixed') : document.body.classList.remove('fixed')
+  }, [bodyFixed]);
+
+
+    // //メニューが開いた状態でのスクロール禁止
+    // if (document.body.classList.contains('fixed')) {
+    //   // スクロール禁止(SP)
+    //   document.addEventListener('touchmove', noScroll, { passive: false });
+    //   // スクロール禁止(PC)
+    //   document.addEventListener('mousewheel', noScroll, { passive: false });
+    // } else {
+    //   // スクロール禁止(SP)
+    //   document.removeEventListener('touchmove', noScroll, { passive: false });
+    //   // スクロール禁止(PC)
+    //   document.removeEventListener('mousewheel', noScroll, { passive: false });
+    // }
 
   return (
       <>
-        <div className={`list-menu hoverTarget ${ open ? "menu-active": "" }` } onClick={ menuOpen } >
+        <div className={`list-menu hoverTarget ${ open ? "menu-active": null }` } onClick={ menuOpen } >
             <div className="list-menu-top">
                 <div className="box"></div>
                 <div className="box"></div>
@@ -197,7 +203,7 @@ export const GlobalMenu = () => {
           </div>
         </nav>
         
-        <div className={`circle-bg ${ open ? "circleActive" : "" }`}></div>
+        <div className={`circle-bg ${ open ? "circleActive" : null }`}></div>
       </>
   )
 }
