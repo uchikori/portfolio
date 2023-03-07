@@ -1,8 +1,8 @@
 import * as React from "react"
 import { useEffect } from "react";
-import { GlobalMenu } from "../components/GlobalMenu";
-import { Load } from "../components/Load";
-import { MouseCursor } from "../components/MouseCursor";
+import { GlobalMenu } from "../components/global/Menu/GlobalMenu";
+import { Load } from "../components/global/Loading";
+import { MouseCursor } from "../components/global/MouseCursor";
 
 import { useState, useRef } from "react";
 import { Slide } from "../components/Slide";

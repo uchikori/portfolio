@@ -49,7 +49,7 @@ export const GlobalMenu = () => {
         </div>
 
         <nav className={`g-menu js-gMenu ${ open ? "menu-open" : "menu-close" }`}>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"0.9s"}}>
               <a href="<?php echo esc_url(home_url()); ?>" className="g-menu__item-link">home</a>
               <div className="g-menu__item-img">
                   <img src="/images/home-firstview.webp" width="520" height="280" loading="lazy" alt="home" />
@@ -68,7 +68,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.0s"}}>
               <a href="<?php echo esc_url(home_url('about')); ?>" className="g-menu__item-link">about</a>
               <div className="g-menu__item-img">
                   <img src="/images/about-firstView.webp" width="520" height="280" loading="lazy" alt="about-page" />
@@ -87,7 +87,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.1s"}}>
               <a href="<?php echo esc_url(home_url('service')); ?>" className="g-menu__item-link">service</a>
               <div className="g-menu__item-img">
                   <img src="/images/service-firstView.webp" width="520" height="280" loading="lazy" alt="service-page" />
@@ -106,7 +106,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.2s"}}>
               <a href="<?php echo esc_url(home_url('price')); ?>" className="g-menu__item-link">price</a>
               <div className="g-menu__item-img">
                   <img src="/images/price-firstView.jpg.webp" width="520" height="280" loading="lazy" alt="price-page" />
@@ -125,7 +125,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.3s"}}>
               <a href="<?php echo esc_url(home_url('notes')); ?>" className="g-menu__item-link">notes</a>
               <div className="g-menu__item-img">
                   <img src="/images/notes-firstView.webp" width="520" height="280" loading="lazy" alt="notes-page" />
@@ -144,7 +144,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.4s"}}>
               <a href="<?php echo esc_url(home_url('gallery')); ?>" className="g-menu__item-link">works</a>
               <div className="g-menu__item-img">
                   <img src="/images/gallery-firstView.webp" width="520" height="280" loading="lazy" alt="works-page" />
@@ -163,7 +163,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.5s"}}>
               <a href="<?php echo get_post_type_archive_link('web-tips'); ?>" className="g-menu__item-link">blog</a>
               <div className="g-menu__item-img">
                   <img src="/images/blog-first-view.webp" width="520" height="280" loading="lazy" alt="blog-page" />
@@ -182,7 +182,7 @@ export const GlobalMenu = () => {
                   </div>
               </div>
           </div>
-          <div className="g-menu__item">
+          <div className="g-menu__item" style={{"--i":"1.6s"}}>
               <a href="<?php echo esc_url(home_url('contact')); ?>" className="g-menu__item-link">Contact</a>
               <div className="g-menu__item-img">
                   <img src="/images/contact-firstView.webp" width="520" height="280" loading="lazy" alt="contact-page" />

@@ -1,0 +1,42 @@
+@use "../global" as *;
+
+.cursor {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  z-index: 1001;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: $color-white;
+  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) transform;
+  pointer-events: none;
+  @include tab {
+    display: none;
+  }
+  &.is-hover {
+    transform: scale(3);
+  }
+}
+.follower {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: rgba(198, 0, 105, 0.5);
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0.001s transform;
+  pointer-events: none;
+  @include tab {
+    display: none;
+  }
+  &.is-hover {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    left: -40px;
+    background: rgba(86, 0, 198, 0.5);
+  }
+}
