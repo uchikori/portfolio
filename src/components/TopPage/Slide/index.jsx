@@ -81,71 +81,57 @@ export const Slide = () => {
   //Slidesアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
-  const scrollThereshold = 2; //微小なスクロール量で動作しないようにするための定数
 
   const slides = useRef([]);
-  const numSlides = slides.current.length;
 
   useEffect(() => {
+    const isSliding = () => {
+      setDeltaNum(0);
+      document.body.classList.add("is-sliding");
+      setTimeout(() => {
+        document.body.classList.remove("is-sliding");
+      }, 1000);
+    };
     //マウスホイール制御
     const handleWheel = (event) => {
-      const delta = Math.sign(event.deltaY);
-      console.log(delta);
-      if (delta > 0) {
-        //ホイール中の場合
-        if (document.body.classList.contains("is-sliding")) {
-          //それ以上ホイール量を増やさない
-          setDeltaNum(0);
-          //ホイール中じゃない場合
-        } else {
-          //ホイール量をマイナスし続ける（上方向）
-          setDeltaNum((deltaNum) => {
-            return deltaNum - 1;
-          });
-          console.log(deltaNum);
-          //ホイール量が2を超えた場合
-          if (Math.abs(deltaNum) >= scrollThereshold) {
-            //ホイール量には7をセット
-            setDeltaNum(7);
-          }
-        }
-      } else if (delta < 0) {
+      const direction = event.deltaY > 0 ? "down" : "up";
+      if (direction === "down") {
         //ホイール中の場合
         if (document.body.classList.contains("is-sliding")) {
           setDeltaNum(0);
         } else {
-          setDeltaNum((deltaNum) => {
-            return deltaNum + 1;
-          });
+          setDeltaNum((deltaNum) => deltaNum + 1);
           console.log(deltaNum);
-          if (Math.abs(deltaNum) >= scrollThereshold) {
-            setDeltaNum(7);
+          if (deltaNum > 7) {
+            setCurrentSlideIndex((currentSlideIndex) => {
+              return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
+            });
+            isSliding();
+          }
+        }
+      } else if (direction === "up") {
+        //ホイール中の場合
+        if (document.body.classList.contains("is-sliding")) {
+          setDeltaNum(0);
+        } else {
+          setDeltaNum((deltaNum) => deltaNum - 1);
+          console.log(deltaNum);
+          if (deltaNum < -7) {
+            setCurrentSlideIndex((currentSlideIndex) => {
+              return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
+            });
+            isSliding();
           }
         }
       }
     };
-    //クラス付与でアニメーション
-    const showSlide = () => {
-      setDeltaNum(0);
-      if (document.body.classList.contains("is-sliding")) {
-        return;
-      }
-      slides.current.forEach((i, slide) => {});
-    };
-    //前スライドへの動作
-    //次スライドへの動作
     document.addEventListener("wheel", handleWheel);
   }, [deltaNum]);
 
   return (
     <>
       <section
-        className={`slide ${
-          isActive ? "is-active" : isPrev ? "is-prev" : "is-next"
-        }`}
-        ref={(element) => {
-          slides.current[0] = element;
-        }}
+        className={`slide ${currentSlideIndex === 0 ? "is-active" : ""}`}
       >
         <div className="slide__content">
           <figure className="slide__figure">
@@ -160,8 +146,10 @@ export const Slide = () => {
             <div className="slide__title">
               <h1 className="title-line head-title head-title__main">
                 <span>
-                  <img
-                    src="/images/site-title.svg"
+                  <StaticImage
+                    src="../../../images/site-title.svg"
+                    layout="constrained"
+                    quality={80}
                     alt="UCHIWA Creative Studio."
                   />
                 </span>
@@ -177,11 +165,9 @@ export const Slide = () => {
           </header>
         </div>
       </section>
+
       <section
-        className="slide"
-        ref={(element) => {
-          slides.current[1] = element;
-        }}
+        className={`slide ${currentSlideIndex === 1 ? "is-active" : ""}`}
       >
         <div className="slide__content">
           <figure className="slide__figure">
@@ -192,10 +178,6 @@ export const Slide = () => {
               quality={90}
               alt=""
             />
-            {/* <div
-              className="slide__img"
-              style="background-image: url(<?php echo get_template_directory_uri(); ?>/coding/dist/images/about-background.webp)"
-            ></div> */}
           </figure>
           <header className="slide__header">
             <div className="slide__title">
@@ -205,12 +187,8 @@ export const Slide = () => {
                     src="../../../images/h2-about.svg"
                     layout="constrained"
                     alt="UCHIWA Creative Studioについて"
-                    quality={90}
+                    quality={80}
                   />
-                  {/* <img
-                    src="<?php echo get_template_directory_uri(); ?>/coding/dist/images/h2-about.svg"
-                    alt="UCHIWA Creative Studioについて"
-                  /> */}
                 </span>
               </h2>
 
@@ -229,21 +207,15 @@ export const Slide = () => {
                     layout="fullWidth"
                     alt="View More"
                   />
-                  {/* <img
-                    src="<?php echo get_template_directory_uri(); ?>/coding/dist/images/link.svg"
-                    alt="View More"
-                  /> */}
                 </span>
               </Link>
             </div>
           </header>
         </div>
       </section>
+
       <section
-        className="slide"
-        ref={(element) => {
-          slides.current[2] = element;
-        }}
+        className={`slide ${currentSlideIndex === 2 ? "is-active" : ""}`}
       >
         <div className="slide__content">
           <figure className="slide__figure">
@@ -263,7 +235,7 @@ export const Slide = () => {
                     src="../../../images/title-service.svg"
                     layout="constrained"
                     alt="事業・サービス内容"
-                    quality={90}
+                    quality={80}
                   />
                 </span>
               </h2>
@@ -271,6 +243,190 @@ export const Slide = () => {
               <p className="title-line head-text">
                 <span>
                   Webを中心に「コンセプトメイキング」「デザイン」「コーディング」等のサイト制作全般の業務を承っております
+                </span>
+              </p>
+              <Link href="/service" className="title-line page-link">
+                <span>
+                  <StaticImage
+                    src="../../../images/link.svg"
+                    layout="fullWidth"
+                    alt="View More"
+                  />
+                </span>
+              </Link>
+            </div>
+          </header>
+        </div>
+      </section>
+
+      <section
+        className={`slide ${currentSlideIndex === 3 ? "is-active" : ""}`}
+      >
+        <div className="slide__content">
+          <figure className="slide__figure">
+            <StaticImage
+              className="slide__img"
+              src="../../../images/price-background.jpg"
+              layout="fullWidth"
+              quality={90}
+              alt=""
+            />
+          </figure>
+          <header className="slide__header">
+            <div className="slide__title">
+              <h2 className="title-line head-title head-title__price">
+                <span>
+                  <StaticImage
+                    src="../../../images/title-price.svg"
+                    layout="constrained"
+                    alt="制作料金表"
+                    quality={80}
+                  />
+                </span>
+              </h2>
+
+              <p className="title-line head-text">
+                <span>
+                  Webサイト制作にかかる料金表を掲載しております。
+                  <br />
+                  ご検討の際の目安にぜひご参考ください。
+                </span>
+              </p>
+              <Link href="/service" className="title-line page-link">
+                <span>
+                  <StaticImage
+                    src="../../../images/link.svg"
+                    layout="fullWidth"
+                    alt="View More"
+                  />
+                </span>
+              </Link>
+            </div>
+          </header>
+        </div>
+      </section>
+
+      <section
+        className={`slide ${currentSlideIndex === 4 ? "is-active" : ""}`}
+      >
+        <div className="slide__content">
+          <figure className="slide__figure">
+            <StaticImage
+              className="slide__img"
+              src="../../../images/gallery-background.jpg"
+              layout="fullWidth"
+              quality={90}
+              alt=""
+            />
+          </figure>
+          <header className="slide__header">
+            <div className="slide__title">
+              <h2 className="title-line head-title head-title__works">
+                <span>
+                  <StaticImage
+                    src="../../../images/title-works.svg"
+                    layout="constrained"
+                    alt="制作実績"
+                    quality={80}
+                  />
+                </span>
+              </h2>
+
+              <p className="title-line head-text">
+                <span>
+                  これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載
+                </span>
+              </p>
+              <Link href="/service" className="title-line page-link">
+                <span>
+                  <StaticImage
+                    src="../../../images/link.svg"
+                    layout="fullWidth"
+                    alt="View More"
+                  />
+                </span>
+              </Link>
+            </div>
+          </header>
+        </div>
+      </section>
+
+      <section
+        className={`slide ${currentSlideIndex === 5 ? "is-active" : ""}`}
+      >
+        <div className="slide__content">
+          <figure className="slide__figure">
+            <StaticImage
+              className="slide__img"
+              src="../../../images/blog-background.jpg"
+              layout="fullWidth"
+              quality={90}
+              alt=""
+            />
+          </figure>
+          <header className="slide__header">
+            <div className="slide__title">
+              <h2 className="title-line head-title head-title__blog">
+                <span>
+                  <StaticImage
+                    src="../../../images/title-blog.svg"
+                    layout="constrained"
+                    alt="ブログ"
+                    quality={80}
+                  />
+                </span>
+              </h2>
+
+              <p className="title-line head-text">
+                <span>
+                  Web運用や制作に役立つ情報発信メディア。
+                  <br />
+                  お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。
+                </span>
+              </p>
+              <Link href="/service" className="title-line page-link">
+                <span>
+                  <StaticImage
+                    src="../../../images/link.svg"
+                    layout="fullWidth"
+                    alt="View More"
+                  />
+                </span>
+              </Link>
+            </div>
+          </header>
+        </div>
+      </section>
+
+      <section
+        className={`slide ${currentSlideIndex === 6 ? "is-active" : ""}`}
+      >
+        <div className="slide__content">
+          <figure className="slide__figure">
+            <StaticImage
+              className="slide__img"
+              src="../../../images/contact-background.jpg"
+              layout="fullWidth"
+              quality={90}
+              alt=""
+            />
+          </figure>
+          <header className="slide__header">
+            <div className="slide__title">
+              <h2 className="title-line head-title head-title__service">
+                <span>
+                  <StaticImage
+                    src="../../../images/title-contact.svg"
+                    layout="constrained"
+                    alt="お問い合わせ"
+                    quality={80}
+                  />
+                </span>
+              </h2>
+
+              <p className="title-line head-text">
+                <span>
+                  Webサイト立ち上げのご相談、お見積りのご依頼（無料）などお気軽にお問い合わせください
                 </span>
               </p>
               <Link href="/service" className="title-line page-link">
