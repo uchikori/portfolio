@@ -12,14 +12,6 @@ export default function Home() {
 
   const slides = useRef(null); //slides要素の取得
 
-  //画面サイズの可変で高さを決める
-  // useEffect(() => {
-  //   console.log(innerWidth);
-  //   setInnerWidth(window.innerWidth);
-  //   let vh = window.innerHeight;
-  //   slides.current.style.height = vh + "px";
-  // }, [innerWidth]);
-
   return (
     <>
       <Layout>

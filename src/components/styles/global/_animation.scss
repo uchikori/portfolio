@@ -47,14 +47,14 @@
   }
   to {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(0%);
   }
 }
 
 @keyframes hide {
   0% {
     opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(0%);
   }
   80% {
     opacity: 0;
