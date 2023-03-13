@@ -88,6 +88,7 @@ export function Slide() {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
         });
+        isSliding();
       } else {
         return false;
       }
@@ -95,7 +96,7 @@ export function Slide() {
     document.addEventListener("touchstart", touchStart);
     document.addEventListener("touchmove", touchMove);
     document.addEventListener("touchend", touchEnd);
-  }, []);
+  }, [currentSlideIndex]);
 
   const title = useStaticQuery(graphql`
     query {
