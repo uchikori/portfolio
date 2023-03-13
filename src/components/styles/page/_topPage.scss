@@ -202,6 +202,15 @@
           width: 29rem;
         }
       }
+      &__price {
+        width: 45.8rem;
+        @include wide-pc {
+          width: 458px;
+        }
+        @include sp {
+          width: 21rem;
+        }
+      }
       &__works {
         width: 45.8rem;
         @include wide-pc {

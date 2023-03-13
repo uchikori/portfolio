@@ -7,10 +7,9 @@ import { Canvas } from "../Canvas";
 import { FrontHeader } from "../Front-header";
 
 export function Slide() {
-  //Slidesアニメーション
+  //Slidesホイールアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
-
   const slides = useRef([]);
 
   useEffect(() => {
@@ -56,6 +55,47 @@ export function Slide() {
     };
     document.addEventListener("wheel", handleWheel);
   }, [deltaNum]);
+
+  //Slidesタッチアニメーション
+  // const [startY, setStartY] = useState(0);
+  // const [moveY, setMoveY] = useState(0);
+  useEffect(() => {
+    const isSliding = () => {
+      setDeltaNum(0);
+      document.body.classList.add("is-sliding");
+      setTimeout(() => {
+        document.body.classList.remove("is-sliding");
+      }, 1000);
+    };
+    let startY = 0;
+    let moveY = 0;
+    const dist = 100;
+    const touchStart = (event) => {
+      startY = event.touches[0].pageY;
+      console.log(startY);
+    };
+    const touchMove = (event) => {
+      moveY = event.changedTouches[0].pageY;
+      console.log(moveY);
+    };
+    const touchEnd = () => {
+      if (startY > moveY && startY > moveY + dist) {
+        setCurrentSlideIndex((currentSlideIndex) => {
+          return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
+        });
+        isSliding();
+      } else if (startY < moveY && startY + dist < moveY) {
+        setCurrentSlideIndex((currentSlideIndex) => {
+          return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
+        });
+      } else {
+        return false;
+      }
+    };
+    document.addEventListener("touchstart", touchStart);
+    document.addEventListener("touchmove", touchMove);
+    document.addEventListener("touchend", touchEnd);
+  }, []);
 
   const title = useStaticQuery(graphql`
     query {
