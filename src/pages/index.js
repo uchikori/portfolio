@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <div ref={slides} className="slides">
+        <div ref={slides} className="slides" style={{ height: "100svh" }}>
           <div className="slides-nav">
             <nav className="slides-nav__nav">
               <span className="page-current">01</span>
