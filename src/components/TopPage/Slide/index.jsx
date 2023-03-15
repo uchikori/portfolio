@@ -61,7 +61,6 @@ export function Slide() {
   // const [moveY, setMoveY] = useState(0);
   useEffect(() => {
     const isSliding = () => {
-      setDeltaNum(0);
       document.body.classList.add("is-sliding");
       setTimeout(() => {
         document.body.classList.remove("is-sliding");
@@ -96,7 +95,7 @@ export function Slide() {
     document.addEventListener("touchstart", touchStart);
     document.addEventListener("touchmove", touchMove);
     document.addEventListener("touchend", touchEnd);
-  }, [currentSlideIndex]);
+  }, []);
 
   const title = useStaticQuery(graphql`
     query {
