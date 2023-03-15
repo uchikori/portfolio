@@ -28,7 +28,7 @@ export function Slide() {
         if (document.body.classList.contains("is-sliding")) {
           setDeltaNum(0);
         } else {
-          setDeltaNum((deltaNum) => deltaNum + 1);
+          setDeltaNum((prevDeltaNum) => prevDeltaNum + 1);
           console.log(deltaNum);
           if (deltaNum > 7) {
             setCurrentSlideIndex((currentSlideIndex) => {
@@ -42,7 +42,7 @@ export function Slide() {
         if (document.body.classList.contains("is-sliding")) {
           setDeltaNum(0);
         } else {
-          setDeltaNum((deltaNum) => deltaNum - 1);
+          setDeltaNum((prevDeltaNum) => prevDeltaNum - 1);
           console.log(deltaNum);
           if (deltaNum < -7) {
             setCurrentSlideIndex((currentSlideIndex) => {
@@ -54,11 +54,11 @@ export function Slide() {
       }
     };
     document.addEventListener("wheel", handleWheel);
-  }, [deltaNum]);
+  });
 
   //Slidesタッチアニメーション
-  // const [startY, setStartY] = useState(0);
-  // const [moveY, setMoveY] = useState(0);
+  let startY = useRef(0);
+  let moveY = useRef(0);
   useEffect(() => {
     const isSliding = () => {
       document.body.classList.add("is-sliding");
@@ -66,36 +66,45 @@ export function Slide() {
         document.body.classList.remove("is-sliding");
       }, 1000);
     };
-    let startY = 0;
-    let moveY = 0;
+
     const dist = 100;
     const touchStart = (event) => {
-      startY = event.touches[0].pageY;
-      console.log(startY);
+      startY.current = event.touches[0].pageY;
+      console.log(startY.current);
     };
     const touchMove = (event) => {
-      moveY = event.changedTouches[0].pageY;
-      console.log(moveY);
+      moveY.current = event.changedTouches[0].pageY;
+      console.log(moveY.current);
     };
     const touchEnd = () => {
-      if (startY > moveY && startY > moveY + dist) {
+      if (
+        startY.current > moveY.current &&
+        startY.current > moveY.current + dist
+      ) {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
         });
         isSliding();
-      } else if (startY < moveY && startY + dist < moveY) {
+        startY.current = 0;
+        moveY.current = 0;
+        console.log(moveY);
+      } else if (
+        startY.current < moveY.current &&
+        startY.current + dist < moveY.current
+      ) {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
         });
         isSliding();
-      } else {
-        return false;
+        startY.current = 0;
+        moveY.current = 0;
+        console.log(moveY.current);
       }
     };
     document.addEventListener("touchstart", touchStart);
     document.addEventListener("touchmove", touchMove);
     document.addEventListener("touchend", touchEnd);
-  }, []);
+  });
 
   const title = useStaticQuery(graphql`
     query {
