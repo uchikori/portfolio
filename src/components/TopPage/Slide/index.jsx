@@ -133,6 +133,13 @@ export function Slide() {
 
   return (
     <>
+      <div className="slides-nav">
+        <nav className="slides-nav__nav">
+          <span className="page-current">0{currentSlideIndex + 1}</span>
+          <span className="page-line"></span>
+          <span className="page-total">07</span>
+        </nav>
+      </div>
       <section
         className={`slide ${currentSlideIndex === 0 ? "is-active" : ""}`}
       >

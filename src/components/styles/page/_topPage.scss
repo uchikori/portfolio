@@ -229,6 +229,15 @@
           width: 16.4rem;
         }
       }
+      &__contact {
+        width: 58rem;
+        @include wide-pc {
+          width: 580px;
+        }
+        @include sp {
+          width: 29rem;
+        }
+      }
       @include sp {
         margin-bottom: 2.7rem;
       }

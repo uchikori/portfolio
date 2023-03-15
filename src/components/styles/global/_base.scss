@@ -76,6 +76,7 @@ html {
     画面サイズがデザインカンプ幅の時font-size = 10pxになる
     */
   font-size: calc(10 / 1920 * 100) + vw;
+  overflow: hidden;
   // @include pc{
   //     font-size: calc(10 / 1200 * 100) + vw;
   // }
@@ -90,12 +91,13 @@ body {
   font-size: 1.6rem;
   font-family: $font;
   letter-spacing: 0.1em;
-  overflow-x: hidden;
   position: relative;
   cursor: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   @include tab {
     cursor: auto;
   }

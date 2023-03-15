@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { Slide } from "../components/TopPage/Slide";
 import { Layout } from "../components/Layout";
 import { Sns } from "../components/global/Sns";
@@ -23,15 +23,8 @@ export default function Home() {
 
   return (
     <>
-      <Layout>
+      <Layout hasLoadingObj>
         <div ref={slides} className="slides">
-          <div className="slides-nav">
-            <nav className="slides-nav__nav">
-              <span className="page-current">01</span>
-              <span className="page-line"></span>
-              <span className="page-total">07</span>
-            </nav>
-          </div>
           <ScrollLead />
           <Sns />
           <Slide />

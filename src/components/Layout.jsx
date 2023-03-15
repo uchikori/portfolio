@@ -4,10 +4,10 @@ import { GlobalMenu } from "./global/Menu/GlobalMenu";
 import { MouseCursor } from "./global/MouseCursor";
 
 export const Layout = (props) => {
-  const { children } = props;
+  const { children, hasLoadingObj } = props;
   return (
     <>
-      <Load />
+      <Load hasLoadingObj={hasLoadingObj} />
       <MouseCursor />
       <div className="container">
         <GlobalMenu />
