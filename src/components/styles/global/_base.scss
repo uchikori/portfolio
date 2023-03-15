@@ -95,6 +95,7 @@ body {
   cursor: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  position: fixed;
   @include tab {
     cursor: auto;
   }

@@ -87,7 +87,7 @@ export function Slide() {
         isSliding();
         startY.current = 0;
         moveY.current = 0;
-        console.log(moveY);
+        console.log(moveY.current);
       } else if (
         startY.current < moveY.current &&
         startY.current + dist < moveY.current
