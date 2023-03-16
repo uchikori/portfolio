@@ -58,6 +58,7 @@ export function Slide() {
   //Slidesタッチアニメーション
   let startY = useRef(0);
   let moveY = useRef(0);
+  let offsetY = useRef(0);
   useEffect(() => {
     const isSliding = () => {
       document.body.classList.add("is-sliding");
@@ -65,37 +66,35 @@ export function Slide() {
         document.body.classList.remove("is-sliding");
       }, 1000);
     };
-
-    const dist = 100;
     const touchStart = (event) => {
-      // startY.current = event.touches[0].pageY;
+      startY.current = event.touches[0].pageY;
       console.log(startY.current);
     };
     const touchMove = (event) => {
-      console.log(event);
-      startY.current = event.touches[0].pageY;
       moveY.current = event.changedTouches[0].pageY;
+      offsetY.current = startY.current - moveY.current
+      console.log(offsetY.current);
     };
     const touchEnd = () => {
-      if (moveY.current > 100) {
+      if (offsetY.current > 100) {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
         });
         isSliding();
         startY.current = 0;
         moveY.current = 0;
-        console.log(moveY.current);
-      } else if (moveY.current < -100) {
+        offsetY.current = 0;
+      } else if (offsetY.current < -100) {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
         });
         isSliding();
         startY.current = 0;
         moveY.current = 0;
-        console.log(moveY.current);
+        offsetY.current = 0;
       }
     };
-    // document.addEventListener("touchstart", touchStart);
+    document.addEventListener("touchstart", touchStart);
     document.addEventListener("touchmove", touchMove);
     document.addEventListener("touchend", touchEnd);
   });
