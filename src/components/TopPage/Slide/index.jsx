@@ -68,18 +68,16 @@ export function Slide() {
 
     const dist = 100;
     const touchStart = (event) => {
-      startY.current = event.touches[0].pageY;
+      // startY.current = event.touches[0].pageY;
       console.log(startY.current);
     };
     const touchMove = (event) => {
+      console.log(event);
+      startY.current = event.touches[0].pageY;
       moveY.current = event.changedTouches[0].pageY;
-      console.log(moveY.current);
     };
     const touchEnd = () => {
-      if (
-        startY.current > moveY.current &&
-        startY.current > moveY.current + dist
-      ) {
+      if (moveY.current > 100) {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
         });
@@ -87,10 +85,7 @@ export function Slide() {
         startY.current = 0;
         moveY.current = 0;
         console.log(moveY.current);
-      } else if (
-        startY.current < moveY.current &&
-        startY.current + dist < moveY.current
-      ) {
+      } else if (moveY.current < -100) {
         setCurrentSlideIndex((currentSlideIndex) => {
           return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
         });
@@ -100,7 +95,7 @@ export function Slide() {
         console.log(moveY.current);
       }
     };
-    document.addEventListener("touchstart", touchStart);
+    // document.addEventListener("touchstart", touchStart);
     document.addEventListener("touchmove", touchMove);
     document.addEventListener("touchend", touchEnd);
   });
