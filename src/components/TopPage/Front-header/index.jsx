@@ -17,7 +17,7 @@ export const FrontHeader = (props) => {
           <span>{subTitle}</span>
         </p>
         {link ? (
-          <Link href={`/${titleClass}`} className="title-line page-link">
+          <Link to={`/${titleClass}`} className="title-line page-link">
             <span>
               <StaticImage
                 src="../../../images/link.svg"

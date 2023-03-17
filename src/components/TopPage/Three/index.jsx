@@ -35,31 +35,19 @@ export const Three = () => {
     const loader = new THREE.TextureLoader();
     //マテリアルを作成
     const material = [
-      new THREE.MeshStandardMaterial({
-        map: loader.load("../../../images/texture-1.jpg"),
-        side: THREE.DoubleSide,
-      }),
-      new THREE.MeshStandardMaterial({
-        map: loader.load("../../../images/texture-2.jpg"),
-        side: THREE.DoubleSide,
-      }),
-      new THREE.MeshStandardMaterial({
-        map: loader.load("../../../images/texture-3.jpg"),
-        side: THREE.DoubleSide,
-      }),
-      new THREE.MeshStandardMaterial({
-        map: loader.load("../../../images/texture-4.jpg"),
-        side: THREE.DoubleSide,
-      }),
-      new THREE.MeshStandardMaterial({
-        map: loader.load("../../../images/texture-1.jpg"),
-        side: THREE.DoubleSide,
-      }),
-      new THREE.MeshStandardMaterial({
-        map: loader.load("../../../images/texture-2.jpg"),
-        side: THREE.DoubleSide,
-      }),
-    ];
+      "texture-1.jpg",
+      "texture-2.jpg",
+      "texture-3.jpg",
+      "texture-4.jpg",
+      "texture-1.jpg",
+      "texture-2.jpg",
+    ].map(
+      (texture) =>
+        new THREE.MeshStandardMaterial({
+          map: loader.load(`../../../images/${texture}`),
+          side: THREE.DoubleSide,
+        })
+    );
     //BOXの形状を作成
     const geometry = new THREE.BoxGeometry(150, 150, 150); //球体
     //メッシュを作成
@@ -76,38 +64,61 @@ export const Three = () => {
 
     const degree = 150;
     let boxPosition = box.position;
-    //x方向の速度
-    let vx = Math.random();
+    // //x方向の速度
+    // let vx = Math.random();
 
-    //y方向の速度
-    let vy = Math.random();
+    // //y方向の速度
+    // let vy = Math.random();
 
-    //z方向の速度
-    let vz = Math.random();
-    //初回実行
-    tick();
-    //マイフレームごとに実行されるループイベント
+    // //z方向の速度
+    // let vz = Math.random();
+    const velocity = new THREE.Vector3(
+      Math.random(),
+      Math.random(),
+      Math.random()
+    );
     function tick() {
       box.rotation.y += 0.01;
       box.rotation.x += 0.01;
-      boxPosition.x += vx;
-      boxPosition.y += vy;
-      boxPosition.z += vz;
-      // console.log(boxPosition);
-      if (boxPosition.x > degree || boxPosition.x < -degree) {
-        vx *= -1;
-      }
-      if (boxPosition.y > degree || boxPosition.y < -degree) {
-        vy *= -1;
-      }
-      if (boxPosition.z > degree || boxPosition.z < -degree) {
-        vz *= -1;
-      }
-      requestAnimationFrame(tick);
 
-      //レンダリング
-      renderer.render(scene, camera); //レンダリング（更新処理）
+      boxPosition.add(velocity);
+      if (Math.abs(boxPosition.x) > degree) {
+        velocity.x *= -1;
+      }
+      if (Math.abs(boxPosition.y) > degree) {
+        velocity.y *= -1;
+      }
+      if (Math.abs(boxPosition.z) > degree) {
+        velocity.z *= -1;
+      }
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
     }
+    //初回実行
+    tick();
+    //マイフレームごとに実行されるループイベント
+    // function tick() {
+    //   box.rotation.y += 0.01;
+    //   box.rotation.x += 0.01;
+    //   boxPosition.x += vx;
+    //   boxPosition.y += vy;
+    //   boxPosition.z += vz;
+    //   // console.log(boxPosition);
+    //   if (boxPosition.x > degree || boxPosition.x < -degree) {
+    //     vx *= -1;
+    //   }
+    //   if (boxPosition.y > degree || boxPosition.y < -degree) {
+    //     vy *= -1;
+    //   }
+    //   if (boxPosition.z > degree || boxPosition.z < -degree) {
+    //     vz *= -1;
+    //   }
+    //   requestAnimationFrame(tick);
+
+    //   //レンダリング
+    //   renderer.render(scene, camera); //レンダリング（更新処理）
+    // }
   });
   return (
     <canvas
