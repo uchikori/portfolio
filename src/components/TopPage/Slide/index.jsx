@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import { Canvas } from "../Canvas";
 import { FrontHeader } from "../Front-header";
+import { Three } from "../Three";
 
 export function Slide() {
   //Slidesホイールアニメーション
@@ -68,12 +69,10 @@ export function Slide() {
     };
     const touchStart = (event) => {
       startY.current = event.touches[0].pageY;
-      console.log(startY.current);
     };
     const touchMove = (event) => {
       moveY.current = event.changedTouches[0].pageY;
-      offsetY.current = startY.current - moveY.current
-      console.log(offsetY.current);
+      offsetY.current = startY.current - moveY.current;
     };
     const touchEnd = () => {
       if (offsetY.current > 100) {
@@ -183,6 +182,7 @@ export function Slide() {
               quality={90}
               alt=""
             />
+            <Three />
           </figure>
           <FrontHeader
             titleImage={title.service.publicURL}

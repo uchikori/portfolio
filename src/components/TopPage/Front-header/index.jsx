@@ -13,10 +13,7 @@ export const FrontHeader = (props) => {
             <img src={titleImage} alt={alt} />
           </span>
         </h1>
-        <p
-          className="title-line head-text"
-          style={{ "white-space": "pre-wrap" }}
-        >
+        <p className="title-line head-text" style={{ whiteSpace: "pre-wrap" }}>
           <span>{subTitle}</span>
         </p>
         {link ? (

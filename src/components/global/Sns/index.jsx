@@ -1,6 +1,5 @@
 import React from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 export const Sns = () => {
   return (
@@ -15,6 +14,7 @@ export const Sns = () => {
           src="../../../images/icon-facebook.svg"
           alt="facebook"
           layout="fixed"
+          width={13}
           height={24}
         />
       </a>
@@ -28,6 +28,7 @@ export const Sns = () => {
           src="../../../images/icon-instagram.svg"
           alt="Instagram"
           layout="fixed"
+          width={24}
           height={24}
         />
       </a>
@@ -36,6 +37,7 @@ export const Sns = () => {
           src="../../../images/icon-blog.svg"
           alt="blog"
           layout="fixed"
+          width={24}
           height={24}
         />
       </a>

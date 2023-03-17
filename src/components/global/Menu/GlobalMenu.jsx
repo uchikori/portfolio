@@ -57,8 +57,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/home-firstview.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -85,8 +85,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/about-firstView.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -113,8 +113,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/service-firstView.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -141,8 +141,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/price-firstView.jpg.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -169,8 +169,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/notes-firstView.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -197,8 +197,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/gallery-firstView.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -225,8 +225,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/blog-first-view.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}
@@ -253,8 +253,8 @@ export const GlobalMenu = () => {
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/contact-firstView.webp"
-              width="520"
-              height="280"
+              width={520}
+              height={280}
               layout="constrained"
               alt="View More"
               quality={80}

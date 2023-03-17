@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-export const MouseCursor = (props) => {
+export const MouseCursor = () => {
   //マウス動かしたときの挙動
   const [mouseX, setMouseX] = useState(0); //マウスX座標
   const [mouseY, setMouseY] = useState(0); //マウスY座標
