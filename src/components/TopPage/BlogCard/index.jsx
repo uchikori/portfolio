@@ -6,7 +6,11 @@ export default function BlogCard(props) {
     <div className="slide__swiper">
       {data.allWpWebTips.edges.map(({ node }) => {
         return (
-          <a href="/" className="blog-item" key={node.databaseId}>
+          <a
+            href={`/web-tips/${node.databaseId}`}
+            className="blog-item"
+            key={node.databaseId}
+          >
             <div className="blog-item__image">
               <GatsbyImage
                 image={
