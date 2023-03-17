@@ -1,10 +1,18 @@
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
+import BlogCard from "../BlogCard";
 
 export const FrontHeader = (props) => {
-  const { titleImage, titleClass, subTitle, alt, link = false } = props;
-
+  const {
+    titleImage,
+    titleClass,
+    subTitle,
+    alt,
+    link = false,
+    blog = false,
+    blogData,
+  } = props;
   return (
     <header className="slide__header">
       <div className="slide__title">
@@ -30,6 +38,7 @@ export const FrontHeader = (props) => {
           ""
         )}
       </div>
+      {blog ? <BlogCard data={blogData} /> : null}
     </header>
   );
 };

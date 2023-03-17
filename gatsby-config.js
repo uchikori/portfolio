@@ -8,17 +8,28 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
-const path = require('path');
+const path = require("path");
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: process.env.WPGRAPHQL_URL || `https://uchiwa-design.net/graphql`,
+        useACF: true,
+        auth: {},
+      },
+    },
+    {
       resolve: `gatsby-plugin-sass`,
       options: {
         sassOptions: {
-          includePaths: path.join[__dirname, 'components/styles'],
+          includePaths: path.join[(__dirname, "components/styles")],
         },
         // Override the file regex for Sass
         sassRuleTest: /\.s(a|c)ss$/,
@@ -31,7 +42,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
-      }
+      },
     },
   ],
-}
+};

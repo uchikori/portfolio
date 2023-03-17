@@ -6,8 +6,10 @@ import { Layout } from "../components/Layout";
 import { Sns } from "../components/global/Sns";
 import { ScrollLead } from "../components/global/ScrollLead";
 import { useEffect } from "react";
+import { graphql } from "gatsby";
 
-export default function Home() {
+export default function Home(props) {
+  const { data } = props;
   const slides = useRef(null); //slides要素の取得
 
   useEffect(() => {
@@ -27,9 +29,38 @@ export default function Home() {
         <div ref={slides} className="slides">
           <ScrollLead />
           <Sns />
-          <Slide />
+          <Slide blogData={data} />
         </div>
       </Layout>
     </>
   );
 }
+
+export const query = graphql`
+  query {
+    allWpWebTips(sort: { date: DESC }, limit: 3) {
+      edges {
+        node {
+          title
+          databaseId
+          date(formatString: "YYYY-MM-DD")
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    quality: 90
+                    placeholder: BLURRED
+                    layout: CONSTRAINED
+                    width: 248
+                    height: 155
+                  )
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

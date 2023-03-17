@@ -1,17 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import * as noise from "simplenoise";
 
-export const Canvas = () => {
+export const Canvas = React.memo(() => {
   //Canvasアニメーション
   const canvas = useRef(null);
+  const lineNum = useMemo(() => 150, []);
+  const segmentNum = useMemo(() => 150, []);
   useEffect(() => {
     const canvasEl = canvas.current;
     const canvasContext = canvasEl.getContext("2d");
 
     noise.seed(Math.random());
 
-    let stageW = 0;
-    let stageH = 0;
+    let stageW = window.innerWidth * devicePixelRatio;
+    let stageH = window.innerHeight * devicePixelRatio;
 
     //画面がリサイズされたとき、resize関数を流す
     window.addEventListener("resize", resize);
@@ -24,11 +26,9 @@ export const Canvas = () => {
       canvasContext.lineWidth = 1; //線の太さ
       canvasContext.strokeStyle = "white";
       const amplitude = stageH / 3; //振幅の大きさ
-      const lineNum = 150; //ラインの数
-      const segmentNum = 150; //分割数
 
       //0からlineNum-1までの整数が順番に並んだ配列を得る
-      [...Array(lineNum).keys()].forEach(function (j) {
+      [...Array(lineNum).keys()].forEach((j) => {
         // const coefficient = 50 + j;
         canvasContext.beginPath(); //線の開始
 
@@ -72,8 +72,7 @@ export const Canvas = () => {
 
     resize();
     tick();
-  }, []);
-
+  });
   return (
     <figure className="slide__figure">
       <canvas
@@ -84,4 +83,4 @@ export const Canvas = () => {
       ></canvas>
     </figure>
   );
-};
+});

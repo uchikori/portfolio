@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import { useEffect } from "react";
@@ -35,9 +36,10 @@ export const GlobalMenu = () => {
 
   return (
     <>
-      <div
+      <button
         className={`list-menu hoverTarget ${open ? "menu-active" : null}`}
         onClick={menuOpen}
+        aria-label="グローバルメニュー"
       >
         <div className="list-menu-top">
           <div className="box"></div>
@@ -47,13 +49,14 @@ export const GlobalMenu = () => {
           <div className="box"></div>
           <div className="box"></div>
         </div>
-      </div>
+      </button>
 
       <nav className={`g-menu js-gMenu ${toggleMenuClass} `}>
         <div className="g-menu__item" style={{ "--i": "0.9s" }}>
-          <a href="/" className="g-menu__item-link">
+          <Link to={"/"} className="g-menu__item-link">
             home
-          </a>
+          </Link>
+
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/home-firstview.webp"
@@ -79,9 +82,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.0s" }}>
-          <a href="/about" className="g-menu__item-link">
+          <Link to={"/about"} className="g-menu__item-link">
             about
-          </a>
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/about-firstView.webp"
@@ -107,9 +110,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.1s" }}>
-          <a href="/service" className="g-menu__item-link">
+          <Link to={"/service"} className="g-menu__item-link">
             service
-          </a>
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/service-firstView.webp"
@@ -135,9 +138,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.2s" }}>
-          <a href="/price" className="g-menu__item-link">
+          <Link to={"/price"} className="g-menu__item-link">
             price
-          </a>
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/price-firstView.jpg.webp"
@@ -163,9 +166,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.3s" }}>
-          <a href="/notes" className="g-menu__item-link">
+          <Link to={"/notes"} className="g-menu__item-link">
             notes
-          </a>
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/notes-firstView.webp"
@@ -191,9 +194,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.4s" }}>
-          <a href="/gallery" className="g-menu__item-link">
+          <Link to={"/works"} className="g-menu__item-link">
             works
-          </a>
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/gallery-firstView.webp"
@@ -219,9 +222,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.5s" }}>
-          <a href="/web-tips" className="g-menu__item-link">
+          <Link to={"/blog"} className="g-menu__item-link">
             blog
-          </a>
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/blog-first-view.webp"
@@ -247,9 +250,9 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.6s" }}>
-          <a href="/contact" className="g-menu__item-link">
-            Contact
-          </a>
+          <Link to={"/contact"} className="g-menu__item-link">
+            contact
+          </Link>
           <div className="g-menu__item-img">
             <StaticImage
               src="../../../images/contact-firstView.webp"

@@ -7,7 +7,8 @@ import { Canvas } from "../Canvas";
 import { FrontHeader } from "../Front-header";
 import { Three } from "../Three";
 
-export function Slide() {
+export function Slide(props) {
+  const { blogData } = props;
   //Slidesホイールアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
@@ -257,6 +258,8 @@ export function Slide() {
             subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`}
             alt="ブログ"
             link
+            blog
+            blogData={blogData}
           />
         </div>
       </section>
