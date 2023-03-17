@@ -5,7 +5,6 @@ export const Canvas = () => {
   //Canvasアニメーション
   const canvas = useRef(null);
   useEffect(() => {
-    console.log(canvas.current);
     const canvasEl = canvas.current;
     const canvasContext = canvasEl.getContext("2d");
 

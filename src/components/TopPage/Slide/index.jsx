@@ -11,7 +11,6 @@ export function Slide() {
   //Slidesホイールアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
-
   useEffect(() => {
     const isSliding = () => {
       setDeltaNum(0);
@@ -29,7 +28,6 @@ export function Slide() {
           setDeltaNum(0);
         } else {
           setDeltaNum((prevDeltaNum) => prevDeltaNum + 1);
-          console.log(deltaNum);
           if (deltaNum > 7) {
             setCurrentSlideIndex((currentSlideIndex) => {
               return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
@@ -43,7 +41,6 @@ export function Slide() {
           setDeltaNum(0);
         } else {
           setDeltaNum((prevDeltaNum) => prevDeltaNum - 1);
-          console.log(deltaNum);
           if (deltaNum < -7) {
             setCurrentSlideIndex((currentSlideIndex) => {
               return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
@@ -98,6 +95,7 @@ export function Slide() {
     document.addEventListener("touchend", touchEnd);
   });
 
+  //画像のGraphQLクエリ
   const title = useStaticQuery(graphql`
     query {
       main: file(relativePath: { eq: "site-title.svg" }) {

@@ -1,4 +1,3 @@
-import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -17,7 +16,7 @@ export const Three = () => {
       canvas: three.current,
       alpha: true, //背景を透明にする
     });
-    console.log(renderer.canvas);
+
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
 
@@ -113,7 +112,7 @@ export const Three = () => {
   return (
     <canvas
       id="service-canvas"
-      class="slide__img"
+      className="slide__img"
       ref={three}
       style={{
         position: "absolute",
