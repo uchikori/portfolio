@@ -21,7 +21,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: process.env.WPGRAPHQL_URL || `https://uchiwa-design.net/graphql`,
-        useACF: true,
+        // useACF: true,
         auth: {},
       },
     },

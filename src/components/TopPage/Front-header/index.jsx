@@ -18,7 +18,7 @@ export const FrontHeader = (props) => {
       <div className="slide__title">
         <h1 className={`title-line head-title head-title__${titleClass}`}>
           <span>
-            <img src={titleImage} alt={alt} />
+            <img src={`../../../images/${titleImage}.svg`} alt={alt} />
           </span>
         </h1>
         <p className="title-line head-text" style={{ whiteSpace: "pre-wrap" }}>

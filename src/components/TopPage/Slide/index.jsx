@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { useEffect, useRef } from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import { graphql, useStaticQuery } from "gatsby";
 import { Canvas } from "../Canvas";
 import { FrontHeader } from "../Front-header";
 import { Three } from "../Three";
@@ -96,33 +95,6 @@ export function Slide(props) {
     document.addEventListener("touchend", touchEnd);
   });
 
-  //画像のGraphQLクエリ
-  const title = useStaticQuery(graphql`
-    query {
-      main: file(relativePath: { eq: "site-title.svg" }) {
-        publicURL
-      }
-      about: file(relativePath: { eq: "h2-about.svg" }) {
-        publicURL
-      }
-      service: file(relativePath: { eq: "title-service.svg" }) {
-        publicURL
-      }
-      price: file(relativePath: { eq: "title-price.svg" }) {
-        publicURL
-      }
-      works: file(relativePath: { eq: "title-works.svg" }) {
-        publicURL
-      }
-      blog: file(relativePath: { eq: "title-blog.svg" }) {
-        publicURL
-      }
-      contact: file(relativePath: { eq: "title-contact.svg" }) {
-        publicURL
-      }
-    }
-  `);
-
   return (
     <>
       <div className="slides-nav">
@@ -138,7 +110,7 @@ export function Slide(props) {
         <div className="slide__content">
           <Canvas />
           <FrontHeader
-            titleImage={title.main.publicURL}
+            titleImage={"site-title"}
             titleClass={"main"}
             subTitle={` 自分自身の「好き」を使って、\n"誰かの「心を動かす」モノを作りたい…"`}
             alt="UCHIWA Creative Studio."
@@ -160,7 +132,7 @@ export function Slide(props) {
             />
           </figure>
           <FrontHeader
-            titleImage={title.about.publicURL}
+            titleImage="h2-about"
             titleClass={"about"}
             subTitle={`札幌市の個人事業のWebデザイナー。\n「UCHIWA Creative Studio」という屋号で道内・道外問わず全国のお客様のWebサイト作りに携わらせて頂いております。`}
             alt="UCHIWA Creative Studio.について"
@@ -184,7 +156,7 @@ export function Slide(props) {
             <Three />
           </figure>
           <FrontHeader
-            titleImage={title.service.publicURL}
+            titleImage="title-service"
             titleClass={"service"}
             subTitle={`Webを中心に「コンセプトメイキング」「デザイン」「コーディング」等のサイト制作全般の業務を承っております`}
             alt="事業・サービス内容"
@@ -207,7 +179,7 @@ export function Slide(props) {
             />
           </figure>
           <FrontHeader
-            titleImage={title.price.publicURL}
+            titleImage="title-price"
             titleClass={"price"}
             subTitle={`Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。`}
             alt="制作料金表"
@@ -230,7 +202,7 @@ export function Slide(props) {
             />
           </figure>
           <FrontHeader
-            titleImage={title.works.publicURL}
+            titleImage="title-works"
             titleClass={"works"}
             subTitle={`これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載`}
             alt="制作実績"
@@ -253,7 +225,7 @@ export function Slide(props) {
             />
           </figure>
           <FrontHeader
-            titleImage={title.blog.publicURL}
+            titleImage="title-blog"
             titleClass={"blog"}
             subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`}
             alt="ブログ"
@@ -278,7 +250,7 @@ export function Slide(props) {
             />
           </figure>
           <FrontHeader
-            titleImage={title.contact.publicURL}
+            titleImage="title-contact"
             titleClass={"contact"}
             subTitle={`Webサイト立ち上げのご相談、お見積りのご依頼（無料）などお気軽にお問い合わせください`}
             alt="お問い合わせ"
