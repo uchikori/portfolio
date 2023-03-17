@@ -332,7 +332,6 @@
       transform: translate3d(0, 140%, 0);
       opacity: 0;
       transition: transform 0.6s $ease-cb-5, opacity 0.4s ease;
-      overflow-y: hidden;
       @include wide-pc {
         width: 280px;
         padding: 16px;

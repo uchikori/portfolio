@@ -2,7 +2,6 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import * as React from "react";
 export default function BlogCard(props) {
   const { data } = props;
-  console.log(data);
   return (
     <div className="slide__swiper">
       {data.allWpWebTips.edges.map(({ node }) => {
@@ -16,10 +15,11 @@ export default function BlogCard(props) {
                 }
                 alt={node.title}
               />
+              <div className="blog-item__overlay">READ MORE</div>
             </div>
             <div className="blog-item__text-box">
               <h3 className="blog-title">{node.title}</h3>
-              <time className="blog-postTime" datetime={node.date}>
+              <time className="blog-postTime" dateTime={node.date}>
                 {node.date}
               </time>
             </div>
