@@ -2,17 +2,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as React from "react";
 export default function BlogCard() {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     allWpPost(sort: { date: DESC }) {
-  //       nodes {
-  //         databaseId
-  //         title
-  //       }
-  //     }
-  //   }
-  // `);
-  // console.log(data);
   const data = useStaticQuery(graphql`
     query {
       allWpWebTips(limit: 3, sort: { date: DESC }) {
