@@ -2,33 +2,16 @@ import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as React from "react";
 export default function BlogCard() {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     allWpWebTips(sort: { date: DESC }, limit: 3) {
-  //       edges {
-  //         node {
-  //           title
-  //           databaseId
-  //           date(formatString: "YYYY-MM-DD")
-  //           featuredImage {
-  //             node {
-  //               localFile {
-  //                 childImageSharp {
-  //                   gatsbyImageData(
-  //                     quality: 90
-  //                     layout: CONSTRAINED
-  //                     width: 248
-  //                     height: 155
-  //                   )
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const data = useStaticQuery(graphql`
+    query {
+      allWpPost(sort: { date: DESC }) {
+        nodes {
+          databaseId
+          title
+        }
+      }
+    }
+  `);
   return (
     <div className="slide__swiper">
       {/* {data.allWpWebTips.edges.map(({ node }) => {
