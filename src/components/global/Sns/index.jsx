@@ -28,8 +28,8 @@ export const Sns = () => {
           src="../../../images/icon-instagram.svg"
           alt="Instagram"
           layout="fixed"
-          width={24}
-          height={24}
+          width={21}
+          height={21}
         />
       </a>
       <a href="/" className="sns-icon">
@@ -37,8 +37,8 @@ export const Sns = () => {
           src="../../../images/icon-blog.svg"
           alt="blog"
           layout="fixed"
-          width={24}
-          height={24}
+          width={21}
+          height={21}
         />
       </a>
     </div>

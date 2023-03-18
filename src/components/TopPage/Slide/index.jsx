@@ -6,8 +6,7 @@ import { Canvas } from "../Canvas";
 import { FrontHeader } from "../Front-header";
 import { Three } from "../Three";
 
-export function Slide(props) {
-  const { blogData } = props;
+export function Slide() {
   //Slidesホイールアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
@@ -231,7 +230,6 @@ export function Slide(props) {
             alt="ブログ"
             link
             blog
-            blogData={blogData}
           />
         </div>
       </section>
