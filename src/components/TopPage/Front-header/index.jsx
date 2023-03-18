@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import BlogCard from "../BlogCard";
@@ -11,8 +11,36 @@ export const FrontHeader = (props) => {
     alt,
     link = false,
     blog = false,
-    blogData,
   } = props;
+
+  const blogData = useStaticQuery(graphql`
+    query {
+      allWpWebTips(sort: { date: DESC }, limit: 3) {
+        edges {
+          node {
+            title
+            databaseId
+            date(formatString: "YYYY-MM-DD")
+            featuredImage {
+              node {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(
+                      quality: 90
+                      layout: CONSTRAINED
+                      width: 248
+                      height: 155
+                    )
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <header className="slide__header">
       <div className="slide__title">

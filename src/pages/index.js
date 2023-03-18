@@ -36,30 +36,30 @@ export default function Home(props) {
   );
 }
 
-export const query = graphql`
-  query {
-    allWpWebTips(sort: { date: DESC }, limit: 3) {
-      edges {
-        node {
-          title
-          databaseId
-          date(formatString: "YYYY-MM-DD")
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    layout: CONSTRAINED
-                    width: 248
-                    height: 155
-                  )
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query {
+//     allWpWebTips(sort: { date: DESC }, limit: 3) {
+//       edges {
+//         node {
+//           title
+//           databaseId
+//           date(formatString: "YYYY-MM-DD")
+//           featuredImage {
+//             node {
+//               localFile {
+//                 childImageSharp {
+//                   gatsbyImageData(
+//                     quality: 90
+//                     layout: CONSTRAINED
+//                     width: 248
+//                     height: 155
+//                   )
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
