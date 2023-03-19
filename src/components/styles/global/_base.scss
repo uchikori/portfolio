@@ -95,9 +95,11 @@ body {
   cursor: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  height: 100vh;
-  overflow-y: auto;
+  // overflow: hidden;
   -webkit-overflow-scrolling: touch;
+  &.front-page{
+    overflow: hidden;
+  }
   @include tab {
     cursor: auto;
   }

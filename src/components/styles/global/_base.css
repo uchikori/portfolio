@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* フォントファミリー*/
+/*フォントカラー*/
+/*font-size, font-color, line-height指定*/
+html {
+  /*
+    計算式：10px /  デザインカンプの横幅 * 100
+    画面サイズがデザインカンプ幅の時font-size = 10pxになる
+    */
+  font-size: calc(10 / 1920 * 100)vw;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: calc(10 / 768 * 100)vw;
+  }
+}
+
+@media (max-width: 428px) {
+  html {
+    font-size: calc(10 / 428 * 100)vw;
+  }
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  letter-spacing: 0.1em;
+  position: relative;
+  cursor: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.front-page {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+body::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+a {
+  cursor: none;
+}

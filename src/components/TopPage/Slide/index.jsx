@@ -5,8 +5,12 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Canvas } from "../Canvas";
 import { FrontHeader } from "../Front-header";
 import { Three } from "../Three";
+import { ScrollLead } from "../../global/ScrollLead";
+import { Sns } from "../../global/Sns";
 
 export function Slide() {
+  const slides = useRef(null); //slides要素の取得
+
   //Slidesホイールアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
@@ -49,7 +53,7 @@ export function Slide() {
         }
       }
     };
-    document.addEventListener("wheel", handleWheel);
+    slides.current.addEventListener("wheel", handleWheel);
   });
 
   //Slidesタッチアニメーション
@@ -89,14 +93,17 @@ export function Slide() {
         offsetY.current = 0;
       }
     };
-    document.addEventListener("touchstart", touchStart);
-    document.addEventListener("touchmove", touchMove);
-    document.addEventListener("touchend", touchEnd);
+    slides.current.addEventListener("touchstart", touchStart);
+    slides.current.addEventListener("touchmove", touchMove);
+    slides.current.addEventListener("touchend", touchEnd);
   });
 
   return (
     <>
-      <div className="slides-nav">
+    <div ref={slides} className="slides">
+          <ScrollLead />
+          <Sns />
+          <div className="slides-nav">
         <nav className="slides-nav__nav">
           <span className="page-current">0{currentSlideIndex + 1}</span>
           <span className="page-line"></span>
@@ -256,6 +263,8 @@ export function Slide() {
           />
         </div>
       </section>
+        </div>
+      
     </>
   );
 }
