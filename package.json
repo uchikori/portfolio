@@ -19,7 +19,7 @@
     "gatsby-plugin-image": "^3.4.0",
     "gatsby-plugin-mdx": "^5.7.0",
     "gatsby-plugin-offline": "^6.4.0",
-    "gatsby-plugin-react-helmet": "^6.4.0",
+    "gatsby-plugin-react-helmet": "^6.7.0",
     "gatsby-plugin-sass": "^6.4.0",
     "gatsby-plugin-sharp": "^5.7.0",
     "gatsby-source-filesystem": "^5.4.0",
@@ -28,6 +28,7 @@
     "gsap": "^3.11.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "sass": "^1.57.1",
     "simplenoise": "^1.0.1",
     "three": "^0.150.1"

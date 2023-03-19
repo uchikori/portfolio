@@ -7,8 +7,8 @@ export const MouseCursor = () => {
   const [mouseY, setMouseY] = useState(0); //マウスY座標
   useEffect(() => {
     const mouseMoveListener = (event) => {
-      setMouseX(event.clientX);
-      setMouseY(event.clientY);
+      setMouseX(event.pageX);
+      setMouseY(event.pageY);
     };
 
     window.addEventListener("mousemove", mouseMoveListener);
@@ -16,7 +16,7 @@ export const MouseCursor = () => {
     return () => {
       window.addEventListener("mousemove", mouseMoveListener);
     };
-  }, []);
+  });
 
   //マウスがリンクにホバーした際の挙動
   const [hover, setHover] = useState(false); //カーソルがターゲットに乗った際のトグル

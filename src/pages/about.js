@@ -1,6 +1,10 @@
+import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
+import { ContactLink } from "../components/global/ContactLink";
+import { PageFooter } from "../components/global/PageFooter";
 import { ScrollLead } from "../components/global/ScrollLead";
 import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
 
 export default function About() {
   return (
@@ -21,7 +25,12 @@ export default function About() {
                       </span>
                     </h1>
                     <p className="title-line head-text">
-                      <span></span>
+                      <span>
+                        札幌市の個人事業のWebデザイナー。
+                        <br />
+                        「UCHIWA Creative
+                        Studio」という屋号で道内・道外問わず全国のお客様のWebサイト作りに携わらせて頂いております。
+                      </span>
                     </p>
                   </div>
                 </header>
@@ -35,7 +44,24 @@ export default function About() {
                     <div className="flex-block align-center">
                       <div className="flex-item five-column">
                         <h2 className="flex-item__title">UCHIWAについて</h2>
-                        <p></p>
+                        <p>
+                          北海道札幌市在住
+                          <br />
+                          本名：山内友暉と申します。
+                          <br />
+                          <br />
+                          とにかく”作ることが好き”、”デザインが好き”、”コードを書くことが好き”
+                          <br />
+                          そんな人間です。
+                          <br />
+                          <br />
+                          自分自身の「好き」を使って、”誰かの「心を動かす」モノを作りたい…”
+                          <br />
+                          そんな大それた野望を胸にお客様と2人3脚で作り上げていくことを心がけています。
+                          <br />
+                          <br />
+                          サウナとバイクをこよなく愛する北海道民です。
+                        </p>
                       </div>
                       <div className="flex-item five-column my-image">
                         <img
@@ -53,7 +79,23 @@ export default function About() {
                         <h2 className="flex-item__title">経歴</h2>
                       </div>
                       <div className="flex-item seven-column">
-                        <p></p>
+                        <p>
+                          大学卒業後、東京の大手商社で自社開発パッケージシステムの営業を経験。
+                          <br />
+                          <br />
+                          その後北海道に戻り、ソフトウェア会社にてSEとして2年ほど勤務致しました。そこではプロジェクトの管理やシステムの導入に関わる支援全般を行っていました。
+                          <br />
+                          <br />
+                          正直、これらの前職での経験が今の自分自身の活動に一番活きていると個人的には思います…（精神病むほど大変でした。。。）
+                          <br />
+                          「人生無駄なことは一つもない」ということを身をもって体感しております。
+                          <br />
+                          <br />
+                          会社に勤めつつ、昔から好きだった「何かを作ること」が諦められず、もともと興味のあったWeb業界について知識や技術を独学で学び続けていました。
+                          <br />
+                          <br />
+                          その後独立した後は幸運にも制作会社様や個人のお客様などとお取引きさせて頂き今に至ります。
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -63,7 +105,14 @@ export default function About() {
                         <h2 className="flex-item__title">仕事内容</h2>
                       </div>
                       <div className="flex-item seven-column">
-                        <p></p>
+                        <p>
+                          Webデザイナーとして、ランディングページの制作、コーポレートサイトの制作、バナー広告の制作等を主軸に活動しています。
+                          <br />
+                          メインではありませんがたまに名刺のデザインなども承っています。
+                          <br />
+                          <br />
+                          お客様との直接契約の他、制作会社様からのご依頼案件などをメインに活動しています
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -129,7 +178,7 @@ export default function About() {
                       </div>
                       <div className="flex-item seven-column sns-tag">
                         <a
-                          href="<?php echo esc_url('https://www.instagram.com/uchiwa_cs'); ?>"
+                          href="https://www.instagram.com/uchiwa_cs"
                           className="external-link"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -137,28 +186,24 @@ export default function About() {
                           Instagram
                         </a>
                         <a
-                          href="<?php echo esc_url('https://www.facebook.com/WEBdesigner.uchiwa'); ?>"
+                          href="https://www.facebook.com/WEBdesigner.uchiwa"
                           className="external-link"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           Facebook
                         </a>
-                        <a
-                          href="<?php echo get_post_type_archive_link('web-tips'); ?>"
-                          className="external-link"
-                        >
+                        <a href="/web-tips" className="external-link">
                           Blog
                         </a>
                       </div>
                     </div>
                   </div>
                 </div>
+                <ContactLink />
               </div>
             </section>
-            <footer>
-              <small>&copy;UCHIWA Creative Studio.all rights reserved.</small>
-            </footer>
+            <PageFooter />
           </div>
         </div>
       </Layout>
