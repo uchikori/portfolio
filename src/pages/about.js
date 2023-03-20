@@ -22,7 +22,7 @@ export default function About() {
               />
             </MainVisual>
 
-            <Content className="about">
+            <Content contentClass="about">
               <div className="content__block">
                 <div className="flex-block align-center">
                   <div className="flex-item five-column">
@@ -47,10 +47,13 @@ export default function About() {
                     </p>
                   </div>
                   <div className="flex-item five-column my-image">
-                    <img
-                      width="468"
-                      height="668"
+                    <StaticImage
                       src="../images/about-my-image.webp"
+                      width={468}
+                      height={668}
+                      quality={90}
+                      layout="constrained"
+                      placeholder="blurred"
                       alt="ポートレート"
                     />
                   </div>

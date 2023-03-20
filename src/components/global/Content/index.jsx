@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import * as React from "react";
@@ -10,7 +9,7 @@ import { PageFooter } from "../PageFooter";
 gsap.registerPlugin(ScrollTrigger);
 
 export const Content = (props) => {
-  const { children, className } = props;
+  const { children, contentClass } = props;
 
   const scrollWraper = useRef(null);
 
@@ -38,7 +37,7 @@ export const Content = (props) => {
     <>
       <section className="content" ref={scrollWraper}>
         <div className="content__inner">
-          <div className={`content__${className}`}>{children}</div>
+          <div className={`content__${contentClass}`}>{children}</div>
           <ContactLink />
         </div>
       </section>

@@ -135,6 +135,7 @@ export function Slide() {
                 className="slide__img"
                 src="../../../images/about-background.jpg"
                 layout="fullWidth"
+                placeholder="blurred"
                 quality={90}
                 alt=""
               />
@@ -159,6 +160,7 @@ export function Slide() {
                 src="../../../images/service-background.jpg"
                 layout="fullWidth"
                 quality={90}
+                placeholder="blurred"
                 alt=""
               />
               <Three />
@@ -183,6 +185,7 @@ export function Slide() {
                 src="../../../images/price-background.jpg"
                 layout="fullWidth"
                 quality={90}
+                placeholder="blurred"
                 alt=""
               />
             </figure>
@@ -206,6 +209,7 @@ export function Slide() {
                 src="../../../images/gallery-background.jpg"
                 layout="fullWidth"
                 quality={90}
+                placeholder="blurred"
                 alt=""
               />
             </figure>
@@ -229,6 +233,7 @@ export function Slide() {
                 src="../../../images/blog-background.jpg"
                 layout="fullWidth"
                 quality={90}
+                placeholder="blurred"
                 alt=""
               />
             </figure>
@@ -253,6 +258,7 @@ export function Slide() {
                 src="../../../images/contact-background.jpg"
                 layout="fullWidth"
                 quality={90}
+                placeholder="blurred"
                 alt=""
               />
             </figure>

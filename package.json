@@ -31,7 +31,8 @@
     "react-helmet": "^6.1.0",
     "sass": "^1.57.1",
     "simplenoise": "^1.0.1",
-    "three": "^0.150.1"
+    "three": "^0.150.1",
+    "vivus": "^0.4.6"
   },
   "repository": {
     "type": "git",

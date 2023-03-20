@@ -1,7 +1,7 @@
 @use "../global" as *;
 .page-wrapper.service {
   &:before {
-    background-image: url("/images/service-background.webp");
+    background-image: url("/images/service-background.jpg");
   }
   .info-graphic {
     .cls-1 {
@@ -17,7 +17,7 @@
         transition: fill-opacity 0.8s ease;
       }
     }
-    .draw {
+    &.draw {
       .fill {
         fill-opacity: 1;
       }
