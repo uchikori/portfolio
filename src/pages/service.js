@@ -6,6 +6,7 @@ import { SvgAnimation } from "../components/service/SvgAnimation";
 import { Layout } from "../components/Layout";
 import { Link } from "gatsby";
 import { Accordion } from "../components/service/accordion";
+import { Seo } from "../components/Seo";
 
 export default function Service() {
   return (
@@ -137,3 +138,11 @@ export default function Service() {
     </>
   );
 }
+
+export const Head = () => {
+  return (
+    <>
+      <Seo />
+    </>
+  );
+};
