@@ -3,7 +3,7 @@ import * as React from "react";
 
 export const ContactLink = () => {
   return (
-    <div class="content__contact">
+    <div className="content__contact">
       <Link to={`/contact`} className="link-btn contact">
         CONTACT
       </Link>

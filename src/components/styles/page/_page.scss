@@ -63,7 +63,7 @@
 }
 .main-visual {
   width: 100vw;
-  height: 100svh;
+  height: 100vh;
   position: relative;
   margin-bottom: 10rem;
   @include wide-pc {
@@ -286,7 +286,7 @@
     }
   }
   &__block {
-    // opacity: 0;
+    opacity: 0;
     padding: 10rem 0;
     @include wide-pc {
       padding: 100px 0;
