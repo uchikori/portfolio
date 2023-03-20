@@ -228,7 +228,9 @@ export default function Service() {
                   </div>
                 </div>
                 <div className="link-wrap">
-                  <Link to={"/notes"}>ご依頼方法・注意事項</Link>
+                  <Link to={"/notes"} className="link-btn default">
+                    ご依頼方法・注意事項
+                  </Link>
                 </div>
               </div>
             </Content>

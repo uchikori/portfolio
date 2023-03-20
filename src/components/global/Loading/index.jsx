@@ -5,13 +5,12 @@ import * as styles from "./Load.module.scss";
 
 export const Load = (props) => {
   const { hasLoadingObj } = props;
-  console.log(hasLoadingObj);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 800);
   }, []);
 
   return (

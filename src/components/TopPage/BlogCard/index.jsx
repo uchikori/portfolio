@@ -28,7 +28,6 @@ export default function BlogCard() {
       }
     }
   `);
-  console.log(data);
   return (
     <div className="slide__swiper">
       {data.allWpWebTips.nodes.map((node) => {
