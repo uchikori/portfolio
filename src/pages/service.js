@@ -5,6 +5,7 @@ import { PageHeader } from "../components/global/PageHeader";
 import { SvgAnimation } from "../components/service/SvgAnimation";
 import { Layout } from "../components/Layout";
 import { Link } from "gatsby";
+import { Accordion } from "../components/service/accordion";
 
 export default function Service() {
   return (
@@ -54,130 +55,26 @@ export default function Service() {
                 <SvgAnimation />
               </div>
               <div className="content__block">
-                <div className="accordion-item">
-                  <div className="accordion-title hoverTarget">
-                    <h3 className="accordion-title__service">
-                      <img src="../images/concept.svg" alt="concept" />
-                    </h3>
-                    <span className="toggle-btn">
-                      <span></span>
-                    </span>
-                  </div>
-                  <div className="accordion-text">
-                    <p>
-                      「Webサイトを作りたい」と思っても、実際には「何から始めたら良いかわからない…」という方も多くいらっしゃるのではないでしょうか。
-                      <br />
-                      そんな方のためには、ヒアリングシートをご準備し、サイトの目指す方向性をお客様と一緒に考え認識合わせを行います。
-                      <br />
-                      方向性が決まったら、ヒアリングの内容や競合他社サイトの調査からWebサイト全体の構成を考えます（サイトマップ作成）。
-                      <br />
-                      さらにサイトマップが完成したら、デザインの骨格となる「ワイヤーフレーム」を作成しお客様との最終確認を行った後、デザインフェーズへと進みます。（基本的には１ステップづつお客様とコミュニケーションを図りながら進めていきます）
-                      <br />
-                      <br />
-                      ・ヒアリングシートお渡し
-                      <br />
-                      ・コンセプト決定
-                      <br />
-                      ・競合調査
-                      <br />
-                      ・サイトマップ作成
-                      <br />
-                      ・ワイヤーフレーム作成
-                      <br />
-                      <br />
-                      ※あくまでも一般的な流れであり、すべての制作過程がこの限りではありません。
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <div className="accordion-title hoverTarget">
-                    <h3 className="accordion-title__service">
-                      <img src="../images/design.svg" alt="design" />
-                    </h3>
-                    <span className="toggle-btn">
-                      <span></span>
-                    </span>
-                  </div>
-                  <div className="accordion-text">
-                    <p>
-                      サイトのコンセプトや参考サイトを基に全体のデザインを構築していきます。
-                      <br />
-                      まずはFV（ファーストビュー画面）のみを作り上げそこで一度お客様との確認を行い、その後TOPページ全体を構築していきます。
-                      <br />
-                      下層ページデザインの段階へ進んだ後は、基本的には最後まで一気に完成させ、最後にお客様の確認を頂きデザイン確定となります。
-                      <br />
-                      <br />
-                      <br />
-                      「ワイヤーフレーム」と「参考サイト」の他、「サイトコンセプト」等をご提供頂ければ制作会社様からの外注作業のお仕事も承っておりますので、ぜひご利用ください。下記対応可能なデザイン範囲（ソフトはPhotoshopもしくはAdobeXDを使用）
-                      <br />
-                      <br />
-                      ・Twitter・Facebook・Instagram等の広告バナー
-                      <br />
-                      ・YouTubeなどのサムネイル用画像
-                      <br />
-                      ・ECサイト掲載用の商品画像の加工
-                      <br />
-                      ・ランディングページのデザイン
-                      <br />
-                      ・コーポレートサイト等のデザイン
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <div className="accordion-title hoverTarget">
-                    <h3 className="accordion-title__service">
-                      <img src="../images/coding.svg" alt="coding" />
-                    </h3>
-                    <span className="toggle-btn">
-                      <span></span>
-                    </span>
-                  </div>
-                  <div className="accordion-text">
-                    <p>
-                      デザインカンプを基に忠実にデザインを再現するコーディングを行います。
-                      <br />
-                      コーディング後、下記のツールにて文法やエラーのチェックを行い、実装となります。
-                      <br />
-                      <br />
-                      ・W3C Markup Validation Service
-                      <br />
-                      ・W3C CSS Validation Service・競合調査
-                      <br />
-                      ・PerfectPixel by WellDoneCode
-                      <br />
-                      ・HTMLエラーチェッカー
-                      <br />
-                      <br />
-                      制作会社からの外注のご依頼の場合、レスポンシブのデザインカンプもご提供お願いいたします。
-                      <br />
-                      もし、ご提供が難しい場合はPC版のデザインをご提供頂きこちらでレスポンシブデザインを作成・ご提示し、ご確認いただきます（別途費用）
-                      <br />
-                      お互いに余計な手戻りを防ぐためにこのような方法をとらせて頂いておりますのであらかじめご了承下さい。
-                    </p>
-                  </div>
-                </div>
-                <div className="accordion-item">
-                  <div className="accordion-title hoverTarget">
-                    <h3 className="accordion-title__service">
-                      <img src="../images/wordpress.svg" alt="wordpress" />
-                    </h3>
-                    <span className="toggle-btn">
-                      <span></span>
-                    </span>
-                  </div>
-                  <div className="accordion-text">
-                    <p>
-                      お客様ご自身で更新を行う機能（ニュース記事やブログ記事）が必要な場合、WordPressを使用したサイト構築をご提案をさせて頂きます。
-                      <br />
-                      WordPressの使用に慣れていない・初めてという方には更新方法を記載した簡易マニュアルを制作させて頂くことも可能です。
-                      <br />
-                      （別途費用・PDF形式でのご提供）
-                      <br />
-                      <br />
-                      保守性の担保の難しさや、コード解析にかかる工数の増幅の観点から、基本的には既存のテーマを改良した実装は行っておりませんので、ご留意ください。
-                    </p>
-                  </div>
-                </div>
+                <Accordion
+                  headingtitle="concept"
+                  headingAlt="concept"
+                  text={`「Webサイトを作りたい」と思っても、実際には「何から始めたら良いかわからない…」という方も多くいらっしゃるのではないでしょうか。\nそんな方のためには、ヒアリングシートをご準備し、サイトの目指す方向性をお客様と一緒に考え認識合わせを行います。\n方向性が決まったら、ヒアリングの内容や競合他社サイトの調査からWebサイト全体の構成を考えます（サイトマップ作成）。\nさらにサイトマップが完成したら、デザインの骨格となる「ワイヤーフレーム」を作成しお客様との最終確認を行った後、デザインフェーズへと進みます。（基本的には１ステップづつお客様とコミュニケーションを図りながら進めていきます）\n\n・ヒアリングシートお渡し\n・コンセプト決定\n・競合調査\n・サイトマップ作成\n・ワイヤーフレーム作成\n※あくまでも一般的な流れであり、すべての制作過程がこの限りではありません。`}
+                />
+                <Accordion
+                  headingtitle="design"
+                  headingAlt="design"
+                  text={`サイトのコンセプトや参考サイトを基に全体のデザインを構築していきます。\nまずはFV（ファーストビュー画面）のみを作り上げそこで一度お客様との確認を行い、その後TOPページ全体を構築していきます。\n下層ページデザインの段階へ進んだ後は、基本的には最後まで一気に完成させ、最後にお客様の確認を頂きデザイン確定となります。\n\n\n「ワイヤーフレーム」と「参考サイト」の他、「サイトコンセプト」等をご提供頂ければ制作会社様からの外注作業のお仕事も承っておりますので、ぜひご利用ください。下記対応可能なデザイン範囲（ソフトはPhotoshop・AdobeXD・Figma等々を使用）\n・Twitter・Facebook・Instagram等の広告バナー\n・YouTubeなどのサムネイル用画像\n・ECサイト掲載用の商品画像の加工\n・ランディングページのデザイン\n・コーポレートサイト等のデザイン`}
+                />
+                <Accordion
+                  headingtitle="coding"
+                  headingAlt="coding"
+                  text={`デザインカンプを基に忠実にデザインを再現するコーディングを行います。\nコーディング後、下記のツールにて文法やエラーのチェックを行い、実装となります。\n\n・W3C Markup Validation Service\n・W3C CSS Validation Service・競合調査\n・PerfectPixel by WellDoneCode\n・HTMLエラーチェッカー\n\n制作会社からの外注のご依頼の場合、レスポンシブのデザインカンプもご提供お願いいたします。\nもし、ご提供が難しい場合はPC版のデザインをご提供頂きこちらでレスポンシブデザインを作成・ご提示し、ご確認いただきます（別途費用）\nお互いに余計な手戻りを防ぐためにこのような方法をとらせて頂いておりますのであらかじめご了承下さい。`}
+                />
+                <Accordion
+                  headingtitle="wordpress"
+                  headingAlt="wordpress"
+                  text={` お客様ご自身で更新を行う機能（ニュース記事やブログ記事）が必要な場合、WordPressを使用したサイト構築をご提案をさせて頂きます。\nWordPressの使用に慣れていない・初めてという方には更新方法を記載した簡易マニュアルを制作させて頂くことも可能です。\n（別途費用・PDF形式でのご提供）\n\n保守性の担保の難しさや、コード解析にかかる工数の増幅の観点から、基本的には既存のテーマを改良した実装は行っておりませんので、ご留意ください。`}
+                />
               </div>
               <div className="content__block">
                 <h2>対応が難しい、または承っていないサービス</h2>
