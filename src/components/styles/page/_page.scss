@@ -276,6 +276,9 @@
     }
     @include tab {
       padding: 8rem 0;
+      .price & {
+        padding: 8rem 0 40rem;
+      }
     }
     span {
       width: 1px;
@@ -443,6 +446,6 @@
   width: 100%;
   // position: absolute;
   // overflow: hidden;
-  will-change: transform;
+  // will-change: transform;
   backface-visibility: hidden;
 }
