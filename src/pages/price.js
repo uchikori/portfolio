@@ -591,15 +591,6 @@ export default function Price() {
                               <th>{item.name}</th>
                               <td className="price__description">
                                 {item.desc}
-                                {/* Webサイトにリッチなアニメーションを追加
-                                <ul>
-                                  <li>ローディングアニメーション</li>
-                                  <li>SVGアニメーション</li>
-                                  <li>スクロール連動アニメーション</li>
-                                  <li>スライドアニメーション</li>
-                                  <li>WebGLアニメーション</li>
-                                  <li>その他アニメーション</li>
-                                </ul> */}
                               </td>
                               <td className="price__price">￥{item.price}～</td>
                               <td className="price__count">
