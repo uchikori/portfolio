@@ -265,7 +265,17 @@ export default function Price() {
     setAllTotal(() => {
       return productTotal + scheduleTotal + directionTotal;
     });
-  });
+  }, [
+    designItems,
+    codingItems,
+    wpItems,
+    optionItems,
+    productTotal,
+    scheduleItems,
+    directionItems,
+    scheduleTotal,
+    directionTotal,
+  ]);
 
   return (
     <>
