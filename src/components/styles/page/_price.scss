@@ -239,6 +239,9 @@
     @include font-style(20px, $color-navy, 700);
     line-height: 1;
     text-align: right;
+    @include tab {
+      font-size: 1.6rem;
+    }
   }
 }
 .all-total {
@@ -263,6 +266,9 @@
     @include font-style(32px, $color-navy, 700);
     line-height: 1;
     text-align: right;
+    @include tab {
+      font-size: 2.4rem;
+    }
   }
 }
 .m-24 {
