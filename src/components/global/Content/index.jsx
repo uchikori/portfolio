@@ -4,7 +4,7 @@ import * as React from "react";
 import { useLayoutEffect } from "react";
 import { useRef } from "react";
 import { ContactLink } from "../ContactLink";
-import { PageFooter } from "../PageFooter";
+import { PageFooter } from "../../page/PageFooter";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,7 +37,9 @@ export const Content = (props) => {
     <>
       <section className="content" ref={scrollWraper}>
         <div className="content__inner">
-          <div className={`content__${contentClass}`}>{children}</div>
+          <div className={contentClass ? `content__${contentClass}` : ""}>
+            {children}
+          </div>
           <ContactLink />
         </div>
       </section>

@@ -17,7 +17,7 @@ export default function Home() {
 export const Head = () => {
   return (
     <>
-      <Seo isFront={"front-page"} />
+      <Seo pageClass={"front-page"} />
     </>
   );
 };

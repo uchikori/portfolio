@@ -1,10 +1,10 @@
 import * as React from "react";
 
 export const Seo = (props) => {
-  const { isFront } = props;
+  const { pageClass } = props;
   return (
     <>
-      <body className={isFront} />
+      <body className={pageClass} />
     </>
   );
 };

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Layout } from "../components/Layout";
 import { MainVisual } from "../components/global/MainVisual";
-import { PageHeader } from "../components/global/PageHeader";
+import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { useEffect } from "react";
 
@@ -285,7 +285,7 @@ export default function Price() {
             <MainVisual>
               <PageHeader
                 titleImage="title-price"
-                titleClassName={"price"}
+                titleClass={"price"}
                 subTitle={`Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。`}
                 alt="制作料金表"
               />

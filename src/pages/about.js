@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Content } from "../components/global/Content";
 import { MainVisual } from "../components/global/MainVisual";
-import { PageHeader } from "../components/global/PageHeader";
+import { PageHeader } from "../components/page/PageHeader";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 

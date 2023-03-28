@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Content } from "../components/global/Content";
 import { MainVisual } from "../components/global/MainVisual";
-import { PageHeader } from "../components/global/PageHeader";
+import { PageHeader } from "../components/page/PageHeader";
 import { SvgAnimation } from "../components/service/SvgAnimation";
 import { Layout } from "../components/Layout";
 import { Link } from "gatsby";
