@@ -64,7 +64,6 @@ export const Head = (props) => {
   const { data } = props;
   const location = useLocation();
   const description = extractText(data.wpWebTips.content);
-  console.log(description);
   return (
     <>
       <Seo
