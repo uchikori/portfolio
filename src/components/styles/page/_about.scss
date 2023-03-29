@@ -1,7 +1,7 @@
 @use "../global" as *;
 .page-wrapper.about {
   &:before {
-    background-image: url("/images/about-background.webp");
+    background-image: url("/images/about-background.jpg");
     @include tab {
       background-position: right -25rem bottom;
     }

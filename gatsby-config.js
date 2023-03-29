@@ -61,13 +61,13 @@ module.exports = {
         path: `${__dirname}/src/images/`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: `GTM-TXSC6XJ`,
-        includeInDevelopment: true,
-        defaultDataLayer: { platform: "gatsby" },
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-tagmanager`,
+    //   options: {
+    //     id: `GTM-TXSC6XJ`,
+    //     includeInDevelopment: true,
+    //     defaultDataLayer: { platform: "gatsby" },
+    //   },
+    // },
   ],
 };

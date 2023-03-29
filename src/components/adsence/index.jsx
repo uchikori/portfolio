@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useEffect } from "react";
 export const Adsence = (props) => {
-  const { format } = props;
+  const { format, path } = props;
   useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];
       window.adsbygoogle.push({});
     }
-  });
+  }, [path]);
 
   return (
     <ins

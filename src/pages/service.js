@@ -4,7 +4,7 @@ import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { SvgAnimation } from "../components/service/SvgAnimation";
 import { Layout } from "../components/Layout";
-import { Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { Accordion } from "../components/service/accordion";
 import { Seo } from "../components/Seo";
 
@@ -139,10 +139,32 @@ export default function Service() {
   );
 }
 
-export const Head = () => {
+export const Head = (props) => {
+  const { data } = props;
   return (
     <>
-      <Seo />
+      <Seo
+        pageTitle={"事業・サービス内容"}
+        pageDesc={
+          "Webを中心に「コンセプトメイキング」「デザイン」「コーディング」等のサイト制作全般の業務を承っております"
+        }
+        pagePath={`/service/`}
+        pageImg={data.service.childImageSharp.original.src}
+      />
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    service: file(relativePath: { eq: "service-background.jpg" }) {
+      childImageSharp {
+        original {
+          src
+          height
+          width
+        }
+      }
+    }
+  }
+`;

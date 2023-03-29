@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Adsence } from "../../adsence";
-export const Sidebar = () => {
+export const Sidebar = (props) => {
+  const { path } = props;
   return (
     <aside className="sidebar flex-item three-column bg-white">
       <section className="sidebar__widget">
@@ -8,7 +9,7 @@ export const Sidebar = () => {
         <ul className="sidebar__term-list"></ul>
       </section>
       <section className="sidebar__widget">
-        <Adsence format={"auto"} />
+        {/* <Adsence format={"auto"} path={path} /> */}
       </section>
     </aside>
   );

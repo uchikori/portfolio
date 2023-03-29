@@ -5,6 +5,8 @@ import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { useEffect } from "react";
+import { Seo } from "../components/Seo";
+import { graphql } from "gatsby";
 
 export default function Price() {
   //進行管理の配列
@@ -641,3 +643,33 @@ export default function Price() {
     </>
   );
 }
+
+export const Head = (props) => {
+  const { data } = props;
+  return (
+    <>
+      <Seo
+        pageTitle={"制作料金表"}
+        pageDesc={
+          "Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。"
+        }
+        pagePath={`/price/`}
+        pageImg={data.price.childImageSharp.original.src}
+      />
+    </>
+  );
+};
+
+export const query = graphql`
+  query {
+    price: file(relativePath: { eq: "price-background.jpg" }) {
+      childImageSharp {
+        original {
+          src
+          height
+          width
+        }
+      }
+    }
+  }
+`;

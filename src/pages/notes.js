@@ -3,6 +3,8 @@ import { Content } from "../components/global/Content";
 import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
+import { graphql } from "gatsby";
 
 export default function Notes() {
   return (
@@ -197,3 +199,32 @@ export default function Notes() {
     </>
   );
 }
+export const Head = (props) => {
+  const { data } = props;
+  return (
+    <>
+      <Seo
+        pageTitle={"事前確認事項"}
+        pageDesc={
+          "制作の過程でお客様ご自身に準備して頂きたいものや、\nご依頼前に事前にご確認頂きたい注意事項をまとめます"
+        }
+        pagePath={`/notes/`}
+        pageImg={data.notes.childImageSharp.original.src}
+      />
+    </>
+  );
+};
+
+export const query = graphql`
+  query {
+    notes: file(relativePath: { eq: "service-background.jpg" }) {
+      childImageSharp {
+        original {
+          src
+          height
+          width
+        }
+      }
+    }
+  }
+`;

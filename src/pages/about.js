@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Content } from "../components/global/Content";
@@ -7,7 +7,7 @@ import { PageHeader } from "../components/page/PageHeader";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 
-export default function About() {
+export default function About(props) {
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -191,10 +191,33 @@ export default function About() {
   );
 }
 
-export const Head = () => {
+export const Head = (props) => {
+  const { data } = props;
+  console.log(data);
   return (
     <>
-      <Seo />
+      <Seo
+        pageTitle={"UCHIWA Creative Studio.について"}
+        pageDesc={
+          "札幌市の個人事業のWebデザイナー。「UCHIWA Creative Studio」という屋号で道内・道外問わず全国のお客様のWebサイト作りに携わらせて頂いております"
+        }
+        pagePath={`/about/`}
+        pageImg={data.about.childImageSharp.original.src}
+      />
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    about: file(relativePath: { eq: "about-background.jpg" }) {
+      childImageSharp {
+        original {
+          src
+          height
+          width
+        }
+      }
+    }
+  }
+`;
