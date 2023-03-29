@@ -8,8 +8,7 @@ import { MainVisual } from "../components/global/MainVisual";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 
-export default function blogPost({ data }) {
-  console.log(data);
+export default function BlogPost({ data }) {
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
@@ -50,7 +49,7 @@ export default function blogPost({ data }) {
             </div>
             <div className="content__block flex-block align-start">
               <Main content={data.wpWebTips.content} />
-              <Sidebar></Sidebar>
+              <Sidebar />
             </div>
           </Content>
         </div>

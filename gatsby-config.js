@@ -13,6 +13,12 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 module.exports = {
+  siteMetadata: {
+    title: `UCHIWA Creative Studio`,
+    description: `札幌市のホームページ制作・デザイン制作スタジオ`,
+    siteUrl: `https://uchiwa-design.net`,
+    locale: `ja_JP`,
+  },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
@@ -20,7 +26,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: process.env.WPGRAPHQL_URL || `https://uchiwa-design.net/graphql`,
+        url:
+          process.env.WPGRAPHQL_URL ||
+          `https://portfolio.uchiwa-design.net/graphql`,
         verbose: true,
         schema: {
           queryDepth: 15,
@@ -51,6 +59,14 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: `GTM-TXSC6XJ`,
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
       },
     },
   ],
