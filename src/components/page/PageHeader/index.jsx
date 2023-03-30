@@ -1,7 +1,8 @@
+import { Link } from "gatsby";
 import * as React from "react";
 
 export const PageHeader = (props) => {
-  const { titleImage, titleClass, subTitle, alt } = props;
+  const { titleImage, titleClass, subTitle, typeSlug, typeName, alt } = props;
 
   return (
     <header className="main-visual__header">
@@ -19,6 +20,15 @@ export const PageHeader = (props) => {
             ""
           )}
         </h1>
+        {typeSlug ? (
+          <div className="term">
+            <Link to={`/class/${typeSlug}/`} className="term__link">
+              {typeName}
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
         <p className="title-line head-text" style={{ whiteSpace: "pre-wrap" }}>
           <span>{subTitle}</span>
         </p>

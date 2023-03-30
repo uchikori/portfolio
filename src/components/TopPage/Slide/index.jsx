@@ -239,7 +239,7 @@ export function Slide() {
             </figure>
             <FrontHeader
               titleImage="title-blog"
-              titleClass={"blog"}
+              titleClass={"web-tips"}
               subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`}
               alt="ブログ"
               link

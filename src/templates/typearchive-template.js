@@ -5,13 +5,13 @@ import { MainVisual } from "../components/global/MainVisual";
 import { Layout } from "../components/Layout";
 import { PageHeader } from "../components/page/PageHeader";
 import { useLocation } from "@reach/router";
-import { graphql, Link } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { Seo } from "../components/Seo";
-import { Pagenation } from "../components/blog/pagenation";
+import { graphql } from "gatsby";
 
-export default function WebTips(props) {
+export default function Type(props) {
   const { data, pageContext } = props;
+  console.log(data);
+  console.log(pageContext);
   const location = useLocation();
   return (
     <Layout hasLoadingObj={false}>
@@ -21,45 +21,15 @@ export default function WebTips(props) {
             <PageHeader
               titleImage="title-blog"
               titleClass={"blog"}
-              subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`}
+              subTitle={pageContext.description}
+              typeSlug={pageContext.typeSlug}
+              typeName={pageContext.typeName}
               alt="ブログ"
             />
           </MainVisual>
           <Content>
             <div className="content__block flex-block align-start">
-              <main className="flex-item nine-column bg-white">
-                {data.allWpWebTips.nodes.map((node) => {
-                  return (
-                    <Link
-                      className="media01 flex-block"
-                      to={`/web-tips/${node.databaseId}`}
-                      key={node.databaseId}
-                    >
-                      <div className="flex-item media01__thumbnail four-column">
-                        <GatsbyImage
-                          image={
-                            node.featuredImage.node.localFile.childImageSharp
-                              .gatsbyImageData
-                          }
-                          alt={node.featuredImage.node.altText}
-                        />
-                        <div className="media01__thumbnail-overlay">
-                          READ MORE
-                        </div>
-                      </div>
-                      <div className="flex-item eight-column media01__body">
-                        <div className="media01__meta">
-                          <div className="term">{node.terms.nodes[0].name}</div>
-                          <time dateTime={node.date}>{node.date}</time>
-                        </div>
-
-                        <h2 className="media01__title mt-16">{node.title}</h2>
-                      </div>
-                    </Link>
-                  );
-                })}
-                <Pagenation pageContext={pageContext} />
-              </main>
+              <main className="flex-item nine-column bg-white"></main>
               <Sidebar path={location.pathname} />
             </div>
           </Content>
@@ -85,8 +55,13 @@ export const Head = (props) => {
   );
 };
 export const query = graphql`
-  query ($skip: Int!, $limit: Int!) {
-    allWpWebTips(sort: { date: DESC }, skip: $skip, limit: $limit) {
+  query ($typeId: String!, $skip: Int!, $limit: Int!) {
+    allWpWebTips(
+      sort: { date: DESC }
+      skip: $skip
+      limit: $limit
+      filter: { terms: { nodes: { elemMatch: { id: { eq: $typeId } } } } }
+    ) {
       nodes {
         databaseId
         date(formatString: "YYYY-MM-DD")

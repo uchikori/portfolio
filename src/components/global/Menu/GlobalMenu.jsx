@@ -222,7 +222,7 @@ export const GlobalMenu = () => {
           </div>
         </div>
         <div className="g-menu__item" style={{ "--i": "1.5s" }}>
-          <Link to={"/blog"} className="g-menu__item-link">
+          <Link to={"/web-tips"} className="g-menu__item-link">
             blog
           </Link>
           <div className="g-menu__item-img">
