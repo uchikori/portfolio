@@ -26,7 +26,7 @@ export const Pagenation = (props) => {
           </Link>
         </li>
       )}
-      {Array.from({ length: pageContext.blogPages }).map((_, index) => {
+      {Array.from({ length: pageContext.pages }).map((_, index) => {
         return (
           <li className="pagenation__item" key={index}>
             <Link

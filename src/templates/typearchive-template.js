@@ -6,12 +6,12 @@ import { Layout } from "../components/Layout";
 import { PageHeader } from "../components/page/PageHeader";
 import { useLocation } from "@reach/router";
 import { Seo } from "../components/Seo";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { Pagenation } from "../components/blog/pagenation";
 
 export default function Type(props) {
   const { data, pageContext } = props;
-  console.log(data);
-  console.log(pageContext);
   const location = useLocation();
   return (
     <Layout hasLoadingObj={false}>
@@ -29,7 +29,39 @@ export default function Type(props) {
           </MainVisual>
           <Content>
             <div className="content__block flex-block align-start">
-              <main className="flex-item nine-column bg-white"></main>
+              <main className="flex-item nine-column bg-white">
+                {data.allWpWebTips.nodes.map((node) => {
+                  return (
+                    <Link
+                      className="media01 flex-block"
+                      to={`/web-tips/${node.databaseId}`}
+                      key={node.databaseId}
+                    >
+                      <div className="flex-item media01__thumbnail four-column">
+                        <GatsbyImage
+                          image={
+                            node.featuredImage.node.localFile.childImageSharp
+                              .gatsbyImageData
+                          }
+                          alt={node.featuredImage.node.altText}
+                        />
+                        <div className="media01__thumbnail-overlay">
+                          READ MORE
+                        </div>
+                      </div>
+                      <div className="flex-item eight-column media01__body">
+                        <div className="media01__meta">
+                          <div className="term">{node.terms.nodes[0].name}</div>
+                          <time dateTime={node.date}>{node.date}</time>
+                        </div>
+
+                        <h2 className="media01__title mt-16">{node.title}</h2>
+                      </div>
+                    </Link>
+                  );
+                })}
+                <Pagenation pageContext={pageContext} />
+              </main>
               <Sidebar path={location.pathname} />
             </div>
           </Content>
@@ -39,16 +71,14 @@ export default function Type(props) {
   );
 }
 export const Head = (props) => {
-  const { data } = props;
+  const { data, pageContext } = props;
   return (
     <>
       <Seo
         pageClass={"post-type-archive-web-tips"}
-        pageTitle={"Web制作お役立ち情報"}
-        pageDesc={
-          "Web運用や制作に役立つ情報発信メディア。お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。"
-        }
-        pagePath={"/web-tips/"}
+        pageTitle={pageContext.typeName}
+        pageDesc={pageContext.description}
+        pagePath={`/class/${pageContext.typeSlug}`}
         pageImg={data.webTips.childImageSharp.original.src}
       />
     </>

@@ -63,7 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         currentPage: index + 1,
         isFirst: index + 1 === 1,
         isLast: index + 1 === blogPages,
-        blogPages: blogPages,
+        pages: blogPages,
       },
     });
   });
@@ -95,6 +95,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           isFirst: index + 1 === 1,
           isLast: index + 1 === typePages,
           description: node.description,
+          pages: typePages,
         },
       });
     });
