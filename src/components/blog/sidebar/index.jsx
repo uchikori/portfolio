@@ -6,17 +6,16 @@ export const Sidebar = (props) => {
 
   const data = useStaticQuery(graphql`
     query {
-      allWpType {
-        nodes {
-          id
-          slug
-          name
-          contentNodes {
-            nodes {
-              id
-              link
-            }
+      allWpType(
+        filter: {
+          contentNodes: {
+            nodes: { elemMatch: { isContentNode: { eq: true } } }
           }
+        }
+      ) {
+        nodes {
+          name
+          slug
         }
       }
     }

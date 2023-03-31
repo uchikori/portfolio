@@ -1,0 +1,266 @@
+import { graphql, Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import * as React from "react";
+import { Content } from "../components/global/Content";
+import { MainVisual } from "../components/global/MainVisual";
+import { Layout } from "../components/Layout";
+import { Seo } from "../components/Seo";
+import { extractText } from "../lib/extract-text";
+
+export default function WorksPost(props) {
+  const { data } = props;
+  console.log(data);
+  return (
+    <Layout hasLoadingObj={false}>
+      <div className="page-wrapper page-single">
+        <div className="scroll-container">
+          <MainVisual>
+            <header className="main-visual__header">
+              <div className="main-visual__title">
+                <Link to={`/`} className="single-category">
+                  client
+                </Link>
+                <h1 className="single-title">{data.wpPost.title}</h1>
+                <span className="single-en-title">
+                  {data.wpPost.englishTitle.englishTitle}
+                </span>
+              </div>
+            </header>
+          </MainVisual>
+          <Content>
+            <div className="content__block">
+              <figure className="first-image">
+                <GatsbyImage
+                  image={
+                    data.wpPost.featuredImage.node.localFile.childImageSharp
+                      .gatsbyImageData
+                  }
+                  alt={data.wpPost.featuredImage.node.altText}
+                />
+              </figure>
+              <div className="gallery-meta">
+                <div className="gallery-meta__item">
+                  <h2 className="gallery-meta__title">client</h2>
+                  <div className="gallery-meta__info">
+                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryType}
+                  </div>
+                </div>
+                <div className="gallery-meta__item">
+                  <h2 className="gallery-meta__title">my role</h2>
+                  <div className="gallery-meta__info">
+                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryRole}
+                  </div>
+                </div>
+                <div className="gallery-meta__item">
+                  <h2 className="gallery-meta__title">technorogies</h2>
+                  <div className="gallery-meta__info">
+                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryTech}
+                  </div>
+                </div>
+                <div className="gallery-meta__item">
+                  <h2 className="gallery-meta__title">year</h2>
+                  <div className="gallery-meta__info">
+                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryYear}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="content__block"
+              dangerouslySetInnerHTML={{ __html: data.wpPost.content }}
+            ></div>
+            <div className="content__block">
+              <figure className="mockup-image__pc">
+                <GatsbyImage
+                  image={
+                    data.wpPost.mockUpPc.mockupImagePc.localFile.childImageSharp
+                      .gatsbyImageData
+                  }
+                  alt={data.wpPost.mockUpPc.mockupImagePc.altText}
+                />
+              </figure>
+            </div>
+            <div className="content__block">
+              <div className="mockup-image__wrap">
+                <figure className="mockup-image__video content__inner">
+                  <video
+                    src={data.wpPost.mockUpMovie.mockupMovie.mediaItemUrl}
+                    loop
+                    autoPlay
+                    muted
+                    playsInline
+                  ></video>
+                </figure>
+              </div>
+            </div>
+            <div className="content__block">
+              <figure className="mockup-image__tab">
+                <GatsbyImage
+                  image={
+                    data.wpPost.mockUpImageTab.mockupImageTab.localFile
+                      .childImageSharp.gatsbyImageData
+                  }
+                  alt={data.wpPost.mockUpImageTab.mockupImageTab.altText}
+                />
+              </figure>
+              <figure className="mockup-image__sp">
+                <GatsbyImage
+                  image={
+                    data.wpPost.mockUpImageSp.mockupImageSp.localFile
+                      .childImageSharp.gatsbyImageData
+                  }
+                  alt={data.wpPost.mockUpImageSp.mockupImageSp.altText}
+                />
+              </figure>
+            </div>
+            <div className="content__block">
+              <div className="mockup__iphone">
+                <div className="device iphone">
+                  <div className="sidebt bt1"></div>
+                  <div className="sidebt bt2"></div>
+                  <div className="sidebt bt3"></div>
+                  <div className="pwrbt"></div>
+                  <div className="border">
+                    <div className="case">
+                      <div className="camera"></div>
+                      <div className="speaker"></div>
+                      <div className="screen">
+                        <GatsbyImage
+                          image={
+                            data.wpPost.cssMockupImage.cssMockupImage.localFile
+                              .childImageSharp.gatsbyImageData
+                          }
+                          alt={
+                            data.wpPost.cssMockupImage.cssMockupImage.altText
+                          }
+                        />
+                      </div>
+                      <div className="homebt"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="link-wrap">
+              <a
+                href={data.wpPost.linkBtn.linkBtn}
+                className="link-btn default"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Page Link
+              </a>
+            </div>
+          </Content>
+        </div>
+      </div>
+    </Layout>
+  );
+}
+
+export const query = graphql`
+  query MyQuery {
+    wpPost(databaseId: { eq: 288 }) {
+      databaseId
+      date
+      content
+      excerpt
+      title
+      galleryNumber {
+        galleryNum
+      }
+      galleryMetaGroup {
+        galleryMetaGroup {
+          galleryRole
+          galleryTech
+          galleryType
+          galleryYear
+        }
+      }
+      englishTitle {
+        englishTitle
+      }
+      featuredImage {
+        node {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                quality: 90
+                width: 1544
+                height: 832
+              )
+            }
+          }
+        }
+      }
+      mockUpMovie {
+        mockupMovie {
+          mediaItemUrl
+        }
+      }
+      mockUpImageTab {
+        mockupImageTab {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                quality: 90
+              )
+            }
+          }
+        }
+      }
+      mockUpImageSp {
+        mockupImageSp {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                quality: 90
+              )
+            }
+          }
+        }
+      }
+      mockUpPc {
+        mockupImagePc {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                quality: 90
+              )
+            }
+          }
+        }
+      }
+      cssMockupImage {
+        cssMockupImage {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                layout: CONSTRAINED
+                placeholder: BLURRED
+                quality: 90
+                width: 316
+              )
+            }
+          }
+        }
+      }
+      linkBtn {
+        linkBtn
+      }
+    }
+  }
+`;

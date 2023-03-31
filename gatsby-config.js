@@ -39,7 +39,7 @@ module.exports = {
         html: {
           useGatsbyImage: true,
         },
-        // useACF: true,
+        useACF: true,
       },
     },
     {
