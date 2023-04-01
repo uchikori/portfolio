@@ -1,6 +1,6 @@
 import { convert } from "html-to-text";
 
-export const extractText = (html, length = 80, more = "...") => {
+export const extractText = (html, length = 60, more = "...") => {
   const text = convert(html, {
     selectors: [
       { selector: "img", format: "skip" },

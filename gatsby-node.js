@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           databaseId
           slug
           title
+          nodeType
         }
       }
       allWpType {
@@ -18,11 +19,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           name
           databaseId
           description
+          taxonomyName
           webTips {
             nodes {
               title
             }
           }
+        }
+      }
+      allWpPost(sort: { date: DESC }) {
+        nodes {
+          databaseId
+          slug
+          title
+          nodeType
         }
       }
     }
@@ -64,6 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         isFirst: index + 1 === 1,
         isLast: index + 1 === blogPages,
         pages: blogPages,
+        type: "web-tips",
       },
     });
   });
@@ -96,8 +107,45 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           isLast: index + 1 === typePages,
           description: node.description,
           pages: typePages,
+          isTaxonomyPage: true,
+          taxonomyName: node.taxonomyName,
         },
       });
+    });
+  });
+
+  /************************************************************
+   * 実績ページの生成
+   ***********************************************************/
+  blogResult.data.allWpPost.nodes.forEach((node) => {
+    createPage({
+      path: `/${node.databaseId}/`,
+      component: path.resolve(`./src/templates/workspost-template.js`),
+      context: {
+        id: node.databaseId,
+      },
+    });
+  });
+  /************************************************************
+   * 実績一覧ページの生成
+   ***********************************************************/
+  const worksPostsPerPage = 10;
+  const worksPosts = blogResult.data.allWpPost.nodes.length;
+  const worksPages = Math.ceil(worksPosts / worksPostsPerPage);
+
+  Array.from({ length: worksPages }).forEach((_, index) => {
+    createPage({
+      path: index === 0 ? `/works/` : `/works/${index + 1}`,
+      component: path.resolve(`./src/templates/worksarchive-template.js`),
+      context: {
+        skip: worksPostsPerPage * index,
+        limit: worksPostsPerPage,
+        currentPage: index + 1,
+        isFirst: index + 1 === 1,
+        isLast: index + 1 === worksPages,
+        pages: worksPages,
+        type: "works",
+      },
     });
   });
 };

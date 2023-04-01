@@ -80,77 +80,93 @@ export default function WorksPost(props) {
                 />
               </figure>
             </div>
-            <div className="content__block">
-              <div className="mockup-image__wrap">
-                <figure className="mockup-image__video content__inner">
-                  <video
-                    src={data.wpPost.mockUpMovie.mockupMovie.mediaItemUrl}
-                    loop
-                    autoPlay
-                    muted
-                    playsInline
-                  ></video>
+            {data.wpPost.mockUpMovie.mockupMovie ? (
+              <div className="content__block">
+                <div className="mockup-image__wrap">
+                  <figure className="mockup-image__video content__inner">
+                    <video
+                      src={data.wpPost.mockUpMovie.mockupMovie.mediaItemUrl}
+                      loop
+                      autoPlay
+                      muted
+                      playsInline
+                    ></video>
+                  </figure>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {data.wpPost.mockUpImageTab.mockupImageTab ? (
+              <div className="content__block">
+                <figure className="mockup-image__tab">
+                  <GatsbyImage
+                    image={
+                      data.wpPost.mockUpImageTab.mockupImageTab.localFile
+                        .childImageSharp.gatsbyImageData
+                    }
+                    alt={data.wpPost.mockUpImageTab.mockupImageTab.altText}
+                  />
+                </figure>
+                <figure className="mockup-image__sp">
+                  <GatsbyImage
+                    image={
+                      data.wpPost.mockUpImageSp.mockupImageSp.localFile
+                        .childImageSharp.gatsbyImageData
+                    }
+                    alt={data.wpPost.mockUpImageSp.mockupImageSp.altText}
+                  />
                 </figure>
               </div>
-            </div>
-            <div className="content__block">
-              <figure className="mockup-image__tab">
-                <GatsbyImage
-                  image={
-                    data.wpPost.mockUpImageTab.mockupImageTab.localFile
-                      .childImageSharp.gatsbyImageData
-                  }
-                  alt={data.wpPost.mockUpImageTab.mockupImageTab.altText}
-                />
-              </figure>
-              <figure className="mockup-image__sp">
-                <GatsbyImage
-                  image={
-                    data.wpPost.mockUpImageSp.mockupImageSp.localFile
-                      .childImageSharp.gatsbyImageData
-                  }
-                  alt={data.wpPost.mockUpImageSp.mockupImageSp.altText}
-                />
-              </figure>
-            </div>
-            <div className="content__block">
-              <div className="mockup__iphone">
-                <div className="device iphone">
-                  <div className="sidebt bt1"></div>
-                  <div className="sidebt bt2"></div>
-                  <div className="sidebt bt3"></div>
-                  <div className="pwrbt"></div>
-                  <div className="border">
-                    <div className="case">
-                      <div className="camera"></div>
-                      <div className="speaker"></div>
-                      <div className="screen">
-                        <GatsbyImage
-                          image={
-                            data.wpPost.cssMockupImage.cssMockupImage.localFile
-                              .childImageSharp.gatsbyImageData
-                          }
-                          alt={
-                            data.wpPost.cssMockupImage.cssMockupImage.altText
-                          }
-                        />
+            ) : (
+              ""
+            )}
+            {data.wpPost.cssMockupImage.cssMockupImage ? (
+              <div className="content__block">
+                <div className="mockup__iphone">
+                  <div className="device iphone">
+                    <div className="sidebt bt1"></div>
+                    <div className="sidebt bt2"></div>
+                    <div className="sidebt bt3"></div>
+                    <div className="pwrbt"></div>
+                    <div className="border">
+                      <div className="case">
+                        <div className="camera"></div>
+                        <div className="speaker"></div>
+                        <div className="screen">
+                          <GatsbyImage
+                            image={
+                              data.wpPost.cssMockupImage.cssMockupImage
+                                .localFile.childImageSharp.gatsbyImageData
+                            }
+                            alt={
+                              data.wpPost.cssMockupImage.cssMockupImage.altText
+                            }
+                          />
+                        </div>
+                        <div className="homebt"></div>
                       </div>
-                      <div className="homebt"></div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="link-wrap">
-              <a
-                href={data.wpPost.linkBtn.linkBtn}
-                className="link-btn default"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Page Link
-              </a>
-            </div>
+            ) : (
+              ""
+            )}
+            {data.wpPost.linkBtn.linkBtn ? (
+              <div class="link-wrap">
+                <a
+                  href={data.wpPost.linkBtn.linkBtn}
+                  className="link-btn default"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Page Link
+                </a>
+              </div>
+            ) : (
+              ""
+            )}
           </Content>
         </div>
       </div>
@@ -159,8 +175,8 @@ export default function WorksPost(props) {
 }
 
 export const query = graphql`
-  query MyQuery {
-    wpPost(databaseId: { eq: 288 }) {
+  query ($id: Int!) {
+    wpPost(databaseId: { eq: $id }) {
       databaseId
       date
       content
@@ -251,7 +267,7 @@ export const query = graphql`
               gatsbyImageData(
                 layout: CONSTRAINED
                 placeholder: BLURRED
-                quality: 90
+                quality: 100
                 width: 316
               )
             }

@@ -569,35 +569,3 @@
     }
   }
 }
-//ページネーション
-.pagenation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3.2rem;
-  gap: 2rem;
-  &__item {
-    a {
-      @include font-style(16px, $color-trans-bg, 700);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 3.2rem;
-      height: 3.2rem;
-      background-color: $color-white;
-      border-radius: 100%;
-      border: solid 1px $color-trans-bg;
-      transition: all 0.3s ease;
-      line-height: 1;
-      &:hover {
-        color: $color-white;
-        background-color: $color-trans-bg;
-        transition: all 0.3s ease;
-      }
-      &.current {
-        color: $color-white;
-        background-color: $color-trans-bg;
-      }
-    }
-  }
-}

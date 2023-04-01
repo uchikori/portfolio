@@ -1,7 +1,7 @@
 @use "../global" as *;
 .page-wrapper.gallery {
   &:before {
-    background-image: url("/images/gallery-background.webp");
+    background-image: url("/images/gallery-background.jpg");
   }
   .content__gallery {
     &:nth-child(2n) {

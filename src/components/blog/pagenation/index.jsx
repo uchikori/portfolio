@@ -13,24 +13,58 @@ export const Pagenation = (props) => {
     <ul className="pagenation">
       {pageContext.isFirst ? (
         ""
+      ) : pageContext.isTaxonomyPage ? (
+        <li className="pagenation__item prev">
+          <Link
+            to={
+              pageContext.currentPage === 2
+                ? `/${pageContext.taxonomyName}/${pageContext.typeSlug}/`
+                : `/${pageContext.taxonomyName}/${pageContext.typeSlug}/${
+                    pageContext.currentPage - 1
+                  }`
+            }
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </Link>
+        </li>
       ) : (
         <li className="pagenation__item prev">
           <Link
             to={
               pageContext.currentPage === 2
-                ? `/web-tips/`
-                : `/web-tips/${pageContext.currentPage - 1}`
+                ? `/${pageContext.type}/`
+                : `/${pageContext.type}/${pageContext.currentPage - 1}`
             }
           >
             <FontAwesomeIcon icon={faChevronLeft} />
           </Link>
         </li>
       )}
+
       {Array.from({ length: pageContext.pages }).map((_, index) => {
-        return (
+        return pageContext.isTaxonomyPage ? (
           <li className="pagenation__item" key={index}>
             <Link
-              to={index === 0 ? `/web-tips/` : `/web-tips/${index + 1}`}
+              to={
+                index === 0
+                  ? `/${pageContext.taxonomyName}/${pageContext.typeSlug}/`
+                  : `/${pageContext.taxonomyName}/${pageContext.typeSlug}/${
+                      index + 1
+                    }`
+              }
+              className={pageContext.currentPage === index + 1 ? "current" : ""}
+            >
+              {index + 1}
+            </Link>
+          </li>
+        ) : (
+          <li className="pagenation__item" key={index}>
+            <Link
+              to={
+                index === 0
+                  ? `/${pageContext.type}/`
+                  : `/${pageContext.type}/${index + 1}`
+              }
               className={pageContext.currentPage === index + 1 ? "current" : ""}
             >
               {index + 1}
@@ -38,11 +72,22 @@ export const Pagenation = (props) => {
           </li>
         );
       })}
+
       {pageContext.isLast ? (
         ""
+      ) : pageContext.isTaxonomyPage ? (
+        <li className="pagenation__item next">
+          <Link
+            to={`/${pageContext.taxonomyName}/${pageContext.typeSlug}/${
+              pageContext.currentPage + 1
+            }`}
+          >
+            <FontAwesomeIcon icon={faChevronRight} />
+          </Link>
+        </li>
       ) : (
         <li className="pagenation__item next">
-          <Link to={`/web-tips/${pageContext.currentPage + 1}`}>
+          <Link to={`/${pageContext.type}/${pageContext.currentPage + 1}`}>
             <FontAwesomeIcon icon={faChevronRight} />
           </Link>
         </li>
