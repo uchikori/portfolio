@@ -16,7 +16,6 @@ export const Adsence = (props) => {
       data-ad-client="ca-pub-3842486595943279"
       data-ad-slot="1500727811"
       data-ad-format={format}
-      data-full-width-responsive="true"
     />
   );
 };
