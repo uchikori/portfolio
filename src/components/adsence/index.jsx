@@ -2,6 +2,7 @@ import * as React from "react";
 import { useEffect } from "react";
 export const Adsence = (props) => {
   const { format, path } = props;
+  console.log(path);
   useEffect(() => {
     if (window) {
       window.adsbygoogle = window.adsbygoogle || [];

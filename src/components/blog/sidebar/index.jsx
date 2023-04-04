@@ -3,7 +3,6 @@ import * as React from "react";
 import { Adsence } from "../../adsence";
 export const Sidebar = (props) => {
   const { path } = props;
-
   const data = useStaticQuery(graphql`
     query {
       allWpType(
