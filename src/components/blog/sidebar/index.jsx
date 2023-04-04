@@ -40,7 +40,7 @@ export const Sidebar = (props) => {
         </ul>
       </section>
       <section className="sidebar__widget">
-        {/* <Adsence format={"auto"} path={path} /> */}
+        <Adsence format={"auto"} path={path} />
       </section>
     </aside>
   );
