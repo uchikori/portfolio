@@ -2,7 +2,10 @@ import * as React from "react";
 import { load } from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
+import { AdsenceContentBottom } from "../../adsence";
+import { useLocation } from "@reach/router";
 export const Main = (props) => {
+  const location = useLocation();
   let { content } = props;
 
   const $ = load(content, null, false);
@@ -19,6 +22,7 @@ export const Main = (props) => {
         className="singleContents"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
+      <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
     </main>
   );
 };
