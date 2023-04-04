@@ -1,9 +1,4 @@
 @use "../global" as *;
-.page-wrapper.web-tips {
-  &:before {
-    background-image: url("/images/blog-background.jpg");
-  }
-}
 .web-tips-template {
   .main-visual__inner {
     @include wide-pc {

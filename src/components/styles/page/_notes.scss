@@ -1,8 +1,5 @@
 @use "../global" as *;
 .page-wrapper.notes {
-  &:before {
-    background-image: url("/images/service-background.jpg");
-  }
   .list-wrap {
     width: 96.8rem;
     border: solid 1px $color-white;

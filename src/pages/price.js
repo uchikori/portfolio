@@ -7,6 +7,7 @@ import { Content } from "../components/global/Content";
 import { useEffect } from "react";
 import { Seo } from "../components/Seo";
 import { graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 export default function Price() {
   //進行管理の配列
@@ -283,6 +284,15 @@ export default function Price() {
     <>
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper price">
+          <span className="backgroundImage">
+            <StaticImage
+              src="../images/price-background.jpg"
+              layout="fullWidth"
+              placeholder="blurred"
+              quality={90}
+              alt=""
+            />
+          </span>
           <div className="scroll-container">
             <MainVisual>
               <PageHeader

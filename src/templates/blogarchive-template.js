@@ -6,7 +6,7 @@ import { Layout } from "../components/Layout";
 import { PageHeader } from "../components/page/PageHeader";
 import { useLocation } from "@reach/router";
 import { graphql, Link } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { Seo } from "../components/Seo";
 import { Pagenation } from "../components/blog/pagenation";
 import { AdsenceContentBottom } from "../components/adsence";
@@ -17,6 +17,15 @@ export default function WebTips(props) {
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
+        <span className="backgroundImage">
+          <StaticImage
+            src="../images/blog-background.jpg"
+            layout="fullWidth"
+            placeholder="blurred"
+            quality={90}
+            alt=""
+          />
+        </span>
         <div className="scroll-container">
           <MainVisual>
             <PageHeader

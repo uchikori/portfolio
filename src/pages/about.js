@@ -12,6 +12,15 @@ export default function About(props) {
     <>
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper about">
+          <span className="backgroundImage">
+            <StaticImage
+              src="../images/about-background.jpg"
+              layout="fullWidth"
+              placeholder="blurred"
+              quality={90}
+              alt=""
+            />
+          </span>
           <div className="scroll-container">
             <MainVisual>
               <PageHeader

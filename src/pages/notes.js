@@ -5,12 +5,22 @@ import { PageHeader } from "../components/page/PageHeader";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 export default function Notes() {
   return (
     <>
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper notes">
+          <span className="backgroundImage">
+            <StaticImage
+              src="../images/service-background.jpg"
+              layout="fullWidth"
+              placeholder="blurred"
+              quality={90}
+              alt=""
+            />
+          </span>
           <div className="scroll-container">
             <MainVisual>
               <PageHeader

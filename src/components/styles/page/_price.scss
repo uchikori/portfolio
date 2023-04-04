@@ -1,8 +1,5 @@
 @use "../global" as *;
 .page-wrapper.price {
-  &:before {
-    background-image: url("/images/price-background.jpg");
-  }
 }
 .white-box {
   width: 100%;

@@ -1,8 +1,5 @@
 @use "../global" as *;
 .page-single {
-  &:before {
-    background-image: url("/images/service-background.jpg");
-  }
   .main-visual {
     width: 100vw;
     height: 100vh;

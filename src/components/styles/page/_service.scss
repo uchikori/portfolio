@@ -1,8 +1,5 @@
 @use "../global" as *;
 .page-wrapper.service {
-  &:before {
-    background-image: url("/images/service-background.jpg");
-  }
   .info-graphic {
     .cls-1 {
       fill: none;

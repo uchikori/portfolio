@@ -1,5 +1,5 @@
 import { graphql, Link } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Main } from "../components/blog/main";
 import { Sidebar } from "../components/blog/sidebar";
@@ -15,6 +15,15 @@ export default function BlogPost({ data }) {
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
+        <span className="backgroundImage">
+          <StaticImage
+            src="../images/blog-background.jpg"
+            layout="fullWidth"
+            placeholder="blurred"
+            quality={90}
+            alt=""
+          />
+        </span>
         <div className="scroll-container">
           <MainVisual>
             <header className="main-visual__header">

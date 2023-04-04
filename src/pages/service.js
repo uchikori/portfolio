@@ -7,12 +7,22 @@ import { Layout } from "../components/Layout";
 import { graphql, Link } from "gatsby";
 import { Accordion } from "../components/service/accordion";
 import { Seo } from "../components/Seo";
+import { StaticImage } from "gatsby-plugin-image";
 
 export default function Service() {
   return (
     <>
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper service">
+          <span className="backgroundImage">
+            <StaticImage
+              src="../images/service-background.jpg"
+              layout="fullWidth"
+              placeholder="blurred"
+              quality={90}
+              alt=""
+            />
+          </span>
           <div className="scroll-container">
             <MainVisual>
               <PageHeader

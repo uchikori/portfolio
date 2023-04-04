@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { extractText } from "../lib/extract-text";
 import { Pagenation } from "../components/blog/pagenation";
 import { Seo } from "../components/Seo";
@@ -15,6 +15,15 @@ export default function Works(props) {
     <>
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper gallery">
+          <span className="backgroundImage">
+            <StaticImage
+              src="../images/gallery-background.jpg"
+              layout="fullWidth"
+              placeholder="blurred"
+              quality={90}
+              alt=""
+            />
+          </span>
           <div className="scroll-container">
             <MainVisual>
               <PageHeader
