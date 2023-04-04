@@ -21,7 +21,7 @@ export const Seo = (props) => {
   const description = pageDesc || data.site.siteMetadata.description;
   const url = pagePath
     ? `${data.site.siteMetadata.siteUrl}${pagePath}`
-    : data.site.siteMetadata.siteMetadata;
+    : data.site.siteMetadata.siteUrl;
   const imgurl = pageImg
     ? `${data.site.siteMetadata.siteUrl}${pageImg}`
     : `${data.site.siteMetadata.siteUrl}${blogImg}` ||
@@ -39,11 +39,11 @@ export const Seo = (props) => {
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="og:image" content={imgurl} />
       <meta name="twitter:card" content="summary_large_image" />
-      {/* <script
+      <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842486595943279"
         crossOrigin="anonymous"
-      ></script> */}
+      ></script>
       <body className={pageClass} />
     </>
   );
