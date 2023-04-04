@@ -27,8 +27,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         url:
-          process.env.WPGRAPHQL_URL ||
-          `https://portfolio.uchiwa-design.net/graphql`,
+          process.env.WPGRAPHQL_URL || `https://pf.uchiwa-design.net/graphql`,
         verbose: true,
         schema: {
           queryDepth: 15,
