@@ -1,5 +1,4 @@
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import BlogCard from "../BlogCard";
 
@@ -26,11 +25,7 @@ export const FrontHeader = (props) => {
         {link ? (
           <Link to={`/${titleClass}`} className="title-line page-link">
             <span>
-              <StaticImage
-                src="../../../images/link.svg"
-                layout="fullWidth"
-                alt="View More"
-              />
+              <img src={`../../../images/link.svg`} alt="View More" />
             </span>
           </Link>
         ) : (

@@ -18,10 +18,10 @@ export default function Works(props) {
           <div className="scroll-container">
             <MainVisual>
               <PageHeader
-                titleImage="title-works"
-                titleClass={"works"}
-                subTitle={`これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載`}
-                alt="制作実績"
+                titleImage={`${pageContext.taxonomyName}-${pageContext.categoryName}`}
+                titleClass={"main"}
+                subTitle={pageContext.description}
+                alt={pageContext.name}
               />
             </MainVisual>
             <Content>
@@ -84,23 +84,26 @@ export default function Works(props) {
   );
 }
 export const Head = (props) => {
-  const { data } = props;
+  const { data, pageContext } = props;
   return (
     <>
       <Seo
-        pageTitle={"制作実績"}
-        pageDesc={
-          "これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載"
-        }
-        pagePath={"/works/"}
+        pageTitle={pageContext.categoryName}
+        pageDesc={pageContext.description}
+        pagePath={`/category/${pageContext.categorySlug}`}
         pageImg={data.wpPost.childImageSharp.original.src}
       />
     </>
   );
 };
 export const query = graphql`
-  query ($skip: Int!, $limit: Int!) {
-    allWpPost(sort: { date: DESC }, skip: $skip, limit: $limit) {
+  query ($categoryId: String!, $skip: Int!, $limit: Int!) {
+    allWpPost(
+      sort: { date: DESC }
+      skip: $skip
+      limit: $limit
+      filter: { terms: { nodes: { elemMatch: { id: { eq: $categoryId } } } } }
+    ) {
       nodes {
         databaseId
         slug

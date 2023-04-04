@@ -6,9 +6,10 @@ import { MainVisual } from "../components/global/MainVisual";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { extractText } from "../lib/extract-text";
-
+import { useLocation } from "@reach/router";
 export default function WorksPost(props) {
   const { data } = props;
+
   console.log(data);
   return (
     <Layout hasLoadingObj={false}>
@@ -154,7 +155,7 @@ export default function WorksPost(props) {
               ""
             )}
             {data.wpPost.linkBtn.linkBtn ? (
-              <div class="link-wrap">
+              <div className="link-wrap">
                 <a
                   href={data.wpPost.linkBtn.linkBtn}
                   className="link-btn default"
@@ -173,6 +174,24 @@ export default function WorksPost(props) {
     </Layout>
   );
 }
+export const Head = (props) => {
+  const { data } = props;
+  const location = useLocation();
+  const description = extractText(data.wpPost.content);
+  return (
+    <>
+      <Seo
+        pageTitle={data.wpPost.title}
+        pageDesc={description}
+        pagePath={location.pathname}
+        blogImg={
+          data.wpPost.featuredImage.node.localFile.childImageSharp
+            .gatsbyImageData.images.fallback.src
+        }
+      />
+    </>
+  );
+};
 
 export const query = graphql`
   query ($id: Int!) {

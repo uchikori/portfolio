@@ -35,6 +35,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nodeType
         }
       }
+      allWpCategory {
+        nodes {
+          id
+          slug
+          databaseId
+          taxonomyName
+          name
+          description
+          posts {
+            nodes {
+              title
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -146,6 +161,40 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         pages: worksPages,
         type: "works",
       },
+    });
+  });
+  /************************************************************
+   * 実績カテゴリーページの生成
+   ***********************************************************/
+  blogResult.data.allWpCategory.nodes.forEach((node) => {
+    const categoryPostPerPage = 20;
+    const categoryPosts = node.posts.nodes.length;
+    const categoryPages = Math.ceil(categoryPosts / categoryPostPerPage);
+
+    const categoryArray = Array.from({ length: categoryPages });
+
+    categoryArray.forEach((item, index) => {
+      createPage({
+        path:
+          index === 0
+            ? `/category/${node.slug}/`
+            : `/category/${node.slug}/${index + 1}/`,
+        component: path.resolve(`./src/templates/categoryarchive-template.js`),
+        context: {
+          categoryId: node.id,
+          categoryName: node.name,
+          categorySlug: node.slug,
+          skip: categoryPostPerPage * index,
+          limit: categoryPostPerPage,
+          currentPage: index + 1,
+          isFirst: index + 1 === 1,
+          isLast: index + 1 === categoryPages,
+          description: node.description,
+          pages: categoryPages,
+          isTaxonomyPage: true,
+          taxonomyName: node.taxonomyName,
+        },
+      });
     });
   });
 };
