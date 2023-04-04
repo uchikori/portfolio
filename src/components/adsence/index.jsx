@@ -5,8 +5,10 @@ export const Adsence = (props) => {
   console.log(path);
   useEffect(() => {
     if (window) {
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
+      window.addEventListener("load", () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
+      });
     }
   }, [path]);
 
@@ -17,6 +19,7 @@ export const Adsence = (props) => {
       data-ad-client="ca-pub-3842486595943279"
       data-ad-slot="1500727811"
       data-ad-format={format}
+      data-full-width-responsive="false"
     />
   );
 };
