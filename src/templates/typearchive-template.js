@@ -9,6 +9,7 @@ import { Seo } from "../components/Seo";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Pagenation } from "../components/blog/pagenation";
+import { AdsenceContentBottom } from "../components/adsence";
 
 export default function Type(props) {
   const { data, pageContext } = props;
@@ -61,6 +62,10 @@ export default function Type(props) {
                   );
                 })}
                 <Pagenation pageContext={pageContext} />
+                <AdsenceContentBottom
+                  format={"autorelaxed"}
+                  path={location.pathname}
+                />
               </main>
               <Sidebar path={location.pathname} />
             </div>
