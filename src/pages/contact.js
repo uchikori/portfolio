@@ -175,7 +175,7 @@ export default function Contact() {
                             name="your-menu"
                             data-formrun-required
                           >
-                            <option value>以下から選択してください</option>
+                            <option>以下から選択してください</option>
                             <option value="公開中の実績について（削除依頼等）">
                               公開中の実績について（削除依頼等）
                             </option>
