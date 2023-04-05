@@ -171,7 +171,7 @@ export default function Contact() {
                         >
                           <select
                             id="your-menu"
-                            className="type-select form-control form-control-lg"
+                            className="type-select"
                             name="your-menu"
                             data-formrun-required
                           >
