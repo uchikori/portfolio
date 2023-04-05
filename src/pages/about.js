@@ -202,7 +202,6 @@ export default function About(props) {
 
 export const Head = (props) => {
   const { data } = props;
-  console.log(data);
   return (
     <>
       <Seo

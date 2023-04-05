@@ -1,8 +1,5 @@
 @use "../global" as *;
 .page-wrapper.contact {
-  &:before {
-    background-image: url("/images/contact-background.webp");
-  }
   .contact-form {
     &__item {
       display: flex;
