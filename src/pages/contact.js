@@ -47,10 +47,7 @@ export default function Contact() {
                           Name
                           <span>*</span>
                         </label>
-                        <span
-                          className="wpcf7-form-control-wrap"
-                          data-name="your-name"
-                        >
+                        <span className="wpcf7-form-control-wrap">
                           <input
                             id="your-name"
                             name="your-name"
@@ -73,10 +70,7 @@ export default function Contact() {
                           Kana
                           <span>*</span>
                         </label>
-                        <span
-                          className="wpcf7-form-control-wrap"
-                          data-name="your-kana"
-                        >
+                        <span className="wpcf7-form-control-wrap">
                           <input
                             id="your-kana"
                             name="your-kana"
