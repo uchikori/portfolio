@@ -265,7 +265,6 @@ export default function Contact() {
   );
 }
 export const Head = (props) => {
-  const { data } = props;
   return (
     <>
       <Seo
