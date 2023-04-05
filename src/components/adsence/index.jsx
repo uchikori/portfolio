@@ -5,10 +5,8 @@ export const Adsence = (props) => {
   console.log(path);
   useEffect(() => {
     if (window) {
-      window.addEventListener("load", () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        window.adsbygoogle.push({});
-      });
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
     }
   }, [path]);
 

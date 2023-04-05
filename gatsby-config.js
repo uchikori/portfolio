@@ -68,5 +68,17 @@ module.exports = {
         defaultDataLayer: { platform: "gatsby" },
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `UCHIWA Creative Studio 札幌市のホームページ制作・デザイン制作`,
+        short_name: `UCHIWA Creative Studio`,
+        start_url: `/`,
+        background_color: `#0E1037`,
+        theme_color: `#ffffff`,
+        display: `standalone`,
+        icon: `src/images/favicon.png`,
+      },
+    },
   ],
 };
