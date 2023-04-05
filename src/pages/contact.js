@@ -189,11 +189,11 @@ export default function Contact() {
                             className="type-textarea"
                             data-formrun-required
                           ></textarea>
-                        </span>
 
-                        <div data-formrun-show-if-error="お問い合わせ">
-                          お問い合わせ入力してください
-                        </div>
+                          <div data-formrun-show-if-error="お問い合わせ">
+                            お問い合わせ入力してください
+                          </div>
+                        </span>
                       </div>
 
                       <div className="contact-form__item">
