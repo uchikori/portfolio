@@ -32,3 +32,16 @@ export default function Thanks() {
     </Layout>
   );
 }
+export const Head = (props) => {
+  return (
+    <>
+      <Seo
+        pageTitle={"お問い合わせ完了"}
+        pageDesc={
+          "この度はお問い合わせ頂きありがとうございます。\nお問い合わせ内容により、返信にお時間を頂く場合もありますがご了承ください"
+        }
+        pagePath={`/thanks/`}
+      />
+    </>
+  );
+};
