@@ -249,8 +249,6 @@ export default function Contact() {
                           type="submit"
                           data-formrun-error-text="未入力の項目があります"
                           data-formrun-submitting-text="送信中..."
-                          value="SUBMIT"
-                          disabled
                         >
                           SUBMIT
                         </button>
