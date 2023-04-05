@@ -186,7 +186,7 @@ export default function Contact() {
                             cols={82}
                             rows={16}
                             name="お問い合わせ"
-                            className="type-textarea"
+                            className="your-message"
                             data-formrun-required
                           ></textarea>
 
