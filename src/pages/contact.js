@@ -35,11 +35,15 @@ export default function Contact() {
                   className="formrun"
                   action="https://form.run/api/v1/r/5skolcbezps0ffixpvsg03uw"
                   method="post"
+                  data-formrun-saving="true"
                 >
                   <div className="form-inner">
                     <div className="contact-form">
                       <div className="contact-form__item">
-                        <label className="contact-form__item__label two-column">
+                        <label
+                          className="contact-form__item__label two-column"
+                          htmlFor="your-name"
+                        >
                           Name
                           <span>*</span>
                         </label>
@@ -48,6 +52,7 @@ export default function Contact() {
                           data-name="your-name"
                         >
                           <input
+                            id="your-name"
                             name="your-name"
                             type="text"
                             className="your-name type-text"
@@ -70,7 +75,10 @@ export default function Contact() {
                       </div>
 
                       <div className="contact-form__item">
-                        <label className="contact-form__item__label two-column">
+                        <label
+                          className="contact-form__item__label two-column"
+                          htmlFor="your-kana"
+                        >
                           Kana
                           <span>*</span>
                         </label>
@@ -79,6 +87,7 @@ export default function Contact() {
                           data-name="your-kana"
                         >
                           <input
+                            id="your-kana"
                             name="your-kana"
                             type="text"
                             className="your-kana type-text"
@@ -101,7 +110,10 @@ export default function Contact() {
                       </div>
 
                       <div className="contact-form__item">
-                        <label className="contact-form__item__label two-column">
+                        <label
+                          className="contact-form__item__label two-column"
+                          htmlFor="your-company"
+                        >
                           Company-name
                         </label>
                         <span
@@ -109,6 +121,7 @@ export default function Contact() {
                           data-name="your-company"
                         >
                           <input
+                            id="your-company"
                             name="your-company"
                             type="text "
                             className="your-company type-text"
@@ -118,7 +131,10 @@ export default function Contact() {
                       </div>
 
                       <div className="contact-form__item">
-                        <label className="contact-form__item__label two-column">
+                        <label
+                          className="contact-form__item__label two-column"
+                          htmlFor="your-mail"
+                        >
                           メールアドレス
                           <span>*</span>
                         </label>
@@ -127,20 +143,25 @@ export default function Contact() {
                           data-name="your-company"
                         >
                           <input
+                            id="your-mail"
                             name="your-mail"
                             type="email"
                             className="type-email"
+                            placeholder="example@email.com"
                             data-formrun-type="email"
                             data-formrun-required
                           />
-                          <div data-formrun-show-if-error="メールアドレス">
+                          <div data-formrun-show-if-error="your-mail">
                             メールアドレスを正しく入力してください
                           </div>
                         </span>
                       </div>
 
                       <div className="contact-form__item">
-                        <label className="contact-form__item__label two-column">
+                        <label
+                          className="contact-form__item__label two-column"
+                          htmlFor="your-menu"
+                        >
                           Type
                           <span>*</span>
                         </label>
@@ -149,6 +170,7 @@ export default function Contact() {
                           data-name="your-menu"
                         >
                           <select
+                            id="your-menu"
                             className="type-select"
                             name="your-menu"
                             data-formrun-required
@@ -167,14 +189,17 @@ export default function Contact() {
                               その他ご質問等
                             </option>
                           </select>
-                          <div data-formrun-show-if-error="メールアドレス">
+                          <div data-formrun-show-if-error="your-menu">
                             お問い合わせ種別を正しく選択してください
                           </div>
                         </span>
                       </div>
 
                       <div className="contact-form__item align-top">
-                        <label className="contact-form__item__label two-column">
+                        <label
+                          className="contact-form__item__label two-column"
+                          htmlFor="your-message"
+                        >
                           Message
                           <span>*</span>
                         </label>
@@ -183,15 +208,16 @@ export default function Contact() {
                           data-name="your-message"
                         >
                           <textarea
+                            id="your-message"
                             cols={82}
                             rows={16}
-                            name="お問い合わせ"
-                            className="your-message"
+                            name="your-message"
+                            className="type-textarea"
                             data-formrun-required
                           ></textarea>
 
-                          <div data-formrun-show-if-error="お問い合わせ">
-                            お問い合わせ入力してください
+                          <div data-formrun-show-if-error="your-message">
+                            お問い合わせ内容を入力してください
                           </div>
                         </span>
                       </div>
@@ -247,7 +273,8 @@ export default function Contact() {
                         <button
                           className="submitbtn link-btn hoverTarget"
                           type="submit"
-                          data-formrun-error-text="未入力の項目があります"
+                          data-formrun-invalid-input-error-text="正しく入力されていない項目があります"
+                          data-formrun-not-input-error-text="未入力の項目があります"
                           data-formrun-submitting-text="送信中..."
                         >
                           SUBMIT
