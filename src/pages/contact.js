@@ -56,21 +56,12 @@ export default function Contact() {
                             name="your-name"
                             type="text"
                             className="your-name type-text"
-                            placeholder="姓"
+                            placeholder="山田 太郎"
                             data-formrun-required
                           />
-                        </span>
-                        <span
-                          className="wpcf7-form-control-wrap"
-                          data-name="your-fn"
-                        >
-                          <input
-                            name="your-fn"
-                            type="text "
-                            className="your-fn type-text"
-                            placeholder="名"
-                            data-formrun-required
-                          />
+                          <div data-formrun-show-if-error="your-name">
+                            名前を正しく入力してください
+                          </div>
                         </span>
                       </div>
 
@@ -91,21 +82,12 @@ export default function Contact() {
                             name="your-kana"
                             type="text"
                             className="your-kana type-text"
-                            placeholder="セイ"
+                            placeholder="ヤマダ タロウ"
                             data-formrun-required
                           />
-                        </span>
-                        <span
-                          className="wpcf7-form-control-wrap"
-                          data-name="your-mei"
-                        >
-                          <input
-                            name="your-mei"
-                            type="text "
-                            className="your-mei type-text"
-                            placeholder="メイ"
-                            data-formrun-required
-                          />
+                          <div data-formrun-show-if-error="your-kana">
+                            フリガナを正しく入力してください
+                          </div>
                         </span>
                       </div>
 
@@ -140,7 +122,7 @@ export default function Contact() {
                         </label>
                         <span
                           className="wpcf7-form-control-wrap"
-                          data-name="your-company"
+                          data-name="your-mail"
                         >
                           <input
                             id="your-mail"
