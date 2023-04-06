@@ -10,13 +10,13 @@ import { useEffect } from "react";
 export default function Contact() {
   useEffect(() => {
     window.Formrun?.init(".formrun");
-    const head = document.getElementsByTagName("head")[0];
-    const scriptUrl = document.createElement("script");
-    scriptUrl.src = "https://sdk.form.run/js/v2/formrun.js";
-    head.appendChild(scriptUrl);
-    return () => {
-      head.removeChild(scriptUrl);
-    };
+    // const head = document.getElementsByTagName("head")[0];
+    // const scriptUrl = document.createElement("script");
+    // scriptUrl.src = "https://sdk.form.run/js/v2/formrun.js";
+    // head.appendChild(scriptUrl);
+    // return () => {
+    //   head.removeChild(scriptUrl);
+    // };
   }, []);
   return (
     <>
