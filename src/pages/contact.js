@@ -5,8 +5,18 @@ import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { Seo } from "../components/Seo";
+import { useEffect } from "react";
 
 export default function Contact() {
+  useEffect(() => {
+    const head = document.getElementsByTagName("head")[0];
+    const scriptUrl = document.createElement("script");
+    scriptUrl.src = "https://sdk.form.run/js/v2/formrun.js";
+    head.appendChild(scriptUrl);
+    return () => {
+      head.removeChild(scriptUrl);
+    };
+  }, []);
   return (
     <>
       <Layout hasLoadingObj={false}>

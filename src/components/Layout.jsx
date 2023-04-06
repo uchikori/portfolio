@@ -8,7 +8,7 @@ export const Layout = (props) => {
 
   return (
     <>
-      <Load hasLoadingObj={hasLoadingObj} />
+      {/* <Load hasLoadingObj={hasLoadingObj} /> */}
       <MouseCursor />
       <div className="container">
         <GlobalMenu />
