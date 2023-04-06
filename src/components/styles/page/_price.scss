@@ -223,6 +223,7 @@
   }
   &:hover {
     background-color: $color-pink;
+    transition: all 0.3s ease;
     a {
       color: $color-white;
     }
