@@ -6,6 +6,7 @@ import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { Seo } from "../components/Seo";
 import { useEffect } from "react";
+import { graphql } from "gatsby";
 
 export default function Contact() {
   useEffect(() => {
@@ -430,6 +431,7 @@ export default function Contact() {
   );
 }
 export const Head = (props) => {
+  const { data } = props;
   return (
     <>
       <Seo
@@ -438,7 +440,22 @@ export const Head = (props) => {
           "Webサイト立ち上げのご相談、お見積りのご依頼（無料）などお気軽にお問い合わせください"
         }
         pagePath={`/contact/`}
+        pageImg={data.contact.childImageSharp.original.src}
       />
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    contact: file(relativePath: { eq: "contact-background.jpg" }) {
+      childImageSharp {
+        original {
+          src
+          height
+          width
+        }
+      }
+    }
+  }
+`;
