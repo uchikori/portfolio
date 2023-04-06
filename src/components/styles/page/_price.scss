@@ -219,7 +219,8 @@
   border-radius: 100vh 0 0 100vh;
   background-color: #f5f5f5;
   @include sp {
-    padding: 1.6rem 3.2rem 1.6rem 1.6rem;
+    bottom: 3%;
+    padding: 1rem 3.2rem 1rem 1rem;
   }
   &:hover {
     background-color: $color-pink;
@@ -242,7 +243,7 @@
     text-decoration: none;
     @include sp {
       gap: 1rem;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
     }
   }
   .icon {
@@ -253,9 +254,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @include sp {
+      width: 4rem;
+      height: 4rem;
+    }
     svg {
       height: 4rem;
       color: $color-white;
+      @include sp {
+        height: 2.4rem;
+      }
     }
   }
 }
