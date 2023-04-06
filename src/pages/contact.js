@@ -9,9 +9,8 @@ import { useEffect } from "react";
 import { useRef } from "react";
 
 export default function Contact() {
-  const formRun = useRef(null);
   useEffect(() => {
-    window.Formrun.init(formRun);
+    window.Formrun?.init(".formrun");
     const head = document.getElementsByTagName("head")[0];
     const scriptUrl = document.createElement("script");
     scriptUrl.src = "https://sdk.form.run/js/v2/formrun.js";
@@ -45,7 +44,6 @@ export default function Contact() {
             <Content>
               <div className="content__block">
                 <form
-                  ref={formRun}
                   className="formrun"
                   action="https://form.run/api/v1/r/5skolcbezps0ffixpvsg03uw"
                   method="post"
