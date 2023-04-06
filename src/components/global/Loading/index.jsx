@@ -10,7 +10,7 @@ export const Load = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 200);
+    }, 100);
   }, []);
 
   return (
