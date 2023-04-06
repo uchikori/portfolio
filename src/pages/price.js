@@ -8,6 +8,9 @@ import { useEffect } from "react";
 import { Seo } from "../components/Seo";
 import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { Link } from "react-scroll";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalculator } from "@fortawesome/free-solid-svg-icons";
 
 export default function Price() {
   //進行管理の配列
@@ -312,7 +315,7 @@ export default function Price() {
                       <tbody>
                         {scheduleItems.map((item, index) => {
                           return (
-                            <tr key={index}>
+                            <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
                               <td className="price__description">
                                 {item.desc}
@@ -365,7 +368,7 @@ export default function Price() {
                       <tbody>
                         {designItems.map((item, index) => {
                           return (
-                            <tr key={index}>
+                            <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
                               <td className="price__description">
                                 {item.desc}
@@ -469,7 +472,7 @@ export default function Price() {
                       <tbody>
                         {codingItems.map((item, index) => {
                           return (
-                            <tr>
+                            <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
                               <td className="price__description">
                                 {item.desc}
@@ -569,7 +572,7 @@ export default function Price() {
                       <tbody>
                         {wpItems.map((item, index) => {
                           return (
-                            <tr key={index}>
+                            <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
                               <td className="price__description">
                                 {item.desc}
@@ -599,7 +602,7 @@ export default function Price() {
                       <tbody>
                         {optionItems.map((item, index) => {
                           return (
-                            <tr>
+                            <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
                               <td className="price__description">
                                 {item.desc}
@@ -625,7 +628,10 @@ export default function Price() {
                   </div>
                 </div>
               </div>
-              <div className="total-price content__block">
+              <div
+                id="totalPrice"
+                className="content__block white-box totalPrice"
+              >
                 <div className="sub-total">
                   <span className="sub-total__label">制作費用</span>
                   <span className="sub-total__price">￥{productTotal}</span>
@@ -642,9 +648,17 @@ export default function Price() {
                   <span className="all-total__label">合計金額（目安）</span>
                   <span className="all-total__price">￥{allTotal}</span>
                 </div>
-                <small className="total-price__caption">
+                <small className="totalPrice__caption">
                   ※正式なお見積りではないため実際の金額は異なる可能性があります
                 </small>
+              </div>
+              <div className="scrollToTotalPrice">
+                <Link to="totalPrice" smooth={true} offset={-50}>
+                  <span className="icon">
+                    <FontAwesomeIcon icon={faCalculator} />
+                  </span>
+                  合計金額を見る
+                </Link>
               </div>
             </Content>
           </div>

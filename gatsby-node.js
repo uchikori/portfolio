@@ -198,3 +198,60 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 };
+
+// ライブラリをインポート
+const { BetaAnalyticsDataClient } = require("@google-analytics/data");
+const { log } = require("console");
+
+// オプションを指定して、BetaAnalyticsDataClientのインスタンスを作成
+const credentialsFilePath = "./my-project-ga4.json";
+const analyticsDataClient = new BetaAnalyticsDataClient({
+  keyFilename: credentialsFilePath,
+});
+
+const propertyId = "341162119";
+
+async function runReportFunc() {
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: "30daysAgo",
+        endDate: "today",
+      },
+    ],
+    dimensions: [
+      {
+        name: "pagePath",
+      },
+    ],
+    dimensionFilter: {
+      filter: {
+        fieldName: "pagePath",
+        stringFilter: {
+          matchType: "BEGINS_WITH",
+          value: "/web-tips/" /* ブログページに共通するパス */,
+        },
+      },
+    },
+    metrics: [
+      {
+        name: "screenPageViews",
+      },
+    ],
+    orderBys: [
+      {
+        desc: true,
+        metric: {
+          metricName: "screenPageViews",
+        },
+      },
+    ],
+  });
+
+  console.log("Report result:");
+  response.rows.forEach((row) => {
+    console.log(row.dimensionValues[0], row.metricValues[0]);
+  });
+}
+runReportFunc();

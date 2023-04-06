@@ -232,9 +232,6 @@
     }
     @include tab {
       padding: 8rem 0;
-      .price & {
-        padding: 8rem 0 15rem;
-      }
     }
     span {
       width: 1px;

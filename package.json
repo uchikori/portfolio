@@ -40,6 +40,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-scroll": "^1.8.9",
     "sass": "^1.57.1",
     "simplenoise": "^1.0.1",
     "three": "^0.150.1",
