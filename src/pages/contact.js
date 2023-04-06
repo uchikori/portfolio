@@ -6,7 +6,6 @@ import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { Seo } from "../components/Seo";
 import { useEffect } from "react";
-import { useRef } from "react";
 
 export default function Contact() {
   useEffect(() => {
@@ -261,8 +260,7 @@ export default function Contact() {
                         <button
                           className="submitbtn link-btn hoverTarget"
                           type="submit"
-                          data-formrun-invalid-input-error-text="正しく入力されていない項目があります"
-                          data-formrun-not-input-error-text="未入力の項目があります"
+                          data-formrun-error-text="未入力の項目があります"
                           data-formrun-submitting-text="送信中..."
                         >
                           SUBMIT
