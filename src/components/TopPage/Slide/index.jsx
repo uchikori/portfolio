@@ -163,7 +163,7 @@ export function Slide() {
                 placeholder="blurred"
                 alt=""
               />
-              <Three />
+              {/* <Three /> */}
             </figure>
             <FrontHeader
               titleImage="title-service"
