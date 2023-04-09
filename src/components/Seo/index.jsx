@@ -45,6 +45,7 @@ export const Seo = (props) => {
         crossOrigin="anonymous"
       ></script>
       <script defer src="https://sdk.form.run/js/v2/formrun.js"></script>
+      <script src="https://www.google.com/recaptcha/api.js"></script>
       <body className={pageClass} />
     </>
   );

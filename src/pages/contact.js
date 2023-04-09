@@ -408,6 +408,13 @@ export default function Contact() {
                           tabIndex="-1"
                         />
                       </div>
+                      <div className="contact-form__item">
+                        <span className="contact-form__item__label two-column"></span>
+                        <div
+                          class="g-recaptcha"
+                          data-sitekey="6Le8bG8lAAAAAAR95s8Uzx25i79ttkEq6M3fSyyV"
+                        ></div>
+                      </div>
 
                       <div className="contact-form__submit">
                         <button
