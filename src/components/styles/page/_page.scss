@@ -223,7 +223,7 @@
     @include pc-tab {
       width: 88vw;
     }
-    .web-tips-template {
+    .web-tips-template & {
       @include tab {
         width: 100%;
       }
