@@ -219,12 +219,14 @@
     }
     @include tab {
       width: 84vw;
-      .web-tips-template & {
-        width: 100%;
-      }
     }
     @include pc-tab {
       width: 88vw;
+    }
+    .web-tips-template {
+      @include tab {
+        width: 100%;
+      }
     }
   }
   &__contact {
