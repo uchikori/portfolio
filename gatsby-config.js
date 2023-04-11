@@ -80,5 +80,12 @@ module.exports = {
         icon: `src/images/favicon.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/`,
+        createLinkInHead: true,
+      },
+    },
   ],
 };
