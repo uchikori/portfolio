@@ -8,9 +8,9 @@ export const Load = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    window.addEventListener("load", () => {
       setLoading(false);
-    }, 100);
+    });
   }, []);
 
   return (
