@@ -9,6 +9,7 @@ export const Load = (props) => {
 
   useEffect(() => {
     window.addEventListener("load", () => {
+      alert("DOMloaded");
       setLoading(false);
     });
   }, []);
