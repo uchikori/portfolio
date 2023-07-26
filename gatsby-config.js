@@ -28,7 +28,7 @@ module.exports = {
       options: {
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://shin-pf.uchiwa-design.net/graphql`,
+          `http://shin-pf.uchiwa-design.net/graphql`,
         verbose: true,
         schema: {
           queryDepth: 15,
