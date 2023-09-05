@@ -16,7 +16,7 @@ module.exports = {
   siteMetadata: {
     title: `UCHIWA Creative Studio`,
     description: `札幌市のホームページ制作・デザイン制作スタジオ`,
-    siteUrl: `https://uchiwa-design.net`,
+    siteUrl: `https://www.uchiwa-design.net`,
     locale: `ja_JP`,
   },
   plugins: [
