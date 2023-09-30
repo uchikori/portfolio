@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
+import { Analytics } from "@vercel/analytics/react";
 import * as React from "react";
 
 export const Seo = (props) => {
@@ -46,6 +47,7 @@ export const Seo = (props) => {
       ></script>
       <script defer src="https://sdk.form.run/js/v2/formrun.js"></script>
       <script src="https://www.google.com/recaptcha/api.js"></script>
+      <Analytics />
       <body className={pageClass} />
     </>
   );
