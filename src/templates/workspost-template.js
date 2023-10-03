@@ -27,9 +27,13 @@ export default function WorksPost(props) {
           <MainVisual>
             <header className="main-visual__header">
               <div className="main-visual__title">
-                <Link to={`/`} className="single-category">
-                  client
-                </Link>
+                {data.wpPost.categories.nodes.map((node) => {
+                  return (
+                    <Link to={node.link} className="single-category">
+                      {node.name}
+                    </Link>
+                  );
+                })}
                 <h1 className="single-title">{data.wpPost.title}</h1>
                 <span className="single-en-title">
                   {data.wpPost.englishTitle.englishTitle}
@@ -210,6 +214,13 @@ export const query = graphql`
       content
       excerpt
       title
+      categories {
+        nodes {
+          link
+          name
+          slug
+        }
+      }
       galleryNumber {
         galleryNum
       }
