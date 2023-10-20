@@ -2,11 +2,17 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import * as THREE from "three";
+import * as dat from "lil-gui";
 
 export const Three = () => {
   const three = useRef(null);
 
   useEffect(() => {
+    /**
+     * デバッグ
+     */
+    // const gui = new dat.GUI();
+    // gui.add(document, "title");
     //サイズを指定
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -24,9 +30,14 @@ export const Three = () => {
     const scene = new THREE.Scene();
 
     //カメラを作成
-    const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000); //(画角, アスペクト比, 描画開始距離, 描画終了距離)
-    camera.position.set(1000, 0, 500); //カメラのセット位置（x, y, z）
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    const camera = new THREE.PerspectiveCamera(45, width / height, 1, 100); //(画角, アスペクト比, 描画開始距離, 描画終了距離)
+    camera.position.set(0, 0, 7); //カメラのセット位置（x, y, z）
+    // camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+    // const cameraFolder = gui.addFolder("camera");
+    // cameraFolder.add(camera.position, "x").min(-100).max(100).step(1);
+    // cameraFolder.add(camera.position, "y").min(-100).max(100).step(1);
+    // cameraFolder.add(camera.position, "z").min(-100).max(100).step(1);
 
     //コンテナーを作成
     const container = new THREE.Object3D();
@@ -49,11 +60,15 @@ export const Three = () => {
         })
     );
     //BOXの形状を作成
-    const geometry = new THREE.BoxGeometry(150, 150, 150); //球体
+    const geometry = new THREE.BoxGeometry(1, 1, 1); //球体
     //メッシュを作成
     const box = new THREE.Mesh(geometry, material);
     //シーンに追加
     scene.add(box);
+    // const boxFolder = gui.addFolder("box");
+    // boxFolder.add(box.position, "x").min(-100).max(100).step(1);
+    // boxFolder.add(box.position, "y").min(-100).max(100).step(1);
+    // boxFolder.add(box.position, "z").min(-100).max(100).step(1);
 
     //平行光源
     const directionalLight = new THREE.DirectionalLight(0xffffff);
@@ -62,7 +77,7 @@ export const Three = () => {
     const light = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(light);
 
-    const degree = 150;
+    const degree = 3;
     let boxPosition = box.position;
     // //x方向の速度
     // let vx = Math.random();
@@ -73,9 +88,9 @@ export const Three = () => {
     // //z方向の速度
     // let vz = Math.random();
     const velocity = new THREE.Vector3(
-      Math.random(),
-      Math.random(),
-      Math.random()
+      Math.random() * 0.02,
+      Math.random() * 0.02,
+      Math.random() * 0.02
     );
     function tick() {
       box.rotation.y += 0.01;
@@ -88,7 +103,7 @@ export const Three = () => {
       if (Math.abs(boxPosition.y) > degree) {
         velocity.y *= -1;
       }
-      if (Math.abs(boxPosition.z) > degree) {
+      if (Math.abs(boxPosition.z) > degree * 1.5) {
         velocity.z *= -1;
       }
 
