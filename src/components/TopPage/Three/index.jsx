@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import * as THREE from "three";
-import * as dat from "lil-gui";
+// import * as dat from "lil-gui";
 
 export const Three = () => {
   const three = useRef(null);
@@ -32,20 +32,11 @@ export const Three = () => {
     //カメラを作成
     const camera = new THREE.PerspectiveCamera(45, width / height, 1, 100); //(画角, アスペクト比, 描画開始距離, 描画終了距離)
     camera.position.set(0, 0, 7); //カメラのセット位置（x, y, z）
-    // camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-    // const cameraFolder = gui.addFolder("camera");
-    // cameraFolder.add(camera.position, "x").min(-100).max(100).step(1);
-    // cameraFolder.add(camera.position, "y").min(-100).max(100).step(1);
-    // cameraFolder.add(camera.position, "z").min(-100).max(100).step(1);
-
-    //コンテナーを作成
-    const container = new THREE.Object3D();
-    scene.add(container);
     //画像読み込みを定義
     const loader = new THREE.TextureLoader();
     //マテリアルを作成
-    const material = [
+    const materials = [
       "texture-1.jpg",
       "texture-2.jpg",
       "texture-3.jpg",
@@ -62,13 +53,9 @@ export const Three = () => {
     //BOXの形状を作成
     const geometry = new THREE.BoxGeometry(1, 1, 1); //球体
     //メッシュを作成
-    const box = new THREE.Mesh(geometry, material);
+    const box = new THREE.Mesh(geometry, materials);
     //シーンに追加
     scene.add(box);
-    // const boxFolder = gui.addFolder("box");
-    // boxFolder.add(box.position, "x").min(-100).max(100).step(1);
-    // boxFolder.add(box.position, "y").min(-100).max(100).step(1);
-    // boxFolder.add(box.position, "z").min(-100).max(100).step(1);
 
     //平行光源
     const directionalLight = new THREE.DirectionalLight(0xffffff);
@@ -78,23 +65,21 @@ export const Three = () => {
     scene.add(light);
 
     const degree = 3;
-    let boxPosition = box.position;
-    // //x方向の速度
-    // let vx = Math.random();
 
-    // //y方向の速度
-    // let vy = Math.random();
-
-    // //z方向の速度
-    // let vz = Math.random();
+    //速度
     const velocity = new THREE.Vector3(
       Math.random() * 0.02,
       Math.random() * 0.02,
       Math.random() * 0.02
     );
+    //フレームごとに実行されるループイベント
     function tick() {
+      renderer.render(scene, camera);
+
       box.rotation.y += 0.01;
       box.rotation.x += 0.01;
+
+      const boxPosition = box.position;
 
       boxPosition.add(velocity);
       if (Math.abs(boxPosition.x) > degree) {
@@ -107,34 +92,17 @@ export const Three = () => {
         velocity.z *= -1;
       }
 
-      renderer.render(scene, camera);
-      requestAnimationFrame(tick);
+      window.requestAnimationFrame(tick);
     }
     //初回実行
     tick();
-    //マイフレームごとに実行されるループイベント
-    // function tick() {
-    //   box.rotation.y += 0.01;
-    //   box.rotation.x += 0.01;
-    //   boxPosition.x += vx;
-    //   boxPosition.y += vy;
-    //   boxPosition.z += vz;
-    //   // console.log(boxPosition);
-    //   if (boxPosition.x > degree || boxPosition.x < -degree) {
-    //     vx *= -1;
-    //   }
-    //   if (boxPosition.y > degree || boxPosition.y < -degree) {
-    //     vy *= -1;
-    //   }
-    //   if (boxPosition.z > degree || boxPosition.z < -degree) {
-    //     vz *= -1;
-    //   }
-    //   requestAnimationFrame(tick);
 
-    //   //レンダリング
-    //   renderer.render(scene, camera); //レンダリング（更新処理）
-    // }
-  });
+    return () => {
+      // コンポーネントがアンマウントされたときに実行するクリーンアップ
+      renderer.dispose();
+      cancelAnimationFrame(tick);
+    };
+  }, []);
   return (
     <canvas
       id="service-canvas"
