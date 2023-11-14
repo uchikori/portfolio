@@ -62,7 +62,7 @@ export default function Price() {
     {
       name: "下層ページデザイン",
       desc: "PC用下層ページのデザイン",
-      price: 20000,
+      price: 25000,
       quantity: 0,
       totalPrice: 0,
     },
@@ -107,7 +107,7 @@ export default function Price() {
     {
       name: "TOPページレスポンシブ",
       desc: "デバイス幅に合わせてのレイアウト調整",
-      price: 10000,
+      price: 20000,
       quantity: 0,
       totalPrice: 0,
     },
@@ -121,7 +121,7 @@ export default function Price() {
     {
       name: "下層ページレスポンシブ",
       desc: "デバイス幅に合わせてのレイアウト調整",
-      price: 5000,
+      price: 10000,
       quantity: 0,
       totalPrice: 0,
     },
