@@ -14,7 +14,7 @@
   bottom: 0;
   padding-bottom: 23vh;
   overflow: hidden;
-  z-index: 1;
+  z-index: 1000;
   @include wide-pc {
     left: 10%;
   }
