@@ -12,6 +12,7 @@ const path = require("path");
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+console.log(__dirname);
 module.exports = {
   siteMetadata: {
     title: `UCHIWA Creative Studio`,
@@ -46,7 +47,7 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         sassOptions: {
-          includePaths: path.join[(__dirname, "components/styles")],
+          includePaths: path.join[(__dirname, "src/components/styles")],
         },
         // Override the file regex for Sass
         sassRuleTest: /\.s(a|c)ss$/,
