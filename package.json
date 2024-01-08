@@ -20,7 +20,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@google-analytics/data": "^3.2.1",
+    "@hookform/resolvers": "^3.3.4",
     "@vercel/analytics": "^1.0.2",
+    "axios": "^1.6.5",
     "cheerio": "^1.0.0-rc.12",
     "gatsby": "^5.7.0",
     "gatsby-plugin-google-tagmanager": "^5.8.0",
@@ -43,11 +45,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.49.2",
     "react-scroll": "^1.8.9",
     "sass": "^1.57.1",
     "simplenoise": "^1.0.1",
     "three": "^0.150.1",
-    "vivus": "^0.4.6"
+    "vivus": "^0.4.6",
+    "yup": "^1.3.3"
   },
   "repository": {
     "type": "git",

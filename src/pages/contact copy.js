@@ -5,78 +5,19 @@ import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { Seo } from "../components/Seo";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect } from "react";
 import { graphql } from "gatsby";
-import axios from "axios";
-import { useForm } from "react-hook-form";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Contact() {
-  //WordPressのURL
-  const WEBSITE_URL = "https://shin-pf.uchiwa-design.net";
-  //Contact Form 7で作ったフォームID
-  const Form_ID = "058b0d5";
-  const [token, setToken] = useState("");
-  const { register, handleSubmit } = useForm();
-  /**
-   * フォームで submit が発生したときの処理
-   * - contact form 7 の機能にアクセスしてメールを送信する
-   * - フォームデータは、React Hook Form から提供される
-   */
-  const onSubmit = useCallback(
-    (data) => {
-      const bodyFormData = new FormData();
-      bodyFormData.set("your-name", data["your-name"]);
-      bodyFormData.set("your-kana", data["your-kana"]);
-      bodyFormData.set("your-company", data["your-company"]);
-      bodyFormData.set("your-mail", data["your-mail"]);
-      bodyFormData.set("your-menu", data["your-menu"]);
-      bodyFormData.set("your-message", data["your-message"]);
-      bodyFormData.set("your-accept", data["your-accept"]);
-
-      axios({
-        method: "post",
-        url: `${WEBSITE_URL}/wp-json/contact-form-7/v1/contact-forms/${Form_ID}/feedback`,
-        data: bodyFormData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      })
-        .then((response) => {
-          console.log("成功");
-        })
-        .catch((error) => {
-          console.log("失敗");
-        });
-      console.log(data);
-    },
-
-    [token]
-  );
-  /**
-   * コンポーネントがマウントされたときの処理
-   * JWT トークンを取得してステートに格納する
-   */
   useEffect(() => {
-    axios({
-      method: "post",
-      url: `${WEBSITE_URL}/wp-json/jwt-auth/v1/token`,
-      data: {
-        username: "contact for customer",
-        password: "yuuki0507",
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        setToken(response.data.token);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    window.Formrun?.init(".formrun");
+    // const head = document.getElementsByTagName("head")[0];
+    // const scriptUrl = document.createElement("script");
+    // scriptUrl.src = "https://sdk.form.run/js/v2/formrun.js";
+    // head.appendChild(scriptUrl);
+    // return () => {
+    //   head.removeChild(scriptUrl);
+    // };
   }, []);
   return (
     <>
@@ -102,7 +43,12 @@ export default function Contact() {
             </MainVisual>
             <Content>
               <div className="content__block">
-                <form className="formrun" onSubmit={handleSubmit(onSubmit)}>
+                <form
+                  className="formrun"
+                  action="https://form.run/api/v1/r/5skolcbezps0ffixpvsg03uw"
+                  method="post"
+                  data-formrun-saving="true"
+                >
                   <div className="form-inner">
                     <div className="contact-form">
                       <div className="contact-form__item">
@@ -120,8 +66,11 @@ export default function Contact() {
                             type="text"
                             className="your-name type-text"
                             placeholder="山田 太郎"
-                            {...register("your-name", { required: true })}
+                            data-formrun-required
                           />
+                          <div data-formrun-show-if-error="your-name">
+                            名前を正しく入力してください
+                          </div>
                         </span>
                       </div>
 
@@ -140,8 +89,11 @@ export default function Contact() {
                             type="text"
                             className="your-kana type-text"
                             placeholder="ヤマダ タロウ"
-                            {...register("your-kana", { required: true })}
+                            data-formrun-required
                           />
+                          <div data-formrun-show-if-error="your-kana">
+                            フリガナを正しく入力してください
+                          </div>
                         </span>
                       </div>
 
@@ -162,7 +114,6 @@ export default function Contact() {
                             type="text "
                             className="your-company type-text"
                             placeholder="会社名"
-                            {...register("your-name", { required: false })}
                           />
                         </span>
                       </div>
@@ -185,8 +136,12 @@ export default function Contact() {
                             type="email"
                             className="type-email"
                             placeholder="example@email.com"
-                            {...register("your-mail", { required: true })}
+                            data-formrun-type="email"
+                            data-formrun-required
                           />
+                          <div data-formrun-show-if-error="your-mail">
+                            メールアドレスを正しく入力してください
+                          </div>
                         </span>
                       </div>
 
@@ -206,7 +161,7 @@ export default function Contact() {
                             id="your-menu"
                             className="type-select"
                             name="your-menu"
-                            {...register("your-menu", { required: true })}
+                            data-formrun-required
                           >
                             <option>以下から選択してください</option>
                             <option value="公開中の実績について（削除依頼等）">
@@ -222,6 +177,9 @@ export default function Contact() {
                               その他ご質問等
                             </option>
                           </select>
+                          <div data-formrun-show-if-error="your-menu">
+                            お問い合わせ種別を正しく選択してください
+                          </div>
                         </span>
                       </div>
 
@@ -243,8 +201,12 @@ export default function Contact() {
                             rows={16}
                             name="your-message"
                             className="type-textarea"
-                            {...register("your-message", { required: true })}
+                            data-formrun-required
                           ></textarea>
+
+                          <div data-formrun-show-if-error="your-message">
+                            お問い合わせ内容を入力してください
+                          </div>
                         </span>
                       </div>
 
@@ -412,20 +374,54 @@ export default function Contact() {
                           >
                             <input
                               type="checkbox"
-                              name="your-accept"
+                              name="個人情報利用同意"
                               className="type-checkbox"
-                              {...register("your-accept", { required: true })}
+                              data-formrun-required
                             />
                             <span className="wpcf7-list-item-label">
                               プライバシーポリシーに同意する
                             </span>
                           </label>
+
+                          <div data-formrun-show-if-error="個人情報利用同意">
+                            同意してください
+                          </div>
                         </div>
                       </div>
+
+                      <div
+                        className="_formrun_gotcha"
+                        style={{
+                          position: "absolute",
+                          height: "1px",
+                          width: "1px",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <label htmlFor="_formrun_gotcha">
+                          If you are a human, ignore this field
+                        </label>
+                        <input
+                          type="text"
+                          name="_formrun_gotcha"
+                          id="_formrun_gotcha"
+                          tabIndex="-1"
+                        />
+                      </div>
+                      <div className="contact-form__item">
+                        <span className="contact-form__item__label two-column"></span>
+                        <div
+                          className="g-recaptcha eight-column"
+                          data-sitekey="6Le8bG8lAAAAAAR95s8Uzx25i79ttkEq6M3fSyyV"
+                        ></div>
+                      </div>
+
                       <div className="contact-form__submit">
                         <button
                           className="submitbtn link-btn hoverTarget"
                           type="submit"
+                          data-formrun-error-text="未入力の項目があります"
+                          data-formrun-submitting-text="送信中..."
                         >
                           SUBMIT
                         </button>
