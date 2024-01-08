@@ -49,6 +49,7 @@ export default function Contact() {
           console.log("成功");
         })
         .catch((error) => {
+          console.error(error);
           console.log("失敗");
         });
       console.log(data);
