@@ -45,8 +45,8 @@ export const Seo = (props) => {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842486595943279"
         crossOrigin="anonymous"
       ></script>
-      <script defer src="https://sdk.form.run/js/v2/formrun.js"></script>
-      <script src="https://www.google.com/recaptcha/api.js"></script>
+      {/* <script defer src="https://sdk.form.run/js/v2/formrun.js"></script>
+      <script src="https://www.google.com/recaptcha/api.js"></script> */}
       <Analytics />
       <body className={pageClass} />
     </>

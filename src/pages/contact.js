@@ -5,7 +5,7 @@ import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
 import { Seo } from "../components/Seo";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { graphql } from "gatsby";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Contact() {
+  const form = useRef(null);
   //WordPressのURL
   const WEBSITE_URL = "https://shin-pf.uchiwa-design.net";
   //Contact Form 7で作ったフォームID
@@ -51,8 +52,8 @@ export default function Contact() {
           console.log("失敗");
         });
       console.log(data);
+      console.log(bodyFormData);
     },
-
     [token]
   );
   /**
@@ -73,6 +74,7 @@ export default function Contact() {
     })
       .then((response) => {
         setToken(response.data.token);
+        console.log(response);
       })
       .catch((error) => {
         console.error(error);
@@ -102,7 +104,11 @@ export default function Contact() {
             </MainVisual>
             <Content>
               <div className="content__block">
-                <form className="formrun" onSubmit={handleSubmit(onSubmit)}>
+                <form
+                  ref={form}
+                  className="formrun"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <div className="form-inner">
                     <div className="contact-form">
                       <div className="contact-form__item">
