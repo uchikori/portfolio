@@ -162,7 +162,7 @@ export default function Contact() {
                             type="text "
                             className="your-company type-text"
                             placeholder="会社名"
-                            {...register("your-name", { required: false })}
+                            {...register("your-company", { required: false })}
                           />
                         </span>
                       </div>
