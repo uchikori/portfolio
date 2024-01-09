@@ -13,6 +13,13 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Contact() {
+  const formEl = useRef(null);
+  const onSubmit = (token) => {
+    const form = formEl;
+    if (form.reportValidity()) {
+      form.submit();
+    }
+  };
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -38,6 +45,7 @@ export default function Contact() {
             <Content>
               <div className="content__block">
                 <form
+                  ref={formEl}
                   className="formrun"
                   action="https://ssgform.com/s/kuVGTEUHUB95"
                   method="post"
@@ -47,15 +55,15 @@ export default function Contact() {
                       <div className="contact-form__item">
                         <label
                           className="contact-form__item__label two-column"
-                          htmlFor="your-name"
+                          htmlFor="お名前"
                         >
                           Name
                           <span>*</span>
                         </label>
                         <span className="wpcf7-form-control-wrap">
                           <input
-                            id="your-name"
-                            name="your-name"
+                            id="お名前"
+                            name="お名前"
                             type="text"
                             className="your-name type-text"
                             placeholder="山田 太郎"
@@ -66,15 +74,15 @@ export default function Contact() {
                       <div className="contact-form__item">
                         <label
                           className="contact-form__item__label two-column"
-                          htmlFor="your-kana"
+                          htmlFor="フリガナ"
                         >
                           Kana
                           <span>*</span>
                         </label>
                         <span className="wpcf7-form-control-wrap">
                           <input
-                            id="your-kana"
-                            name="your-kana"
+                            id="フリガナ"
+                            name="フリガナ"
                             type="text"
                             className="your-kana type-text"
                             placeholder="ヤマダ タロウ"
@@ -85,17 +93,17 @@ export default function Contact() {
                       <div className="contact-form__item">
                         <label
                           className="contact-form__item__label two-column"
-                          htmlFor="your-company"
+                          htmlFor="会社名"
                         >
                           Company-name
                         </label>
                         <span
                           className="wpcf7-form-control-wrap"
-                          data-name="your-company"
+                          data-name="会社名"
                         >
                           <input
-                            id="your-company"
-                            name="your-company"
+                            id="会社名"
+                            name="会社名"
                             type="text "
                             className="your-company type-text"
                             placeholder="会社名"
@@ -106,18 +114,18 @@ export default function Contact() {
                       <div className="contact-form__item">
                         <label
                           className="contact-form__item__label two-column"
-                          htmlFor="your-mail"
+                          htmlFor="メールアドレス"
                         >
                           メールアドレス
                           <span>*</span>
                         </label>
                         <span
                           className="wpcf7-form-control-wrap"
-                          data-name="your-mail"
+                          data-name="メールアドレス"
                         >
                           <input
-                            id="your-mail"
-                            name="your-mail"
+                            id="メールアドレス"
+                            name="メールアドレス"
                             type="email"
                             className="type-email"
                             placeholder="example@email.com"
@@ -128,20 +136,16 @@ export default function Contact() {
                       <div className="contact-form__item">
                         <label
                           className="contact-form__item__label two-column"
-                          htmlFor="your-menu"
+                          htmlFor="種別"
                         >
                           Type
                           <span>*</span>
                         </label>
                         <span
                           className="wpcf7-form-control-wrap"
-                          data-name="your-menu"
+                          data-name="種別"
                         >
-                          <select
-                            id="your-menu"
-                            className="type-select"
-                            name="your-menu"
-                          >
+                          <select id="種別" className="type-select" name="種別">
                             <option>以下から選択してください</option>
                             <option value="公開中の実績について（削除依頼等）">
                               公開中の実績について（削除依頼等）
@@ -162,20 +166,20 @@ export default function Contact() {
                       <div className="contact-form__item align-top">
                         <label
                           className="contact-form__item__label two-column"
-                          htmlFor="your-message"
+                          htmlFor="メッセージ"
                         >
                           Message
                           <span>*</span>
                         </label>
                         <span
                           className="wpcf7-form-control-wrap"
-                          data-name="your-message"
+                          data-name="メッセージ"
                         >
                           <textarea
-                            id="your-message"
+                            id="メッセージ"
                             cols={82}
                             rows={16}
-                            name="your-message"
+                            name="メッセージ"
                             className="type-textarea"
                           ></textarea>
                         </span>
@@ -345,7 +349,7 @@ export default function Contact() {
                           >
                             <input
                               type="checkbox"
-                              name="your-accept"
+                              name="プライバシーポリシーへの同意"
                               className="type-checkbox"
                             />
                             <span className="wpcf7-list-item-label">
@@ -354,6 +358,21 @@ export default function Contact() {
                           </label>
                         </div>
                       </div>
+
+                      <div className="contact-form__item">
+                        <label className="contact-form__item__label two-column"></label>
+                        <span className="wpcf7-form-control-wrap">
+                          <button
+                            className="g-recaptcha"
+                            data-sitekey="6LeDGUspAAAAAC0bwp7I5bzq_Cuhok18rbL7Sj1W"
+                            data-callback="onSubmit"
+                            data-action="submit"
+                          >
+                            送信する
+                          </button>
+                        </span>
+                      </div>
+
                       <div className="contact-form__submit">
                         <button
                           className="submitbtn link-btn hoverTarget"
