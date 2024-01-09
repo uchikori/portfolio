@@ -20,6 +20,13 @@ export default function Contact() {
       form.submit();
     }
   };
+  useEffect(() => {
+    window["onSubmit"] = onSubmit;
+    return () => {
+      delete window["onSubmit"];
+    };
+  }, []);
+
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -359,28 +366,28 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      <div className="contact-form__item">
+                      <div className="contact-form__submit">
                         <label className="contact-form__item__label two-column"></label>
                         <span className="wpcf7-form-control-wrap">
                           <button
-                            className="g-recaptcha"
+                            className="g-recaptcha submitbtn link-btn hoverTarget"
                             data-sitekey="6LeDGUspAAAAAC0bwp7I5bzq_Cuhok18rbL7Sj1W"
                             data-callback="onSubmit"
                             data-action="submit"
                           >
-                            送信する
+                            SUBMIT
                           </button>
                         </span>
                       </div>
 
-                      <div className="contact-form__submit">
+                      {/* <div className="contact-form__submit">
                         <button
                           className="submitbtn link-btn hoverTarget"
                           type="submit"
                         >
                           SUBMIT
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </form>
