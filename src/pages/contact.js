@@ -358,7 +358,10 @@ export default function Contact() {
                         <span className="wpcf7-form-control-wrap">
                           <div
                             className="g-recaptcha"
-                            data-sitekey={SITE_KEY}
+                            data-sitekey={
+                              SITE_KEY ||
+                              `6LdGI0spAAAAAKgnx-XxZ6k-aGnupQRr-HRe4SJ4`
+                            }
                           ></div>
                         </span>
                       </div>
