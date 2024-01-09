@@ -16,6 +16,7 @@ export default function Contact() {
   const formEl = useRef(null);
   const onSubmit = (token) => {
     const form = formEl;
+    console.log(form);
     if (form.reportValidity()) {
       form.submit();
     }
@@ -366,28 +367,24 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      <div className="contact-form__submit">
+                      <div className="contact-form__item">
                         <label className="contact-form__item__label two-column"></label>
                         <span className="wpcf7-form-control-wrap">
-                          <button
-                            className="g-recaptcha submitbtn link-btn hoverTarget"
-                            data-sitekey="6LeDGUspAAAAAC0bwp7I5bzq_Cuhok18rbL7Sj1W"
-                            data-callback="onSubmit"
-                            data-action="submit"
-                          >
-                            SUBMIT
-                          </button>
+                          <div
+                            class="g-recaptcha"
+                            data-sitekey="6LdGI0spAAAAAO32DwNs3KNGutuhFtog1YBNahcO"
+                          ></div>
                         </span>
                       </div>
 
-                      {/* <div className="contact-form__submit">
+                      <div className="contact-form__submit">
                         <button
                           className="submitbtn link-btn hoverTarget"
                           type="submit"
                         >
                           SUBMIT
                         </button>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </form>
