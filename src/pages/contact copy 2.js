@@ -13,6 +13,75 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Contact() {
+  const form = useRef(null);
+  //WordPressのURL
+  const WEBSITE_URL = "https://shin-pf.uchiwa-design.net";
+  //Contact Form 7で作ったフォームID
+  const Form_ID = "058b0d5";
+  const [token, setToken] = useState("");
+  const { register, handleSubmit } = useForm();
+  /**
+   * フォームで submit が発生したときの処理
+   * - contact form 7 の機能にアクセスしてメールを送信する
+   * - フォームデータは、React Hook Form から提供される
+   */
+  const onSubmit = useCallback(
+    (data) => {
+      const bodyFormData = new FormData();
+      bodyFormData.set("your-name", data["your-name"]);
+      bodyFormData.set("your-kana", data["your-kana"]);
+      bodyFormData.set("your-company", data["your-company"]);
+      bodyFormData.set("your-mail", data["your-mail"]);
+      bodyFormData.set("your-menu", data["your-menu"]);
+      bodyFormData.set("your-message", data["your-message"]);
+      bodyFormData.set("your-accept", data["your-accept"]);
+
+      axios({
+        method: "post",
+        url: `${WEBSITE_URL}/wp-json/contact-form-7/v1/contact-forms/${Form_ID}/feedback`,
+        data: bodyFormData,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      })
+        .then((response) => {
+          console.log("成功");
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+          console.log("失敗");
+        });
+      console.log(data);
+      console.log(bodyFormData);
+    },
+    [token]
+  );
+  /**
+   * コンポーネントがマウントされたときの処理
+   * JWT トークンを取得してステートに格納する
+   */
+  useEffect(() => {
+    axios({
+      method: "post",
+      url: `${WEBSITE_URL}/wp-json/jwt-auth/v1/token`,
+      data: {
+        username: "contact for customer",
+        password: "yuuki0507",
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        setToken(response.data.token);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -38,9 +107,9 @@ export default function Contact() {
             <Content>
               <div className="content__block">
                 <form
+                  ref={form}
                   className="formrun"
-                  action="https://ssgform.com/s/kuVGTEUHUB95"
-                  method="post"
+                  onSubmit={handleSubmit(onSubmit)}
                 >
                   <div className="form-inner">
                     <div className="contact-form">
@@ -59,6 +128,7 @@ export default function Contact() {
                             type="text"
                             className="your-name type-text"
                             placeholder="山田 太郎"
+                            {...register("your-name", { required: true })}
                           />
                         </span>
                       </div>
@@ -78,6 +148,7 @@ export default function Contact() {
                             type="text"
                             className="your-kana type-text"
                             placeholder="ヤマダ タロウ"
+                            {...register("your-kana", { required: true })}
                           />
                         </span>
                       </div>
@@ -99,6 +170,7 @@ export default function Contact() {
                             type="text "
                             className="your-company type-text"
                             placeholder="会社名"
+                            {...register("your-company", { required: false })}
                           />
                         </span>
                       </div>
@@ -121,6 +193,7 @@ export default function Contact() {
                             type="email"
                             className="type-email"
                             placeholder="example@email.com"
+                            {...register("your-mail", { required: true })}
                           />
                         </span>
                       </div>
@@ -141,6 +214,7 @@ export default function Contact() {
                             id="your-menu"
                             className="type-select"
                             name="your-menu"
+                            {...register("your-menu", { required: true })}
                           >
                             <option>以下から選択してください</option>
                             <option value="公開中の実績について（削除依頼等）">
@@ -177,6 +251,7 @@ export default function Contact() {
                             rows={16}
                             name="your-message"
                             className="type-textarea"
+                            {...register("your-message", { required: true })}
                           ></textarea>
                         </span>
                       </div>
@@ -347,6 +422,7 @@ export default function Contact() {
                               type="checkbox"
                               name="your-accept"
                               className="type-checkbox"
+                              {...register("your-accept", { required: true })}
                             />
                             <span className="wpcf7-list-item-label">
                               プライバシーポリシーに同意する
