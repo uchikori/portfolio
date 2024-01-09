@@ -13,21 +13,8 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Contact() {
-  const formEl = useRef(null);
-  const onSubmit = (token) => {
-    const form = formEl;
-    console.log(form);
-    if (form.reportValidity()) {
-      form.submit();
-    }
-  };
-  useEffect(() => {
-    window["onSubmit"] = onSubmit;
-    return () => {
-      delete window["onSubmit"];
-    };
-  }, []);
-
+  const SITE_KEY = process.env.SITE_KEY;
+  console.log(SITE_KEY);
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -53,7 +40,6 @@ export default function Contact() {
             <Content>
               <div className="content__block">
                 <form
-                  ref={formEl}
                   className="formrun"
                   action="https://ssgform.com/s/kuVGTEUHUB95"
                   method="post"
@@ -371,8 +357,8 @@ export default function Contact() {
                         <label className="contact-form__item__label two-column"></label>
                         <span className="wpcf7-form-control-wrap">
                           <div
-                            class="g-recaptcha"
-                            data-sitekey="6LdGI0spAAAAAKgnx-XxZ6k-aGnupQRr-HRe4SJ4"
+                            className="g-recaptcha"
+                            data-sitekey={SITE_KEY}
                           ></div>
                         </span>
                       </div>
