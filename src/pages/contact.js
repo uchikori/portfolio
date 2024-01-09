@@ -372,7 +372,7 @@ export default function Contact() {
                         <span className="wpcf7-form-control-wrap">
                           <div
                             class="g-recaptcha"
-                            data-sitekey="6LdGI0spAAAAAO32DwNs3KNGutuhFtog1YBNahcO"
+                            data-sitekey="6LdGI0spAAAAAKgnx-XxZ6k-aGnupQRr-HRe4SJ4"
                           ></div>
                         </span>
                       </div>
