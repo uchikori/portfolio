@@ -10,11 +10,11 @@ import { graphql } from "gatsby";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { Form } from "../components/form";
 
-export default function Contact() {
-  //recapchaのシークレットキーを取得
-  const SITE_KEY = process.env.REACT_APP_SITE_KEY;
-  console.log(SITE_KEY);
+//recapchaのシークレットキーを取得
+const SITE_KEY = process.env.REACT_APP_SITE_KEY;
+console.log(SITE_KEY);
 
+export default function Contact() {
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -39,11 +39,7 @@ export default function Contact() {
             </MainVisual>
             <Content>
               <div className="content__block">
-                <GoogleReCaptchaProvider
-                  reCaptchaKey={
-                    SITE_KEY || `6Ld34EspAAAAAAUQeyTW0zupJBPiYLiSFXQxfBXD`
-                  }
-                >
+                <GoogleReCaptchaProvider reCaptchaKey={SITE_KEY}>
                   <Form />
                 </GoogleReCaptchaProvider>
               </div>
