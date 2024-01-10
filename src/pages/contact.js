@@ -19,7 +19,7 @@ import {
 export default function Contact() {
   //recapchaのシークレットキーを取得
   const SITE_KEY = process.env.REACT_APP_SITE_KEY;
-  console.log(REACT_APP_SITE_KEY);
+  console.log(SITE_KEY);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const handleReCaptchaVerify = useCallback(async () => {
