@@ -11,7 +11,7 @@ import { navigate } from "gatsby";
 const schema = yup.object().shape({
   name: yup.string().required("入力必須の項目です"),
   kana: yup.string().required("入力必須の項目です"),
-  company: yup.string().nullable(),
+  company: yup.string(),
   email: yup
     .string()
     .email("※正しいメールアドレスの形式でご入力ください")
