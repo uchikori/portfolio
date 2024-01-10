@@ -39,7 +39,9 @@ export default function Contact() {
             </MainVisual>
             <Content>
               <div className="content__block">
-                <GoogleReCaptchaProvider reCaptchaKey={SITE_KEY}>
+                <GoogleReCaptchaProvider
+                  reCaptchaKey={process.env.REACT_APP_SITE_KEY}
+                >
                   <Form />
                 </GoogleReCaptchaProvider>
               </div>
