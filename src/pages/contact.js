@@ -7,14 +7,7 @@ import { Content } from "../components/global/Content";
 import { Seo } from "../components/Seo";
 
 import { graphql } from "gatsby";
-import axios from "axios";
-import { Controller, useForm } from "react-hook-form";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha,
-} from "react-google-recaptcha-v3";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { Form } from "../components/form";
 
 export default function Contact() {
@@ -46,7 +39,11 @@ export default function Contact() {
             </MainVisual>
             <Content>
               <div className="content__block">
-                <GoogleReCaptchaProvider reCaptchaKey={SITE_KEY}>
+                <GoogleReCaptchaProvider
+                  reCaptchaKey={
+                    SITE_KEY || `6Ld34EspAAAAAAUQeyTW0zupJBPiYLiSFXQxfBXD`
+                  }
+                >
                   <Form />
                 </GoogleReCaptchaProvider>
               </div>
