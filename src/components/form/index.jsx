@@ -324,7 +324,7 @@ export const Form = () => {
                             <div
                               className="g-recaptcha"
                               data-sitekey={
-                                SITE_KEY ||
+                                GATSBY_SITE_KEY ||
                                 `6LdGI0spAAAAAKgnx-XxZ6k-aGnupQRr-HRe4SJ4`
                               }
                             ></div>
