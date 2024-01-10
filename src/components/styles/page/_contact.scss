@@ -123,6 +123,11 @@
         color: #d40a83;
         transform: scale(1.02);
       }
+      &:disabled {
+        cursor: default;
+        color: #cccccc;
+        transform: none;
+      }
       @include wide-pc {
         font-size: 40px;
         padding: 22px 96px;
@@ -186,6 +191,11 @@
         li {
           padding: 0.3rem 0;
         }
+      }
+    }
+    P {
+      &.error {
+        @include font-style(1.4rem, red, 400);
       }
     }
   }

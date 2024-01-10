@@ -1,12 +1,64 @@
 import * as React from "react";
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { Controller, useForm } from "react-hook-form";
-import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
+//フォームのバリデーション
+const schema = yup.object().shape({
+  name: yup.string().required("入力必須の項目です"),
+  kana: yup.string().required("入力必須の項目です"),
+  company: yup.string().nullable(),
+  email: yup
+    .string()
+    .email("※正しいメールアドレスの形式でご入力ください")
+    .required("※入力必須の項目です"),
+  type: yup
+    .string()
+    .oneOf([
+      "公開中の実績について（削除依頼等）",
+      "その他の制作実績について（個別にお見せできます）",
+      "お仕事依頼のご相談",
+      "その他ご質問等",
+    ])
+    .required("※種別を選択してください"),
+  textarea: yup.string().required("入力必須の項目です"),
+});
+
 export const Form = () => {
+  //ポリシーチェックボックスの状態
+  const [isChecked, setIsChecked] = useState(false);
+
+  //useFormの設定
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "all",
+    defaultValues: {
+      name: "",
+      kana: "",
+      company: "",
+      email: "",
+      type: "その他",
+      textarea: "",
+    },
+    resolver: yupResolver(schema),
+  });
+
+  const send = (data) => {
+    console.log(data);
+    axios.post("https://ssgform.com/s/kuVGTEUHUB95", data, {
+      headers: {
+        "content-type": "multipart/form-data", //axiosでフォーム送信する時に必要なheader情報
+      },
+    });
+  };
+
+  //Googlerecapthcaの設定
   const { executeRecaptcha } = useGoogleReCaptcha();
   const handleReCaptchaVerify = useCallback(async () => {
     if (!executeRecaptcha) {
@@ -19,63 +71,69 @@ export const Form = () => {
   useEffect(() => {
     handleReCaptchaVerify();
   }, [handleReCaptchaVerify]);
+
   return (
     <form
       className="formrun"
-      action="https://ssgform.com/s/kuVGTEUHUB95"
-      method="post"
+      // action="https://ssgform.com/s/kuVGTEUHUB95"
+      // method="post"
+      onSubmit={handleSubmit(send)}
     >
       <div className="form-inner">
         <div className="contact-form">
           <div className="contact-form__item">
             <label
               className="contact-form__item__label two-column"
-              htmlFor="お名前"
+              htmlFor="name"
             >
               Name
               <span>*</span>
             </label>
             <span className="wpcf7-form-control-wrap">
               <input
-                id="お名前"
-                name="お名前"
+                id="name"
+                name="name"
                 type="text"
                 className="your-name type-text"
                 placeholder="山田 太郎"
+                {...register("name", { required: "入力必須の項目です" })}
               />
+              <p className="error">{errors.name?.message}</p>
             </span>
           </div>
 
           <div className="contact-form__item">
             <label
               className="contact-form__item__label two-column"
-              htmlFor="フリガナ"
+              htmlFor="kana"
             >
               Kana
               <span>*</span>
             </label>
             <span className="wpcf7-form-control-wrap">
               <input
-                id="フリガナ"
-                name="フリガナ"
+                id="kana"
+                name="kana"
                 type="text"
                 className="your-kana type-text"
                 placeholder="ヤマダ タロウ"
+                {...register("kana", { required: "入力必須の項目です" })}
               />
+              <p className="error">{errors.kana?.message}</p>
             </span>
           </div>
 
           <div className="contact-form__item">
             <label
               className="contact-form__item__label two-column"
-              htmlFor="会社名"
+              htmlFor="company"
             >
               Company-name
             </label>
-            <span className="wpcf7-form-control-wrap" data-name="会社名">
+            <span className="wpcf7-form-control-wrap">
               <input
-                id="会社名"
-                name="会社名"
+                id="company"
+                name="company"
                 type="text "
                 className="your-company type-text"
                 placeholder="会社名"
@@ -86,35 +144,39 @@ export const Form = () => {
           <div className="contact-form__item">
             <label
               className="contact-form__item__label two-column"
-              htmlFor="メールアドレス"
+              htmlFor="email"
             >
               メールアドレス
               <span>*</span>
             </label>
-            <span
-              className="wpcf7-form-control-wrap"
-              data-name="メールアドレス"
-            >
+            <span className="wpcf7-form-control-wrap">
               <input
-                id="メールアドレス"
-                name="メールアドレス"
+                id="email"
+                name="email"
                 type="email"
                 className="type-email"
                 placeholder="example@email.com"
+                {...register("email", { required: "入力必須の項目です" })}
               />
+              <p className="error">{errors.email?.message}</p>
             </span>
           </div>
 
           <div className="contact-form__item">
             <label
               className="contact-form__item__label two-column"
-              htmlFor="種別"
+              htmlFor="type"
             >
               Type
               <span>*</span>
             </label>
-            <span className="wpcf7-form-control-wrap" data-name="種別">
-              <select id="種別" className="type-select" name="種別">
+            <span className="wpcf7-form-control-wrap">
+              <select
+                id="type"
+                className="type-select"
+                name="type"
+                {...register("type", { required: "種別を選択してください" })}
+              >
                 <option>以下から選択してください</option>
                 <option value="公開中の実績について（削除依頼等）">
                   公開中の実績について（削除依頼等）
@@ -125,25 +187,28 @@ export const Form = () => {
                 <option value="お仕事依頼のご相談">お仕事依頼のご相談</option>
                 <option value="その他ご質問等">その他ご質問等</option>
               </select>
+              <p className="error">{errors.type?.message}</p>
             </span>
           </div>
 
           <div className="contact-form__item align-top">
             <label
               className="contact-form__item__label two-column"
-              htmlFor="メッセージ"
+              htmlFor="message"
             >
               Message
               <span>*</span>
             </label>
-            <span className="wpcf7-form-control-wrap" data-name="メッセージ">
+            <span className="wpcf7-form-control-wrap">
               <textarea
-                id="メッセージ"
+                id="textarea"
                 cols={82}
                 rows={16}
-                name="メッセージ"
+                name="textarea"
                 className="type-textarea"
+                {...register("textarea", { required: "入力必須の項目です" })}
               ></textarea>
+              <p className="error">{errors.textarea?.message}</p>
             </span>
           </div>
 
@@ -308,8 +373,14 @@ export const Form = () => {
               >
                 <input
                   type="checkbox"
-                  name="プライバシーポリシーへの同意"
+                  name="acceptPolicy"
                   className="type-checkbox"
+                  checked={isChecked}
+                  onChange={() => {
+                    setIsChecked((prev) => {
+                      return !prev;
+                    });
+                  }}
                 />
                 <span className="wpcf7-list-item-label">
                   プライバシーポリシーに同意する
@@ -336,6 +407,7 @@ export const Form = () => {
               onClick={handleReCaptchaVerify}
               className="submitbtn link-btn hoverTarget"
               type="submit"
+              disabled={isChecked ? false : true}
             >
               SUBMIT
             </button>
