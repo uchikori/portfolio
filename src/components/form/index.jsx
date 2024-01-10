@@ -59,13 +59,13 @@ export const Form = () => {
         },
       })
       .then((response) => {
-        console.log("送信完了");
-        console.log(response);
+        // console.log("送信完了");
+        // console.log(response);
         navigate("/thanks");
       })
       .catch((error) => {
-        console.log("送信失敗");
-        console.error(error);
+        // console.log("送信失敗");
+        // console.error(error);
         navigate("/thanks");
       });
   };
@@ -149,6 +149,7 @@ export const Form = () => {
                 type="text "
                 className="your-company type-text"
                 placeholder="会社名"
+                {...register("company", { required: "入力必須の項目です" })}
               />
             </span>
           </div>
