@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { navigate } from "gatsby";
 
 //フォームのバリデーション
 const schema = yup.object().shape({
@@ -51,11 +52,22 @@ export const Form = () => {
 
   const send = (data) => {
     console.log(data);
-    axios.post("https://ssgform.com/s/kuVGTEUHUB95", data, {
-      headers: {
-        "content-type": "multipart/form-data", //axiosでフォーム送信する時に必要なheader情報
-      },
-    });
+    axios
+      .post("https://ssgform.com/s/kuVGTEUHUB95", data, {
+        headers: {
+          "content-type": "multipart/form-data", //axiosでフォーム送信する時に必要なheader情報
+        },
+      })
+      .then((response) => {
+        console.log("送信完了");
+        console.log(response);
+        navigate("/thanks");
+      })
+      .catch((error) => {
+        console.log("送信失敗");
+        console.error(error);
+        navigate("/thanks");
+      });
   };
 
   //Googlerecapthcaの設定
