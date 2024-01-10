@@ -11,7 +11,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { Form } from "../components/form";
 
 //recapchaのシークレットキーを取得
-const SITE_KEY = process.env.REACT_APP_SITE_KEY;
+const SITE_KEY = process.env.GATSBY_SITE_KEY_THREE;
 console.log(SITE_KEY);
 
 export default function Contact() {
@@ -39,9 +39,7 @@ export default function Contact() {
             </MainVisual>
             <Content>
               <div className="content__block">
-                <GoogleReCaptchaProvider
-                  reCaptchaKey={process.env.REACT_APP_SITE_KEY}
-                >
+                <GoogleReCaptchaProvider reCaptchaKey={SITE_KEY}>
                   <Form />
                 </GoogleReCaptchaProvider>
               </div>
