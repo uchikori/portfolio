@@ -9,8 +9,8 @@ import { navigate } from "gatsby";
 
 //フォームのバリデーション
 const schema = yup.object().shape({
-  name: yup.string().required("入力必須の項目です"),
-  kana: yup.string().required("入力必須の項目です"),
+  name: yup.string().required("※入力必須の項目です"),
+  kana: yup.string().required("※入力必須の項目です"),
   company: yup.string(),
   email: yup
     .string()
@@ -25,7 +25,7 @@ const schema = yup.object().shape({
       "その他ご質問等",
     ])
     .required("※種別を選択してください"),
-  textarea: yup.string().required("入力必須の項目です"),
+  textarea: yup.string().required("※入力必須の項目です"),
 });
 
 export const Form = () => {
