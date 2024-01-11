@@ -36,15 +36,17 @@ export default function Contact() {
       bodyFormData.set("your-message", data["your-message"]);
       bodyFormData.set("your-accept", data["your-accept"]);
 
-      axios({
-        method: "post",
-        url: `${WEBSITE_URL}/wp-json/contact-form-7/v1/contact-forms/${Form_ID}/feedback`,
-        data: bodyFormData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      axios
+        .post(
+          `${WEBSITE_URL}/wp-json/contact-form-7/v1/contact-forms/058b0d5/feedback`,
+          bodyFormData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
         .then((response) => {
           console.log("成功");
           console.log(response);
@@ -53,6 +55,24 @@ export default function Contact() {
           console.error(error);
           console.log("失敗");
         });
+
+      // axios({
+      //   method: "post",
+      //   url: `${WEBSITE_URL}/wp-json/contact-form-7/v1/contact-forms/${Form_ID}/feedback`,
+      //   data: bodyFormData,
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // })
+      //   .then((response) => {
+      //     console.log("成功");
+      //     console.log(response);
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //     console.log("失敗");
+      //   });
       console.log(data);
       console.log(bodyFormData);
     },
@@ -67,7 +87,7 @@ export default function Contact() {
       method: "post",
       url: `${WEBSITE_URL}/wp-json/jwt-auth/v1/token`,
       data: {
-        username: "contact for customer",
+        username: "contactform7",
         password: "yuuki0507",
       },
       headers: {
@@ -76,7 +96,7 @@ export default function Contact() {
     })
       .then((response) => {
         setToken(response.data.token);
-        console.log(response);
+        console.log(response.data.token);
       })
       .catch((error) => {
         console.error(error);
