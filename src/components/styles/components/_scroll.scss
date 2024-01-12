@@ -8,7 +8,7 @@
 .scroll-lead {
   @include font-style(1.2rem, $color-white, normal);
   writing-mode: vertical-rl;
-  z-index: 100;
+  z-index: 20;
   position: absolute;
   left: 6.6%;
   bottom: 0;
