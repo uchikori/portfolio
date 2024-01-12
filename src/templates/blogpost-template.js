@@ -11,7 +11,6 @@ import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
 export default function BlogPost({ data }) {
   const location = useLocation();
-  console.log(data);
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">

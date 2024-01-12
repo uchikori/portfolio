@@ -11,8 +11,6 @@ export const Canvas = React.memo(() => {
     const canvasContext = canvasEl.getContext("2d");
     const devicePixelRatio = window.devicePixelRatio;
 
-    console.log(canvasContext);
-
     noise.seed(Math.random());
 
     let stageW = window.innerWidth * devicePixelRatio;

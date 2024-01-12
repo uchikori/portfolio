@@ -9,8 +9,6 @@ import { extractText } from "../lib/extract-text";
 import { useLocation } from "@reach/router";
 export default function WorksPost(props) {
   const { data } = props;
-
-  console.log(data);
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper page-single">

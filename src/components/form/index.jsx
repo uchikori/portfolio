@@ -51,7 +51,6 @@ export const Form = () => {
   });
 
   const send = (data) => {
-    console.log(data);
     axios
       .post("https://ssgform.com/s/kuVGTEUHUB95", data, {
         headers: {

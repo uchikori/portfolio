@@ -3,7 +3,6 @@ import { graphql, useStaticQuery, Link } from "gatsby";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 export const RelatedPosts = (props) => {
-  console.log(props);
   const { id, catId } = props;
   const randomSelect = (array, num) => {
     let newArray = [];
@@ -59,7 +58,6 @@ export const RelatedPosts = (props) => {
     );
   });
   const relatedPosts = randomSelect(basePosts, 5);
-  console.log(relatedPosts);
   if (!relatedPosts.length) {
     return null;
   } else {
