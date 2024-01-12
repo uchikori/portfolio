@@ -3,7 +3,15 @@ import { Analytics } from "@vercel/analytics/react";
 import * as React from "react";
 
 export const Seo = (props) => {
-  const { pageClass, pageTitle, pageDesc, pagePath, pageImg, blogImg } = props;
+  const {
+    pageClass,
+    pageTitle,
+    pageDesc,
+    pagePath,
+    pageImg,
+    blogImg,
+    adsence,
+  } = props;
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -40,11 +48,14 @@ export const Seo = (props) => {
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="og:image" content={imgurl} />
       <meta name="twitter:card" content="summary_large_image" />
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842486595943279"
-        crossOrigin="anonymous"
-      ></script>
+      {adsence ? (
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842486595943279"
+          crossOrigin="anonymous"
+        ></script>
+      ) : null}
+
       {/* <script defer src="https://www.google.com/recaptcha/api.js"></script> */}
       <Analytics />
       <body className={pageClass} />
