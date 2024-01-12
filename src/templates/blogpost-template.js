@@ -11,7 +11,7 @@ import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
 export default function BlogPost({ data }) {
   const location = useLocation();
-
+  console.log(data);
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
@@ -60,7 +60,11 @@ export default function BlogPost({ data }) {
               </time>
             </div>
             <div className="content__block flex-block align-start">
-              <Main content={data.wpWebTips.content} />
+              <Main
+                content={data.wpWebTips.content}
+                id={data.wpWebTips.databaseId}
+                catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]}
+              />
               <Sidebar path={location.pathname} />
             </div>
           </Content>
@@ -91,6 +95,7 @@ export const Head = (props) => {
 export const query = graphql`
   query ($id: Int!) {
     wpWebTips(databaseId: { eq: $id }) {
+      databaseId
       title
       content
       excerpt
@@ -98,6 +103,7 @@ export const query = graphql`
         nodes {
           slug
           name
+          id
         }
       }
       date(formatString: "YYYY-MM-DD")
