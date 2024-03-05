@@ -92,7 +92,7 @@ body {
   font-family: $font;
   letter-spacing: 0.1em;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
   cursor: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
