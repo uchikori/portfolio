@@ -1,7 +1,7 @@
 @use "../global" as *;
 .container {
-  width: 100vw;
-  // overflow: hidden;
+  width: 100%;
+  overflow-x: hidden;
   // &.about{
   //     background-image: url('../images/about-backround@2x.webp');
   //     background-repeat: no-repeat;
@@ -153,7 +153,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
     pointer-events: none;
     &__inner {

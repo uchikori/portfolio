@@ -84,7 +84,7 @@
 .slides {
   position: relative;
   height: 100svh;
-  width: 100vw;
+  width: 100%;
   background-color: $color-border;
   transition: background 1s $ease-cb-5, transform 0.5s ease;
   transform-origin: left;

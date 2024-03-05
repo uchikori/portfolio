@@ -597,6 +597,24 @@ export default function Price() {
                     <ul className="caption"></ul>
                   </div>
                   <div className="price mt-100">
+                    <h3 className="price__title">Jamstackサイト</h3>
+                    <ul className="caption m-24">
+                      <li className="caption__item">
+                        Janmstackサイトについての詳細は
+                        <a
+                          href="https://blog.microcms.io/jamstack-introduction/"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          こちら
+                        </a>
+                      </li>
+                      <li className="caption__item">
+                        使用するヘッドレスCMSの種類により価格が異なるため詳細はお問い合わせください。
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="price mt-100">
                     <h3 className="price__title">オプション</h3>
                     <table className="price__table m-24">
                       <tbody>
@@ -622,6 +640,14 @@ export default function Price() {
                             </tr>
                           );
                         })}
+                        <tr>
+                          <th>保守費用</th>
+                          <td className="price__description">
+                            サイトの定期的なバックアップ、セキュリティ対策、プラグインやWordPress本体のアップデート等々の対応、軽微な不具合の対応
+                          </td>
+                          <td className="price__price">￥30,000～</td>
+                          <td className="price__count">/月</td>
+                        </tr>
                       </tbody>
                     </table>
                     <ul className="caption"></ul>
