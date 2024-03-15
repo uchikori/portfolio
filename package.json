@@ -35,6 +35,7 @@
     "gatsby-plugin-sharp": "^5.7.0",
     "gatsby-plugin-sitemap": "^6.8.0",
     "gatsby-source-filesystem": "^5.4.0",
+    "gatsby-source-google-analytics-reporting-api": "^1.0.2",
     "gatsby-source-wordpress": "^7.7.0",
     "gatsby-transformer-sharp": "^5.7.0",
     "gsap": "^3.11.5",

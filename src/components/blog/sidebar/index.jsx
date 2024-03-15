@@ -1,8 +1,9 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import * as React from "react";
 import { Adsence } from "../../adsence";
+import { PopularPosts } from "../../PopularPosts";
 export const Sidebar = (props) => {
-  const { path } = props;
+  const { path, rankingData } = props;
   const data = useStaticQuery(graphql`
     query {
       allWpType(
@@ -38,6 +39,11 @@ export const Sidebar = (props) => {
           })}
         </ul>
       </section>
+      <section className="sidebar__widget">
+        <h2 className="sidebar__title">RANKING</h2>
+        <PopularPosts rankingData={rankingData} />
+      </section>
+
       <section className="sidebar__widget">
         <Adsence format={"rectangle"} path={path} />
       </section>

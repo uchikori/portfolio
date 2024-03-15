@@ -8,7 +8,7 @@ import { Link } from "gatsby";
 
 export const Pagenation = (props) => {
   const { pageContext } = props;
-  console.log(pageContext);
+
   return (
     <ul className="pagenation">
       {pageContext.isFirst ? (

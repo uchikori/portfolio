@@ -9,8 +9,11 @@ import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
-export default function BlogPost({ data }) {
+export default function BlogPost({ data, pageContext }) {
+  const rankingPostIds = pageContext.reportData;
+
   const location = useLocation();
+
   return (
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
@@ -64,7 +67,7 @@ export default function BlogPost({ data }) {
                 id={data.wpWebTips.databaseId}
                 catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]}
               />
-              <Sidebar path={location.pathname} />
+              <Sidebar path={location.pathname} rankingData={rankingPostIds} />
             </div>
           </Content>
         </div>

@@ -463,8 +463,8 @@
 
 //web-tips用サイドバー
 .sidebar {
-  position: sticky;
-  top: 40px;
+  // position: sticky;
+  // top: 40px;
   @include tab {
     position: static;
     margin-top: 4rem;

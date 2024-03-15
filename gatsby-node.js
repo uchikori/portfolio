@@ -57,6 +57,84 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild(`GraphQLのクエリでエラーが発生しました`);
     return;
   }
+  /************************************************************
+   * GoogleAnalyticsから記事の閲覧数を取得
+   ***********************************************************/
+  // ライブラリをインポート
+  const { BetaAnalyticsDataClient } = require("@google-analytics/data");
+  const { log } = require("console");
+
+  const propertyId = "341162119";
+
+  // オプションを指定して、BetaAnalyticsDataClientのインスタンスを作成
+  const credentialsFilePath = "./my-project-ga4.json";
+  const analyticsDataClient = new BetaAnalyticsDataClient({
+    keyFilename: credentialsFilePath,
+  });
+
+  // async function runReportFunc() {
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${propertyId}`,
+    dateRanges: [
+      {
+        startDate: "30daysAgo",
+        endDate: "today",
+      },
+    ],
+    dimensions: [
+      {
+        name: "pagePath",
+      },
+    ],
+    dimensionFilter: {
+      filter: {
+        fieldName: "pagePath",
+        stringFilter: {
+          matchType: "BEGINS_WITH",
+          value: "/web-tips/" /* ブログページに共通するパス */,
+        },
+      },
+    },
+    metrics: [
+      {
+        name: "screenPageViews",
+      },
+    ],
+    orderBys: [
+      {
+        desc: true,
+        metric: {
+          metricName: "screenPageViews",
+        },
+      },
+    ],
+  });
+  const formattedGaData = response.rows.map((row) => {
+    // console.log(row.dimensionValues[0], row.metricValues[0]);
+    return {
+      value: row.dimensionValues[0].value,
+      oneValue: row.metricValues[0].value,
+    };
+  });
+
+  const rankingPostIds = formattedGaData
+    //「/」で区切った配列から空欄文字列を削除した配列
+    .map((item) => item.value.split("/").filter((str) => str !== ""))
+    //その配列に対して、長さが1以上のもののみ抽出（つまり'web-tips'は除外）
+    .filter((parts) => parts.length > 1)
+    //IDを数値化
+    .map((parts) => parseInt(parts.pop()));
+
+  // }
+  // runReportFunc();
+
+  // [
+  //   { value: "/web-tips/", oneValue: "7" },
+  //   { value: "/web-tips/829/", oneValue: "3" },
+  //   { value: "/web-tips/638/", oneValue: "2" },
+  //   { value: "/web-tips/642/", oneValue: "1" },
+  //   { value: "/web-tips/650/", oneValue: "1" },
+  // ];
 
   /************************************************************
    * 記事ページの生成
@@ -67,6 +145,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve(`./src/templates/blogpost-template.js`),
       context: {
         id: node.databaseId,
+        reportData: rankingPostIds,
       },
     });
   });
@@ -90,6 +169,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         isLast: index + 1 === blogPages,
         pages: blogPages,
         type: "web-tips",
+        reportData: rankingPostIds,
       },
     });
   });
@@ -124,6 +204,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           pages: typePages,
           isTaxonomyPage: true,
           taxonomyName: node.taxonomyName,
+          reportData: rankingPostIds,
         },
       });
     });
@@ -198,60 +279,3 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 };
-
-// // ライブラリをインポート
-// const { BetaAnalyticsDataClient } = require("@google-analytics/data");
-// const { log } = require("console");
-
-// // オプションを指定して、BetaAnalyticsDataClientのインスタンスを作成
-// const credentialsFilePath = "./my-project-ga4.json";
-// const analyticsDataClient = new BetaAnalyticsDataClient({
-//   keyFilename: credentialsFilePath,
-// });
-
-// const propertyId = "341162119";
-
-// async function runReportFunc() {
-//   const [response] = await analyticsDataClient.runReport({
-//     property: `properties/${propertyId}`,
-//     dateRanges: [
-//       {
-//         startDate: "30daysAgo",
-//         endDate: "today",
-//       },
-//     ],
-//     dimensions: [
-//       {
-//         name: "pagePath",
-//       },
-//     ],
-//     dimensionFilter: {
-//       filter: {
-//         fieldName: "pagePath",
-//         stringFilter: {
-//           matchType: "BEGINS_WITH",
-//           value: "/web-tips/" /* ブログページに共通するパス */,
-//         },
-//       },
-//     },
-//     metrics: [
-//       {
-//         name: "screenPageViews",
-//       },
-//     ],
-//     orderBys: [
-//       {
-//         desc: true,
-//         metric: {
-//           metricName: "screenPageViews",
-//         },
-//       },
-//     ],
-//   });
-
-//   console.log("Report result:");
-//   response.rows.forEach((row) => {
-//     console.log(row.dimensionValues[0], row.metricValues[0]);
-//   });
-// }
-// runReportFunc();

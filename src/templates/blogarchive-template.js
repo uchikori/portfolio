@@ -13,6 +13,8 @@ import { AdsenceContentBottom } from "../components/adsence";
 
 export default function WebTips(props) {
   const { data, pageContext } = props;
+  const rankingPostIds = pageContext.reportData;
+
   const location = useLocation();
   return (
     <Layout hasLoadingObj={false}>
@@ -74,7 +76,7 @@ export default function WebTips(props) {
                   path={location.pathname}
                 />
               </main>
-              <Sidebar path={location.pathname} />
+              <Sidebar path={location.pathname} rankingData={rankingPostIds} />
             </div>
           </Content>
         </div>
