@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const PopularPosts = (props) => {
   // 閲覧数で降順にソートする

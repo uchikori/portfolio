@@ -128,14 +128,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // }
   // runReportFunc();
 
-  // [
-  //   { value: "/web-tips/", oneValue: "7" },
-  //   { value: "/web-tips/829/", oneValue: "3" },
-  //   { value: "/web-tips/638/", oneValue: "2" },
-  //   { value: "/web-tips/642/", oneValue: "1" },
-  //   { value: "/web-tips/650/", oneValue: "1" },
-  // ];
-
   /************************************************************
    * 記事ページの生成
    ***********************************************************/
