@@ -200,6 +200,45 @@
     }
     .wp-block-columns {
       margin: 40px 0;
+      align-items: normal !important;
+      display: flex;
+      flex-wrap: nowrap;
+      @include tab {
+        flex-wrap: wrap;
+      }
+      .are-vertically-aligned-center {
+        align-items: center;
+      }
+      .are-vertically-aligned-top {
+        align-items: flex-start;
+      }
+      &:not(.is-not-stacked-on-mobile) > .wp-block-column[style*="flex-basis"] {
+        flex-grow: 0;
+      }
+      &:not(.is-not-stacked-on-mobile) > .wp-block-column {
+        flex-basis: 0;
+        flex-grow: 1;
+        @include tab {
+          flex-basis: 100% !important;
+        }
+      }
+    }
+    .wp-block-column {
+      flex-grow: 1;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      .is-vertically-aligned-bottom,
+      .is-vertically-aligned-center,
+      .is-vertically-aligned-top {
+        width: 100%;
+      }
+      .is-vertically-aligned-center {
+        align-self: center;
+      }
+      .is-vertically-aligned-top {
+        align-self: flex-start;
+      }
     }
     .blog-card {
       border: solid 2px #cccccc;
@@ -256,6 +295,15 @@
         @include font-style(14px, #555555, normal);
         line-height: 1.5;
       }
+    }
+  }
+  .is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    @include tab {
+      gap: 0;
     }
   }
   #ez-toc-container {
