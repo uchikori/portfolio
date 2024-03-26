@@ -67,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const propertyId = "341162119";
 
   // オプションを指定して、BetaAnalyticsDataClientのインスタンスを作成
-  const credentialsFilePath = "./my-project-ga4.json";
+  const credentialsFilePath = "./src/files/my-project-ga4.json";
   const analyticsDataClient = new BetaAnalyticsDataClient({
     keyFilename: credentialsFilePath,
   });
