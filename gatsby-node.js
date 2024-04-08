@@ -68,8 +68,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // オプションを指定して、BetaAnalyticsDataClientのインスタンスを作成
   const credentialsFilePath = "./src/files/my-project-ga4.json";
+  // const analyticsDataClient = new BetaAnalyticsDataClient({
+  //   keyFilename: credentialsFilePath,
+  // });
   const analyticsDataClient = new BetaAnalyticsDataClient({
-    keyFilename: credentialsFilePath,
+    credentials: {
+      client_email: process.env.CLIENT_EMAIL,
+      private_key: process.env.PRIVATE_KEY,
+    },
   });
 
   // async function runReportFunc() {
@@ -77,7 +83,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     property: `properties/${propertyId}`,
     dateRanges: [
       {
-        startDate: "30daysAgo",
+        startDate: "2022-08-01",
         endDate: "today",
       },
     ],
@@ -117,13 +123,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     };
   });
 
-  const rankingPostIds = formattedGaData
+  const rankingdata = formattedGaData
     //「/」で区切った配列から空欄文字列を削除した配列
     .map((item) => item.value.split("/").filter((str) => str !== ""))
     //その配列に対して、長さが1以上のもののみ抽出（つまり'web-tips'は除外）
     .filter((parts) => parts.length > 1)
     //IDを数値化
     .map((parts) => parseInt(parts.pop()));
+
+  const rankingPostIds = rankingdata.slice(0, 5);
+  console.log(rankingPostIds);
 
   // }
   // runReportFunc();
