@@ -79,6 +79,22 @@ export const Head = (props) => {
   const { data } = props;
   const location = useLocation();
   const description = extractText(data.wpWebTips.content);
+
+  // 構造化データ
+  const jsonLd = {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    name: data.wpWebTips.title,
+    author: {
+      "@type": "Person",
+      name: data.wpWebTips.lastEditedBy.node.name,
+    },
+    datePublished: data.wpWebTips.date,
+    dateModified: data.wpWebTips.modified,
+    image:
+      data.wpWebTips.featuredImage.node.localFile.childImageSharp
+        .gatsbyImageData.images.fallback.src,
+  };
   return (
     <>
       <Seo
@@ -92,6 +108,7 @@ export const Head = (props) => {
             .gatsbyImageData.images.fallback.src
         }
       />
+      {<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </>
   );
 };
@@ -102,6 +119,12 @@ export const query = graphql`
       title
       content
       excerpt
+      modified(formatString: "YYYY-MM-DD")
+      lastEditedBy {
+        node {
+          name
+        }
+      }
       terms {
         nodes {
           slug
