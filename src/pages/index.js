@@ -17,12 +17,35 @@ export default function Home() {
 
 export const Head = (props) => {
   const { data } = props;
+
+  // 構造化データ
+  const jsonLd = {
+    "@context": "http://schema.org",
+    "@type": "LocalBusiness",
+    name: "UCHIWA Creative Studio",
+    image: data.ogp.childImageSharp.original.src,
+    email: "info@uchiwa-design.net",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "札幌市",
+      addressRegion: "北海道",
+      addressCountry: "JP",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: {
+        "@type": "DayOfWeek",
+        name: "月曜日、火曜日、水曜日、木曜日、金曜日",
+      },
+    },
+  };
   return (
     <>
       <Seo
         pageClass={"front-page"}
         pageImg={data.ogp.childImageSharp.original.src}
       />
+      {<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </>
   );
 };
