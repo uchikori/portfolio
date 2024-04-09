@@ -162,7 +162,8 @@
         width: 560px;
       }
       @include sp {
-        width: 30rem;
+        // width: 30rem;
+        width: 100%;
         line-height: 1.857;
         font-size: 1.4rem;
       }
