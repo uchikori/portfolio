@@ -71,11 +71,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // const analyticsDataClient = new BetaAnalyticsDataClient({
   //   keyFilename: credentialsFilePath,
   // });
+  console.log(process.env.GATSBY_CLIENT_EMAIL);
   const analyticsDataClient = new BetaAnalyticsDataClient({
     credentials: {
-      client_email: "test-556@my-project-ga4-382101.iam.gserviceaccount.com",
-      private_key:
-        "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC6wx4eWC+yOMM2\nIcdYPuNV8rSJJfTwu8bs0bX2vIfMWHFVFrpwaswx2TWCp1SsvoRKdCE0UIXbee+I\nzXUxzIbcwC7U9ZFPxSeVsfNpyscScTmFcZWzGmIfNlssK/kcQFmdE7NetyTX6yiK\n+Dv85nXx8kObI0PcPjqvhUjt94CM1H/WquPWs4iaj8+XnmbQo61gf4FKjdJBXL7t\neGLc+4MUkNQXW9PKI4YASfB/VniJIqx7SVAbPhaUCRtwwQEYBwtG8mr/CV2XFqVt\ncj4J+QfOVdO8BZ5Es9WH3SnzNh8kmfa2FXiUxL+VWQufDxUNvPFG05eCoq4qC7tA\nPaTciBdzAgMBAAECggEAUThLn9ywGWywEJmODOWEjjs3ojFcnVi8QP9OiBgjYo3P\n87YnrH31gXQ53jERFPLhq1NnoU2nePRFZJQddGPC/ruhYkHNSQivl11FQ2vJOU7+\nOfdUqAhARdyot8QD2PJvRm1r4zP4lOISxqT/yZMcFfVKy2wBtgVmFjD7r2mkgRmm\nroJEgBIXxf+PN0VcR3N/bihrl2mrIniICy2wyLIuXFc6QN42pVptVCChLdD7VEeb\nSGcitwwJCFK5sP0bP0msZh8BghksWIPz65HieSj0/cxYFSbytwBlyiiqGf63+/H+\nrf5owS6s+VUrAFnoXtEVeQCWsA7mtOnEFzjl9lwaMQKBgQDd36KN04mD1cdpMMUw\nNmX+yd5opgGfrHeNh0maSeNk1NzKGi9j6ZzFL2xjbG+YwaRpth6O6mrn3oz8jFO7\nflferdU7g8jwNQ59UUBJHYWlAVxH/UMJlUDzQiWbfNQ1beon2L6MYkg1wAlW/30E\n0rjrQbHPX8GRYFnQE09+aVgCKwKBgQDXfPTs7WCKp9ktPa2b6exr7119bIPEdZYn\njGCQF2bGNc8EGtQTOJ9gR6L8GRtozKrhCRF4B5AvF4k8BiEw5uU9k4FpWjopqQ9Y\n80iCsDi7L+j5kwaYQrylp+WPiMwnZaHRN9Dbgxad3QRJ21/dXfzztGZhlNJNklDb\ni/PTQ5dD2QKBgBRXBBfsZJbpajaCehFJa2BIMVN2pH922B7pYB382BPOT89XRzDp\noa2SA2W58yEV33SxdWu0ochP5qzgUGzH0FZhqUKjejBLLODgKfyJ8E6IKWWQGi0u\nuZ2TWs8+SlX7lZPBkvZbrDMBP9nx4gwnJTyr8RkJtj0VkCY7HvZ/wcmxAoGANBlV\nCjd2IO/l9Sc1Yz3SWGI+A0YKMaSQUi2BZzURNxjpXT+zSJZnChsnz7WuR887/T55\nB8EkXg5dsrJ0seMRR6rzHeqfp1Tljgb74AUFIlS6CiU+8e8otxB50xMq8NeEoRXS\nnE/8VtyJ3eV5Lwc7UhyqqCsYEYMvo3UZ1VlBKDkCgYEAtbsh0/ylJ8hQAcbEjrse\np6u/ScnULbymlD1zKdif/10oAoSsyV4tkcCSO0k4CndPTzjURLOuRS33XrAw4lbj\n5m4EoNotwK29t44HgPB4AT8iMkHZWiZ1A8p4KwGqjO6C/1SHR5eAEZJOZkspzKJn\nslc6e3MJnt7X5wwdfEQgumQ=\n-----END PRIVATE KEY-----\n",
+      client_email: process.env.GATSBY_CLIENT_EMAIL,
+      private_key: process.env.GATSBY_PRIVATE_KEY,
     },
   });
 
