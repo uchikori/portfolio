@@ -89,7 +89,7 @@ export const Head = (props) => {
       "@type": "Person",
       name: data.wpWebTips.lastEditedBy.node.name,
     },
-    datePublished: data.wpWebTips.date,
+    datePublished: data.wpWebTips.dateGmt,
     dateModified: data.wpWebTips.modified,
     image:
       data.wpWebTips.featuredImage.node.localFile.childImageSharp
@@ -119,7 +119,8 @@ export const query = graphql`
       title
       content
       excerpt
-      modified(formatString: "YYYY-MM-DD")
+      modified
+      dateGmt
       lastEditedBy {
         node {
           name
