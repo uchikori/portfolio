@@ -38,6 +38,7 @@ export const Head = (props) => {
         name: "月曜日、火曜日、水曜日、木曜日、金曜日",
       },
     },
+    priceRange: "￥4,000～￥3,000,000",
   };
   return (
     <>
