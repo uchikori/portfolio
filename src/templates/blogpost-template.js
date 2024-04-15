@@ -84,13 +84,14 @@ export const Head = (props) => {
   const jsonLd = {
     "@context": "http://schema.org",
     "@type": "Article",
-    name: data.wpWebTips.title,
+    headline: data.wpWebTips.title,
     author: {
       "@type": "Person",
       name: data.wpWebTips.lastEditedBy.node.name,
+      url: "https://www.uchiwa-design.net/about",
     },
-    datePublished: data.wpWebTips.dateGmt,
-    dateModified: data.wpWebTips.modified,
+    datePublished: `${data.wpWebTips.dateGmt}+09:00`,
+    dateModified: `${data.wpWebTips.modified}+09:00`,
     image:
       data.wpWebTips.featuredImage.node.localFile.childImageSharp
         .gatsbyImageData.images.fallback.src,
