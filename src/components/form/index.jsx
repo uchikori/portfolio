@@ -62,14 +62,24 @@ export const Form = () => {
         },
       })
       .then((response) => {
-        // console.log("送信完了");
-        // console.log(response);
+        console.log(response);
         navigate("/thanks");
       })
       .catch((error) => {
-        // console.log("送信失敗");
-        // console.error(error);
-        navigate("/thanks");
+        // フォーム送信失敗時の処理
+        if (error.response) {
+          // サーバーからのエラーレスポンスがある場合
+          console.error("サーバーエラー:", error.response.data);
+          alert("サーバーエラー: " + error.response.data);
+        } else if (error.request) {
+          // サーバーへのリクエストが行われなかった場合（ネットワークエラーなど）
+          console.error("ネットワークエラー:", error.request);
+          alert("ネットワークエラー: リクエストが行われませんでした");
+        } else {
+          // その他のエラーが発生した場合
+          console.error("エラー:", error.message);
+          alert("エラー: " + error.message);
+        }
       });
   };
 
@@ -88,12 +98,7 @@ export const Form = () => {
   }, [handleReCaptchaVerify]);
 
   return (
-    <form
-      className="formrun"
-      // action="https://ssgform.com/s/kuVGTEUHUB95"
-      // method="post"
-      onSubmit={handleSubmit(send)}
-    >
+    <form className="formrun" onSubmit={handleSubmit(send)}>
       <div className="form-inner">
         <div className="contact-form">
           <div className="contact-form__item">
