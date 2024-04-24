@@ -60,6 +60,7 @@ export const Form = () => {
       .post("https://ssgform.com/s/kuVGTEUHUB95", data, {
         headers: {
           "content-type": "multipart/form-data", //axiosでフォーム送信する時に必要なheader情報
+          "X-Requested-With": "XMLHttpRequest",
         },
       })
       .then((response) => {
@@ -67,14 +68,15 @@ export const Form = () => {
         navigate("/thanks");
       })
       .catch((error) => {
-        if (error.response && error.response.status === 400) {
-          // ステータスコードが400の場合の処理
-          navigate("/thanks");
-        } else {
-          console.error("サーバーエラー:", error);
-          alert("サーバーエラー: " + error);
-          return;
-        }
+        console.error("エラー:", error);
+        alert("エラー: " + error);
+        // if (error.response && error.response.status === 400) {
+        //   // ステータスコードが400の場合の処理
+        //   navigate("/thanks");
+        // } else {
+        //   console.error("サーバーエラー:", error);
+        //   alert("サーバーエラー: " + error);
+        // }
       });
   };
 
