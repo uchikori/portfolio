@@ -37,7 +37,7 @@ export const Form = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   //reCAPTCHAトークン
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
 
   //useFormの設定
   const {
@@ -63,7 +63,7 @@ export const Form = () => {
         headers: {
           "content-type": "multipart/form-data", //axiosでフォーム送信する時に必要なheader情報
           "X-Requested-With": "XMLHttpRequest",
-          "reCAPTCHA-token": token,
+          // "reCAPTCHA-token": token,
         },
       })
       .then((response) => {
@@ -83,8 +83,8 @@ export const Form = () => {
       console.log("recaptcha の実行はまだ利用できません。");
       return;
     }
-    const token = await executeRecaptcha("submitForm");
-    setToken(token);
+    // const token = await executeRecaptcha("submitForm");
+    // setToken(token);
   }, [executeRecaptcha]);
 
   useEffect(() => {
