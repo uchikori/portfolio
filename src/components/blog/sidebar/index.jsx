@@ -20,6 +20,7 @@ export const Sidebar = (props) => {
       }
     }
   `);
+
   return (
     <aside className="sidebar flex-item three-column bg-white">
       <section className="sidebar__widget">
