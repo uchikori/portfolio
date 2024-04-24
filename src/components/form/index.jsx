@@ -55,6 +55,7 @@ export const Form = () => {
   });
 
   const send = (data) => {
+    console.log(data);
     axios
       .post("https://ssgform.com/s/kuVGTEUHUB95", data, {
         headers: {
@@ -66,19 +67,13 @@ export const Form = () => {
         navigate("/thanks");
       })
       .catch((error) => {
-        // フォーム送信失敗時の処理
-        if (error.response) {
-          // サーバーからのエラーレスポンスがある場合
+        if (error.response && error.response.status === 400) {
+          // ステータスコードが400の場合の処理
+          navigate("/thanks");
+        } else {
           console.error("サーバーエラー:", error);
           alert("サーバーエラー: " + error);
-        } else if (error.request) {
-          // サーバーへのリクエストが行われなかった場合（ネットワークエラーなど）
-          console.error("ネットワークエラー:", error);
-          alert("ネットワークエラー" + error);
-        } else {
-          // その他のエラーが発生した場合
-          console.error("エラー:", error);
-          alert("エラー: " + error);
+          return;
         }
       });
   };
