@@ -36,6 +36,9 @@ export const Form = () => {
   //ポリシーチェックボックスの状態
   const [isChecked, setIsChecked] = useState(false);
 
+  //reCAPTCHAトークン
+  const [token, setToken] = useState("");
+
   //useFormの設定
   const {
     register,
@@ -55,12 +58,12 @@ export const Form = () => {
   });
 
   const send = (data) => {
-    console.log(data);
     axios
       .post("https://ssgform.com/s/kuVGTEUHUB95", data, {
         headers: {
           "content-type": "multipart/form-data", //axiosでフォーム送信する時に必要なheader情報
           "X-Requested-With": "XMLHttpRequest",
+          "reCAPTCHA-token": token,
         },
       })
       .then((response) => {
@@ -81,6 +84,7 @@ export const Form = () => {
       return;
     }
     const token = await executeRecaptcha("submitForm");
+    setToken(token);
   }, [executeRecaptcha]);
 
   useEffect(() => {
