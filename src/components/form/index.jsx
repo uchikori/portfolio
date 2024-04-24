@@ -69,16 +69,16 @@ export const Form = () => {
         // フォーム送信失敗時の処理
         if (error.response) {
           // サーバーからのエラーレスポンスがある場合
-          console.error("サーバーエラー:", error.response.data);
-          alert("サーバーエラー: " + error.response.data);
+          console.error("サーバーエラー:", error);
+          alert("サーバーエラー: " + error);
         } else if (error.request) {
           // サーバーへのリクエストが行われなかった場合（ネットワークエラーなど）
-          console.error("ネットワークエラー:", error.request);
-          alert("ネットワークエラー: リクエストが行われませんでした");
+          console.error("ネットワークエラー:", error);
+          alert("ネットワークエラー" + error);
         } else {
           // その他のエラーが発生した場合
-          console.error("エラー:", error.message);
-          alert("エラー: " + error.message);
+          console.error("エラー:", error);
+          alert("エラー: " + error);
         }
       });
   };
