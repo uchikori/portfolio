@@ -70,13 +70,6 @@ export const Form = () => {
       .catch((error) => {
         console.error("エラー:", error);
         alert("エラー: " + error);
-        // if (error.response && error.response.status === 400) {
-        //   // ステータスコードが400の場合の処理
-        //   navigate("/thanks");
-        // } else {
-        //   console.error("サーバーエラー:", error);
-        //   alert("サーバーエラー: " + error);
-        // }
       });
   };
 
