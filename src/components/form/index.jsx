@@ -11,20 +11,24 @@ import { navigate } from "gatsby";
 const schema = yup.object().shape({
   name: yup.string().required("※入力必須の項目です"),
   kana: yup.string().required("※入力必須の項目です"),
-  company: yup.string(),
+  company: yup.string(""),
   email: yup
     .string()
     .email("※正しいメールアドレスの形式でご入力ください")
     .required("※入力必須の項目です"),
   type: yup
     .string()
-    .oneOf([
-      "公開中の実績について（削除依頼等）",
-      "その他の制作実績について（個別にお見せできます）",
-      "お仕事依頼のご相談",
-      "その他ご質問等",
-    ])
-    .required("※種別を選択してください"),
+    .oneOf(
+      [
+        "公開中の実績について（削除依頼等）",
+        "その他の制作実績について（個別にお見せできます）",
+        "お仕事依頼のご相談",
+        "その他ご質問等",
+      ],
+      "※いずれかを選択してください"
+    )
+    .required(),
+
   textarea: yup.string().required("※入力必須の項目です"),
 });
 
@@ -44,7 +48,7 @@ export const Form = () => {
       kana: "",
       company: "",
       email: "",
-      type: "その他",
+      type: "以下から選択してください",
       textarea: "",
     },
     resolver: yupResolver(schema),
@@ -107,7 +111,7 @@ export const Form = () => {
                 type="text"
                 className="your-name type-text"
                 placeholder="山田 太郎"
-                {...register("name", { required: "入力必須の項目です" })}
+                {...register("name")}
               />
               <p className="error">{errors.name?.message}</p>
             </span>
@@ -128,7 +132,7 @@ export const Form = () => {
                 type="text"
                 className="your-kana type-text"
                 placeholder="ヤマダ タロウ"
-                {...register("kana", { required: "入力必須の項目です" })}
+                {...register("kana")}
               />
               <p className="error">{errors.kana?.message}</p>
             </span>
@@ -148,8 +152,9 @@ export const Form = () => {
                 type="text "
                 className="your-company type-text"
                 placeholder="会社名"
-                {...register("company", { required: "入力必須の項目です" })}
+                {...register("company")}
               />
+              <p className="error">{errors.company?.message}</p>
             </span>
           </div>
 
@@ -168,7 +173,7 @@ export const Form = () => {
                 type="email"
                 className="type-email"
                 placeholder="example@email.com"
-                {...register("email", { required: "入力必須の項目です" })}
+                {...register("email")}
               />
               <p className="error">{errors.email?.message}</p>
             </span>
@@ -187,7 +192,7 @@ export const Form = () => {
                 id="type"
                 className="type-select"
                 name="type"
-                {...register("type", { required: "種別を選択してください" })}
+                {...register("type")}
               >
                 <option>以下から選択してください</option>
                 <option value="公開中の実績について（削除依頼等）">
@@ -199,6 +204,7 @@ export const Form = () => {
                 <option value="お仕事依頼のご相談">お仕事依頼のご相談</option>
                 <option value="その他ご質問等">その他ご質問等</option>
               </select>
+
               <p className="error">{errors.type?.message}</p>
             </span>
           </div>
@@ -218,7 +224,7 @@ export const Form = () => {
                 rows={16}
                 name="textarea"
                 className="type-textarea"
-                {...register("textarea", { required: "入力必須の項目です" })}
+                {...register("textarea")}
               ></textarea>
               <p className="error">{errors.textarea?.message}</p>
             </span>
@@ -400,19 +406,6 @@ export const Form = () => {
               </label>
             </div>
           </div>
-
-          {/* <div className="contact-form__item">
-                          <label className="contact-form__item__label two-column"></label>
-                          <span className="wpcf7-form-control-wrap">
-                            <div
-                              className="g-recaptcha"
-                              data-sitekey={
-                                GATSBY_SITE_KEY ||
-                                `6LdGI0spAAAAAKgnx-XxZ6k-aGnupQRr-HRe4SJ4`
-                              }
-                            ></div>
-                          </span>
-                        </div> */}
 
           <div className="contact-form__submit">
             <button
