@@ -244,7 +244,7 @@
       }
     }
     .head-text {
-      @include font-style(1.8rem, $color-white, 400);
+      @include font-style(1.8rem, $color-white, 500);
       width: 54.4rem;
       line-height: 1.88;
       @include wide-pc {
@@ -380,7 +380,7 @@
         transform: translateY(-50%);
         opacity: 0;
         font-family: $font-orbit;
-        @include font-style(1.8rem, $color-white, 400);
+        @include font-style(1.8rem, $color-white, 500);
         transition: opacity 0.5s ease;
         z-index: 10;
         @include wide-pc {
@@ -407,11 +407,11 @@
         }
         .blog-description {
           width: 53.3rem;
-          @include font-style(1.2rem, $color-white, 400);
+          @include font-style(1.2rem, $color-white, 500);
           line-height: 2.2rem;
         }
         .blog-postTime {
-          @include font-style(1.2rem, $color-white, 400);
+          @include font-style(1.2rem, $color-white, 500);
           display: block;
           line-height: 1.2rem;
           display: flex;

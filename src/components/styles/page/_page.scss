@@ -154,7 +154,7 @@
       }
     }
     .head-text {
-      @include font-style(1.8rem, $color-white, 400);
+      @include font-style(1.8rem, $color-white, 500);
       width: 54.4rem;
       line-height: 1.88;
       @include wide-pc {

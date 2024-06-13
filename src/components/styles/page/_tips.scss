@@ -110,7 +110,7 @@
       }
     }
     p {
-      @include font-style(16px, $color-navy, normal);
+      @include font-style(16px, $color-navy, 500);
       margin: 24px 0;
       @include tab {
         font-size: 1.6rem;
@@ -122,7 +122,7 @@
       color: #333;
       li {
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 500;
         padding: 16px 0;
         @include tab {
           font-size: 1.2rem;
@@ -454,7 +454,7 @@
         transform: translateY(-50%);
         opacity: 0;
         font-family: $font-orbit;
-        @include font-style(1.8rem, $color-white, 400);
+        @include font-style(1.8rem, $color-white, 500);
         transition: opacity 0.3s ease;
         z-index: 10;
         @include wide-pc {
@@ -612,7 +612,7 @@
     }
   }
   .wpp-post-title {
-    @include font-style(14px, $color-navy, 400);
+    @include font-style(14px, $color-navy, 500);
     line-height: 1.5;
     margin-top: 16px;
     @include tab {
