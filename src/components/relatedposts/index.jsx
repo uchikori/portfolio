@@ -22,6 +22,7 @@ export const RelatedPosts = (props) => {
         nodes {
           databaseId
           date(formatString: "YYYY-MM-DD")
+          excerpt
           title
           terms {
             nodes {
@@ -66,6 +67,7 @@ export const RelatedPosts = (props) => {
         <h3>関連記事</h3>
         <ul>
           {relatedPosts.map((item) => {
+            const removePTagExcerpt = item.excerpt.replace(/<\/?p>/g, "");
             return (
               <li className="blog-card" key={item.databaseId}>
                 <Link to={`/web-tips/${item.databaseId}`}>
@@ -80,6 +82,7 @@ export const RelatedPosts = (props) => {
                   </figure>
                   <div className="blog-card-content">
                     <h4 className="blog-card-title">{item.title}</h4>
+                    <p className="blog-card-excerpt">{removePTagExcerpt}</p>
                   </div>
                 </Link>
               </li>
