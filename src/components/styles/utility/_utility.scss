@@ -140,10 +140,9 @@
 //-------------------------------
 .bg-white {
   background-color: $color-white;
-  padding: 40px 20px;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 8px;
   @include pc {
-    padding: 4rem 2rem;
-    border-radius: 2rem;
+    padding: 2rem;
   }
 }
