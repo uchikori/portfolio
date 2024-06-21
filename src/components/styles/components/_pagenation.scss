@@ -21,12 +21,12 @@
       text-decoration: none !important;
       &:hover {
         color: $color-white;
-        background-color: $color-trans-bg;
+        background-color: $color-pink;
         transition: all 0.3s ease;
       }
       &.current {
         color: $color-white;
-        background-color: $color-trans-bg;
+        background-color: $color-pink;
       }
       .gallery & {
         &:hover {

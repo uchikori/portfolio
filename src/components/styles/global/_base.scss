@@ -66,6 +66,9 @@ $ease-cb-5: cubic-bezier(0.96, 0.165, 0, 0.655);
   color: $font-color;
   font-weight: $font-weight;
 }
+@view-transition {
+  navigation: auto;
+}
 
 //-------------------------------
 //  All-page-common-css

@@ -2,6 +2,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import * as React from "react";
 import { Adsence } from "../../adsence";
 import { PopularPosts } from "../../PopularPosts";
+
 export const Sidebar = (props) => {
   const { path, rankingData } = props;
   const data = useStaticQuery(graphql`

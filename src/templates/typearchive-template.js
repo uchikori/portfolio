@@ -10,6 +10,7 @@ import { graphql, Link } from "gatsby";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { Pagenation } from "../components/blog/pagenation";
 import { AdsenceContentBottom } from "../components/adsence";
+import TransitionLink from "../components/TransitionLink";
 
 export default function Type(props) {
   const { data, pageContext } = props;
@@ -44,10 +45,12 @@ export default function Type(props) {
               <main className="flex-item nine-column bg-white">
                 {data.allWpWebTips.nodes.map((node) => {
                   return (
-                    <Link
+                    <TransitionLink
+                      id={node.databaseId}
                       className="media01 flex-block"
                       to={`/web-tips/${node.databaseId}`}
                       key={node.databaseId}
+                      transitionName={node.databaseId}
                     >
                       <div className="flex-item media01__thumbnail four-column">
                         <GatsbyImage
@@ -56,6 +59,10 @@ export default function Type(props) {
                               .gatsbyImageData
                           }
                           alt={node.featuredImage.node.altText}
+                          data-view-transition={`view-transition-${node.databaseId}`}
+                          style={{
+                            viewTransitionName: `view-transition-${node.databaseId}`,
+                          }}
                         />
                         <div className="media01__thumbnail-overlay">
                           READ MORE
@@ -69,7 +76,7 @@ export default function Type(props) {
 
                         <h2 className="media01__title mt-16">{node.title}</h2>
                       </div>
-                    </Link>
+                    </TransitionLink>
                   );
                 })}
                 <Pagenation pageContext={pageContext} />

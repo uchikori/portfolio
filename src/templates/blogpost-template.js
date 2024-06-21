@@ -9,10 +9,13 @@ import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
+import useViewTransition from "../lib/useViewTransition";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
   const location = useLocation();
+
+  useViewTransition(data.wpWebTips.databaseId);
 
   return (
     <Layout hasLoadingObj={false}>
@@ -26,7 +29,7 @@ export default function BlogPost({ data, pageContext }) {
             alt=""
           />
         </span>
-        <div className="scroll-container">
+        <div id={data.wpWebTips.databaseId} className="scroll-container">
           <MainVisual>
             <header className="main-visual__header">
               <div className="main-visual__left">
@@ -49,19 +52,23 @@ export default function BlogPost({ data, pageContext }) {
                         .childImageSharp.gatsbyImageData
                     }
                     alt={data.wpWebTips.featuredImage.node.altText}
+                    data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
+                    style={{
+                      viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
+                    }}
                   />
                 </figure>
               </div>
             </header>
           </MainVisual>
           <Content>
-            <div className="content__publish">
+            <div className="content__publish" style={{ marginBottom: "4rem" }}>
               公開日
               <time dateTime={`${data.wpWebTips.date}`}>
                 &emsp;{data.wpWebTips.date}
               </time>
             </div>
-            <div className="content__block flex-block align-start">
+            <div className="flex-block align-start">
               <Main
                 content={data.wpWebTips.content}
                 id={data.wpWebTips.databaseId}

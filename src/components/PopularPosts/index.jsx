@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import TransitionLink from "../TransitionLink";
 
 export const PopularPosts = (props) => {
   // 閲覧数で降順にソートする
@@ -51,7 +52,7 @@ export const PopularPosts = (props) => {
       {sortedData.map((item) => {
         return (
           <li key={item.databaseId}>
-            <Link to={`/web-tips/${item.databaseId}`}>
+            <Link to={`/web-tips/${item.databaseId}`} key={item.databaseId}>
               <GatsbyImage
                 image={
                   item.featuredImage.node.localFile.childImageSharp

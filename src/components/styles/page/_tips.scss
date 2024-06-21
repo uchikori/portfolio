@@ -380,9 +380,10 @@
 .post-type-archive-web-tips,
 .tax-class {
   .media01 {
-    padding: 1.6rem 1rem;
+    padding: 1.6rem;
     border: solid 1px #cccccc;
-    background-color: transparent;
+    background-color: #fff;
+    border-radius: 8px;
     transition: background-color 0.3s ease;
     margin-top: 3rem;
     &:first-child {
@@ -392,7 +393,7 @@
       padding: 16px 0;
     }
     &:hover {
-      background-color: rgba(0, 4, 56, 0.1);
+      background-color: rgba(255, 255, 255, 0.8);
       transition: background-color 0.3s ease;
       .media01__thumbnail {
         &:after {
