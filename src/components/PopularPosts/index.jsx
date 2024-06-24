@@ -52,7 +52,7 @@ export const PopularPosts = (props) => {
       {sortedData.map((item) => {
         return (
           <li key={item.databaseId}>
-            <Link to={`/web-tips/${item.databaseId}`} key={item.databaseId}>
+            <Link to={`/web-tips/${item.databaseId}`}>
               <GatsbyImage
                 image={
                   item.featuredImage.node.localFile.childImageSharp

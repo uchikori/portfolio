@@ -9,13 +9,23 @@ import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
-import useViewTransition from "../lib/useViewTransition";
+import { useViewTransition } from "../lib/useViewTransition";
+import { useEffect } from "react";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
   const location = useLocation();
 
-  useViewTransition(data.wpWebTips.databaseId);
+  useViewTransition();
+
+  // useEffect(() => {
+  // const parentIdElement = document.getElementById(data.wpWebTips.databaseId);
+  // const target = parentIdElement.querySelector(".gatsby-image-wrapper");
+  // if (target) {
+  //   target.classList.add("transition-active");
+  // }
+  // console.log(target);
+  // }, []);
 
   return (
     <Layout hasLoadingObj={false}>
@@ -53,6 +63,7 @@ export default function BlogPost({ data, pageContext }) {
                     }
                     alt={data.wpWebTips.featuredImage.node.altText}
                     data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
+                    // className="transition-active"
                     style={{
                       viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
                     }}

@@ -66,9 +66,38 @@ $ease-cb-5: cubic-bezier(0.96, 0.165, 0, 0.655);
   color: $font-color;
   font-weight: $font-weight;
 }
-@view-transition {
-  navigation: auto;
+// @view-transition {
+//   navigation: auto;
+// }
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    left: 0%;
+  }
+  100% {
+    opacity: 0;
+    left: 100%;
+  }
 }
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    left: -100%;
+  }
+  100% {
+    opacity: 1;
+    left: 0%;
+  }
+}
+// .transition-active {
+//   view-transition-name: banner-image;
+// }
+// ::view-transition-old(view-transition-1105) {
+//   animation: fade-out 1s forwards;
+// }
+// ::view-transition-new(view-transition-1105) {
+//   animation: fade-in 1s forwards;
+// }
 
 //-------------------------------
 //  All-page-common-css

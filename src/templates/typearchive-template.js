@@ -49,8 +49,8 @@ export default function Type(props) {
                       id={node.databaseId}
                       className="media01 flex-block"
                       to={`/web-tips/${node.databaseId}`}
+                      currentPath={location.pathname}
                       key={node.databaseId}
-                      transitionName={node.databaseId}
                     >
                       <div className="flex-item media01__thumbnail four-column">
                         <GatsbyImage

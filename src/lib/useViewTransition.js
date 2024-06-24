@@ -1,20 +1,31 @@
 import { useEffect } from "react";
 import { navigate } from "gatsby";
 
-const useViewTransition = (transitionName) => {
+export const useViewTransition = () => {
   useEffect(() => {
-    const handlePopState = () => {
+    const handlePopState = async () => {
       //ブラウザのview-transition-apiがサポートされていたら
       if (document.startViewTransition) {
-        //[data-view-transition]を持つ要素を取得
-        const element = document.querySelector(
-          `[data-view-transition="view-transition-${transitionName}"]`
-        );
-        //要素が存在していたら
-        if (element) {
-          //view-transitionを開始
-          document.startViewTransition(() => {});
-        }
+        // const transition = document.startViewTransition(() => {
+        //   const hasIdElement = document.getElementById(id);
+        //   if (hasIdElement) {
+        //     hasIdElement
+        //       .querySelector(".gatsby-image-wrapper")
+        //       .classList.add("transition-active");
+        //   }
+        //   console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+        // });
+
+        // await transition.finished.finally(() => {
+        //   const hasIdElement = document.getElementById(id);
+        //   if (hasIdElement) {
+        //     hasIdElement
+        //       .querySelector(".gatsby-image-wrapper")
+        //       .classList.remove("transition-active");
+        //   }
+        //   console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+        // });
+        document.startViewTransition(() => {});
       }
     };
 
@@ -24,7 +35,5 @@ const useViewTransition = (transitionName) => {
       //コンポーネントのアンマウント時にイベントリスナーを削除
       window.removeEventListener("popstate", handlePopState);
     };
-  }, [transitionName]);
+  }, []);
 };
-
-export default useViewTransition;

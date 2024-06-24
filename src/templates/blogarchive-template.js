@@ -11,12 +11,16 @@ import { Seo } from "../components/Seo";
 import { Pagenation } from "../components/blog/pagenation";
 import { AdsenceContentBottom } from "../components/adsence";
 import TransitionLink from "../components/TransitionLink";
+import { useViewTransition } from "../lib/useViewTransition";
+import { useEffect } from "react";
 
 export default function WebTips(props) {
   const { data, pageContext } = props;
   const rankingPostIds = pageContext.reportData;
-
+  //現在のURLを取得
   const location = useLocation();
+
+  useViewTransition();
 
   return (
     <Layout hasLoadingObj={false}>
@@ -48,8 +52,8 @@ export default function WebTips(props) {
                       id={node.databaseId}
                       className="media01 flex-block"
                       to={`/web-tips/${node.databaseId}`}
+                      currentPath={location.pathname}
                       key={node.databaseId}
-                      transitionName={node.databaseId}
                     >
                       <div className="flex-item media01__thumbnail four-column">
                         <GatsbyImage
@@ -63,6 +67,17 @@ export default function WebTips(props) {
                             viewTransitionName: `view-transition-${node.databaseId}`,
                           }}
                         />
+                        {/* <img
+                          src={
+                            node.featuredImage.node.localFile.childImageSharp
+                              .gatsbyImageData.images.sources[0].srcSet
+                          }
+                          alt={node.featuredImage.node.altText}
+                          data-view-transition={`view-transition-${node.databaseId}`}
+                          // style={{
+                          //   viewTransitionName: `view-transition-${node.databaseId}`,
+                          // }}
+                        /> */}
                         <div className="media01__thumbnail-overlay">
                           READ MORE
                         </div>
