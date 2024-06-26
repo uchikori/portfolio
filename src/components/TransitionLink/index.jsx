@@ -13,7 +13,7 @@ const TransitionLink = ({
   //リンクがクリックされたときの処理
   const handleClick = async (e) => {
     //デフォルトの挙動のページ遷移をキャンセル
-    // e.preventDefault();
+    e.preventDefault();
     //ブラウザがview-transition-apiがサポートされていたら
     if (document.startViewTransition) {
       // const transition = document.startViewTransition(() => {
@@ -32,8 +32,12 @@ const TransitionLink = ({
       // navigate(to);
 
       // //ViewTransitionを開始
-      const transition = document.startViewTransition(() => {});
-      // navigate(to);
+
+      const transition = document.startViewTransition(() => {
+        console.log("ViewTransitionを開始");
+      });
+
+      navigate(to);
 
       //遷移先が記事ページで、現在のページがアーカイブページの場合
       // if (isBlogPage(to) && isArchivePage(currentPath)) {

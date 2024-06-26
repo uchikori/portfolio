@@ -72,31 +72,74 @@ $ease-cb-5: cubic-bezier(0.96, 0.165, 0, 0.655);
 @keyframes fade-out {
   0% {
     opacity: 1;
-    left: 0%;
+    scale: 1;
   }
   100% {
     opacity: 0;
-    left: 100%;
+    scale: 0.5;
   }
 }
 @keyframes fade-in {
   0% {
     opacity: 0;
-    left: -100%;
+    scale: 0.5;
   }
   100% {
     opacity: 1;
-    left: 0%;
+    scale: 1;
   }
 }
-// .transition-active {
-//   view-transition-name: banner-image;
-// }
-// ::view-transition-old(view-transition-1105) {
+@keyframes scale-up {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 1.5;
+    opacity: 0;
+  }
+}
+@keyframes scale-down {
+  0% {
+    scale: 0.8;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+.transition-active {
+  view-transition-name: banner-image;
+}
+// ::view-transition-old(root) {
 //   animation: fade-out 1s forwards;
 // }
-// ::view-transition-new(view-transition-1105) {
+// ::view-transition-new(root) {
 //   animation: fade-in 1s forwards;
+// }
+::view-transition-group(banner-image) {
+  animation-duration: 0.4s;
+  transform-origin: center;
+  animation-timing-function: cubic-bezier(0.75, 0.11, 0.25, 0.91);
+}
+// html.currentArchive.toBlog::view-transition-old(banner-image) {
+//   animation: scale-up 30s forwards;
+//   transform-origin: center;
+//   // animation-duration: 1s;
+//   // mix-blend-mode: plus-lighter;
+// }
+// html.currentArchive.toBlog::view-transition-new(banner-image) {
+//   animation: scale-up 30s forwards;
+//   transform-origin: center;
+//   // animation-duration: 1s;
+//   // mix-blend-mode: plus-lighter;
+// }
+
+// html.currentBlog.toArchive::view-transition-old(banner-image) {
+//   animation: scale-down 30s forwards;
+//   // animation-duration: 1s;
+//   // mix-blend-mode: plus-lighter;
 // }
 
 //-------------------------------

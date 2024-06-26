@@ -1,50 +1,86 @@
 @use "../global" as *;
 .web-tips-template {
-  .main-visual__inner {
+  .web-tips__hero {
+    // width: 968px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
     @include wide-pc {
-      width: 80.41%;
+      // width: 80.41%;
+    }
+    @include pc {
+      // width: 80.41%;
     }
     @include tab {
-      width: 84vw;
+      // width: 84vw;
     }
   }
-  .main-visual__header {
-    @include tab {
-      flex-direction: column;
-      justify-content: center;
-      transform: translateX(0);
-      gap: 1.6rem;
-    }
-  }
-  .main-visual__left {
-    width: 45%;
-    @include tab {
-      width: 100%;
-    }
-  }
-  .main-visual__right {
-    width: 80rem;
-    @include wide-pc {
-      width: 800px;
-    }
-    @include tab {
-      width: 100%;
-    }
-  }
-  .first-image {
+  .web-tips__eyecatch {
     width: 100%;
-    aspect-ratio: 800/450;
+    // aspect-ratio: 800/450;
+    aspect-ratio: 268/150;
     object-fit: cover;
   }
+  .web-tips__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .web-tips__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+  }
+  .content__publish {
+    color: $color-navy;
+  }
+  // .main-visual__inner {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   // @include wide-pc {
+  //   //   width: 80.41%;
+  //   // }
+  //   // @include tab {
+  //   //   width: 84vw;
+  //   // }
+  // }
+  // .main-visual__header {
+  //   @include tab {
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     transform: translateX(0);
+  //     gap: 1.6rem;
+  //   }
+  // }
+  // .main-visual__left {
+  //   width: 45%;
+  //   @include tab {
+  //     width: 100%;
+  //   }
+  // }
+  // .main-visual__right {
+  //   width: 80rem;
+  //   @include wide-pc {
+  //     width: 800px;
+  //   }
+  //   @include tab {
+  //     width: 100%;
+  //   }
+  // }
+
   h1 {
-    @include font-style(3.2rem, $color-white, normal);
+    @include font-style(3.2rem, $color-navy, normal);
+    font-weight: 700;
     line-height: 1.8;
     font-feature-settings: "palt";
     @include wide-pc {
       font-size: 32px;
     }
     @include tab {
-      @include font-style(2.4rem, $color-white, normal);
+      font-size: 2.4rem;
       line-height: 1.5;
     }
   }
@@ -379,6 +415,11 @@
 }
 .post-type-archive-web-tips,
 .tax-class {
+  .article__items {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
   .media01 {
     padding: 1.6rem;
     border: solid 1px #cccccc;
@@ -510,12 +551,16 @@
 }
 //カスタムタクソノミーのタームスタイル
 .term {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   width: fit-content;
   @include font-style(1.4rem, $color-white, 900);
   background-color: $color-navy;
   padding: 0.8rem 1.6rem;
   transition: all 0.3s ease;
+
   &:hover {
     background-color: $color-pink;
     transition: all 0.3s ease;

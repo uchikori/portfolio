@@ -5,7 +5,7 @@ import "highlight.js/styles/vs2015.css";
 import { AdsenceContentBottom } from "../../adsence";
 import { useLocation } from "@reach/router";
 import { RelatedPosts } from "../../relatedposts";
-export const Main = (props) => {
+export const BlogContents = (props) => {
   const location = useLocation();
   const { catId, id } = props;
   let { content } = props;
@@ -19,13 +19,13 @@ export const Main = (props) => {
   content = $.html();
 
   return (
-    <main className="flex-item nine-column bg-white">
+    <div className="flex-item ">
       <div
         className="singleContents"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
       <RelatedPosts id={id} catId={catId} />
       <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
-    </main>
+    </div>
   );
 };

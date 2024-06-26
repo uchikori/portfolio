@@ -13,14 +13,15 @@ import { AdsenceContentBottom } from "../components/adsence";
 import TransitionLink from "../components/TransitionLink";
 import { useViewTransition } from "../lib/useViewTransition";
 import { useEffect } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
 export default function WebTips(props) {
   const { data, pageContext } = props;
   const rankingPostIds = pageContext.reportData;
   //現在のURLを取得
   const location = useLocation();
 
-  useViewTransition();
+  // useViewTransition();
 
   return (
     <Layout hasLoadingObj={false}>
@@ -45,52 +46,45 @@ export default function WebTips(props) {
           </MainVisual>
           <Content>
             <div className="flex-block align-start">
-              <main className="flex-item nine-column">
+              <main className="flex-item nine-column article__items">
                 {data.allWpWebTips.nodes.map((node) => {
                   return (
-                    <TransitionLink
-                      id={node.databaseId}
-                      className="media01 flex-block"
-                      to={`/web-tips/${node.databaseId}`}
-                      currentPath={location.pathname}
-                      key={node.databaseId}
-                    >
-                      <div className="flex-item media01__thumbnail four-column">
-                        <GatsbyImage
-                          image={
-                            node.featuredImage.node.localFile.childImageSharp
-                              .gatsbyImageData
-                          }
-                          alt={node.featuredImage.node.altText}
-                          data-view-transition={`view-transition-${node.databaseId}`}
-                          style={{
-                            viewTransitionName: `view-transition-${node.databaseId}`,
-                          }}
-                        />
-                        {/* <img
-                          src={
-                            node.featuredImage.node.localFile.childImageSharp
-                              .gatsbyImageData.images.sources[0].srcSet
-                          }
-                          alt={node.featuredImage.node.altText}
-                          data-view-transition={`view-transition-${node.databaseId}`}
-                          // style={{
-                          //   viewTransitionName: `view-transition-${node.databaseId}`,
-                          // }}
-                        /> */}
-                        <div className="media01__thumbnail-overlay">
-                          READ MORE
+                    <article id={node.databaseId}>
+                      <Link
+                        className="media01 flex-block transitionElement"
+                        to={`/web-tips/${node.databaseId}`}
+                        currentPath={location.pathname}
+                        key={node.databaseId}
+                      >
+                        <div className="flex-item media01__thumbnail four-column">
+                          <GatsbyImage
+                            image={
+                              node.featuredImage.node.localFile.childImageSharp
+                                .gatsbyImageData
+                            }
+                            alt={node.featuredImage.node.altText}
+                            data-view-transition={`view-transition-${node.databaseId}`}
+                            // style={{
+                            //   viewTransitionName: `view-transition-${node.databaseId}`,
+                            // }}
+                          />
+                          <div className="media01__thumbnail-overlay">
+                            READ MORE
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex-item eight-column media01__body">
-                        <div className="media01__meta">
-                          <div className="term">{node.terms.nodes[0].name}</div>
-                          <time dateTime={node.date}>{node.date}</time>
-                        </div>
+                        <div className="flex-item eight-column media01__body">
+                          <div className="media01__meta">
+                            <div className="term">
+                              <FontAwesomeIcon icon={faTag} />
+                              {node.terms.nodes[0].name}
+                            </div>
+                            <time dateTime={node.date}>{node.date}</time>
+                          </div>
 
-                        <h2 className="media01__title mt-16">{node.title}</h2>
-                      </div>
-                    </TransitionLink>
+                          <h2 className="media01__title mt-16">{node.title}</h2>
+                        </div>
+                      </Link>
+                    </article>
                   );
                 })}
                 <Pagenation pageContext={pageContext} />

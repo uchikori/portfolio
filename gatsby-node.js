@@ -163,7 +163,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   Array.from({ length: blogPages }).forEach((_, index) => {
     createPage({
-      path: index === 0 ? `/web-tips/` : `/web-tips/${index + 1}`,
+      path: index === 0 ? `/web-tips/` : `/web-tips/page-${index + 1}`,
       component: path.resolve(`./src/templates/blogarchive-template.js`),
       context: {
         skip: blogPostsPerPage * index,
@@ -182,7 +182,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
    * カテゴリー記事一覧ページの生成
    ***********************************************************/
   blogResult.data.allWpType.nodes.forEach((node) => {
-    const typePostPerPage = 20;
+    const typePostPerPage = 10;
     const typePosts = node.webTips.nodes.length;
     const typePages = Math.ceil(typePosts / typePostPerPage);
 
@@ -193,7 +193,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path:
           index === 0
             ? `/class/${node.slug}/`
-            : `/class/${node.slug}/${index + 1}`,
+            : `/class/${node.slug}/page-${index + 1}`,
         component: path.resolve(`./src/templates/typearchive-template.js`),
         context: {
           typeId: node.id,
@@ -235,7 +235,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   Array.from({ length: worksPages }).forEach((_, index) => {
     createPage({
-      path: index === 0 ? `/works/` : `/works/${index + 1}`,
+      path: index === 0 ? `/works/` : `/works/page-${index + 1}`,
       component: path.resolve(`./src/templates/worksarchive-template.js`),
       context: {
         skip: worksPostsPerPage * index,
@@ -252,7 +252,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
    * 実績カテゴリーページの生成
    ***********************************************************/
   blogResult.data.allWpCategory.nodes.forEach((node) => {
-    const categoryPostPerPage = 20;
+    const categoryPostPerPage = 10;
     const categoryPosts = node.posts.nodes.length;
     const categoryPages = Math.ceil(categoryPosts / categoryPostPerPage);
 
@@ -263,7 +263,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path:
           index === 0
             ? `/category/${node.slug}/`
-            : `/category/${node.slug}/${index + 1}/`,
+            : `/category/${node.slug}/page-${index + 1}/`,
         component: path.resolve(`./src/templates/categoryarchive-template.js`),
         context: {
           categoryId: node.id,

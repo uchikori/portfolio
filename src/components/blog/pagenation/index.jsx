@@ -19,7 +19,7 @@ export const Pagenation = (props) => {
             to={
               pageContext.currentPage === 2
                 ? `/${pageContext.taxonomyName}/${pageContext.typeSlug}/`
-                : `/${pageContext.taxonomyName}/${pageContext.typeSlug}/${
+                : `/${pageContext.taxonomyName}/${pageContext.typeSlug}/page-${
                     pageContext.currentPage - 1
                   }`
             }
@@ -33,7 +33,7 @@ export const Pagenation = (props) => {
             to={
               pageContext.currentPage === 2
                 ? `/${pageContext.type}/`
-                : `/${pageContext.type}/${pageContext.currentPage - 1}`
+                : `/${pageContext.type}/page-${pageContext.currentPage - 1}`
             }
           >
             <FontAwesomeIcon icon={faChevronLeft} />
@@ -48,9 +48,9 @@ export const Pagenation = (props) => {
               to={
                 index === 0
                   ? `/${pageContext.taxonomyName}/${pageContext.typeSlug}/`
-                  : `/${pageContext.taxonomyName}/${pageContext.typeSlug}/${
-                      index + 1
-                    }`
+                  : `/${pageContext.taxonomyName}/${
+                      pageContext.typeSlug
+                    }/page-${index + 1}`
               }
               className={pageContext.currentPage === index + 1 ? "current" : ""}
             >
@@ -63,7 +63,7 @@ export const Pagenation = (props) => {
               to={
                 index === 0
                   ? `/${pageContext.type}/`
-                  : `/${pageContext.type}/${index + 1}`
+                  : `/${pageContext.type}/page-${index + 1}`
               }
               className={pageContext.currentPage === index + 1 ? "current" : ""}
             >
@@ -78,7 +78,7 @@ export const Pagenation = (props) => {
       ) : pageContext.isTaxonomyPage ? (
         <li className="pagenation__item next">
           <Link
-            to={`/${pageContext.taxonomyName}/${pageContext.typeSlug}/${
+            to={`/${pageContext.taxonomyName}/${pageContext.typeSlug}/page-${
               pageContext.currentPage + 1
             }`}
           >
@@ -87,7 +87,7 @@ export const Pagenation = (props) => {
         </li>
       ) : (
         <li className="pagenation__item next">
-          <Link to={`/${pageContext.type}/${pageContext.currentPage + 1}`}>
+          <Link to={`/${pageContext.type}/page-${pageContext.currentPage + 1}`}>
             <FontAwesomeIcon icon={faChevronRight} />
           </Link>
         </li>

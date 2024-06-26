@@ -1,7 +1,7 @@
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
-import { Main } from "../components/blog/main";
+import { BlogContents } from "../components/blog/main";
 import { Sidebar } from "../components/blog/sidebar";
 import { Content } from "../components/global/Content";
 import { MainVisual } from "../components/global/MainVisual";
@@ -11,12 +11,14 @@ import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
 import { useViewTransition } from "../lib/useViewTransition";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
   const location = useLocation();
 
-  useViewTransition();
+  // useViewTransition();
 
   // useEffect(() => {
   // const parentIdElement = document.getElementById(data.wpWebTips.databaseId);
@@ -39,9 +41,13 @@ export default function BlogPost({ data, pageContext }) {
             alt=""
           />
         </span>
-        <div id={data.wpWebTips.databaseId} className="scroll-container">
-          <MainVisual>
-            <header className="main-visual__header">
+        <div
+          id={data.wpWebTips.databaseId}
+          className="scroll-container web-tips"
+          style={{ display: "flex", flexDirection: "column", gap: "8rem" }}
+        >
+          {/* <MainVisual> */}
+          {/* <header className="main-visual__header">
               <div className="main-visual__left">
                 <div className="main-visual__title">
                   <h1 className="title-line head-title">
@@ -64,27 +70,100 @@ export default function BlogPost({ data, pageContext }) {
                     alt={data.wpWebTips.featuredImage.node.altText}
                     data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
                     // className="transition-active"
-                    style={{
-                      viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
-                    }}
+                    // style={{
+                    //   viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
+                    // }}
                   />
                 </figure>
               </div>
+            </header> */}
+          {/* <div className="web-tips__hero" style={{ marginTop: "12rem" }}>
+            <header className="web-tips__header">
+              <div className="web-tips__title">
+                <h1 className="title-line head-title">
+                  {data.wpWebTips.title}
+                </h1>
+              </div>
+              <div className="term">
+                <FontAwesomeIcon icon={faTag} />
+                <Link to={`/class/${data.wpWebTips.terms.nodes[0].slug}`}>
+                  {data.wpWebTips.terms.nodes[0].name}
+                </Link>
+              </div>
             </header>
-          </MainVisual>
-          <Content>
-            <div className="content__publish" style={{ marginBottom: "4rem" }}>
-              公開日
+            <figure className="web-tips__eyecatch first-image">
+              <GatsbyImage
+                image={
+                  data.wpWebTips.featuredImage.node.localFile.childImageSharp
+                    .gatsbyImageData
+                }
+                alt={data.wpWebTips.featuredImage.node.altText}
+                data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
+                // className="transition-active"
+                // style={{
+                //   viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
+                // }}
+              />
+            </figure>
+            <div className="content__publish">
+              公開日：
               <time dateTime={`${data.wpWebTips.date}`}>
-                &emsp;{data.wpWebTips.date}
+                {data.wpWebTips.date}
               </time>
             </div>
-            <div className="flex-block align-start">
-              <Main
-                content={data.wpWebTips.content}
-                id={data.wpWebTips.databaseId}
-                catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]}
-              />
+          </div> */}
+          {/* </MainVisual> */}
+          <Content>
+            <div
+              className="flex-block align-start"
+              style={{ marginTop: "12rem" }}
+            >
+              <main className="nine-column bg-white transitionElement">
+                <article>
+                  <div className="web-tips__hero">
+                    <header className="web-tips__header">
+                      <div className="web-tips__title">
+                        <h1 className="title-line head-title">
+                          {data.wpWebTips.title}
+                        </h1>
+                      </div>
+                      <div className="term">
+                        <FontAwesomeIcon icon={faTag} />
+                        <Link
+                          to={`/class/${data.wpWebTips.terms.nodes[0].slug}`}
+                        >
+                          {data.wpWebTips.terms.nodes[0].name}
+                        </Link>
+                      </div>
+                    </header>
+                    <figure className="web-tips__eyecatch ">
+                      <GatsbyImage
+                        image={
+                          data.wpWebTips.featuredImage.node.localFile
+                            .childImageSharp.gatsbyImageData
+                        }
+                        alt={data.wpWebTips.featuredImage.node.altText}
+                        data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
+                        // className="transition-active"
+                        // style={{
+                        //   viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
+                        // }}
+                      />
+                    </figure>
+                    <div className="content__publish">
+                      公開日：
+                      <time dateTime={`${data.wpWebTips.date}`}>
+                        {data.wpWebTips.date}
+                      </time>
+                    </div>
+                  </div>
+                  <BlogContents
+                    content={data.wpWebTips.content}
+                    id={data.wpWebTips.databaseId}
+                    catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]}
+                  />
+                </article>
+              </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />
             </div>
           </Content>
