@@ -34,7 +34,10 @@
     gap: 1.6rem;
   }
   .content__publish {
-    color: $color-navy;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $color-white;
   }
   // .main-visual__inner {
   //   display: flex;
@@ -72,7 +75,8 @@
   // }
 
   h1 {
-    @include font-style(3.2rem, $color-navy, normal);
+    // @include font-style(3.2rem, $color-navy, normal);
+    @include font-style(3.2rem, $color-white, normal);
     font-weight: 700;
     line-height: 1.8;
     font-feature-settings: "palt";
@@ -123,11 +127,14 @@
       }
     }
     h3 {
-      @include font-style(28px, rgb(0, 93, 189), bold);
+      // @include font-style(28px, rgb(0, 93, 189), bold);
+      @include font-style(28px, $color-white, bold);
 
       line-height: 1.5;
-      border-top: solid 1px rgb(0, 93, 189);
-      border-bottom: solid 1px rgb(0, 93, 189);
+      // border-top: solid 1px rgb(0, 93, 189);
+      // border-bottom: solid 1px rgb(0, 93, 189);
+      border-top: solid 1px $color-white;
+      border-bottom: solid 1px $color-white;
       margin: 40px 0;
       padding: 8px 16px;
       @include tab {
@@ -137,17 +144,20 @@
       }
     }
     h4 {
-      @include font-style(24px, rgb(0, 93, 189), bold);
+      // @include font-style(24px, rgb(0, 93, 189), bold);
+      @include font-style(24px, $color-white, bold);
       line-height: 1.5;
       margin: 20px 0;
-      border-bottom: solid 1px rgb(0, 93, 189);
+      // border-bottom: solid 1px rgb(0, 93, 189);
+      border-bottom: solid 1px $color-white;
       @include tab {
         font-size: 2rem;
         margin: 2rem 0;
       }
     }
     p {
-      @include font-style(16px, $color-navy, 500);
+      // @include font-style(16px, $color-navy, 500);
+      @include font-style(16px, $color-white, 500);
       margin: 24px 0;
       @include tab {
         font-size: 1.6rem;
@@ -205,6 +215,9 @@
       border: solid 3px #0c57bb;
       margin: 60px 0 40px 0;
       background-color: $color-white;
+      p {
+        color: $color-navy;
+      }
       .box-title {
         position: absolute;
         display: inline-block;
@@ -395,6 +408,7 @@
     td {
       width: 70%;
       border: solid 1px #cccccc;
+      background-color: #ffffff;
       padding: 1%;
       line-height: 1.5;
       &:first-child {
@@ -416,9 +430,18 @@
 .post-type-archive-web-tips,
 .tax-class {
   .article__items {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 32px;
+    @include tab {
+      gap: 16px;
+    }
+    @include sp {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
   }
   .media01 {
     padding: 1.6rem;
@@ -557,7 +580,7 @@
   gap: 8px;
   width: fit-content;
   @include font-style(1.4rem, $color-white, 900);
-  background-color: $color-navy;
+  background-color: #0c57bb;
   padding: 0.8rem 1.6rem;
   transition: all 0.3s ease;
 
@@ -590,11 +613,11 @@
   h2 {
     font-family: $font-orbit;
     margin-bottom: 0;
-    color: $color-navy;
+    color: $color-white;
     font-weight: bold;
-    border-left: solid 4px $color-navy;
+    border-left: solid 4px $color-white;
     @include tab {
-      border-left: solid 2px $color-navy;
+      border-left: solid 2px $color-white;
     }
   }
   .wpp-list {
@@ -606,7 +629,7 @@
       display: block;
     }
     li {
-      margin-top: 24px;
+      margin-top: 32px;
       position: relative;
       @include tab {
         margin-top: 2.4rem;
@@ -659,9 +682,9 @@
     }
   }
   .wpp-post-title {
-    @include font-style(14px, $color-navy, 500);
+    @include font-style(14px, $color-white, 500);
     line-height: 1.5;
-    margin-top: 16px;
+    margin-top: 8px;
     @include tab {
       margin-top: 1.6rem;
     }

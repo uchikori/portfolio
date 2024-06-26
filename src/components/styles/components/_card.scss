@@ -1,0 +1,108 @@
+@use "../global" as *;
+.card {
+  min-height: 40.9rem;
+  height: 100%;
+  color: white;
+  padding: 16px;
+  border-radius: 2px;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 4px 8px;
+  border: 1px rgba(255, 255, 255, 0.4) solid;
+  border-bottom: 1px rgba(40, 40, 40, 0.35) solid;
+  border-right: 1px rgba(40, 40, 40, 0.35) solid;
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  @include tab {
+    padding: 8px;
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    .card__thumbnail {
+      &:after {
+        opacity: 0.7;
+        transform: scale(1);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      &overlay {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+      img {
+        transform: scale(1.4) rotateZ(15deg);
+        filter: brightness(140%);
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+    }
+  }
+  &__thumbnail {
+    aspect-ratio: 268/150;
+    overflow: hidden;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #000;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    &overlay {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      font-family: $font-orbit;
+      @include font-style(1.8rem, $color-white, 500);
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      @include wide-pc {
+        font-size: 18px;
+      }
+    }
+    img {
+      transform: scale(1) rotateZ(0deg);
+      filter: brightness(100%);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    time {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &__title {
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    .web-tips article & {
+      border-left: none;
+      padding: 0;
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: 500;
+      @include pc {
+        font-size: 2rem;
+      }
+    }
+  }
+}

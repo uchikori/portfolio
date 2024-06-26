@@ -14,7 +14,7 @@ import TransitionLink from "../components/TransitionLink";
 import { useViewTransition } from "../lib/useViewTransition";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
+import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
 export default function WebTips(props) {
   const { data, pageContext } = props;
   const rankingPostIds = pageContext.reportData;
@@ -46,47 +46,52 @@ export default function WebTips(props) {
           </MainVisual>
           <Content>
             <div className="flex-block align-start">
-              <main className="flex-item nine-column article__items">
-                {data.allWpWebTips.nodes.map((node) => {
-                  return (
-                    <article id={node.databaseId}>
-                      <Link
-                        className="media01 flex-block transitionElement"
-                        to={`/web-tips/${node.databaseId}`}
-                        currentPath={location.pathname}
-                        key={node.databaseId}
-                      >
-                        <div className="flex-item media01__thumbnail four-column">
-                          <GatsbyImage
-                            image={
-                              node.featuredImage.node.localFile.childImageSharp
-                                .gatsbyImageData
-                            }
-                            alt={node.featuredImage.node.altText}
-                            data-view-transition={`view-transition-${node.databaseId}`}
-                            // style={{
-                            //   viewTransitionName: `view-transition-${node.databaseId}`,
-                            // }}
-                          />
-                          <div className="media01__thumbnail-overlay">
-                            READ MORE
-                          </div>
-                        </div>
-                        <div className="flex-item eight-column media01__body">
-                          <div className="media01__meta">
-                            <div className="term">
-                              <FontAwesomeIcon icon={faTag} />
-                              {node.terms.nodes[0].name}
+              <main className="flex-item nine-column">
+                <div className="article__items">
+                  {data.allWpWebTips.nodes.map((node) => {
+                    return (
+                      <article id={node.databaseId}>
+                        <Link
+                          className="card"
+                          to={`/web-tips/${node.databaseId}`}
+                          currentPath={location.pathname}
+                          key={node.databaseId}
+                        >
+                          <div className="card__thumbnail">
+                            <GatsbyImage
+                              image={
+                                node.featuredImage.node.localFile
+                                  .childImageSharp.gatsbyImageData
+                              }
+                              alt={node.featuredImage.node.altText}
+                              data-view-transition={`view-transition-${node.databaseId}`}
+                              // style={{
+                              //   viewTransitionName: `view-transition-${node.databaseId}`,
+                              // }}
+                            />
+                            <div className="card__thumbnailoverlay">
+                              READ MORE
                             </div>
-                            <time dateTime={node.date}>{node.date}</time>
                           </div>
+                          <div className="card__body">
+                            <div className="card__meta">
+                              <div className="term">
+                                <FontAwesomeIcon icon={faTag} />
+                                {node.terms.nodes[0].name}
+                              </div>
+                              <time dateTime={node.date}>
+                                <FontAwesomeIcon icon={faClock} />
+                                {node.date}
+                              </time>
+                            </div>
 
-                          <h2 className="media01__title mt-16">{node.title}</h2>
-                        </div>
-                      </Link>
-                    </article>
-                  );
-                })}
+                            <h2 className="card__title">{node.title}</h2>
+                          </div>
+                        </Link>
+                      </article>
+                    );
+                  })}
+                </div>
                 <Pagenation pageContext={pageContext} />
                 <AdsenceContentBottom
                   format={"autorelaxed"}

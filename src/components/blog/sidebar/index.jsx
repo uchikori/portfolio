@@ -23,7 +23,7 @@ export const Sidebar = (props) => {
   `);
 
   return (
-    <aside className="sidebar flex-item three-column bg-white">
+    <aside className="sidebar flex-item three-column bg-glass">
       <section className="sidebar__widget">
         <h2 className="sidebar__title">CATEGORY</h2>
         <ul className="sidebar__term-list">

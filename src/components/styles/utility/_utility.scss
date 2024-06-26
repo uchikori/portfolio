@@ -146,3 +146,15 @@
     padding: 2rem;
   }
 }
+
+.bg-glass {
+  padding: 16px;
+  border-radius: 2px;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.16);
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 4px 8px;
+  border: 1px rgba(255, 255, 255, 0.4) solid;
+  border-bottom: 1px rgba(40, 40, 40, 0.35) solid;
+  border-right: 1px rgba(40, 40, 40, 0.35) solid;
+  transition: background-color 0.4s ease;
+}

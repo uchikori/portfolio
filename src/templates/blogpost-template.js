@@ -12,7 +12,7 @@ import { extractText } from "../lib/extract-text";
 import { useViewTransition } from "../lib/useViewTransition";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
+import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
@@ -118,7 +118,7 @@ export default function BlogPost({ data, pageContext }) {
               className="flex-block align-start"
               style={{ marginTop: "12rem" }}
             >
-              <main className="nine-column bg-white transitionElement">
+              <main className="nine-column bg-glass transitionElement">
                 <article>
                   <div className="web-tips__hero">
                     <header className="web-tips__header">
@@ -135,6 +135,12 @@ export default function BlogPost({ data, pageContext }) {
                           {data.wpWebTips.terms.nodes[0].name}
                         </Link>
                       </div>
+                      <div className="content__publish">
+                        <FontAwesomeIcon icon={faClock} />
+                        <time dateTime={`${data.wpWebTips.date}`}>
+                          {data.wpWebTips.date}
+                        </time>
+                      </div>
                     </header>
                     <figure className="web-tips__eyecatch ">
                       <GatsbyImage
@@ -150,12 +156,6 @@ export default function BlogPost({ data, pageContext }) {
                         // }}
                       />
                     </figure>
-                    <div className="content__publish">
-                      公開日：
-                      <time dateTime={`${data.wpWebTips.date}`}>
-                        {data.wpWebTips.date}
-                      </time>
-                    </div>
                   </div>
                   <BlogContents
                     content={data.wpWebTips.content}
