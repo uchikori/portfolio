@@ -119,6 +119,7 @@ $ease-cb-5: cubic-bezier(0.96, 0.165, 0, 0.655);
 //   animation: fade-in 1s forwards;
 // }
 ::view-transition-group(banner-image) {
+  transform-origin: 0 0;
   animation-duration: 0.4s;
   animation-timing-function: cubic-bezier(0.75, 0.11, 0.25, 0.91);
 }

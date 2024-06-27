@@ -16,7 +16,8 @@
       padding: 0;
     }
     &__image {
-      height: 416px;
+      aspect-ratio: 16/9;
+      // height: 416px;
       filter: grayscale(100%);
       transition: filter 0.8s ease;
       &.vertical {
