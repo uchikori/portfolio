@@ -11,6 +11,8 @@ import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import { Pagenation } from "../components/blog/pagenation";
 import { AdsenceContentBottom } from "../components/adsence";
 import TransitionLink from "../components/TransitionLink";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
 
 export default function Type(props) {
   const { data, pageContext } = props;
@@ -47,12 +49,12 @@ export default function Type(props) {
                   return (
                     <article id={node.databaseId}>
                       <Link
-                        className="media01 flex-block"
+                        className="card"
                         to={`/web-tips/${node.databaseId}`}
                         currentPath={location.pathname}
                         key={node.databaseId}
                       >
-                        <div className="flex-item media01__thumbnail four-column">
+                        <div className="card__thumbnail">
                           <GatsbyImage
                             image={
                               node.featuredImage.node.localFile.childImageSharp
@@ -64,19 +66,23 @@ export default function Type(props) {
                             //   viewTransitionName: `view-transition-${node.databaseId}`,
                             // }}
                           />
-                          <div className="media01__thumbnail-overlay">
+                          <div className="card__thumbnailoverlay">
                             READ MORE
                           </div>
                         </div>
-                        <div className="flex-item eight-column media01__body">
-                          <div className="media01__meta">
+                        <div className="card__body">
+                          <div className="card__meta">
                             <div className="term">
+                              <FontAwesomeIcon icon={faTag} />
                               {node.terms.nodes[0].name}
                             </div>
-                            <time dateTime={node.date}>{node.date}</time>
+                            <time dateTime={node.date}>
+                              <FontAwesomeIcon icon={faClock} />
+                              {node.date}
+                            </time>
                           </div>
 
-                          <h2 className="media01__title mt-16">{node.title}</h2>
+                          <h2 className="card__title">{node.title}</h2>
                         </div>
                       </Link>
                     </article>
