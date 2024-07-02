@@ -67,15 +67,15 @@ export const onRouteUpdate = async ({ location, prevLocation }) => {
     const hasIdElement = document.getElementById(detailId);
     //DOM操作
     if (hasIdElement) {
+      console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       hasIdElement
-        .querySelector(".gatsby-image-wrapper")
+        .querySelector(`.gatsby-image-wrapper`)
         .classList.add("transition-active");
-      console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
       setTimeout(() => {
         hasIdElement
-          .querySelector(".gatsby-image-wrapper")
+          .querySelector(`.gatsby-image-wrapper`)
           .classList.remove("transition-active");
-        console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+        console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       }, 2000);
     }
   }
@@ -92,14 +92,14 @@ export const onRouteUpdate = async ({ location, prevLocation }) => {
     //DOM操作
     if (hasIdElement) {
       hasIdElement
-        .querySelector(".gatsby-image-wrapper")
+        .querySelector(`.gatsby-image-wrapper`)
         .classList.add("transition-active");
-      console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+      console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       setTimeout(() => {
         hasIdElement
-          .querySelector(".gatsby-image-wrapper")
+          .querySelector(`.gatsby-image-wrapper`)
           .classList.remove("transition-active");
-        console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+        console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       }, 2000);
     }
   }

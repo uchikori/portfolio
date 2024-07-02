@@ -55,9 +55,9 @@ export const viewTransition = (url, className) => {
         document.documentElement.classList.add(...className);
         //クラス名を付ける
         hasIdElement
-          .querySelector(".gatsby-image-wrapper")
+          .querySelector(`.gatsby-image-wrapper`)
           .classList.add("transition-active");
-        console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+        console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
         console.log(document.documentElement);
       });
       //ViewTransitionの完了を待機
@@ -65,10 +65,10 @@ export const viewTransition = (url, className) => {
         //DOM操作
         document.documentElement.classList.remove(...className);
         hasIdElement
-          .querySelector(".gatsby-image-wrapper")
+          .querySelector(`.gatsby-image-wrapper`)
           .classList.remove("transition-active");
 
-        console.log(hasIdElement.querySelector(".gatsby-image-wrapper"));
+        console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
         console.log(document.documentElement);
       });
       //ブラウザがview-transition-apiがサポートしていなかったら
