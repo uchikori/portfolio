@@ -60,26 +60,23 @@
       }
     }
     .list-item {
-      @include font-style(1.6rem, $color-white, normal);
-      font-size: 1.6rem;
+      @include font-style(14px, $color-white, normal);
       line-height: 2;
       margin-bottom: 2.4rem;
       @include wide-pc {
-        font-size: 16px;
         margin-bottom: 24px;
       }
       @include tab {
-        font-size: 1.2rem;
         margin-bottom: 1.6rem;
       }
       &:last-child {
         margin-bottom: 0;
       }
       span {
-        font-size: 1.2rem;
+        font-size: 12px;
         letter-spacing: 0.09em;
         @include tab {
-          font-size: 1rem;
+          // font-size: 1rem;
         }
       }
     }

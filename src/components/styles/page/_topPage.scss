@@ -244,17 +244,20 @@
       }
     }
     .head-text {
-      @include font-style(1.8rem, $color-white, 500);
+      @include font-style(18px, $color-white, 500);
       width: 54.4rem;
       line-height: 1.88;
       @include wide-pc {
-        font-size: 18px;
+        // font-size: 18px;
         width: 560px;
       }
+      @include tab {
+        width: 64rem;
+      }
       @include sp {
-        width: 30rem;
+        width: 100%;
         line-height: 1.857;
-        font-size: 1.4rem;
+        font-size: 14px;
       }
     }
     .page-link {

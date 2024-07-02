@@ -1,6 +1,6 @@
 $wide-pc: 1930px; //ワイドPC
 $pc: 1200px; // PC
-$tab: 768px; // タブレット
+$tab: 960px; // タブレット
 $sp: 428px; // スマホ
 
 $pc-size: 1366;
@@ -152,14 +152,14 @@ html {
     */
   font-size: calc(10 / 1920 * 100) + vw;
   // overflow: hidden;
-  // @include pc{
-  //     font-size: calc(10 / 1200 * 100) + vw;
+  // @include pc {
+  //   font-size: calc(10 / 1200 * 100) + vw;
   // }
   @include pc {
     font-size: calc(10 / 1200 * 100) + vw;
   }
   @include tab {
-    font-size: calc(10 / 768 * 100) + vw;
+    font-size: calc(10 / 960 * 100) + vw;
   }
   @include sp {
     font-size: calc(10 / 428 * 100) + vw;

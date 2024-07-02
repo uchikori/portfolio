@@ -160,7 +160,7 @@
       @include font-style(16px, $color-white, 500);
       margin: 24px 0;
       @include tab {
-        font-size: 1.6rem;
+        // font-size: 1.6rem;
         margin: 2.4rem 0;
       }
     }
@@ -172,7 +172,7 @@
         font-weight: 500;
         padding: 16px 0;
         @include tab {
-          font-size: 1.2rem;
+          // font-size: 1.2rem;
           padding: 1.2rem 0;
         }
       }
@@ -204,9 +204,9 @@
       }
       cite {
         font-size: 16px;
-        @include tab {
-          font-size: 1.2rem;
-        }
+        // @include tab {
+        //   font-size: 1.2rem;
+        // }
       }
     }
     .box01 {
@@ -579,7 +579,7 @@
   align-items: center;
   gap: 8px;
   width: fit-content;
-  @include font-style(1.4rem, $color-white, 900);
+  @include font-style(14px, $color-white, 900);
   background-color: #0c57bb;
   padding: 0.8rem 1.6rem;
   transition: all 0.3s ease;
@@ -588,9 +588,9 @@
     background-color: $color-pink;
     transition: all 0.3s ease;
   }
-  @include tab {
-    font-size: 1.2rem;
-  }
+  // @include tab {
+  //   font-size: 1.2rem;
+  // }
 }
 
 //web-tips用サイドバー
@@ -625,15 +625,24 @@
     // @include tab{
     //     margin-top: 4rem;
     // }
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+    margin-top: 3.2rem;
+    @include tab {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include sp {
+      grid-template-columns: 1fr;
+    }
     a {
       display: block;
     }
+    .wpp-thumbnail {
+      aspect-ratio: 268/150;
+    }
     li {
-      margin-top: 32px;
       position: relative;
-      @include tab {
-        margin-top: 2.4rem;
-      }
       &:first-child {
         &:after {
           content: "1";

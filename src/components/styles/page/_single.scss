@@ -91,17 +91,18 @@
 
 .content {
   .first-image {
+    aspect-ratio: 1544/832;
     width: 154.4rem;
-    height: 83.2rem;
+    // height: 83.2rem;
     margin: 0 calc(50% - 77.2rem) 8rem;
     @include wide-pc {
       width: 1544px;
-      height: 832px;
+      // height: 832px;
       margin: 0 calc(50% - 772px) 80px;
     }
     @include tab {
       width: 100%;
-      height: 17rem;
+      // height: auto;
       margin: 0 auto 4rem auto;
     }
   }
@@ -157,7 +158,7 @@
   .mockup-image {
     &__pc {
       width: 100vw;
-      height: 90rem;
+      height: auto;
       margin: 0 calc(50% - 50vw);
       @include wide-pc {
         width: 1920px;
@@ -165,7 +166,7 @@
         margin: 0 calc(50% - 960px);
       }
       @include tab {
-        height: 17.6rem;
+        // height: 17.6rem;
       }
     }
     // &__wrap{
@@ -179,30 +180,30 @@
     // }
     &__video {
       width: 116.8rem;
-      height: 64rem;
+      height: auto;
       @include wide-pc {
         width: 100%;
         height: 640px;
       }
       @include tab {
         width: 100%;
-        height: 20rem;
+        // height: 20rem;
       }
       video {
         width: 100%;
-        height: 64rem;
+        height: auto;
         object-fit: cover;
         @include wide-pc {
           height: 100%;
         }
         @include tab {
-          height: 20rem;
+          // height: 20rem;
         }
       }
     }
     &__tab {
       width: 96.8rem;
-      height: 64.5rem;
+      height: auto;
       margin: 0 auto -5rem auto;
       z-index: 10;
       img {
@@ -214,14 +215,19 @@
         margin: 0 auto -50px auto;
       }
       @include tab {
+        width: 80%;
+        // height: auto;
+        margin: 0 auto -2.4rem auto;
+      }
+      @include sp {
         width: 100%;
-        height: 20.9rem;
+        // height: auto;
         margin: 0 auto -2.4rem auto;
       }
     }
     &__sp {
       width: 100vw;
-      height: 70rem;
+      height: auto;
       margin: 0 calc(50% - 50vw);
       position: relative;
       z-index: -10;
@@ -231,7 +237,7 @@
         margin: 0 calc(50% - 960px);
       }
       @include tab {
-        height: 24rem;
+        // height: 24rem;
       }
     }
   }

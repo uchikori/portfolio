@@ -154,7 +154,7 @@
       }
     }
     .head-text {
-      @include font-style(1.8rem, $color-white, 500);
+      @include font-style(18px, $color-white, 500);
       width: 54.4rem;
       line-height: 1.88;
       @include wide-pc {
@@ -165,14 +165,14 @@
         // width: 30rem;
         width: 100%;
         line-height: 1.857;
-        font-size: 1.4rem;
+        font-size: 14px;
       }
     }
   }
 }
 .content {
   h2 {
-    @include font-style(2.4rem, $color-white, normal);
+    @include font-style(24px, $color-white, normal);
     display: inline-block;
     border-left: 4px solid $color-white;
     padding-left: 1.6rem;
@@ -185,11 +185,11 @@
       line-height: 1.5;
     }
     @include tab {
-      font-size: 2rem;
+      font-size: 20px;
       border-left: 2px solid $color-white;
       padding-left: 1.2rem;
       margin-bottom: 4rem;
-      line-height: 3rem;
+      line-height: 1.5;
     }
     &.flex-item__title {
       display: block;
@@ -200,14 +200,8 @@
     }
   }
   p {
-    @include font-style(1.6rem, $color-white, normal);
+    @include font-style(14px, $color-white, normal);
     line-height: 2;
-    @include wide-pc {
-      font-size: 16px;
-    }
-    @include tab {
-      font-size: 1.2rem;
-    }
   }
   a {
     text-decoration: underline;
@@ -297,17 +291,15 @@
     }
   }
   .external-link {
-    @include font-style(1.6rem, $color-white, normal);
+    @include font-style(16px, $color-white, normal);
     line-height: 1;
     margin-right: 4.4rem;
     text-decoration: underline;
     position: relative;
     @include wide-pc {
-      font-size: 16px;
       margin-right: 44px;
     }
     @include tab {
-      font-size: 1.2rem;
       display: inline-block;
       width: 14.9rem;
       margin-right: 1.6rem;

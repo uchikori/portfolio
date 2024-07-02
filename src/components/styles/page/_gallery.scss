@@ -36,57 +36,48 @@
       }
       @include tab {
         margin-bottom: 3.2rem;
-        height: 54.17vw;
+        // height: 54.17vw;
       }
     }
     &__num {
-      @include font-style(1.2rem, $color-white, normal);
+      @include font-style(12px, $color-white, normal);
       line-height: 1;
       font-family: $font-orbit;
       text-transform: uppercase;
       margin-bottom: 1.6rem;
       display: block;
       @include wide-pc {
-        font-size: 12px;
         margin-bottom: 16px;
-      }
-      @include tab {
-        font-size: 1rem;
       }
     }
     &__title {
-      @include font-style(3.2rem, $color-white, normal);
+      @include font-style(32px, $color-white, normal);
       line-height: 1.5;
       display: block;
       margin-bottom: 1.6rem;
       padding: 0;
       border: none;
       @include wide-pc {
-        font-size: 32px;
         margin-bottom: 16px;
       }
       @include tab {
-        font-size: 2rem;
+        font-size: 20px;
       }
     }
     &__en-title {
       display: block;
-      @include font-style(1.2rem, $color-white, normal);
+      @include font-style(12px, $color-white, normal);
       line-height: 1;
       font-family: $font-orbit;
       text-transform: uppercase;
       margin-bottom: 1.6rem;
       @include wide-pc {
-        font-size: 12px;
         margin-bottom: 16px;
-      }
-      @include tab {
-        font-size: 1rem;
       }
     }
     &__category {
       display: inline-block;
-      @include font-style(1.2rem, $color-white, bold);
+      @include font-style(12px, $color-white, bold);
       line-height: 1;
       font-family: $font-orbit;
       text-transform: uppercase;
@@ -96,22 +87,22 @@
       margin-bottom: 4rem;
       text-decoration: none;
       @include wide-pc {
-        font-size: 12px;
         padding: 2px 12px;
         margin-bottom: 40px;
       }
       @include tab {
-        font-size: 1rem;
         padding: 0.3rem 1.4rem;
         margin-bottom: 2.4rem;
       }
     }
     &__description {
+      font-size: 14px;
       margin-bottom: 8rem;
       @include wide-pc {
         margin-bottom: 80px;
       }
       @include tab {
+        font-size: 12px;
         margin-bottom: 4.8rem;
       }
     }

@@ -63,34 +63,19 @@
           border-bottom: dashed 1px #aeaeae;
         }
         td {
-          @include font-style(1.6rem, $color-white, normal);
+          @include font-style(16px, $color-white, normal);
           line-height: 1;
           display: inline-block;
-          @include wide-pc {
-            font-size: 16px;
-          }
           @include tab {
-            font-size: 1.2rem;
             line-height: 2.4rem;
           }
           span {
-            @include font-style(1.2rem, $color-white, normal);
-            @include wide-pc {
-              font-size: 12px;
-            }
-            @include tab {
-              font-size: 1.2rem;
-            }
+            @include font-style(12px, $color-white, normal);
           }
           &:nth-child(1) {
             width: 29%;
-            font-size: 1.8rem;
             line-height: 1;
-            @include wide-pc {
-              font-size: 18px;
-            }
             @include tab {
-              font-size: 1.4rem;
               width: 38.5%;
             }
           }
