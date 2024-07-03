@@ -47,7 +47,7 @@ export const Sidebar = (props) => {
       </section>
 
       <section className="sidebar__widget">
-        <Adsence format={"rectangle"} path={path} />
+        {/* <Adsence format={"rectangle"} path={path} /> */}
       </section>
     </aside>
   );
