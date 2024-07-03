@@ -25,7 +25,7 @@ export const BlogContents = (props) => {
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
       <RelatedPosts id={id} catId={catId} />
-      <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
+      {/* <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} /> */}
     </div>
   );
 };
