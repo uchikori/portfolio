@@ -47,6 +47,8 @@ export default function Works(props) {
                                   node.featuredImage.node.localFile
                                     .childImageSharp.gatsbyImageData
                                 }
+                                objectPosition={"50% 50%"}
+                                layout="fullWidth"
                                 alt={node.featuredImage.node.altText}
                               />
                             </figure>
@@ -137,7 +139,7 @@ export const query = graphql`
               childImageSharp {
                 gatsbyImageData(
                   quality: 90
-                  layout: CONSTRAINED
+                  layout: FULL_WIDTH
                   placeholder: BLURRED
                   width: 668
                   height: 416
