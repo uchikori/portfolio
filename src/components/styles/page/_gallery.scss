@@ -9,6 +9,7 @@
   }
   .gallery-item {
     padding: 10rem 0;
+    overflow-wrap: break-word;
     @include wide-pc {
       padding: 100px 0;
     }
