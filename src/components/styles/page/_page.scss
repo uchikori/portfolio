@@ -209,6 +209,7 @@
   &__inner {
     width: 1168px;
     margin: 0 auto;
+    overflow-wrap: break-word;
     @include wide-pc {
       width: 1168px;
     }
