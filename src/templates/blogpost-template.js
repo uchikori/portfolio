@@ -128,7 +128,7 @@ export default function BlogPost({ data, pageContext }) {
                         </h1>
                       </div>
                       <div className="term">
-                        <FontAwesomeIcon icon={faTag} />
+                        <FontAwesomeIcon icon={faTag} className="tagIcon" />
                         <Link
                           to={`/class/${data.wpWebTips.terms.nodes[0].slug}`}
                         >
@@ -136,7 +136,7 @@ export default function BlogPost({ data, pageContext }) {
                         </Link>
                       </div>
                       <div className="content__publish">
-                        <FontAwesomeIcon icon={faClock} />
+                        <FontAwesomeIcon icon={faClock} className="clockIcon" />
                         <time dateTime={`${data.wpWebTips.date}`}>
                           {data.wpWebTips.date}
                         </time>

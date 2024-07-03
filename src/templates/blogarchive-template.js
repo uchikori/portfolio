@@ -76,11 +76,17 @@ export default function WebTips(props) {
                           <div className="card__body">
                             <div className="card__meta">
                               <div className="term">
-                                <FontAwesomeIcon icon={faTag} />
+                                <FontAwesomeIcon
+                                  icon={faTag}
+                                  className="tagIcon"
+                                />
                                 {node.terms.nodes[0].name}
                               </div>
                               <time dateTime={node.date}>
-                                <FontAwesomeIcon icon={faClock} />
+                                <FontAwesomeIcon
+                                  icon={faClock}
+                                  className="clockIcon"
+                                />
                                 {node.date}
                               </time>
                             </div>
