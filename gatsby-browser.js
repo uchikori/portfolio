@@ -28,14 +28,14 @@ export const onPreRouteUpdate = ({ location, prevLocation }) => {
     console.log("ブログ記事からアーカイブへの遷移です");
     const navigationClass = ["currentBlog", "toArchive"];
 
-    viewTransition(currentUrl, navigationClass);
+    viewTransition(currentUrl, targetUrl, navigationClass);
   }
   //現在のURLがArchiveページ&遷移先のURLがBlogページの場合
   if (isArchivePage(currentUrl) && isBlogPage(targetUrl)) {
     console.log("アーカイブからブログ記事への遷移です");
     const navigationClass = ["currentArchive", "toBlog"];
 
-    viewTransition(targetUrl, navigationClass);
+    viewTransition(targetUrl, targetUrl, navigationClass);
   }
   //現在のURLがBlogページ&遷移先のURLがBlogページの場合
   // if (isBlogPage(currentUrl) && isBlogPage(targetUrl)) {

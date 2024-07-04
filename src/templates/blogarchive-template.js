@@ -117,7 +117,7 @@ export const Head = (props) => {
   return (
     <>
       <Seo
-        adsence={true}
+        // adsence={true}
         pageClass={"post-type-archive-web-tips"}
         pageTitle={"Web制作お役立ち情報"}
         pageDesc={

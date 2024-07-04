@@ -202,7 +202,7 @@ export const Head = (props) => {
         pageTitle={data.wpWebTips.title}
         pageDesc={description}
         pagePath={location.pathname}
-        adsence={true}
+        // adsence={true}
         blogImg={
           data.wpWebTips.featuredImage.node.localFile.childImageSharp
             .gatsbyImageData.images.fallback.src

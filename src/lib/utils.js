@@ -34,7 +34,7 @@ export const extractBlogIdFromUrl = (url) => {
 /**
  * クラスの付け替え発生する場合
  */
-export const viewTransition = (url, className) => {
+export const viewTransition = (url, to, className) => {
   // return new Promise(async (resolve) => {
   // //現在のURLからBlogIDを取得
   const detailId = extractBlogIdFromUrl(url);
@@ -74,7 +74,8 @@ export const viewTransition = (url, className) => {
       //ブラウザがview-transition-apiがサポートしていなかったら
     } else {
       //通常のページ遷移
-      navigate(url);
+      // navigate(to);
+      return;
     }
   }
   // });
