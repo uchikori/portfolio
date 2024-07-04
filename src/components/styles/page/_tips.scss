@@ -305,7 +305,7 @@
     }
     .blog-card {
       border: solid 2px #cccccc;
-      margin: 40px 0;
+      margin: 24px 0;
       position: relative;
       &:after {
         content: "recommend";
@@ -326,7 +326,7 @@
         align-items: flex-start;
         gap: 2rem;
         transition: background-color 0.3s ease;
-        @include tab {
+        @include small {
           flex-direction: column;
         }
         &:hover {
@@ -336,7 +336,8 @@
       }
       .blog-card-thumbnail {
         width: 30%;
-        @include tab {
+        aspect-ratio: 268/150;
+        @include small {
           width: 100%;
         }
       }
@@ -350,8 +351,8 @@
       }
       .blog-card-title {
         @include font-style(20px, #008dc6, 700);
-        @include tab {
-          font-size: 2rem;
+        @include small {
+          font-size: 16px;
         }
       }
       .blog-card-excerpt {
@@ -717,17 +718,25 @@
 
 //関連記事
 .relatedposts {
+  padding: 32px 0;
+  border-top: solid 1px $color-white;
   ul {
     list-style: none !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 16px;
   }
   li {
     padding: 0 !important;
+    margin: 0 !important;
   }
   h2,
   h3,
   h4 {
-    border-bottom: none !important;
+    border: none !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
   p {
     margin: 0 !important;

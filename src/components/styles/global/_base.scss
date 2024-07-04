@@ -4,7 +4,7 @@ $tab: 960px; // タブレット
 $sp: 428px; // スマホ
 
 $pc-size: 1366;
-$tab-size: 768;
+$small: 768px;
 
 // メディアクエリー
 @mixin wide-pc {
@@ -24,6 +24,11 @@ $tab-size: 768;
 }
 @mixin tab {
   @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin small {
+  @media (max-width: ($small)) {
     @content;
   }
 }
