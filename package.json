@@ -51,6 +51,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.49.2",
     "react-scroll": "^1.8.9",
+    "react-share": "^5.1.0",
     "sass": "^1.57.1",
     "simplenoise": "^1.0.1",
     "three": "^0.150.1",

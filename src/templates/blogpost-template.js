@@ -13,6 +13,7 @@ import { useViewTransition } from "../lib/useViewTransition";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
+import { Share } from "../components/blog/Share";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
@@ -162,6 +163,7 @@ export default function BlogPost({ data, pageContext }) {
                     id={data.wpWebTips.databaseId}
                     catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]}
                   />
+                  <Share title={data.wpWebTips.title} url={location.href} />
                 </article>
               </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />
@@ -249,6 +251,14 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        description
+        siteUrl
+        locale
       }
     }
   }
