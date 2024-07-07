@@ -3,7 +3,6 @@ import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { BlogContents } from "../components/blog/main";
 import { Sidebar } from "../components/blog/sidebar";
-import { Content } from "../components/global/Content";
 import { Layout } from "../components/Layout";
 import { Seo } from "../components/Seo";
 import { useLocation } from "@reach/router";
@@ -11,6 +10,7 @@ import { extractText } from "../lib/extract-text";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Share } from "../components/blog/Share";
+import { ContentBlog } from "../components/global/ContentBlog";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
@@ -25,7 +25,7 @@ export default function BlogPost({ data, pageContext }) {
             layout="fullWidth"
             placeholder="blurred"
             quality={90}
-            alt=""
+            alt="background-image"
           />
         </span>
         <div
@@ -33,7 +33,7 @@ export default function BlogPost({ data, pageContext }) {
           className="scroll-container web-tips"
           style={{ display: "flex", flexDirection: "column", gap: "8rem" }}
         >
-          <Content>
+          <ContentBlog>
             <div
               className="flex-block align-start"
               style={{ marginTop: "12rem" }}
@@ -70,6 +70,7 @@ export default function BlogPost({ data, pageContext }) {
                         }
                         alt={data.wpWebTips.featuredImage.node.altText}
                         data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
+                        placeholder="none"
                         // className="transition-active"
                         // style={{
                         //   viewTransitionName: `view-transition-${data.wpWebTips.databaseId}`,
@@ -87,7 +88,7 @@ export default function BlogPost({ data, pageContext }) {
               </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />
             </div>
-          </Content>
+          </ContentBlog>
         </div>
       </div>
     </Layout>
