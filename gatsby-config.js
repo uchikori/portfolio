@@ -33,13 +33,19 @@ module.exports = {
         schema: {
           queryDepth: 15,
           circularQueryLimit: 10,
-          timeout: 60000,
+          timeout: 6000000,
           requestConcurrency: 50,
         },
         html: {
           useGatsbyImage: true,
         },
-        useACF: true,
+        // useACF: true,
+        develop: {
+          hardCacheMediaFiles: true, // キャッシュの有効化
+        },
+        production: {
+          hardCacheMediaFiles: true, // キャッシュの有効化
+        },
       },
     },
     {
