@@ -120,7 +120,7 @@ export function Slide() {
             <FrontHeader
               titleImage={"site-title"}
               titleClass={"main"}
-              subTitle={` 自分自身の「好き」を使って、\n"誰かの「心を動かす」モノを作りたい…"`}
+              subTitle={` 好きなことを原動力に、\n誰かの心を揺さぶるデザインを追求します。`}
               alt="UCHIWA Creative Studio."
             />
           </div>
