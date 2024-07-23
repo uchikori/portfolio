@@ -53,6 +53,25 @@ export function Slide() {
         }
       }
     };
+    //キーボード制御
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowDown") {
+        if (document.body.classList.contains("is-sliding")) return;
+        setCurrentSlideIndex((currentSlideIndex) => {
+          return currentSlideIndex === 6 ? 0 : currentSlideIndex + 1;
+        });
+        isSliding();
+      } else if (event.key === "ArrowUp") {
+        if (document.body.classList.contains("is-sliding")) return;
+        setCurrentSlideIndex((currentSlideIndex) => {
+          return currentSlideIndex === 0 ? 6 : currentSlideIndex - 1;
+        });
+        isSliding();
+      }
+    };
+    //tabキー制御
+    document.addEventListener("keydown", handleKeyDown);
+    //マウスホイール制御
     slides.current.addEventListener("wheel", handleWheel);
   });
 
