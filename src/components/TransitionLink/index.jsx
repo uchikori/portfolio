@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { navigate } from "gatsby";
-import { isArchivePage, isBlogPage } from "../../lib/utils";
+// import { isArchivePage, isBlogPage } from "../../lib/utils";
 
 const TransitionLink = ({
   id,

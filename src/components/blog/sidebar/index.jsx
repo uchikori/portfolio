@@ -1,19 +1,13 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import * as React from "react";
-import { Adsence } from "../../adsence";
+// import { Adsence } from "../../adsence";
 import { PopularPosts } from "../../PopularPosts";
 
 export const Sidebar = (props) => {
   const { path, rankingData } = props;
   const data = useStaticQuery(graphql`
     query {
-      allWpType(
-        filter: {
-          contentNodes: {
-            nodes: { elemMatch: { isContentNode: { eq: true } } }
-          }
-        }
-      ) {
+      allWpType(filter: { contentNodes: { nodes: { elemMatch: { isContentNode: { eq: true } } } } }) {
         nodes {
           name
           slug
@@ -30,10 +24,7 @@ export const Sidebar = (props) => {
           {data.allWpType.nodes.map((node) => {
             return (
               <li key={node.slug}>
-                <Link
-                  to={`/class/${node.slug}/`}
-                  className="sidebar__term-item term"
-                >
+                <Link to={`/class/${node.slug}/`} className="sidebar__term-item term">
                   {node.name}
                 </Link>
               </li>
@@ -46,9 +37,7 @@ export const Sidebar = (props) => {
         <PopularPosts rankingData={rankingData} />
       </section>
 
-      <section className="sidebar__widget">
-        {/* <Adsence format={"rectangle"} path={path} /> */}
-      </section>
+      <section className="sidebar__widget">{/* <Adsence format={"rectangle"} path={path} /> */}</section>
     </aside>
   );
 };

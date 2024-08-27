@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import TransitionLink from "../TransitionLink";
+// import TransitionLink from "../TransitionLink";
 
 export const PopularPosts = (props) => {
   // 閲覧数で降順にソートする

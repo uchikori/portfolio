@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage} from "gatsby-plugin-image";
 
 export const RelatedPosts = (props) => {
   const { id, catId } = props;
