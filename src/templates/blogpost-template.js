@@ -20,54 +20,30 @@ export default function BlogPost({ data, pageContext }) {
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
         <span className="backgroundImage">
-          <StaticImage
-            src="../images/blog-background.jpg"
-            layout="fullWidth"
-            placeholder="blurred"
-            quality={90}
-            alt="background-image"
-          />
+          <StaticImage src="../images/blog-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="background-image" />
         </span>
-        <div
-          id={data.wpWebTips.databaseId}
-          className="scroll-container web-tips"
-          style={{ display: "flex", flexDirection: "column", gap: "8rem" }}
-        >
+        <div id={data.wpWebTips.databaseId} className="scroll-container web-tips" style={{ display: "flex", flexDirection: "column", gap: "8rem" }}>
           <ContentBlog>
-            <div
-              className="flex-block align-start"
-              style={{ marginTop: "12rem" }}
-            >
+            <div className="flex-block align-start" style={{ marginTop: "12rem" }}>
               <main className="nine-column bg-glass transitionElement">
                 <article>
                   <div className="web-tips__hero">
                     <header className="web-tips__header">
                       <div className="web-tips__title">
-                        <h1 className="title-line head-title">
-                          {data.wpWebTips.title}
-                        </h1>
+                        <h1 className="title-line head-title">{data.wpWebTips.title}</h1>
                       </div>
                       <div className="term">
                         <FontAwesomeIcon icon={faTag} className="tagIcon" />
-                        <Link
-                          to={`/class/${data.wpWebTips.terms.nodes[0].slug}`}
-                        >
-                          {data.wpWebTips.terms.nodes[0].name}
-                        </Link>
+                        <Link to={`/class/${data.wpWebTips.terms.nodes[0].slug}`}>{data.wpWebTips.terms.nodes[0].name}</Link>
                       </div>
                       <div className="content__publish">
                         <FontAwesomeIcon icon={faClock} className="clockIcon" />
-                        <time dateTime={`${data.wpWebTips.date}`}>
-                          {data.wpWebTips.date}
-                        </time>
+                        <time dateTime={`${data.wpWebTips.date}`}>{data.wpWebTips.date}</time>
                       </div>
                     </header>
                     <figure className="web-tips__eyecatch ">
                       <GatsbyImage
-                        image={
-                          data.wpWebTips.featuredImage.node.localFile
-                            .childImageSharp.gatsbyImageData
-                        }
+                        image={data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
                         alt={data.wpWebTips.featuredImage.node.altText}
                         data-view-transition={`view-transition-${data.wpWebTips.databaseId}`}
                         placeholder="none"
@@ -78,11 +54,7 @@ export default function BlogPost({ data, pageContext }) {
                       />
                     </figure>
                   </div>
-                  <BlogContents
-                    content={data.wpWebTips.content}
-                    id={data.wpWebTips.databaseId}
-                    catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]}
-                  />
+                  <BlogContents content={data.wpWebTips.content} id={data.wpWebTips.databaseId} catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]} />
                   <Share title={data.wpWebTips.title} url={location.href} />
                 </article>
               </main>
@@ -111,9 +83,7 @@ export const Head = (props) => {
     },
     datePublished: `${data.wpWebTips.dateGmt}+09:00`,
     dateModified: `${data.wpWebTips.modified}+09:00`,
-    image:
-      data.wpWebTips.featuredImage.node.localFile.childImageSharp
-        .gatsbyImageData.images.fallback.src,
+    image: data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src,
   };
   return (
     <>
@@ -123,10 +93,7 @@ export const Head = (props) => {
         pageDesc={description}
         pagePath={location.pathname}
         // adsence={true}
-        blogImg={
-          data.wpWebTips.featuredImage.node.localFile.childImageSharp
-            .gatsbyImageData.images.fallback.src
-        }
+        blogImg={data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src}
       />
       {<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </>
@@ -159,15 +126,7 @@ export const query = graphql`
           altText
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                placeholder: BLURRED
-                quality: 90
-                width: 800
-                height: 450
-                pngOptions: { quality: 90 }
-                webpOptions: { quality: 90 }
-              )
+              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, quality: 90, width: 800, height: 450, pngOptions: { quality: 90 }, webpOptions: { quality: 90 })
             }
           }
         }

@@ -6,12 +6,7 @@ import "@fontsource/orbitron/900.css";
 // import "@fontsource/noto-sans-jp/500.css";
 // import "@fontsource/noto-sans-jp/700.css";
 // import "@fontsource/noto-sans-jp/900.css";
-import {
-  isArchivePage,
-  isBlogPage,
-  extractBlogIdFromUrl,
-  viewTransition,
-} from "./src/lib/utils";
+import { isArchivePage, isBlogPage, extractBlogIdFromUrl, viewTransition } from "./src/lib/utils";
 
 //ページ遷移開始時
 export const onPreRouteUpdate = ({ location, prevLocation }) => {
@@ -67,13 +62,9 @@ export const onRouteUpdate = async ({ location, prevLocation }) => {
     //DOM操作
     if (hasIdElement) {
       console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
-      hasIdElement
-        .querySelector(`.gatsby-image-wrapper`)
-        .classList.add("transition-active");
+      hasIdElement.querySelector(`.gatsby-image-wrapper`).classList.add("transition-active");
       setTimeout(() => {
-        hasIdElement
-          .querySelector(`.gatsby-image-wrapper`)
-          .classList.remove("transition-active");
+        hasIdElement.querySelector(`.gatsby-image-wrapper`).classList.remove("transition-active");
         console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       }, 2000);
     }
@@ -90,14 +81,10 @@ export const onRouteUpdate = async ({ location, prevLocation }) => {
     const hasIdElement = document.getElementById(detailId);
     //DOM操作
     if (hasIdElement) {
-      hasIdElement
-        .querySelector(`.gatsby-image-wrapper`)
-        .classList.add("transition-active");
+      hasIdElement.querySelector(`.gatsby-image-wrapper`).classList.add("transition-active");
       console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       setTimeout(() => {
-        hasIdElement
-          .querySelector(`.gatsby-image-wrapper`)
-          .classList.remove("transition-active");
+        hasIdElement.querySelector(`.gatsby-image-wrapper`).classList.remove("transition-active");
         console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
       }, 2000);
     }

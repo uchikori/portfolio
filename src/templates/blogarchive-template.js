@@ -27,22 +27,11 @@ export default function WebTips(props) {
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
         <span className="backgroundImage">
-          <StaticImage
-            src="../images/blog-background.jpg"
-            layout="fullWidth"
-            placeholder="blurred"
-            quality={90}
-            alt=""
-          />
+          <StaticImage src="../images/blog-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
         </span>
         <div className="scroll-container">
           <MainVisual>
-            <PageHeader
-              titleImage="title-blog"
-              titleClass={"blog"}
-              subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`}
-              alt="ブログ"
-            />
+            <PageHeader titleImage="title-blog" titleClass={"blog"} subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`} alt="ブログ" />
           </MainVisual>
           <Content>
             <div className="flex-block align-start">
@@ -50,43 +39,27 @@ export default function WebTips(props) {
                 <div className="article__items">
                   {data.allWpWebTips.nodes.map((node) => {
                     return (
-                      <article id={node.databaseId}>
-                        <Link
-                          className="card"
-                          to={`/web-tips/${node.databaseId}`}
-                          currentPath={location.pathname}
-                          key={node.databaseId}
-                        >
+                      <article id={node.databaseId} key={node.databaseId}>
+                        <Link className="card" to={`/web-tips/${node.databaseId}`} currentPath={location.pathname} key={node.databaseId}>
                           <div className="card__thumbnail">
                             <GatsbyImage
-                              image={
-                                node.featuredImage.node.localFile
-                                  .childImageSharp.gatsbyImageData
-                              }
+                              image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
                               alt={node.featuredImage.node.altText}
                               data-view-transition={`view-transition-${node.databaseId}`}
                               // style={{
                               //   viewTransitionName: `view-transition-${node.databaseId}`,
                               // }}
                             />
-                            <div className="card__thumbnailoverlay">
-                              READ MORE
-                            </div>
+                            <div className="card__thumbnailoverlay">READ MORE</div>
                           </div>
                           <div className="card__body">
                             <div className="card__meta">
                               <div className="term">
-                                <FontAwesomeIcon
-                                  icon={faTag}
-                                  className="tagIcon"
-                                />
+                                <FontAwesomeIcon icon={faTag} className="tagIcon" />
                                 {node.terms.nodes[0].name}
                               </div>
                               <time dateTime={node.date}>
-                                <FontAwesomeIcon
-                                  icon={faClock}
-                                  className="clockIcon"
-                                />
+                                <FontAwesomeIcon icon={faClock} className="clockIcon" />
                                 {node.date}
                               </time>
                             </div>
@@ -120,9 +93,7 @@ export const Head = (props) => {
         // adsence={true}
         pageClass={"post-type-archive-web-tips"}
         pageTitle={"Web制作お役立ち情報"}
-        pageDesc={
-          "Web運用や制作に役立つ情報発信メディア。お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。"
-        }
+        pageDesc={"Web運用や制作に役立つ情報発信メディア。お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。"}
         pagePath={"/web-tips/"}
         pageImg={data.webTips.childImageSharp.original.src}
       />
@@ -147,13 +118,7 @@ export const query = graphql`
             altText
             localFile {
               childImageSharp {
-                gatsbyImageData(
-                  quality: 90
-                  placeholder: BLURRED
-                  layout: CONSTRAINED
-                  width: 254
-                  height: 142
-                )
+                gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 254, height: 142)
               }
             }
           }
