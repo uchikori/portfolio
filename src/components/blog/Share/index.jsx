@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  LineShareButton,
-  HatenaShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  LineIcon,
-  HatenaIcon,
-} from "react-share";
+import { FacebookShareButton, TwitterShareButton, LineShareButton, HatenaShareButton, FacebookIcon, TwitterIcon, LineIcon, HatenaIcon } from "react-share";
 
 export const Share = (props) => {
   const articleTitle = props.title;

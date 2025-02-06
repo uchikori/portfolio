@@ -72,12 +72,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   //   keyFilename: credentialsFilePath,
   // });
   console.log(process.env.GATSBY_CLIENT_EMAIL);
+  console.log(process.env.GATSBY_PRIVATE_KEY);
+
+  const privateKey = process.env.GATSBY_PRIVATE_KEY.replace(/\\n/g, "\n");
+
   const analyticsDataClient = new BetaAnalyticsDataClient({
     credentials: {
       client_email: process.env.GATSBY_CLIENT_EMAIL,
-      private_key: process.env.GATSBY_PRIVATE_KEY.split(String.raw`\n`).join(
-        "\n"
-      ),
+      private_key: process.env.GATSBY_PRIVATE_KEY.split(String.raw`\n`).join("\n"),
     },
   });
 
@@ -190,10 +192,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     typeArray.forEach((item, index) => {
       createPage({
-        path:
-          index === 0
-            ? `/class/${node.slug}/`
-            : `/class/${node.slug}/page-${index + 1}`,
+        path: index === 0 ? `/class/${node.slug}/` : `/class/${node.slug}/page-${index + 1}`,
         component: path.resolve(`./src/templates/typearchive-template.js`),
         context: {
           typeId: node.id,
@@ -260,10 +259,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     categoryArray.forEach((item, index) => {
       createPage({
-        path:
-          index === 0
-            ? `/category/${node.slug}/`
-            : `/category/${node.slug}/page-${index + 1}/`,
+        path: index === 0 ? `/category/${node.slug}/` : `/category/${node.slug}/page-${index + 1}/`,
         component: path.resolve(`./src/templates/categoryarchive-template.js`),
         context: {
           categoryId: node.id,
