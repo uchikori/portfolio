@@ -89,14 +89,7 @@ export const Head = (props) => {
   const { data } = props;
   return (
     <>
-      <Seo
-        // adsence={true}
-        pageClass={"post-type-archive-web-tips"}
-        pageTitle={"Web制作お役立ち情報"}
-        pageDesc={"Web運用や制作に役立つ情報発信メディア。お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。"}
-        pagePath={"/web-tips/"}
-        pageImg={data.webTips.childImageSharp.original.src}
-      />
+      <Seo adsence={true} pageClass={"post-type-archive-web-tips"} pageTitle={"Web制作お役立ち情報"} pageDesc={"Web運用や制作に役立つ情報発信メディア。お客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。"} pagePath={"/web-tips/"} pageImg={data.webTips.childImageSharp.original.src} />
     </>
   );
 };
