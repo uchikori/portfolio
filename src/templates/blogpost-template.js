@@ -89,7 +89,14 @@ export const Head = (props) => {
   };
   return (
     <>
-      <Seo pageClass={"web-tips-template"} pageTitle={data.wpWebTips.title} pageDesc={description} pagePath={location.pathname} adsence={true} blogImg={data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src} />
+      <Seo
+        pageClass={"web-tips-template"}
+        pageTitle={data.wpWebTips.title}
+        pageDesc={description}
+        pagePath={location.pathname}
+        // adsence={true}
+        blogImg={data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src}
+      />
       {<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </>
   );
