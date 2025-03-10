@@ -53,7 +53,7 @@ export const Form = () => {
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         navigate("/thanks");
       })
       .catch((error) => {
@@ -66,7 +66,7 @@ export const Form = () => {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const handleReCaptchaVerify = useCallback(async () => {
     if (!executeRecaptcha) {
-      console.log("recaptcha の実行はまだ利用できません。");
+      // console.log("recaptcha の実行はまだ利用できません。");
       return;
     }
     // const token = await executeRecaptcha("submitForm");

@@ -71,8 +71,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // const analyticsDataClient = new BetaAnalyticsDataClient({
   //   keyFilename: credentialsFilePath,
   // });
-  console.log(process.env.GATSBY_CLIENT_EMAIL);
-  console.log(process.env.GATSBY_PRIVATE_KEY);
+  // console.log(process.env.GATSBY_CLIENT_EMAIL);
+  // console.log(process.env.GATSBY_PRIVATE_KEY);
 
   const privateKey = process.env.GATSBY_PRIVATE_KEY.replace(/\\n/g, "\n");
 

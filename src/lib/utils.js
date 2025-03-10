@@ -4,11 +4,7 @@ const basePath = "/web-tips/";
 const categoryPath = "/class/";
 export const isArchivePage = (url) => {
   const regex = new RegExp(`^${categoryPath}.+`);
-  if (
-    url === basePath ||
-    url?.startsWith(`${basePath}page-`) ||
-    regex.test(url)
-  ) {
+  if (url === basePath || url?.startsWith(`${basePath}page-`) || regex.test(url)) {
     return true;
   } else {
     return false;
@@ -38,7 +34,7 @@ export const viewTransition = (url, to, className) => {
   // return new Promise(async (resolve) => {
   // //現在のURLからBlogIDを取得
   const detailId = extractBlogIdFromUrl(url);
-  console.log("BlogID", detailId);
+  // console.log("BlogID", detailId);
 
   //BlogIDを持つ要素を取得
   const hasIdElement = document.getElementById(detailId);
@@ -54,22 +50,18 @@ export const viewTransition = (url, to, className) => {
         //htmlルート要素にクラス名を付ける
         document.documentElement.classList.add(...className);
         //クラス名を付ける
-        hasIdElement
-          .querySelector(`.gatsby-image-wrapper`)
-          .classList.add("transition-active");
-        console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
-        console.log(document.documentElement);
+        hasIdElement.querySelector(`.gatsby-image-wrapper`).classList.add("transition-active");
+        // console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
+        // console.log(document.documentElement);
       });
       //ViewTransitionの完了を待機
       transition.finished.finally(() => {
         //DOM操作
         document.documentElement.classList.remove(...className);
-        hasIdElement
-          .querySelector(`.gatsby-image-wrapper`)
-          .classList.remove("transition-active");
+        hasIdElement.querySelector(`.gatsby-image-wrapper`).classList.remove("transition-active");
 
-        console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
-        console.log(document.documentElement);
+        // console.log(hasIdElement.querySelector(`.gatsby-image-wrapper`));
+        // console.log(document.documentElement);
       });
       //ブラウザがview-transition-apiがサポートしていなかったら
     } else {
