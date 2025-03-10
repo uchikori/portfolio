@@ -216,6 +216,10 @@ a {
   .screen & {
     overflow-y: scroll;
   }
+  .web-tips article .singleContents & {
+    width: auto;
+    height: 100%;
+  }
 }
 pre {
   margin: 2em 0;
