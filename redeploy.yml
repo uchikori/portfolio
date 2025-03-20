@@ -1,0 +1,11 @@
+name: Redeploy Vercel Site
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: curl -X POST "${{secrets.VERCEL_DEPLOY_HOOK}}"
