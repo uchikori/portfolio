@@ -98,11 +98,7 @@
   main {
     h2 {
       @include font-style(32px, $color-white, bold);
-      background: linear-gradient(
-        135deg,
-        rgb(176, 7, 161) 0%,
-        rgb(0, 93, 189) 100%
-      );
+      background: linear-gradient(135deg, rgb(176, 7, 161) 0%, rgb(0, 93, 189) 100%);
       padding: 8px 16px;
       margin: 48px 0;
       line-height: 1.5;
@@ -424,6 +420,38 @@
       @include tab {
         width: 100%;
         display: block;
+      }
+    }
+  }
+  .wp-block-table {
+    overflow-x: auto;
+    .has-fixed-layout {
+      table-layout: fixed;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+    }
+    &.is-style-stripes {
+      background-color: white;
+      border-bottom: 1px solid #f0f0f0;
+      border-collapse: inherit;
+      border-spacing: 0;
+      font-size: 1.6rem;
+
+      thead {
+        border-bottom: 3px solid;
+      }
+      tbody {
+        tr {
+          &:nth-child(odd) {
+            background-color: #f0f0f0;
+          }
+        }
+      }
+      th,
+      td {
+        padding: 0.8em;
       }
     }
   }
