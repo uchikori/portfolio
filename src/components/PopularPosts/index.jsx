@@ -5,7 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 export const PopularPosts = (props) => {
   // 閲覧数で降順にソートする
-  const { rankingData } = props;
+  const { rankingData = [] } = props;
 
   //WordPressへのクエリ発行
   const data = useStaticQuery(graphql`
@@ -34,7 +34,12 @@ export const PopularPosts = (props) => {
     }
   `);
 
-  const sortedData = data.allWpWebTips.nodes.sort((a, b) => rankingData.indexOf(a.databaseId) - rankingData.indexOf(b.databaseId)).filter((item) => rankingData.includes(item.databaseId));
+  // rankingDataが空の場合は、最新の記事を表示
+  const sortedData = rankingData.length > 0
+    ? data.allWpWebTips.nodes
+        .sort((a, b) => rankingData.indexOf(a.databaseId) - rankingData.indexOf(b.databaseId))
+        .filter((item) => rankingData.includes(item.databaseId))
+    : data.allWpWebTips.nodes.slice(0, 5); // 最新の5件を表示
 
   return (
     <ul className="wpp-list wpp-list-with-thumbnails">
