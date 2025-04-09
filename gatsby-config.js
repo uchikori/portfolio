@@ -35,16 +35,23 @@ module.exports = {
           circularQueryLimit: 10,
           timeout: 6000000,
           requestConcurrency: 50,
+          typePrefix: `Wp`,
+          perPage: 100,
         },
         html: {
           useGatsbyImage: true,
         },
-        // useACF: true,
         develop: {
-          hardCacheMediaFiles: true, // キャッシュの有効化
+          hardCacheMediaFiles: true,
+          nodeUpdateInterval: 1000,
         },
         production: {
-          hardCacheMediaFiles: true, // キャッシュの有効化
+          hardCacheMediaFiles: true,
+        },
+        type: {
+          BlockAttributesObject: {
+            exclude: true,
+          },
         },
       },
     },

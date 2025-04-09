@@ -11,10 +11,11 @@ export const Sidebar = (props) => {
 
   const data = useStaticQuery(graphql`
     query {
-      allWpType(filter: { contentNodes: { nodes: { elemMatch: { isContentNode: { eq: true } } } } }) {
+      allWpType(filter: { contentNodes: { nodes: { elemMatch: { isContentNode: { eq: true } } } } } sort: {isTermNode: ASC}) {
         nodes {
           name
           slug
+          id
         }
       }
       allWpPost {
@@ -49,6 +50,9 @@ export const Sidebar = (props) => {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
+
+  console.log(data.allWpType.nodes);
+  
 
   return (
     <aside className="sidebar flex-item three-column bg-glass">
