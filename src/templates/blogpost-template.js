@@ -71,7 +71,9 @@ export default function BlogPost({ data, pageContext }) {
 export const Head = (props) => {
   const { data } = props;
   const location = useLocation();
-  const description = extractText(data.wpWebTips.content);
+  const description = extractText(data.wpWebTips.excerpt);
+
+  console.log(description);
 
   // 構造化データ
   const jsonLd = {
