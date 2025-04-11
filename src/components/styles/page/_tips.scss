@@ -144,7 +144,7 @@
       // @include font-style(24px, rgb(0, 93, 189), bold);
       @include font-style(24px, $color-white, bold);
       line-height: 1.5;
-      margin: 1.8em 0 0 0;
+      margin: 1em 0 0 0;
       // border-bottom: solid 1px rgb(0, 93, 189);
       border-bottom: solid 1px $color-white;
       @include tab {
@@ -372,6 +372,7 @@
   }
   #ez-toc-container {
     padding: 4% 8% 4% 8% !important;
+    margin-top: 1.8em;
     ul {
       li {
         padding: 1% !important;
