@@ -149,7 +149,15 @@
       border-bottom: solid 1px $color-white;
       @include tab {
         font-size: 2rem;
-        margin: 2rem 0;
+        // margin: 2rem 0;
+      }
+    }
+    h5{
+      @include font-style(20px, $color-white, bold);
+      line-height: 1.5;
+      margin: 1em 0 0 0;
+      @include tab {
+        font-size: 2rem;
       }
     }
     p {
