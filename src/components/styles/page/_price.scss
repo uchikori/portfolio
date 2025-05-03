@@ -64,15 +64,16 @@
     th {
       width: 20%;
       vertical-align: middle;
-      text-align: center;
+      text-align: left;
       font-feature-settings: "palt";
       @include font-style(16px, $color-navy, 700);
+      padding: 16px;
       @include tab {
         width: 100%;
         display: block;
         background-color: $color-trans-bg;
         color: $color-white;
-        padding: 1.6rem 0;
+        padding: 1.6rem;
       }
     }
   }
