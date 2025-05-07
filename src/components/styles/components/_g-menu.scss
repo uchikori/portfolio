@@ -57,13 +57,13 @@
   &__item {
     position: relative;
     padding: 1.6vh 5vw;
-    @include font-style(5.6rem, $color-white, 900);
+    @include font-style(4.8rem, $color-white, 900);
     font-family: $font-orbit;
     text-transform: uppercase;
     opacity: 0;
 
     @include wide-pc {
-      font-size: 56px;
+      font-size: 48px;
       padding: 24px 50px;
     }
     @include tab {
@@ -117,14 +117,12 @@
       left: 100%;
       top: 10%;
       transform: translate3d(calc(-100% - 6vw), -30%, 0) translate3d(0, 20px, 0);
-      box-shadow: 0 0 1.6rem $color-border, 0 0 1.6rem $color-border,
-        0 0 1.6rem $color-border;
+      box-shadow: 0 0 1.6rem $color-border, 0 0 1.6rem $color-border, 0 0 1.6rem $color-border;
       @include wide-pc {
         width: 500px;
         height: 280px;
         max-height: 280px;
-        box-shadow: 0 0 16px $color-border, 0 0 16px $color-border,
-          0 0 16px $color-border;
+        box-shadow: 0 0 16px $color-border, 0 0 16px $color-border, 0 0 16px $color-border;
       }
       @include tab {
         width: 28rem;

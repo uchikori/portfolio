@@ -22,25 +22,15 @@ export const GlobalMenu = () => {
     });
   };
 
-  const toggleMenuClass = isInitialRender
-    ? ""
-    : open
-    ? "menu-open"
-    : "menu-close";
+  const toggleMenuClass = isInitialRender ? "" : open ? "menu-open" : "menu-close";
 
   useEffect(() => {
-    bodyFixed
-      ? document.body.classList.add("fixed")
-      : document.body.classList.remove("fixed");
+    bodyFixed ? document.body.classList.add("fixed") : document.body.classList.remove("fixed");
   }, [bodyFixed]);
 
   return (
     <>
-      <button
-        className={`list-menu hoverTarget ${open ? "menu-active" : null}`}
-        onClick={menuOpen}
-        aria-label="グローバルメニュー"
-      >
+      <button className={`list-menu hoverTarget ${open ? "menu-active" : null}`} onClick={menuOpen} aria-label="グローバルメニュー">
         <div className="list-menu-top">
           <div className="box"></div>
           <div className="box"></div>
@@ -58,14 +48,7 @@ export const GlobalMenu = () => {
           </Link>
 
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/home-firstview.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/home-firstview.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -86,14 +69,7 @@ export const GlobalMenu = () => {
             about
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/about-firstView.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/about-firstView.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -114,14 +90,7 @@ export const GlobalMenu = () => {
             service
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/service-firstView.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/service-firstView.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -142,14 +111,7 @@ export const GlobalMenu = () => {
             price
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/price-firstView.jpg.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/price-firstView.jpg.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -170,14 +132,7 @@ export const GlobalMenu = () => {
             notes
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/notes-firstView.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/notes-firstView.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -198,14 +153,7 @@ export const GlobalMenu = () => {
             works
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/gallery-firstView.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/gallery-firstView.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -226,14 +174,7 @@ export const GlobalMenu = () => {
             blog
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/blog-first-view.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/blog-first-view.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -254,14 +195,7 @@ export const GlobalMenu = () => {
             contact
           </Link>
           <div className="g-menu__item-img">
-            <StaticImage
-              src="../../../images/contact-firstView.webp"
-              width={520}
-              height={280}
-              layout="constrained"
-              alt="View More"
-              quality={80}
-            />
+            <StaticImage src="../../../images/contact-firstView.webp" width={520} height={280} layout="constrained" alt="View More" quality={80} />
           </div>
           <div className="marquee">
             <div className="marquee__inner" aria-hidden="true">
@@ -274,6 +208,27 @@ export const GlobalMenu = () => {
               <span>Contact</span>
               <span>Contact</span>
               <span>Contact</span>
+            </div>
+          </div>
+        </div>
+        <div className="g-menu__item" style={{ "--i": "1.7s" }}>
+          <Link to={"/policy"} className="g-menu__item-link">
+            policy
+          </Link>
+          <div className="g-menu__item-img">
+            <StaticImage src="../../../images/policy-firstView.jpg" width={520} height={280} layout="constrained" alt="View More" quality={80} />
+          </div>
+          <div className="marquee">
+            <div className="marquee__inner" aria-hidden="true">
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
+              <span>policy</span>
             </div>
           </div>
         </div>

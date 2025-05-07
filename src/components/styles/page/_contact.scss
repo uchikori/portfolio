@@ -171,6 +171,12 @@
     .formrun-system-show {
       color: red;
     }
+
+    P {
+      &.error {
+        @include font-style(1.4rem, red, 500);
+      }
+    }
     .privacyPolicy {
       padding: 1.6rem;
       background-color: #f5f5f5;
@@ -191,11 +197,6 @@
         li {
           padding: 0.3rem 0;
         }
-      }
-    }
-    P {
-      &.error {
-        @include font-style(1.4rem, red, 500);
       }
     }
   }

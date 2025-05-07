@@ -149,6 +149,15 @@
           width: 13rem;
         }
       }
+      &__policy {
+        width: 37.2rem;
+        @include wide-pc {
+          width: 372px;
+        }
+        @include tab {
+          width: 18.6rem;
+        }
+      }
       @include sp {
         margin-bottom: 2.7rem;
       }
@@ -176,7 +185,7 @@
     display: inline-block;
     border-left: 4px solid $color-white;
     padding-left: 1.6rem;
-    margin-bottom: 5.6rem;
+    margin: 4rem 0;
     line-height: 3.6rem;
     @include wide-pc {
       font-size: 24px;
@@ -205,6 +214,15 @@
   }
   a {
     text-decoration: underline;
+  }
+  ul {
+    @include font-style(1.4rem, $color-white, normal);
+    line-height: 1.5;
+    list-style-type: decimal;
+    padding-inline-start: 1em;
+    li {
+      padding: 0.3rem 0;
+    }
   }
   &__inner {
     width: 1168px;
