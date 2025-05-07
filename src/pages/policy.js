@@ -2,10 +2,8 @@ import * as React from "react";
 import { Content } from "../components/global/Content";
 import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
-import { SvgAnimation } from "../components/service/SvgAnimation";
 import { Layout } from "../components/Layout";
-import { graphql, Link } from "gatsby";
-import { Accordion } from "../components/service/accordion";
+import { graphql } from "gatsby";
 import { Seo } from "../components/Seo";
 import { StaticImage } from "gatsby-plugin-image";
 
