@@ -46,43 +46,43 @@ export default function Price() {
   //デザイン項目の配列
   const [designItems, setDesignItems] = useState([
     {
-      name: "TOPページデザイン",
-      desc: "PC用TOPページのデザイン",
+      name: "TOPページ",
+      desc: "PC用デザイン",
       price: 64000,
       quantity: 0,
       totalPrice: 0,
     },
     {
-      name: "TOPページスマホデザイン",
-      desc: "スマホ用TOPページのデザイン",
+      name: "TOPページスマホ",
+      desc: "スマホ用デザイン",
       price: 12000,
       quantity: 0,
       totalPrice: 0,
     },
     {
-      name: "下層ページデザイン",
-      desc: "PC用下層ページのデザイン",
+      name: "下層ページ",
+      desc: "PC用デザイン",
       price: 20000,
       quantity: 0,
       totalPrice: 0,
     },
     {
-      name: "下層ページスマホデザイン",
-      desc: "スマホ用下層ページのデザイン",
+      name: "下層ページスマホ",
+      desc: "スマホ用デザイン",
       price: 12000,
       quantity: 0,
       totalPrice: 0,
     },
     {
-      name: "LPデザイン	",
-      desc: "PC用ランディングページのデザイン",
+      name: "ランディングページ",
+      desc: "PC用デザイン",
       price: 80000,
       quantity: 0,
       totalPrice: 0,
     },
     {
-      name: "LPスマホデザイン",
-      desc: "スマホ用ランディングページのデザイン",
+      name: "ランディングページスマホ",
+      desc: "スマホ用デザイン",
       price: 16000,
       quantity: 0,
       totalPrice: 0,
@@ -98,44 +98,23 @@ export default function Price() {
   //コーディング項目の配列
   const [codingItems, setCodingItems] = useState([
     {
-      name: "TOPページコーディング",
-      desc: "PC用TOPページのコーディング",
-      price: 48000,
-      quantity: 0,
-      totalPrice: 0,
-    },
-    {
-      name: "TOPページレスポンシブ",
-      desc: "デバイス幅に合わせてのレイアウト調整",
-      price: 12000,
-      quantity: 0,
-      totalPrice: 0,
-    },
-    {
-      name: "下層ページコーディング",
-      desc: "PC用下層ページのコーディング",
-      price: 12000,
-      quantity: 0,
-      totalPrice: 0,
-    },
-    {
-      name: "下層ページレスポンシブ",
-      desc: "デバイス幅に合わせてのレイアウト調整",
-      price: 8000,
-      quantity: 0,
-      totalPrice: 0,
-    },
-    {
-      name: "LPコーディング",
-      desc: "PC用ランディングページのコーディング",
+      name: "TOPページ",
+      desc: "TOPページのコーディング（レスポンシブ対応含む）",
       price: 64000,
       quantity: 0,
       totalPrice: 0,
     },
     {
-      name: "LPレスポンシブコーディング",
-      desc: "デバイス幅に合わせてのレイアウト調整",
-      price: 12000,
+      name: "下層ページ",
+      desc: "下層ページのコーディング（レスポンシブ対応含む）",
+      price: 20000,
+      quantity: 0,
+      totalPrice: 0,
+    },
+    {
+      name: "ランディングページ",
+      desc: "ランディングページのコーディング（レスポンシブ対応含む）",
+      price: 80000,
       quantity: 0,
       totalPrice: 0,
     },
@@ -244,19 +223,10 @@ export default function Price() {
   const [allTotal, setAllTotal] = useState(0);
 
   useEffect(() => {
-    const designTotal = designItems.reduce(
-      (acc, item) => acc + item.totalPrice,
-      0
-    );
-    const codingTotal = codingItems.reduce(
-      (acc, item) => acc + item.totalPrice,
-      0
-    );
+    const designTotal = designItems.reduce((acc, item) => acc + item.totalPrice, 0);
+    const codingTotal = codingItems.reduce((acc, item) => acc + item.totalPrice, 0);
     const wpTotal = wpItems.reduce((acc, item) => acc + item.totalPrice, 0);
-    const optionTotal = optionItems.reduce(
-      (acc, item) => acc + item.totalPrice,
-      0
-    );
+    const optionTotal = optionItems.reduce((acc, item) => acc + item.totalPrice, 0);
     //制作費の合計
     setProductTotal(designTotal + codingTotal + wpTotal + optionTotal);
     //進行管理費の合計
@@ -264,46 +234,23 @@ export default function Price() {
       return productTotal * scheduleItems[0].price * scheduleItems[0].quantity;
     });
     setDirectionTotal(() => {
-      return (
-        productTotal * directionItems[0].price * directionItems[0].quantity
-      );
+      return productTotal * directionItems[0].price * directionItems[0].quantity;
     });
     setAllTotal(() => {
       return productTotal + scheduleTotal + directionTotal;
     });
-  }, [
-    designItems,
-    codingItems,
-    wpItems,
-    optionItems,
-    productTotal,
-    scheduleItems,
-    directionItems,
-    scheduleTotal,
-    directionTotal,
-  ]);
+  }, [designItems, codingItems, wpItems, optionItems, productTotal, scheduleItems, directionItems, scheduleTotal, directionTotal]);
 
   return (
     <>
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper price">
           <span className="backgroundImage">
-            <StaticImage
-              src="../images/price-background.jpg"
-              layout="fullWidth"
-              placeholder="blurred"
-              quality={90}
-              alt=""
-            />
+            <StaticImage src="../images/price-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
           </span>
           <div className="scroll-container">
             <MainVisual>
-              <PageHeader
-                titleImage="title-price"
-                titleClass={"price"}
-                subTitle={`Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。`}
-                alt="制作料金表"
-              />
+              <PageHeader titleImage="title-price" titleClass={"price"} subTitle={`Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。`} alt="制作料金表" />
             </MainVisual>
             <Content contentClass="price">
               <div className="content__block">
@@ -317,21 +264,10 @@ export default function Price() {
                           return (
                             <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
-                              <td className="price__description">
-                                {item.desc}
-                              </td>
+                              <td className="price__description">{item.desc}</td>
                               <td className="price__price">制作費の10%</td>
                               <td className="price__count">
-                                <input
-                                  type="number"
-                                  min="0"
-                                  max="1"
-                                  defaultValue={item.quantity}
-                                  onChange={(event) =>
-                                    itemScheduleTotal(event, index)
-                                  }
-                                />
-                                式
+                                <input type="number" min="0" max="1" defaultValue={item.quantity} onChange={(event) => itemScheduleTotal(event, index)} />式
                               </td>
                             </tr>
                           );
@@ -340,21 +276,10 @@ export default function Price() {
                           return (
                             <tr key={index}>
                               <th>{item.name}</th>
-                              <td className="price__description">
-                                {item.desc}
-                              </td>
+                              <td className="price__description">{item.desc}</td>
                               <td className="price__price">制作費の20%</td>
                               <td className="price__count">
-                                <input
-                                  type="number"
-                                  min="0"
-                                  max="1"
-                                  defaultValue={item.quantity}
-                                  onChange={(event) =>
-                                    itemDirectionTotal(event, index)
-                                  }
-                                />
-                                式
+                                <input type="number" min="0" max="1" defaultValue={item.quantity} onChange={(event) => itemDirectionTotal(event, index)} />式
                               </td>
                             </tr>
                           );
@@ -370,20 +295,10 @@ export default function Price() {
                           return (
                             <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
-                              <td className="price__description">
-                                {item.desc}
-                              </td>
+                              <td className="price__description">{item.desc}</td>
                               <td className="price__price">￥{item.price}～</td>
                               <td className="price__count">
-                                <input
-                                  type="number"
-                                  min="0"
-                                  defaultValue={item.quantity}
-                                  onChange={(event) =>
-                                    itemDesignTotal(event, index)
-                                  }
-                                />
-                                P
+                                <input type="number" min="0" defaultValue={item.quantity} onChange={(event) => itemDesignTotal(event, index)} />P
                               </td>
                             </tr>
                           );
@@ -461,9 +376,8 @@ export default function Price() {
                       </tbody>
                     </table>
                     <ul className="caption">
-                      <li className="caption__item">
-                        上記は「ワイヤーフレーム」「原稿テキスト」のご準備がある状態での金額となります
-                      </li>
+                      <li className="caption__item">上記は「ワイヤーフレーム」「原稿テキスト」のご準備がある状態での金額となります。</li>
+                      <li className="caption__item">実際のお見積りでは「コンポーネント（部品）の組み合わせのみで対応できるページ」「文字を流し込むだけのページ」「大規模」「中規模」「小規模」など、より詳細なお見積りをさせていただきます。</li>
                     </ul>
                   </div>
                   <div className="price mt-100">
@@ -474,96 +388,21 @@ export default function Price() {
                           return (
                             <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
-                              <td className="price__description">
-                                {item.desc}
-                              </td>
+                              <td className="price__description">{item.desc}</td>
                               <td className="price__price">￥{item.price}～</td>
                               <td className="price__count">
-                                <input
-                                  type="number"
-                                  min="0"
-                                  defaultValue={item.quantity}
-                                  onChange={(event) =>
-                                    itemCodingTotal(event, index)
-                                  }
-                                />
-                                P
+                                <input type="number" min="0" defaultValue={item.quantity} onChange={(event) => itemCodingTotal(event, index)} />P
                               </td>
                             </tr>
                           );
                         })}
-                        {/* <tr>
-                          <th>TOPページコーディング</th>
-                          <td className="price__description">
-                            PC用TOPページのコーディング
-                          </td>
-                          <td className="price__price">￥{topCoding}～</td>
-                          <td className="price__count">
-                            <input type="number" min="0" />P
-                          </td>
-                        </tr>
-                        <tr>
-                          <th>TOPページレスポンシブ</th>
-                          <td className="price__description">
-                            デバイス幅に合わせてのレイアウト調整
-                          </td>
-                          <td className="price__price">￥{topSpCoding}～</td>
-                          <td className="price__count">
-                            <input type="number" min="0" />P
-                          </td>
-                        </tr>
-                        <tr>
-                          <th>下層ページコーディング</th>
-                          <td className="price__description">
-                            PC用下層ページのコーディング
-                          </td>
-                          <td className="price__price">￥{pageCoding}～</td>
-                          <td className="price__count">
-                            <input type="number" min="0" />P
-                          </td>
-                        </tr>
-                        <tr>
-                          <th>下層ページレスポンシブ</th>
-                          <td className="price__description">
-                            デバイス幅に合わせてのレイアウト調整
-                          </td>
-                          <td className="price__price">￥{pageSpCoding}～</td>
-                          <td className="price__count">
-                            <input type="number" min="0" />P
-                          </td>
-                        </tr>
-                        <tr>
-                          <th>LPコーディング</th>
-                          <td className="price__description">
-                            PC用ランディングページのコーディング
-                          </td>
-                          <td className="price__price">￥{lpCoding}～</td>
-                          <td className="price__count">
-                            <input type="number" min="0" />P
-                          </td>
-                        </tr>
-                        <tr>
-                          <th>LPレスポンシブコーディング</th>
-                          <td className="price__description">
-                            デバイス幅に合わせてのレイアウト調整
-                          </td>
-                          <td className="price__price">￥{lpSpCoding}～</td>
-                          <td className="price__count">
-                            <input type="number" min="0" />P
-                          </td>
-                        </tr> */}
                       </tbody>
                     </table>
                     <ul className="caption">
-                      <li className="caption__item">
-                        「レスポンシブ」コーディングに対応するためには、デザインにて「スマホデザイン」の準備が必須になります。
-                      </li>
-                      <li className="caption__item">
-                        制作会社様がコーディングのみをご依頼される場合、レスポンシブ対応を行うためには「スマホデザイン」のご用意が必須となります
-                      </li>
-                      <li className="caption__item">
-                        「スマホデザイン」のご用意が難しい場合は当方でデザインをご用意するため「スマホデザイン」費用が別途発生いたします。
-                      </li>
+                      <li className="caption__item">「レスポンシブ」コーディングに対応するためには、デザインにて「スマホデザイン」の準備が必須になります。</li>
+                      <li className="caption__item">制作会社様がコーディングのみをご依頼される場合、レスポンシブ対応を行うためには「スマホデザイン」のご用意が必須となります。</li>
+                      <li className="caption__item">「スマホデザイン」のご用意が難しい場合は当方でデザインをご用意するため「スマホデザイン」費用が別途発生いたします。</li>
+                      <li className="caption__item">実際のお見積りでは「コンポーネント（部品）の組み合わせのみで対応できるページ」「文字を流し込むだけのページ」「大規模」「中規模」「小規模」など、より詳細なお見積りをさせていただきます。</li>
                     </ul>
                   </div>
                   <div className="price mt-100">
@@ -574,44 +413,28 @@ export default function Price() {
                           return (
                             <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
-                              <td className="price__description">
-                                {item.desc}
-                              </td>
+                              <td className="price__description">{item.desc}</td>
                               <td className="price__price">￥{item.price}～</td>
                               <td className="price__count">
-                                <input
-                                  type="number"
-                                  min="0"
-                                  defaultValue={item.quantity}
-                                  onChange={(event) =>
-                                    itemWpTotal(event, index)
-                                  }
-                                />
-                                P
+                                <input type="number" min="0" defaultValue={item.quantity} onChange={(event) => itemWpTotal(event, index)} />P
                               </td>
                             </tr>
                           );
                         })}
                       </tbody>
                     </table>
-                    <ul className="caption"></ul>
+                    <ul className="caption">
+                      <li className="caption__item">ブロックテーマのように「ブロックエディター」でフルサイト編集を目指す場合の制作費用は上記とは異なる可能性があります。</li>
+                    </ul>
                   </div>
                   <div className="price mt-100">
                     <h3 className="price__title">Jamstackサイト</h3>
                     <ul className="caption m-24">
                       <li className="caption__item">
                         Janmstackサイトについての詳細は
-                        <a
-                          href="https://blog.microcms.io/jamstack-introduction/"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                        >
-                          こちら
-                        </a>
+                        <a href="https://www.uchiwa-design.net/web-tips/1396/">こちら</a>
                       </li>
-                      <li className="caption__item">
-                        使用するヘッドレスCMSの種類により価格が異なるため詳細はお問い合わせください。
-                      </li>
+                      <li className="caption__item">使用するヘッドレスCMSの種類により価格が異なるため詳細はお問い合わせください。</li>
                     </ul>
                   </div>
                   <div className="price mt-100">
@@ -622,29 +445,17 @@ export default function Price() {
                           return (
                             <tr key={`${item.name}-${index}`}>
                               <th>{item.name}</th>
-                              <td className="price__description">
-                                {item.desc}
-                              </td>
+                              <td className="price__description">{item.desc}</td>
                               <td className="price__price">￥{item.price}～</td>
                               <td className="price__count">
-                                <input
-                                  type="number"
-                                  min="0"
-                                  defaultValue={item.quantity}
-                                  onChange={(event) =>
-                                    itemOptionTotal(event, index)
-                                  }
-                                />
-                                個
+                                <input type="number" min="0" defaultValue={item.quantity} onChange={(event) => itemOptionTotal(event, index)} />個
                               </td>
                             </tr>
                           );
                         })}
                         <tr>
                           <th>保守費用</th>
-                          <td className="price__description">
-                            サイトの定期的なバックアップ、セキュリティ対策、プラグインやWordPress本体のアップデート等々の対応、軽微な不具合の対応
-                          </td>
+                          <td className="price__description">サイトの定期的なバックアップ、セキュリティ対策、プラグインやWordPress本体のアップデート等々の対応、軽微な不具合の対応</td>
                           <td className="price__price">￥30,000～</td>
                           <td className="price__count">/月</td>
                         </tr>
@@ -654,10 +465,7 @@ export default function Price() {
                   </div>
                 </div>
               </div>
-              <div
-                id="totalPrice"
-                className="content__block white-box totalPrice"
-              >
+              <div id="totalPrice" className="content__block white-box totalPrice">
                 <div className="sub-total">
                   <span className="sub-total__label">制作費用</span>
                   <span className="sub-total__price">￥{productTotal}</span>
@@ -674,9 +482,7 @@ export default function Price() {
                   <span className="all-total__label">合計金額（目安）</span>
                   <span className="all-total__price">￥{allTotal}</span>
                 </div>
-                <small className="totalPrice__caption">
-                  ※正式なお見積りではないため実際の金額は異なる可能性があります
-                </small>
+                <small className="totalPrice__caption">※正式なお見積りではなくあくまでも依頼前の判断材料としての簡易版の見積りとなります。</small>
               </div>
               <div className="scrollToTotalPrice">
                 <Link to="totalPrice" smooth={true} offset={-50}>
@@ -698,14 +504,7 @@ export const Head = (props) => {
   const { data } = props;
   return (
     <>
-      <Seo
-        pageTitle={"制作料金表"}
-        pageDesc={
-          "Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。"
-        }
-        pagePath={`/price/`}
-        pageImg={data.price.childImageSharp.original.src}
-      />
+      <Seo pageTitle={"制作料金表"} pageDesc={"Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。"} pagePath={`/price/`} pageImg={data.price.childImageSharp.original.src} />
     </>
   );
 };
