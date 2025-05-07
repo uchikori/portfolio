@@ -22,7 +22,7 @@ export default function Service() {
               <PageHeader titleImage="title-policy" titleClass={"policy"} subTitle={`お客様のプライバシーを尊重し、個人情報の保護に最大限努めています。当社のプライバシーポリシーをご確認ください。`} alt="プライバシーポリシー" />
             </MainVisual>
 
-            <Content contentClass="service">
+            <Content contentClass="policy">
               <div className="content__block">
                 <p style={{ marginBottom: "2em" }}>UCHIWA Creative Studio（以下，「当方」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
                 <h2>第1条（個人情報）</h2>

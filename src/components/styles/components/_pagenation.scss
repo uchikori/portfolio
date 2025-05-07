@@ -5,6 +5,7 @@
   justify-content: center;
   margin: 3.2rem 0;
   gap: 2rem;
+  list-style: none !important;
   &__item {
     a {
       @include font-style(16px, $color-trans-bg, 700);

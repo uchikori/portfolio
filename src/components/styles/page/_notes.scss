@@ -16,49 +16,49 @@
       width: 100%;
       padding: 4rem 2.4rem;
     }
-    .hearing-list {
-      counter-reset: li_count;
-      .list-item {
-        @include tab {
-          padding-left: 2rem;
-          text-indent: -2rem;
-        }
-        &:before {
-          counter-increment: li_count;
-          content: counter(li_count) ".";
-          margin-right: 2rem;
-          @include wide-pc {
-            margin-right: 20px;
-          }
-          @include tab {
-            margin-right: 1.2rem;
-          }
-        }
-      }
-    }
-    .cautions-list {
-      .list-item {
-        padding-left: 3.6rem;
-        text-indent: -3.6rem;
-        @include wide-pc {
-          padding-left: 36px;
-          text-indent: -36px;
-        }
-        &:before {
-          content: "◆";
-          transform: rotate(45deg);
-          margin-right: 2rem;
-          margin-top: 0.4rem;
-          @include wide-pc {
-            margin-right: 20px;
-            margin-top: 4px;
-          }
-          @include tab {
-            margin-right: 1.6rem;
-          }
-        }
-      }
-    }
+    // .hearing-list {
+    //   counter-reset: li_count;
+    //   .list-item {
+    //     @include tab {
+    //       padding-left: 2rem;
+    //       text-indent: -2rem;
+    //     }
+    //     &:before {
+    //       counter-increment: li_count;
+    //       content: counter(li_count) ".";
+    //       margin-right: 2rem;
+    //       @include wide-pc {
+    //         margin-right: 20px;
+    //       }
+    //       @include tab {
+    //         margin-right: 1.2rem;
+    //       }
+    //     }
+    //   }
+    // }
+    // .cautions-list {
+    //   .list-item {
+    //     padding-left: 3.6rem;
+    //     text-indent: -3.6rem;
+    //     @include wide-pc {
+    //       padding-left: 36px;
+    //       text-indent: -36px;
+    //     }
+    //     &:before {
+    //       content: "◆";
+    //       transform: rotate(45deg);
+    //       margin-right: 2rem;
+    //       margin-top: 0.4rem;
+    //       @include wide-pc {
+    //         margin-right: 20px;
+    //         margin-top: 4px;
+    //       }
+    //       @include tab {
+    //         margin-right: 1.6rem;
+    //       }
+    //     }
+    //   }
+    // }
     .list-item {
       @include font-style(14px, $color-white, normal);
       line-height: 2;

@@ -216,13 +216,11 @@
     text-decoration: underline;
   }
   ul {
-    @include font-style(1.4rem, $color-white, normal);
-    line-height: 1.5;
+    @include font-style(14px, $color-white, normal);
+    line-height: 1.8;
     list-style-type: decimal;
+    list-style-position: outside;
     padding-inline-start: 1em;
-    li {
-      padding: 0.3rem 0;
-    }
   }
   &__inner {
     width: 1168px;

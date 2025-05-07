@@ -152,7 +152,7 @@
         // margin: 2rem 0;
       }
     }
-    h5{
+    h5 {
       @include font-style(20px, $color-white, bold);
       line-height: 1.5;
       margin: 1.6em 0 0 0;
@@ -162,7 +162,7 @@
       @include tab {
         font-size: 1.8rem;
       }
-      &:before{
+      &:before {
         content: "";
         display: block;
         width: 12px;
@@ -488,7 +488,8 @@
   }
 }
 .post-type-archive-web-tips,
-.tax-class, .search-result {
+.tax-class,
+.search-result {
   .article__items {
     display: grid;
     // grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -758,12 +759,9 @@
       margin-top: 1.6rem;
     }
   }
-  // &__term-list{
-  //     margin-top: 40px;
-  //     @include tab{
-  //         margin-top: 4rem;
-  //     }
-  // }
+  ul {
+    list-style: none !important;
+  }
   &__term-item {
     width: 100%;
     line-height: 1.5;
