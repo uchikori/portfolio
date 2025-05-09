@@ -24,7 +24,7 @@ export const PopularPosts = (props) => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 248, height: 155)
+                  gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 220, height: 124)
                 }
               }
             }
@@ -35,11 +35,7 @@ export const PopularPosts = (props) => {
   `);
 
   // rankingDataが空の場合は、最新の記事を表示
-  const sortedData = rankingData.length > 0
-    ? data.allWpWebTips.nodes
-        .sort((a, b) => rankingData.indexOf(a.databaseId) - rankingData.indexOf(b.databaseId))
-        .filter((item) => rankingData.includes(item.databaseId))
-    : data.allWpWebTips.nodes.slice(0, 5); // 最新の5件を表示
+  const sortedData = rankingData.length > 0 ? data.allWpWebTips.nodes.sort((a, b) => rankingData.indexOf(a.databaseId) - rankingData.indexOf(b.databaseId)).filter((item) => rankingData.includes(item.databaseId)) : data.allWpWebTips.nodes.slice(0, 5); // 最新の5件を表示
 
   return (
     <ul className="wpp-list wpp-list-with-thumbnails">

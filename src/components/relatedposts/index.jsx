@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import { GatsbyImage} from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const RelatedPosts = (props) => {
   const { id, catId } = props;
@@ -33,13 +33,7 @@ export const RelatedPosts = (props) => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    placeholder: BLURRED
-                    layout: CONSTRAINED
-                    width: 248
-                    height: 155
-                  )
+                  gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 268, height: 150)
                 }
               }
             }
@@ -72,13 +66,7 @@ export const RelatedPosts = (props) => {
               <li className="blog-card" key={item.databaseId}>
                 <Link to={`/web-tips/${item.databaseId}`}>
                   <figure className="blog-card-thumbnail">
-                    <GatsbyImage
-                      image={
-                        item.featuredImage.node.localFile.childImageSharp
-                          .gatsbyImageData
-                      }
-                      alt={item.featuredImage.node.altText}
-                    />
+                    <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={item.featuredImage.node.altText} />
                   </figure>
                   <div className="blog-card-content">
                     <h4 className="blog-card-title">{item.title}</h4>

@@ -13,13 +13,7 @@ export default function BlogCard() {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(
-                    quality: 90
-                    placeholder: BLURRED
-                    layout: CONSTRAINED
-                    width: 248
-                    height: 155
-                  )
+                  gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 248, height: 139)
                 }
               }
             }
@@ -32,19 +26,9 @@ export default function BlogCard() {
     <div className="slide__swiper">
       {data.allWpWebTips.nodes.map((node) => {
         return (
-          <a
-            href={`/web-tips/${node.databaseId}`}
-            className="blog-item"
-            key={node.databaseId}
-          >
+          <a href={`/web-tips/${node.databaseId}`} className="blog-item" key={node.databaseId}>
             <div className="blog-item__image">
-              <GatsbyImage
-                image={
-                  node.featuredImage.node.localFile.childImageSharp
-                    .gatsbyImageData
-                }
-                alt={node.title}
-              />
+              <GatsbyImage image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={node.title} />
               <div className="blog-item__overlay">READ MORE</div>
             </div>
             <div className="blog-item__text-box">

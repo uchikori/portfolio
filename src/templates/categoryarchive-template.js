@@ -16,22 +16,11 @@ export default function Works(props) {
       <Layout hasLoadingObj={false}>
         <div className="page-wrapper gallery">
           <span className="backgroundImage">
-            <StaticImage
-              src="../images/gallery-background.jpg"
-              layout="fullWidth"
-              placeholder="blurred"
-              quality={90}
-              alt=""
-            />
+            <StaticImage src="../images/gallery-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
           </span>
           <div className="scroll-container">
             <MainVisual>
-              <PageHeader
-                titleImage={`${pageContext.taxonomyName}-${pageContext.categoryName}`}
-                titleClass={"main"}
-                subTitle={pageContext.description}
-                alt={pageContext.name}
-              />
+              <PageHeader titleImage={`${pageContext.taxonomyName}-${pageContext.categoryName}`} titleClass={"main"} subTitle={pageContext.description} alt={pageContext.name} />
             </MainVisual>
             <Content>
               {data.allWpPost.nodes.map((node) => {
@@ -42,41 +31,19 @@ export default function Works(props) {
                         <div className="flex-block align-center">
                           <div className="flex-item seven-column">
                             <figure className="gallery-item__image">
-                              <GatsbyImage
-                                image={
-                                  node.featuredImage.node.localFile
-                                    .childImageSharp.gatsbyImageData
-                                }
-                                objectPosition={"50% 50%"}
-                                layout="fullWidth"
-                                alt={node.featuredImage.node.altText}
-                              />
+                              <GatsbyImage image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} objectPosition={"50% 50%"} layout="fullWidth" alt={node.featuredImage.node.altText} />
                             </figure>
                           </div>
                           <div className="flex-item five-column">
-                            <span className="gallery-item__num">
-                              {node.galleryNumber.galleryNum}
-                            </span>
-                            <h2 className="gallery-item__title">
-                              {node.title}
-                            </h2>
+                            <span className="gallery-item__num">{node.galleryNumber.galleryNum}</span>
+                            <h2 className="gallery-item__title">{node.title}</h2>
 
-                            <span className="gallery-item__en-title">
-                              {node.englishTitle.englishTitle}
-                            </span>
-                            <Link
-                              to={`/category/${node.categories.nodes[0].slug}/`}
-                              className="gallery-item__category"
-                            >
+                            <span className="gallery-item__en-title">{node.englishTitle.englishTitle}</span>
+                            <Link to={`/category/${node.categories.nodes[0].slug}/`} className="gallery-item__category">
                               {node.categories.nodes[0].name}
                             </Link>
-                            <p className="gallery-item__description">
-                              {extractText(node.content)}
-                            </p>
-                            <Link
-                              to={`/${node.databaseId}/`}
-                              className="gallery-item__link"
-                            >
+                            <p className="gallery-item__description">{extractText(node.content)}</p>
+                            <Link to={`/${node.databaseId}/`} className="gallery-item__link">
                               detail
                             </Link>
                           </div>
@@ -98,23 +65,13 @@ export const Head = (props) => {
   const { data, pageContext } = props;
   return (
     <>
-      <Seo
-        pageTitle={pageContext.categoryName}
-        pageDesc={pageContext.description}
-        pagePath={`/category/${pageContext.categorySlug}`}
-        pageImg={data.wpPost.childImageSharp.original.src}
-      />
+      <Seo pageTitle={pageContext.categoryName} pageDesc={pageContext.description} pagePath={`/category/${pageContext.categorySlug}`} pageImg={data.wpPost.childImageSharp.original.src} />
     </>
   );
 };
 export const query = graphql`
   query ($categoryId: String!, $skip: Int!, $limit: Int!) {
-    allWpPost(
-      sort: { date: DESC }
-      skip: $skip
-      limit: $limit
-      filter: { terms: { nodes: { elemMatch: { id: { eq: $categoryId } } } } }
-    ) {
+    allWpPost(sort: { date: DESC }, skip: $skip, limit: $limit, filter: { terms: { nodes: { elemMatch: { id: { eq: $categoryId } } } } }) {
       nodes {
         databaseId
         slug
@@ -137,13 +94,7 @@ export const query = graphql`
             altText
             localFile {
               childImageSharp {
-                gatsbyImageData(
-                  quality: 90
-                  layout: FULL_WIDTH
-                  placeholder: BLURRED
-                  width: 668
-                  height: 416
-                )
+                gatsbyImageData(quality: 90, layout: FULL_WIDTH, placeholder: BLURRED, width: 668, height: 416)
               }
             }
           }

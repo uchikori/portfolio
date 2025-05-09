@@ -23,24 +23,11 @@ export default function Type(props) {
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper web-tips">
         <span className="backgroundImage">
-          <StaticImage
-            src="../images/blog-background.jpg"
-            layout="fullWidth"
-            placeholder="blurred"
-            quality={90}
-            alt=""
-          />
+          <StaticImage src="../images/blog-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
         </span>
         <div className="scroll-container">
           <MainVisual>
-            <PageHeader
-              titleImage="title-blog"
-              titleClass={"blog"}
-              subTitle={pageContext.description}
-              typeSlug={pageContext.typeSlug}
-              typeName={pageContext.typeName}
-              alt="ブログ"
-            />
+            <PageHeader titleImage="title-blog" titleClass={"blog"} subTitle={pageContext.description} typeSlug={pageContext.typeSlug} typeName={pageContext.typeName} alt="ブログ" />
           </MainVisual>
           <Content>
             <div className="flex-block align-start">
@@ -48,27 +35,17 @@ export default function Type(props) {
                 {data.allWpWebTips.nodes.map((node) => {
                   return (
                     <article id={node.databaseId}>
-                      <Link
-                        className="card"
-                        to={`/web-tips/${node.databaseId}`}
-                        currentPath={location.pathname}
-                        key={node.databaseId}
-                      >
+                      <Link className="card" to={`/web-tips/${node.databaseId}`} currentPath={location.pathname} key={node.databaseId}>
                         <div className="card__thumbnail">
                           <GatsbyImage
-                            image={
-                              node.featuredImage.node.localFile.childImageSharp
-                                .gatsbyImageData
-                            }
+                            image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
                             alt={node.featuredImage.node.altText}
                             data-view-transition={`view-transition-${node.databaseId}`}
                             // style={{
                             //   viewTransitionName: `view-transition-${node.databaseId}`,
                             // }}
                           />
-                          <div className="card__thumbnailoverlay">
-                            READ MORE
-                          </div>
+                          <div className="card__thumbnailoverlay">READ MORE</div>
                         </div>
                         <div className="card__body">
                           <div className="card__meta">
@@ -106,24 +83,13 @@ export const Head = (props) => {
   const { data, pageContext } = props;
   return (
     <>
-      <Seo
-        pageClass={"post-type-archive-web-tips"}
-        pageTitle={pageContext.typeName}
-        pageDesc={pageContext.description}
-        pagePath={`/class/${pageContext.typeSlug}`}
-        pageImg={data.webTips.childImageSharp.original.src}
-      />
+      <Seo pageClass={"post-type-archive-web-tips"} pageTitle={pageContext.typeName} pageDesc={pageContext.description} pagePath={`/class/${pageContext.typeSlug}`} pageImg={data.webTips.childImageSharp.original.src} />
     </>
   );
 };
 export const query = graphql`
   query ($typeId: String!, $skip: Int!, $limit: Int!) {
-    allWpWebTips(
-      sort: { date: DESC }
-      skip: $skip
-      limit: $limit
-      filter: { terms: { nodes: { elemMatch: { id: { eq: $typeId } } } } }
-    ) {
+    allWpWebTips(sort: { date: DESC }, skip: $skip, limit: $limit, filter: { terms: { nodes: { elemMatch: { id: { eq: $typeId } } } } }) {
       nodes {
         databaseId
         date(formatString: "YYYY-MM-DD")
@@ -139,13 +105,7 @@ export const query = graphql`
             altText
             localFile {
               childImageSharp {
-                gatsbyImageData(
-                  quality: 90
-                  placeholder: BLURRED
-                  layout: CONSTRAINED
-                  width: 254
-                  height: 142
-                )
+                gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 384, height: 216)
               }
             }
           }

@@ -363,6 +363,7 @@
       .blog-card-thumbnail {
         width: 30%;
         aspect-ratio: 268/150;
+        margin-top: 0;
         @include small {
           width: 100%;
         }
@@ -700,7 +701,7 @@
       display: block;
     }
     .wpp-thumbnail {
-      aspect-ratio: 268/150;
+      aspect-ratio: 1590/895;
     }
     li {
       position: relative;
