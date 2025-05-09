@@ -33,7 +33,7 @@ export const RelatedPosts = (props) => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 268, height: 150)
+                  gatsbyImageData(quality: 95, placeholder: BLURRED, layout: CONSTRAINED, width: 268, height: 150)
                 }
               }
             }

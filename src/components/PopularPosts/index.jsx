@@ -24,7 +24,7 @@ export const PopularPosts = (props) => {
             node {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(quality: 90, placeholder: BLURRED, layout: CONSTRAINED, width: 220, height: 124)
+                  gatsbyImageData(quality: 95, placeholder: BLURRED, layout: CONSTRAINED, width: 220, height: 124)
                 }
               }
             }
