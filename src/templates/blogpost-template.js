@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Share } from "../components/blog/Share";
 import { ContentBlog } from "../components/global/ContentBlog";
-import { AdsenceContentBottom } from "../components/adsence";
+// import { AdsenceContentBottom } from "../components/adsence";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
@@ -57,7 +57,7 @@ export default function BlogPost({ data, pageContext }) {
                   </div>
                   <BlogContents content={data.wpWebTips.content} id={data.wpWebTips.databaseId} catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]} />
                   <Share title={data.wpWebTips.title} url={location.href} />
-                  <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
+                  {/* <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} /> */}
                 </article>
               </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />

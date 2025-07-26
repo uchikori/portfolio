@@ -1,7 +1,7 @@
 import { graphql, Link, useStaticQuery, navigate } from "gatsby";
 import * as React from "react";
 import { useState } from "react";
-import { Adsence } from "../../adsence";
+// import { Adsence } from "../../adsence";
 import { PopularPosts } from "../../PopularPosts";
 
 export const Sidebar = (props) => {
@@ -92,7 +92,7 @@ export const Sidebar = (props) => {
         <PopularPosts rankingData={rankingData} />
       </section>
 
-      <section className="sidebar__widget">{<Adsence format={"rectangle"} path={path} />}</section>
+      {/* <section className="sidebar__widget">{<Adsence format={"rectangle"} path={path} />}</section> */}
     </aside>
   );
 };

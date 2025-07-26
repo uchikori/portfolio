@@ -40,7 +40,7 @@ export default function WebTips(props) {
                   {data.allWpWebTips.nodes.map((node) => {
                     return (
                       <article id={node.databaseId} key={node.databaseId}>
-                        <Link className="card" to={`/web-tips/${node.databaseId}`} currentPath={location.pathname} key={node.databaseId}>
+                        <Link className="card" to={`/web-tips/${node.databaseId}`} data-currentpath={location.pathname} key={node.databaseId}>
                           <div className="card__thumbnail">
                             <GatsbyImage
                               image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData}

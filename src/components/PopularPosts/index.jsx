@@ -43,7 +43,7 @@ export const PopularPosts = (props) => {
         return (
           <li key={item.databaseId}>
             <Link to={`/web-tips/${item.databaseId}`}>
-              <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={item.featuredImage.node.altText} className="wpp-thumbnail wpp_featured attachment-single-web-tips size-single-web-tips wp-post-image" />
+              <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={item.featuredImage.node.altText ? item.featuredImage.node.altText : ""} className="wpp-thumbnail wpp_featured attachment-single-web-tips size-single-web-tips wp-post-image" />
               <h3 className="wpp-post-title">{item.title}</h3>
             </Link>
           </li>

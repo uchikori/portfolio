@@ -66,7 +66,7 @@ export const RelatedPosts = (props) => {
               <li className="blog-card" key={item.databaseId}>
                 <Link to={`/web-tips/${item.databaseId}`}>
                   <figure className="blog-card-thumbnail">
-                    <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={item.featuredImage.node.altText} />
+                    <GatsbyImage image={item.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={item.featuredImage.node.altText ? item.featuredImage.node.altText : ""} />
                   </figure>
                   <div className="blog-card-content">
                     <h4 className="blog-card-title">{item.title}</h4>
