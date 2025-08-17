@@ -23,6 +23,7 @@
     "@google-analytics/data": "^3.2.1",
     "@hookform/resolvers": "^3.3.4",
     "@vercel/analytics": "^1.0.2",
+    "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.6.5",
     "cheerio": "^1.0.0-rc.12",
     "gatsby": "^5.7.0",
