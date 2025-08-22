@@ -1,4 +1,4 @@
-import React from "react";
+const React = require("react");
 
 exports.onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
   // <html lang="ja"> を設定
