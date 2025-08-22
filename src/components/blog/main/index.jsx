@@ -22,7 +22,7 @@ export const BlogContents = (props) => {
     <div className="flex-item ">
       <div className="singleContents" dangerouslySetInnerHTML={{ __html: content }}></div>
       <RelatedPosts id={id} catId={catId} />
-      <AdsenceContentBottom format="autorelaxed" path={location.pathname} />
+      <AdsenceContentBottom format="auto" path={location.pathname} />
     </div>
   );
 };

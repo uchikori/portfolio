@@ -92,7 +92,9 @@ export const Sidebar = (props) => {
         <PopularPosts rankingData={rankingData} />
       </section>
 
-      <section className="sidebar__widget">{<Adsence format="auto" path={path} />}</section>
+      <section className="sidebar__widget">
+        <Adsence format="auto" path={path} />
+      </section>
     </aside>
   );
 };
