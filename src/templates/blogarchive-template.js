@@ -72,10 +72,7 @@ export default function WebTips(props) {
                   })}
                 </div>
                 <Pagenation pageContext={pageContext} />
-                {/* <AdsenceContentBottom
-                  format={"autorelaxed"}
-                  path={location.pathname}
-                /> */}
+                <AdsenceContentBottom format="auto" path={location.pathname} />
               </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />
             </div>
