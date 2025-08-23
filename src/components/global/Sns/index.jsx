@@ -11,7 +11,6 @@ export const Sns = () => {
       <a href="https://www.instagram.com/uchiwa_cs" className="sns-icon" target="_blank" rel="noopener noreferrer">
         <StaticImage src="../../../images/icon-instagram.svg" alt="Instagram" layout="fixed" width={21} height={21} />
       </a>
-
       <Link to="/web-tips/" className="sns-icon">
         <StaticImage src="../../../images/icon-blog.svg" alt="blog" layout="fixed" width={21} height={21} />
       </Link>
