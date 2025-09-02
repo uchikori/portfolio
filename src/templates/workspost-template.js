@@ -13,13 +13,7 @@ export default function WorksPost(props) {
     <Layout hasLoadingObj={false}>
       <div className="page-wrapper page-single">
         <span className="backgroundImage">
-          <StaticImage
-            src="../images/service-background.jpg"
-            layout="fullWidth"
-            placeholder="blurred"
-            quality={90}
-            alt=""
-          />
+          <StaticImage src="../images/service-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
         </span>
         <div className="scroll-container">
           <MainVisual>
@@ -33,76 +27,45 @@ export default function WorksPost(props) {
                   );
                 })}
                 <h1 className="single-title">{data.wpPost.title}</h1>
-                <span className="single-en-title">
-                  {data.wpPost.englishTitle.englishTitle}
-                </span>
+                <span className="single-en-title">{data.wpPost.englishTitle.englishTitle}</span>
               </div>
             </header>
           </MainVisual>
           <Content>
             <div className="content__block">
               <figure className="first-image">
-                <GatsbyImage
-                  image={
-                    data.wpPost.featuredImage.node.localFile.childImageSharp
-                      .gatsbyImageData
-                  }
-                  alt={data.wpPost.featuredImage.node.altText}
-                />
+                <GatsbyImage image={data.wpPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.featuredImage.node.altText} />
               </figure>
               <div className="gallery-meta">
                 <div className="gallery-meta__item">
-                  <h2 className="gallery-meta__title">client</h2>
-                  <div className="gallery-meta__info">
-                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryType}
-                  </div>
+                  <p className="gallery-meta__title">client</p>
+                  <div className="gallery-meta__info">{data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryType}</div>
                 </div>
                 <div className="gallery-meta__item">
-                  <h2 className="gallery-meta__title">my role</h2>
-                  <div className="gallery-meta__info">
-                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryRole}
-                  </div>
+                  <p className="gallery-meta__title">my role</p>
+                  <div className="gallery-meta__info">{data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryRole}</div>
                 </div>
                 <div className="gallery-meta__item">
-                  <h2 className="gallery-meta__title">technorogies</h2>
-                  <div className="gallery-meta__info">
-                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryTech}
-                  </div>
+                  <p className="gallery-meta__title">technorogies</p>
+                  <div className="gallery-meta__info">{data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryTech}</div>
                 </div>
                 <div className="gallery-meta__item">
-                  <h2 className="gallery-meta__title">year</h2>
-                  <div className="gallery-meta__info">
-                    {data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryYear}
-                  </div>
+                  <p className="gallery-meta__title">year</p>
+                  <div className="gallery-meta__info">{data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryYear}</div>
                 </div>
               </div>
             </div>
-            <div
-              className="content__block"
-              dangerouslySetInnerHTML={{ __html: data.wpPost.content }}
-            ></div>
+            <div className="content__block" dangerouslySetInnerHTML={{ __html: data.wpPost.content }}></div>
             <div className="content__block">
               <figure className="mockup-image__pc">
-                <GatsbyImage
-                  image={
-                    data.wpPost.mockUpPc.mockupImagePc.localFile.childImageSharp
-                      .gatsbyImageData
-                  }
-                  alt={data.wpPost.mockUpPc.mockupImagePc.altText}
-                />
+                <GatsbyImage image={data.wpPost.mockUpPc.mockupImagePc.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpPc.mockupImagePc.altText} />
               </figure>
             </div>
             {data.wpPost.mockUpMovie.mockupMovie ? (
               <div className="content__block">
                 <div className="mockup-image__wrap">
                   <figure className="mockup-image__video content__inner">
-                    <video
-                      src={data.wpPost.mockUpMovie.mockupMovie.mediaItemUrl}
-                      loop
-                      autoPlay
-                      muted
-                      playsInline
-                    ></video>
+                    <video src={data.wpPost.mockUpMovie.mockupMovie.mediaItemUrl} loop autoPlay muted playsInline></video>
                   </figure>
                 </div>
               </div>
@@ -112,22 +75,10 @@ export default function WorksPost(props) {
             {data.wpPost.mockUpImageTab.mockupImageTab ? (
               <div className="content__block">
                 <figure className="mockup-image__tab">
-                  <GatsbyImage
-                    image={
-                      data.wpPost.mockUpImageTab.mockupImageTab.localFile
-                        .childImageSharp.gatsbyImageData
-                    }
-                    alt={data.wpPost.mockUpImageTab.mockupImageTab.altText}
-                  />
+                  <GatsbyImage image={data.wpPost.mockUpImageTab.mockupImageTab.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpImageTab.mockupImageTab.altText} />
                 </figure>
                 <figure className="mockup-image__sp">
-                  <GatsbyImage
-                    image={
-                      data.wpPost.mockUpImageSp.mockupImageSp.localFile
-                        .childImageSharp.gatsbyImageData
-                    }
-                    alt={data.wpPost.mockUpImageSp.mockupImageSp.altText}
-                  />
+                  <GatsbyImage image={data.wpPost.mockUpImageSp.mockupImageSp.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpImageSp.mockupImageSp.altText} />
                 </figure>
               </div>
             ) : (
@@ -146,15 +97,7 @@ export default function WorksPost(props) {
                         <div className="camera"></div>
                         <div className="speaker"></div>
                         <div className="screen">
-                          <GatsbyImage
-                            image={
-                              data.wpPost.cssMockupImage.cssMockupImage
-                                .localFile.childImageSharp.gatsbyImageData
-                            }
-                            alt={
-                              data.wpPost.cssMockupImage.cssMockupImage.altText
-                            }
-                          />
+                          <GatsbyImage image={data.wpPost.cssMockupImage.cssMockupImage.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.cssMockupImage.cssMockupImage.altText} />
                         </div>
                         <div className="homebt"></div>
                       </div>
@@ -167,12 +110,7 @@ export default function WorksPost(props) {
             )}
             {data.wpPost.linkBtn.linkBtn ? (
               <div className="link-wrap">
-                <a
-                  href={data.wpPost.linkBtn.linkBtn}
-                  className="link-btn default"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={data.wpPost.linkBtn.linkBtn} className="link-btn default" target="_blank" rel="noopener noreferrer">
                   Page Link
                 </a>
               </div>
@@ -191,15 +129,7 @@ export const Head = (props) => {
   const description = extractText(data.wpPost.content);
   return (
     <>
-      <Seo
-        pageTitle={data.wpPost.title}
-        pageDesc={description}
-        pagePath={location.pathname}
-        blogImg={
-          data.wpPost.featuredImage.node.localFile.childImageSharp
-            .gatsbyImageData.images.fallback.src
-        }
-      />
+      <Seo pageTitle={data.wpPost.title} pageDesc={description} pagePath={location.pathname} blogImg={data.wpPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src} />
     </>
   );
 };
@@ -238,13 +168,7 @@ export const query = graphql`
           altText
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                placeholder: BLURRED
-                quality: 90
-                width: 1544
-                height: 832
-              )
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 90, width: 1544, height: 832)
             }
           }
         }
@@ -259,11 +183,7 @@ export const query = graphql`
           altText
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                placeholder: BLURRED
-                quality: 90
-              )
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 90)
             }
           }
         }
@@ -273,11 +193,7 @@ export const query = graphql`
           altText
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                placeholder: BLURRED
-                quality: 90
-              )
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 90)
             }
           }
         }
@@ -287,11 +203,7 @@ export const query = graphql`
           altText
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH
-                placeholder: BLURRED
-                quality: 90
-              )
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 90)
             }
           }
         }
@@ -301,12 +213,7 @@ export const query = graphql`
           altText
           localFile {
             childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                placeholder: BLURRED
-                quality: 100
-                width: 316
-              )
+              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, quality: 100, width: 316)
             }
           }
         }

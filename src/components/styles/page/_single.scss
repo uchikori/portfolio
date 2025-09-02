@@ -145,7 +145,7 @@
     &__info {
       width: 100%;
       @include font-style(1.6rem, $color-white, normal);
-      line-height: 2;
+      line-height: 1.5;
       word-wrap: normal;
       word-break: keep-all;
       line-break: strict;
@@ -154,7 +154,6 @@
       }
       @include tab {
         font-size: 1rem;
-        line-height: 1;
       }
     }
   }
