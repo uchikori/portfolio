@@ -7,74 +7,236 @@
       }
     }
   }
-  .gallery-item {
-    padding: 10rem 0;
-    overflow-wrap: break-word;
-    @include wide-pc {
-      padding: 100px 0;
+  .gallery-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 64px 40px;
+    a {
+      text-decoration: none;
     }
-    @include tab {
-      padding: 0;
+  }
+  // .gallery-item {
+  //   padding: 10rem 0;
+  //   overflow-wrap: break-word;
+  //   @include wide-pc {
+  //     padding: 100px 0;
+  //   }
+  //   @include tab {
+  //     padding: 0;
+  //   }
+  //   &__image {
+  //     aspect-ratio: 16/9;
+  //     // height: 416px;
+  //     filter: grayscale(100%);
+  //     transition: filter 0.8s ease;
+  //     &.vertical {
+  //       height: 720px;
+  //       @include tab {
+  //         height: 33.8rem;
+  //       }
+  //     }
+  //     &.is-hover {
+  //       filter: grayscale(0%);
+  //       transition: filter 0.8s ease;
+  //     }
+  //     &:hover {
+  //       filter: grayscale(0%);
+  //       transition: filter 0.8s ease;
+  //     }
+  //     @include tab {
+  //       margin-bottom: 3.2rem;
+  //       // height: 54.17vw;
+  //     }
+  //   }
+  //   &__num {
+  //     @include font-style(12px, $color-white, normal);
+  //     line-height: 1;
+  //     font-family: $font-orbit;
+  //     text-transform: uppercase;
+  //     margin-bottom: 1.6rem;
+  //     display: block;
+  //     @include wide-pc {
+  //       margin-bottom: 16px;
+  //     }
+  //   }
+  //   &__title {
+  //     @include font-style(32px, $color-white, normal);
+  //     line-height: 1.5;
+  //     display: block;
+  //     margin-bottom: 1.6rem;
+  //     padding: 0;
+  //     border: none;
+  //     @include wide-pc {
+  //       margin-bottom: 16px;
+  //     }
+  //     @include tab {
+  //       font-size: 20px;
+  //     }
+  //   }
+  //   &__en-title {
+  //     display: block;
+  //     @include font-style(12px, $color-white, normal);
+  //     line-height: 1;
+  //     font-family: $font-orbit;
+  //     text-transform: uppercase;
+  //     margin-bottom: 1.6rem;
+  //     @include wide-pc {
+  //       margin-bottom: 16px;
+  //     }
+  //   }
+  //   &__category {
+  //     display: inline-block;
+  //     @include font-style(12px, $color-white, bold);
+  //     line-height: 1;
+  //     font-family: $font-orbit;
+  //     text-transform: uppercase;
+  //     padding: 0.2rem 1.2rem;
+  //     background-color: $color-white;
+  //     color: #000438;
+  //     margin-bottom: 4rem;
+  //     text-decoration: none;
+  //     @include wide-pc {
+  //       padding: 2px 12px;
+  //       margin-bottom: 40px;
+  //     }
+  //     @include tab {
+  //       padding: 0.3rem 1.4rem;
+  //       margin-bottom: 2.4rem;
+  //     }
+  //   }
+  //   &__description {
+  //     font-size: 14px;
+  //     margin-bottom: 8rem;
+  //     @include wide-pc {
+  //       margin-bottom: 80px;
+  //     }
+  //     @include tab {
+  //       font-size: 12px;
+  //       margin-bottom: 4.8rem;
+  //     }
+  //   }
+  //   &__link {
+  //     @include font-style(2rem, $color-white, bold);
+  //     line-height: 1;
+  //     font-family: $font-orbit;
+  //     text-transform: uppercase;
+  //     text-decoration: none;
+  //     position: relative;
+  //     display: inline-block;
+  //     @include wide-pc {
+  //       font-size: 20px;
+  //     }
+  //     &:after {
+  //       content: "";
+  //       display: block;
+  //       width: 4rem;
+  //       height: 1px;
+  //       background-color: $color-white;
+  //       position: absolute;
+  //       right: -60%;
+  //       top: 50%;
+  //       transform: translateY(-50%);
+  //       transition: right 0.3s ease;
+  //       @include wide-pc {
+  //         width: 40px;
+  //       }
+  //       @include sp {
+  //         width: 4rem;
+  //         height: 1px;
+  //       }
+  //     }
+  //     &:hover {
+  //       filter: brightness(80%);
+  //       &:after {
+  //         right: -80%;
+  //         transition: right 0.3s ease;
+  //       }
+  //     }
+  //   }
+  // }
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &:hover {
+      .gallery-item__image:after {
+        opacity: 0.7;
+        transform: scale(1);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .gallery-item__image-overlay {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+      .gallery-item__image img {
+        transform: scale(1.4) rotateZ(15deg);
+        filter: brightness(140%);
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
     }
     &__image {
       aspect-ratio: 16/9;
-      // height: 416px;
-      filter: grayscale(100%);
-      transition: filter 0.8s ease;
-      &.vertical {
-        height: 720px;
-        @include tab {
-          height: 33.8rem;
-        }
+      overflow: hidden;
+      position: relative;
+      // picture {
+      //   width: 100%;
+      //   height: 100%;
+      // }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #000;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: transform 0.3s ease, opacity 0.3s ease;
       }
-      &.is-hover {
-        filter: grayscale(0%);
-        transition: filter 0.8s ease;
+      &-overlay {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        font-family: $font-orbit;
+        @include font-style(18px, $color-white, 500);
+        transition: opacity 0.3s ease;
+        z-index: 10;
       }
-      &:hover {
-        filter: grayscale(0%);
-        transition: filter 0.8s ease;
-      }
-      @include tab {
-        margin-bottom: 3.2rem;
-        // height: 54.17vw;
+      img {
+        transform: scale(1) rotateZ(0deg);
+        filter: brightness(100%);
+        transition: transform 0.3s ease, filter 0.3s ease;
       }
     }
-    &__num {
-      @include font-style(12px, $color-white, normal);
-      line-height: 1;
-      font-family: $font-orbit;
-      text-transform: uppercase;
-      margin-bottom: 1.6rem;
-      display: block;
-      @include wide-pc {
-        margin-bottom: 16px;
-      }
-    }
-    &__title {
-      @include font-style(32px, $color-white, normal);
-      line-height: 1.5;
-      display: block;
-      margin-bottom: 1.6rem;
-      padding: 0;
-      border: none;
-      @include wide-pc {
-        margin-bottom: 16px;
-      }
-      @include tab {
-        font-size: 20px;
-      }
+    &__body {
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
     }
     &__en-title {
-      display: block;
-      @include font-style(12px, $color-white, normal);
-      line-height: 1;
+      @include font-style(12px, $color-white, 500);
+      line-height: 1.5;
       font-family: $font-orbit;
       text-transform: uppercase;
-      margin-bottom: 1.6rem;
-      @include wide-pc {
-        margin-bottom: 16px;
-      }
+      border: none;
+      padding-left: 0;
+      margin: 0;
+      display: block;
+    }
+    &__title {
+      width: 100%;
+      @include font-style(20px, $color-white, 500);
+      line-height: 1.5;
+      border: none;
+      padding-left: 0;
+      margin: 0;
+      word-wrap: break-word;
     }
     &__category {
       display: inline-block;
@@ -82,30 +244,10 @@
       line-height: 1;
       font-family: $font-orbit;
       text-transform: uppercase;
-      padding: 0.2rem 1.2rem;
+      padding: 2px 12px;
       background-color: $color-white;
       color: #000438;
-      margin-bottom: 4rem;
       text-decoration: none;
-      @include wide-pc {
-        padding: 2px 12px;
-        margin-bottom: 40px;
-      }
-      @include tab {
-        padding: 0.3rem 1.4rem;
-        margin-bottom: 2.4rem;
-      }
-    }
-    &__description {
-      font-size: 14px;
-      margin-bottom: 8rem;
-      @include wide-pc {
-        margin-bottom: 80px;
-      }
-      @include tab {
-        font-size: 12px;
-        margin-bottom: 4.8rem;
-      }
     }
     &__link {
       @include font-style(2rem, $color-white, bold);

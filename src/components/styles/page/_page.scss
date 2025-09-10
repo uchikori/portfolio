@@ -158,6 +158,11 @@
           width: 18.6rem;
         }
       }
+      &__text {
+        @include font-style(clamp(4.8rem, 1.75rem + 3.75vw, 10rem), $color-white, 500);
+        font-family: $font-orbit;
+        text-transform: uppercase;
+      }
       @include sp {
         margin-bottom: 2.7rem;
       }

@@ -7,17 +7,13 @@ export const PageHeader = (props) => {
   return (
     <header className="main-visual__header">
       <div className="main-visual__title">
-        <h1
-          className={`title-line head-title ${
-            titleClass ? `head-title__${titleClass}` : ""
-          }`}
-        >
+        <h1 className={`title-line head-title ${titleClass ? `head-title__${titleClass}` : ""}`}>
           {titleImage ? (
             <span>
               <img src={`../../../images/${titleImage}.svg`} alt={alt} />
             </span>
           ) : (
-            ""
+            alt
           )}
         </h1>
         {typeSlug ? (

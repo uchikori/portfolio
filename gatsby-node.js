@@ -228,7 +228,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   /************************************************************
    * 実績一覧ページの生成
    ***********************************************************/
-  const worksPostsPerPage = 10;
+  const worksPostsPerPage = 12;
   const worksPosts = blogResult.data.allWpPost.nodes.length;
   const worksPages = Math.ceil(worksPosts / worksPostsPerPage);
 

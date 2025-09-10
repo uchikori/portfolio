@@ -4,13 +4,16 @@ import { Link, graphql } from "gatsby";
 import { MainVisual } from "../components/global/MainVisual";
 import { PageHeader } from "../components/page/PageHeader";
 import { Content } from "../components/global/Content";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
-import { extractText } from "../lib/extract-text";
+import { StaticImage } from "gatsby-plugin-image";
 import { Pagenation } from "../components/blog/pagenation";
 import { Seo } from "../components/Seo";
+import { GalleryItem } from "../components/gallery";
 
 export default function Works(props) {
   const { data, pageContext } = props;
+
+  console.log(pageContext);
+
   return (
     <>
       <Layout hasLoadingObj={false}>
@@ -20,39 +23,15 @@ export default function Works(props) {
           </span>
           <div className="scroll-container">
             <MainVisual>
-              <PageHeader titleImage={`${pageContext.taxonomyName}-${pageContext.categoryName}`} titleClass={"main"} subTitle={pageContext.description} alt={pageContext.name} />
+              {/* <PageHeader titleImage={`${pageContext.taxonomyName}-${pageContext.categoryName}`} titleClass={"main"} subTitle={pageContext.description} alt={pageContext.name} /> */}
+              <PageHeader titleImage={""} titleClass={"text"} subTitle={pageContext.description} alt={pageContext.categorySlug} />
             </MainVisual>
             <Content>
-              {data.allWpPost.nodes.map((node) => {
-                return (
-                  <div className="content__gallery" key={node.databaseId}>
-                    <div className="content__block">
-                      <div className="gallery-item">
-                        <div className="flex-block align-center">
-                          <div className="flex-item seven-column">
-                            <figure className="gallery-item__image">
-                              <GatsbyImage image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData} objectPosition={"50% 50%"} layout="fullWidth" alt={node.featuredImage.node.altText} />
-                            </figure>
-                          </div>
-                          <div className="flex-item five-column">
-                            <span className="gallery-item__num">{node.galleryNumber.galleryNum}</span>
-                            <h2 className="gallery-item__title">{node.title}</h2>
-
-                            <span className="gallery-item__en-title">{node.englishTitle.englishTitle}</span>
-                            <Link to={`/category/${node.categories.nodes[0].slug}/`} className="gallery-item__category">
-                              {node.categories.nodes[0].name}
-                            </Link>
-                            <p className="gallery-item__description">{extractText(node.content)}</p>
-                            <Link to={`/${node.databaseId}/`} className="gallery-item__link">
-                              detail
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="gallery-items">
+                {data.allWpPost.nodes.map((node) => {
+                  return <GalleryItem node={node} key={node.databaseId} />;
+                })}
+              </div>
               <Pagenation pageContext={pageContext} />
             </Content>
           </div>
