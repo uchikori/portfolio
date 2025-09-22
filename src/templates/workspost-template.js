@@ -36,7 +36,7 @@ export default function WorksPost(props) {
               <figure className="first-image">
                 <GatsbyImage image={data.wpPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.featuredImage.node.altText} />
               </figure>
-              <div className="gallery-meta">
+              {/* <div className="gallery-meta">
                 <div className="gallery-meta__item">
                   <p className="gallery-meta__title">client</p>
                   <div className="gallery-meta__info">{data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryType}</div>
@@ -53,9 +53,11 @@ export default function WorksPost(props) {
                   <p className="gallery-meta__title">year</p>
                   <div className="gallery-meta__info">{data.wpPost.galleryMetaGroup.galleryMetaGroup.galleryYear}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="content__block" dangerouslySetInnerHTML={{ __html: data.wpPost.content }}></div>
+            <div className="content__block" style={{ padding: "0" }}>
+              <div className="wp-content__body" dangerouslySetInnerHTML={{ __html: data.wpPost.content }}></div>
+            </div>
             <div className="content__block">
               <figure className="mockup-image__pc">
                 <GatsbyImage image={data.wpPost.mockUpPc.mockupImagePc.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpPc.mockupImagePc.altText} />

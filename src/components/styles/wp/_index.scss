@@ -1,0 +1,19 @@
+@use "../global" as *;
+.wp-block-table {
+  table {
+    width: 100%;
+  }
+  &.is-style-no-border {
+    th,
+    td {
+      line-height: 1.5;
+      border: none;
+      padding: 1em 0em;
+    }
+    td {
+      &:first-child {
+        width: 8em;
+      }
+    }
+  }
+}
