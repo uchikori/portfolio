@@ -2,14 +2,7 @@ import React from "react";
 import { navigate } from "gatsby";
 // import { isArchivePage, isBlogPage } from "../../lib/utils";
 
-const TransitionLink = ({
-  id,
-  to,
-  children,
-  transitionName,
-  currentPath,
-  ...props
-}) => {
+const TransitionLink = ({ id, to, children, transitionName, currentPath, ...props }) => {
   //リンクがクリックされたときの処理
   const handleClick = async (e) => {
     //デフォルトの挙動のページ遷移をキャンセル
@@ -34,7 +27,7 @@ const TransitionLink = ({
       // //ViewTransitionを開始
 
       const transition = document.startViewTransition(() => {
-        console.log("ViewTransitionを開始");
+        // console.log("ViewTransitionを開始");
       });
 
       navigate(to);
