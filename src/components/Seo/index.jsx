@@ -3,15 +3,10 @@ import { Analytics } from "@vercel/analytics/react";
 import * as React from "react";
 
 export const Seo = (props) => {
-  const {
-    pageClass,
-    pageTitle,
-    pageDesc,
-    pagePath,
-    pageImg,
-    blogImg,
-    adsence,
-  } = props;
+  const { pageClass, pageTitle, pageDesc, pagePath, pageImg, blogImg, adsence, robots } = props;
+
+  console.log(robots);
+
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -24,21 +19,16 @@ export const Seo = (props) => {
       }
     }
   `);
-  const title = pageTitle
-    ? `${pageTitle}|${data.site.siteMetadata.title} `
-    : data.site.siteMetadata.title;
+  const title = pageTitle ? `${pageTitle}|${data.site.siteMetadata.title} ` : data.site.siteMetadata.title;
   const description = pageDesc || data.site.siteMetadata.description;
-  const url = pagePath
-    ? `${data.site.siteMetadata.siteUrl}${pagePath}`
-    : data.site.siteMetadata.siteUrl;
-  const imgurl = pageImg
-    ? `${data.site.siteMetadata.siteUrl}${pageImg}`
-    : `${data.site.siteMetadata.siteUrl}${blogImg}` ||
-      `${data.site.siteMetadata.siteUrl}/home-firstview.webp`;
+  const url = pagePath ? `${data.site.siteMetadata.siteUrl}${pagePath}` : data.site.siteMetadata.siteUrl;
+  const imgurl = pageImg ? `${data.site.siteMetadata.siteUrl}${pageImg}` : `${data.site.siteMetadata.siteUrl}${blogImg}` || `${data.site.siteMetadata.siteUrl}/home-firstview.webp`;
+  const robotsText = robots && robots.trim() !== "" ? robots : "index,follow";
   return (
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content={robotsText} />
       <link rel="canonical" href={url} />
       <meta property="og:site_name" content={data.site.siteMetadata.title} />
       <meta property="og:title" content={title} />
@@ -48,13 +38,7 @@ export const Seo = (props) => {
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="og:image" content={imgurl} />
       <meta name="twitter:card" content="summary_large_image" />
-      {adsence ? (
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842486595943279"
-          crossOrigin="anonymous"
-        ></script>
-      ) : null}
+      {adsence ? <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3842486595943279" crossOrigin="anonymous"></script> : null}
 
       {/* <script defer src="https://www.google.com/recaptcha/api.js"></script> */}
       <Analytics />

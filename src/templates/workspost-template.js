@@ -129,9 +129,12 @@ export const Head = (props) => {
   const { data } = props;
   const location = useLocation();
   const description = extractText(data.wpPost.content);
+
+  // robotsText が存在しない場合は undefined になる
+  const robots = data.wpPost?.robots?.robotsText;
   return (
     <>
-      <Seo pageTitle={data.wpPost.title} pageDesc={description} pagePath={location.pathname} blogImg={data.wpPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src} />
+      <Seo pageTitle={data.wpPost.title} pageDesc={description} pagePath={location.pathname} blogImg={data.wpPost.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src} robots={robots} />
     </>
   );
 };
@@ -144,6 +147,10 @@ export const query = graphql`
       content
       excerpt
       title
+      robots {
+        robotsText
+        fieldGroupName
+      }
       categories {
         nodes {
           link
