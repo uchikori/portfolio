@@ -73,7 +73,7 @@ export const Head = (props) => {
   const location = useLocation();
   const description = extractText(data.wpWebTips.excerpt);
 
-  console.log(description);
+  // console.log(description);
 
   // 構造化データ
   const jsonLd = {

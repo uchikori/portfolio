@@ -12,7 +12,7 @@ import { GalleryItem } from "../components/gallery";
 export default function Works(props) {
   const { data, pageContext } = props;
 
-  console.log(pageContext);
+  // console.log(pageContext);
 
   return (
     <>
