@@ -20,7 +20,7 @@ export default function Works(props) {
           </span>
           <div className="scroll-container">
             <MainVisual>
-              <PageHeader titleImage="title-works" titleClass={"works"} subTitle={`これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載`} alt="制作実績" />
+              <PageHeader titleImage="title-works" titleClass={"works"} subTitle={`これまでに手がけてきたWebサイトやデザインの制作実績をご紹介します。\nお客様の目的や課題に合わせて、企画・デザイン・構築まで一貫して対応しています。`} alt="制作実績" />
             </MainVisual>
             <Content>
               <div className="gallery-items">
@@ -40,7 +40,7 @@ export const Head = (props) => {
   const { data } = props;
   return (
     <>
-      <Seo pageTitle={"制作実績"} pageDesc={"これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載"} pagePath={"/works/"} pageImg={data.wpPost.childImageSharp.original.src} />
+      <Seo pageTitle={"制作実績"} pageDesc={"これまでに手がけてきたWebサイトやデザインの制作実績をご紹介します。お客様の目的や課題に合わせて、企画・デザイン・構築まで一貫して対応しています。"} pagePath={"/works/"} pageImg={data.wpPost.childImageSharp.original.src} />
     </>
   );
 };
