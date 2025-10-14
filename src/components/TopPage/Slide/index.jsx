@@ -131,163 +131,65 @@ export function Slide() {
             <span className="page-total">07</span>
           </nav>
         </div>
-        <section
-          className={`slide ${currentSlideIndex === 0 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 0 ? "is-active" : ""}`}>
           <div className="slide__content">
             <Canvas />
-            <FrontHeader
-              titleImage={"site-title"}
-              titleClass={"main"}
-              subTitle={` 好きなことを原動力に、\n誰かの心を揺さぶるデザインを追求します。`}
-              alt="UCHIWA Creative Studio."
-            />
+            <FrontHeader titleImage={"site-title"} titleClass={"main"} subTitle={` 好きなことを原動力に、\n誰かの心を揺さぶるデザインを追求します。`} alt="UCHIWA Creative Studio." />
           </div>
         </section>
 
-        <section
-          className={`slide ${currentSlideIndex === 1 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 1 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
-              <StaticImage
-                className="slide__img"
-                src="../../../images/about-background.jpg"
-                layout="fullWidth"
-                placeholder="blurred"
-                quality={90}
-                alt=""
-              />
+              <StaticImage className="slide__img" src="../../../images/about-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
             </figure>
-            <FrontHeader
-              titleImage="h2-about"
-              titleClass={"about"}
-              subTitle={`札幌市の個人事業のWebデザイナー。\n「UCHIWA Creative Studio」という屋号で道内・道外問わず全国のお客様のWebサイト作りに携わらせて頂いております。`}
-              alt="UCHIWA Creative Studio.について"
-              link
-            />
+            <FrontHeader titleImage="h2-about" titleClass={"about"} subTitle={`札幌市の個人事業のWebデザイナー。\n「UCHIWA Creative Studio」という屋号で道内・道外問わず全国のお客様のWebサイト作りに携わらせて頂いております。`} alt="UCHIWA Creative Studio.について" link />
           </div>
         </section>
 
-        <section
-          className={`slide ${currentSlideIndex === 2 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 2 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
-              <StaticImage
-                className="slide__img"
-                src="../../../images/service-background.jpg"
-                layout="fullWidth"
-                quality={90}
-                placeholder="blurred"
-                alt=""
-              />
+              <StaticImage className="slide__img" src="../../../images/service-background.jpg" layout="fullWidth" quality={90} placeholder="blurred" alt="" />
               <Three />
             </figure>
-            <FrontHeader
-              titleImage="title-service"
-              titleClass={"service"}
-              subTitle={`Webを中心に「コンセプトメイキング」「デザイン」「コーディング」等のサイト制作全般の業務を承っております`}
-              alt="事業・サービス内容"
-              link
-            />
+            <FrontHeader titleImage="title-service" titleClass={"service"} subTitle={`Webを中心に「コンセプトメイキング」「デザイン」「コーディング」等のサイト制作全般の業務を承っております`} alt="事業・サービス内容" link />
           </div>
         </section>
 
-        <section
-          className={`slide ${currentSlideIndex === 3 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 3 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
-              <StaticImage
-                className="slide__img"
-                src="../../../images/price-background.jpg"
-                layout="fullWidth"
-                quality={90}
-                placeholder="blurred"
-                alt=""
-              />
+              <StaticImage className="slide__img" src="../../../images/price-background.jpg" layout="fullWidth" quality={90} placeholder="blurred" alt="" />
             </figure>
-            <FrontHeader
-              titleImage="title-price"
-              titleClass={"price"}
-              subTitle={`Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。`}
-              alt="制作料金表"
-              link
-            />
+            <FrontHeader titleImage="title-price" titleClass={"price"} subTitle={`Webサイト制作にかかる料金表を掲載しております。\nご検討の際の目安にぜひご参考ください。`} alt="制作料金表" link />
           </div>
         </section>
 
-        <section
-          className={`slide ${currentSlideIndex === 4 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 4 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
-              <StaticImage
-                className="slide__img"
-                src="../../../images/gallery-background.jpg"
-                layout="fullWidth"
-                quality={90}
-                placeholder="blurred"
-                alt=""
-              />
+              <StaticImage className="slide__img" src="../../../images/gallery-background.jpg" layout="fullWidth" quality={90} placeholder="blurred" alt="" />
             </figure>
-            <FrontHeader
-              titleImage="title-works"
-              titleClass={"works"}
-              subTitle={`これまでのお仕事の中でお客様から掲載の許可を頂いているもののみを公開しています。※他趣味制作のものも掲載`}
-              alt="制作実績"
-              link
-            />
+            <FrontHeader titleImage="title-works" titleClass={"works"} subTitle={`これまでに手がけてきたWebサイトやデザインの制作実績をご紹介します。\nお客様の目的や課題に合わせて、企画・デザイン・構築まで一貫して対応しています。`} alt="制作実績" link />
           </div>
         </section>
 
-        <section
-          className={`slide ${currentSlideIndex === 5 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 5 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
-              <StaticImage
-                className="slide__img"
-                src="../../../images/blog-background.jpg"
-                layout="fullWidth"
-                quality={90}
-                placeholder="blurred"
-                alt=""
-              />
+              <StaticImage className="slide__img" src="../../../images/blog-background.jpg" layout="fullWidth" quality={90} placeholder="blurred" alt="" />
             </figure>
-            <FrontHeader
-              titleImage="title-blog"
-              titleClass={"web-tips"}
-              subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`}
-              alt="ブログ"
-              link
-              blog
-            />
+            <FrontHeader titleImage="title-blog" titleClass={"web-tips"} subTitle={`Web運用や制作に役立つ情報発信メディア。\nお客様自身が「Webクリエイター」になれる、そんな情報発信を目指しています。`} alt="ブログ" link blog />
           </div>
         </section>
 
-        <section
-          className={`slide ${currentSlideIndex === 6 ? "is-active" : ""}`}
-        >
+        <section className={`slide ${currentSlideIndex === 6 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
-              <StaticImage
-                className="slide__img"
-                src="../../../images/contact-background.jpg"
-                layout="fullWidth"
-                quality={90}
-                placeholder="blurred"
-                alt=""
-              />
+              <StaticImage className="slide__img" src="../../../images/contact-background.jpg" layout="fullWidth" quality={90} placeholder="blurred" alt="" />
             </figure>
-            <FrontHeader
-              titleImage="title-contact"
-              titleClass={"contact"}
-              subTitle={`Webサイト立ち上げのご相談、お見積りのご依頼（無料）などお気軽にお問い合わせください`}
-              alt="お問い合わせ"
-              link
-            />
+            <FrontHeader titleImage="title-contact" titleClass={"contact"} subTitle={`Webサイト立ち上げのご相談、お見積りのご依頼（無料）などお気軽にお問い合わせください`} alt="お問い合わせ" link />
           </div>
         </section>
       </div>
