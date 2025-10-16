@@ -74,17 +74,20 @@ export default function WorksPost(props) {
             ) : (
               ""
             )}
-            {data.wpPost.mockUpImageTab.mockupImageTab ? (
+            {/* 変更: mockup-image__tab と mockup-image__sp を個別にチェック */}
+            {(data.wpPost.mockUpImageTab?.mockupImageTab || data.wpPost.mockUpImageSp?.mockupImageSp) && (
               <div className="content__block">
-                <figure className="mockup-image__tab">
-                  <GatsbyImage image={data.wpPost.mockUpImageTab.mockupImageTab.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpImageTab.mockupImageTab.altText} />
-                </figure>
-                <figure className="mockup-image__sp">
-                  <GatsbyImage image={data.wpPost.mockUpImageSp.mockupImageSp.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpImageSp.mockupImageSp.altText} />
-                </figure>
+                {data.wpPost.mockUpImageTab?.mockupImageTab && (
+                  <figure className="mockup-image__tab">
+                    <GatsbyImage image={data.wpPost.mockUpImageTab.mockupImageTab.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpImageTab.mockupImageTab.altText} />
+                  </figure>
+                )}
+                {data.wpPost.mockUpImageSp?.mockupImageSp && (
+                  <figure className="mockup-image__sp">
+                    <GatsbyImage image={data.wpPost.mockUpImageSp.mockupImageSp.localFile.childImageSharp.gatsbyImageData} alt={data.wpPost.mockUpImageSp.mockupImageSp.altText} />
+                  </figure>
+                )}
               </div>
-            ) : (
-              ""
             )}
             {data.wpPost.cssMockupImage.cssMockupImage ? (
               <div className="content__block">
