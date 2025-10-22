@@ -94,9 +94,9 @@
 
 .content {
   .first-image {
-    aspect-ratio: 1544/832;
+    // aspect-ratio: 1544/832;
     width: 154.4rem;
-    // height: 83.2rem;
+    height: auto;
     margin: 0 calc(50% - 77.2rem) 8rem;
     @include wide-pc {
       width: 1544px;
