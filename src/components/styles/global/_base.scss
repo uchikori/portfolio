@@ -148,6 +148,28 @@ $ease-cb-5: cubic-bezier(0.96, 0.165, 0, 0.655);
 //-------------------------------
 //  All-page-common-css
 //-------------------------------
+:root {
+  --wp-preset--color--blue: #255dd8;
+  --wp-preset--color--darkblue: #1e889b;
+  --wp-preset--color--lightblue: #b9eaf2;
+  --wp-preset--color--lightblue-2: #d6e1ff;
+  --wp-preset--color--black: #333333;
+}
+.has-lightblue-background-color {
+  background-color: var(--wp-preset--color--lightblue) !important;
+}
+.has-black-color {
+  color: var(--wp-preset--color--black) !important;
+}
+.has-blue-color {
+  color: var(--wp-preset--color--blue) !important;
+}
+.has-darkblue-color {
+  color: var(--wp-preset--color--darkblue) !important;
+}
+.has-lightblue-color {
+  color: var(--wp-preset--color--lightblue) !important;
+}
 html {
   /*
     計算式：10px /  デザインカンプの横幅 * 100

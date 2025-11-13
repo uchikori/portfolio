@@ -17,3 +17,44 @@
     }
   }
 }
+
+.is-layout-flex {
+  display: flex;
+  gap: 2rem;
+  &.is-content-justification-space-between {
+    justify-content: space-between;
+  }
+  &.is-content-justification-center {
+    justify-content: center;
+  }
+  &.is-content-justification-right {
+    justify-content: flex-end;
+  }
+  &.is-content-justification-left {
+    justify-content: flex-start;
+  }
+}
+.is-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.is-vertical {
+  display: flex;
+  flex-direction: column;
+  &.is-content-justification-stretch {
+    align-items: stretch;
+  }
+  &.is-content-justification-center {
+    align-items: center;
+  }
+  &.is-content-justification-right {
+    align-items: flex-end;
+  }
+  &.is-content-justification-left {
+    align-items: flex-start;
+  }
+}
+
+.box-list {
+  gap: 16px;
+}
