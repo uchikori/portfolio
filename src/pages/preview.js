@@ -53,6 +53,8 @@ export default function PreviewPage() {
     };
 
     fetchPreviewdata();
+
+    document.body.classList.add("web-tips-template");
   }, []);
 
   // 状態によるレンダリング
@@ -133,82 +135,82 @@ export default function PreviewPage() {
   );
 }
 
-export const Head = (props) => {
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+// export const Head = (props) => {
+//   const [post, setPost] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    //　URLからIDを取得（WordPressのfunctions.phpで付与したもの）
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+//   useEffect(() => {
+//     //　URLからIDを取得（WordPressのfunctions.phpで付与したもの）
+//     const params = new URLSearchParams(window.location.search);
+//     const id = params.get("id");
 
-    console.log(id);
+//     console.log(id);
 
-    if (!id) {
-      setError("プレビューに必要なIDが見つかりません");
-      setLoading(false);
-      return;
-    }
+//     if (!id) {
+//       setError("プレビューに必要なIDが見つかりません");
+//       setLoading(false);
+//       return;
+//     }
 
-    const fetchPreviewdata = async () => {
-      try {
-        // 相対パスでアクセスすれば、ローカルでも本番でも正しくAPIが叩かれる
-        const response = await fetch(`/api/preview-data?id=${id}`);
+//     const fetchPreviewdata = async () => {
+//       try {
+//         // 相対パスでアクセスすれば、ローカルでも本番でも正しくAPIが叩かれる
+//         const response = await fetch(`/api/preview-data?id=${id}`);
 
-        if (!response.ok) {
-          // API Route側でのエラー処理（400, 500など）
-          const errorData = await response.json();
-          throw new Error(errorData.error || `APIエラー: ステータス${response.status}`);
-        }
+//         if (!response.ok) {
+//           // API Route側でのエラー処理（400, 500など）
+//           const errorData = await response.json();
+//           throw new Error(errorData.error || `APIエラー: ステータス${response.status}`);
+//         }
 
-        const data = await response.json();
+//         const data = await response.json();
 
-        setPost(data);
-      } catch (e) {
-        console.error("プレビューデータの取得に失敗しました:", e);
-        setError(e.message || "データの取得中に不明なエラーが発生しました。");
-      } finally {
-        setLoading(false);
-      }
-    };
+//         setPost(data);
+//       } catch (e) {
+//         console.error("プレビューデータの取得に失敗しました:", e);
+//         setError(e.message || "データの取得中に不明なエラーが発生しました。");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-    fetchPreviewdata();
-  }, []);
+//     fetchPreviewdata();
+//   }, []);
 
-  // 状態によるレンダリング
-  if (loading) {
-    return (
-      <div style={{ padding: "40px", textAlign: "center" }}>
-        <p>プレビューデータを読み込み中...</p>
-      </div>
-    );
-  }
+//   // 状態によるレンダリング
+//   if (loading) {
+//     return (
+//       <div style={{ padding: "40px", textAlign: "center" }}>
+//         <p>プレビューデータを読み込み中...</p>
+//       </div>
+//     );
+//   }
 
-  if (error) {
-    return (
-      <div style={{ padding: "40px", color: "red", textAlign: "center", border: "1px dashed red", margin: "20px" }}>
-        プレビューエラーが発生しました:
-        <br />
-        <strong>{error}</strong>
-      </div>
-    );
-  }
+//   if (error) {
+//     return (
+//       <div style={{ padding: "40px", color: "red", textAlign: "center", border: "1px dashed red", margin: "20px" }}>
+//         プレビューエラーが発生しました:
+//         <br />
+//         <strong>{error}</strong>
+//       </div>
+//     );
+//   }
 
-  if (!post) {
-    return <div style={{ padding: "40px", textAlign: "center" }}>指定されたIDの記事が見つからないか、下書きではありません。</div>;
-  }
+//   if (!post) {
+//     return <div style={{ padding: "40px", textAlign: "center" }}>指定されたIDの記事が見つからないか、下書きではありません。</div>;
+//   }
 
-  const description = extractText(post.excerpt);
-  return (
-    <>
-      <Seo
-        pageClass={"web-tips-template"}
-        pageTitle={post.title}
-        pageDesc={description}
-        // adsence={true}
-        // blogImg={data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src}
-      />
-    </>
-  );
-};
+//   const description = extractText(post.excerpt);
+//   return (
+//     <>
+//       <Seo
+//         pageClass={"web-tips-template"}
+//         pageTitle={post.title}
+//         pageDesc={description}
+//         // adsence={true}
+//         // blogImg={data.wpWebTips.featuredImage.node.localFile.childImageSharp.gatsbyImageData.images.fallback.src}
+//       />
+//     </>
+//   );
+// };
