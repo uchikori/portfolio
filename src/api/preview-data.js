@@ -1,16 +1,12 @@
 export default async function handler(req, res) {
   const { id } = req.query;
 
-  console.log(id);
-
   if (!id) {
     return res.status(400).json({ error: "Missing id" });
   }
 
   // 認証情報の作成（Basic認証）
   const token = Buffer.from(`${process.env.WP_USER}:${process.env.WP_PASSWORD}`).toString("base64");
-
-  console.log(token);
 
   // 投稿のステータスを取得
   const statusQuery = `
@@ -42,8 +38,6 @@ export default async function handler(req, res) {
 
   // 投稿のステータス(publish or draft)
   const postStatus = statusData.data?.webTips?.status;
-
-  console.log(postStatus);
 
   // 投稿のステータスが取得できない場合はエラー
   if (!postStatus) {
@@ -112,8 +106,6 @@ export default async function handler(req, res) {
       console.error("GraphQL Error:", data.errors);
       return res.status(500).json({ error: "GraphQL query failed", details: data.errors });
     }
-
-    console.log(data);
 
     // const data = await response.json();
 

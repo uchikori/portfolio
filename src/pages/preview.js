@@ -22,8 +22,6 @@ export default function PreviewPage() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    console.log(id);
-
     if (!id) {
       setError("プレビューに必要なIDが見つかりません");
       setLoading(false);
@@ -79,8 +77,6 @@ export default function PreviewPage() {
   if (!post) {
     return <div style={{ padding: "40px", textAlign: "center" }}>指定されたIDの記事が見つからないか、下書きではありません。</div>;
   }
-
-  console.log(post);
 
   // 正常な表示
   return (
