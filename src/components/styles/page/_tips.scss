@@ -298,17 +298,19 @@
     }
     .wp-block-columns {
       margin: 40px 0;
-      align-items: normal !important;
       display: flex;
-      flex-wrap: nowrap;
-      @include tab {
-        flex-wrap: wrap;
-      }
+      flex-wrap: wrap;
       .are-vertically-aligned-center {
         align-items: center;
       }
       .are-vertically-aligned-top {
         align-items: flex-start;
+      }
+      .are-vertically-aligned-bottom {
+        align-items: flex-end;
+      }
+      &.is-not-stacked-on-mobile {
+        flex-wrap: nowrap !important;
       }
       &:not(.is-not-stacked-on-mobile) > .wp-block-column[style*="flex-basis"] {
         flex-grow: 0;
