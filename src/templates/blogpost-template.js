@@ -8,7 +8,7 @@ import { Seo } from "../components/Seo";
 import { useLocation } from "@reach/router";
 import { extractText } from "../lib/extract-text";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { Share } from "../components/blog/Share";
 import { ContentBlog } from "../components/global/ContentBlog";
 import BackToTop from "../components/global/BackToTop";
@@ -17,6 +17,11 @@ export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
   const location = useLocation();
+
+  // 投稿日と更新日を比較
+  const publishedDate = new Date(data.wpWebTips.date);
+  const modifiedDate = new Date(data.wpWebTips.modified);
+  const showModified = modifiedDate > publishedDate;
 
   return (
     <Layout hasLoadingObj={false}>
@@ -39,8 +44,14 @@ export default function BlogPost({ data, pageContext }) {
                         <Link to={`/class/${data.wpWebTips.terms.nodes[0].slug}`}>{data.wpWebTips.terms.nodes[0].name}</Link>
                       </div>
                       <div className="content__publish">
-                        <FontAwesomeIcon icon={faClock} className="clockIcon" />
-                        <time dateTime={`${data.wpWebTips.date}`}>{data.wpWebTips.date}</time>
+                        <span className="published">
+                          投稿日：<time dateTime={`${data.wpWebTips.date}`}>{data.wpWebTips.date}</time>
+                        </span>
+                        {showModified && (
+                          <span className="updated">
+                            更新日：<time dateTime={`${data.wpWebTips.modified}`}>{data.wpWebTips.modified}</time>
+                          </span>
+                        )}
                       </div>
                     </header>
                     <figure className="web-tips__eyecatch ">
@@ -112,7 +123,7 @@ export const query = graphql`
       title
       content
       excerpt
-      modified
+      modified(formatString: "YYYY-MM-DD")
       dateGmt
       lastEditedBy {
         node {
