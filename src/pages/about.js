@@ -154,9 +154,9 @@ export default function About(props) {
                     <a href="https://www.facebook.com/WEBdesigner.uchiwa" className="external-link" target="_blank" rel="noopener noreferrer">
                       Facebook
                     </a>
-                    <Link to="/web-tips/" className="external-link">
-                      Blog
-                    </Link>
+                    <a href="https://x.com/KoriUchiwa" className="external-link" target="_blank" rel="noopener noreferrer">
+                      X
+                    </a>
                   </div>
                 </div>
               </div>
