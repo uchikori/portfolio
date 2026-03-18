@@ -1,31 +1,53 @@
 import * as React from "react";
 import { useEffect, useRef } from "react";
+
 export const Adsence = (props) => {
   const { format, slot, path } = props;
 
   const adRef = useRef(null);
 
   useEffect(() => {
+    // SSR対応: サーバーサイドでは実行しない
+    if (typeof window === "undefined") return;
+
     const initAd = () => {
-      try {
-        if (window.adsbygoogle && adRef.current && !adRef.current.innerHTML) {
+      if (window.adsbygoogle && adRef.current && adRef.current.innerHTML === "") {
+        try {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.error("Error occurred while pushing to adsbygoogle:", e);
         }
-      } catch (e) {
-        console.error("Error occurred while pushing to adsbygoogle:", e);
       }
     };
 
-    // AdSenseスクリプトが読み込まれるまで待つ
-    const checkAdSense = () => {
+    const checkAndInitAd = () => {
       if (window.adsbygoogle) {
         initAd();
       } else {
-        setTimeout(checkAdSense, 100); // 100msごとにチェック
+        // AdSenseスクリプトが読み込まれるまで待つ（最大5秒）
+        const startTime = Date.now();
+        const checkTimer = setInterval(() => {
+          if (window.adsbygoogle) {
+            initAd();
+            clearInterval(checkTimer);
+          } else if (Date.now() - startTime > 5000) {
+            // 5秒以上待ってもスクリプトが読み込まれない場合は終了
+            clearInterval(checkTimer);
+            console.warn("AdSense script did not load within 5 seconds");
+          }
+        }, 100);
       }
     };
 
-    checkAdSense();
+    // DOMが準備完了になるまで待つ
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", checkAndInitAd);
+      return () => document.removeEventListener("DOMContentLoaded", checkAndInitAd);
+    } else {
+      // 既に準備完了している場合は少し遅延させて実行
+      const timer = setTimeout(checkAndInitAd, 100);
+      return () => clearTimeout(timer);
+    }
   }, [path]);
 
   return (
@@ -34,32 +56,54 @@ export const Adsence = (props) => {
     </>
   );
 };
+
 export const AdsenceContentBottom = (props) => {
   const { format, slot, path } = props;
 
   const adRef = useRef(null);
 
   useEffect(() => {
+    // SSR対応: サーバーサイドでは実行しない
+    if (typeof window === "undefined") return;
+
     const initAd = () => {
-      try {
-        if (window.adsbygoogle && adRef.current && !adRef.current.innerHTML) {
+      if (window.adsbygoogle && adRef.current && adRef.current.innerHTML === "") {
+        try {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.error("Error occurred while pushing to adsbygoogle:", e);
         }
-      } catch (e) {
-        console.error("Error occurred while pushing to adsbygoogle:", e);
       }
     };
 
-    // AdSenseスクリプトが読み込まれるまで待つ
-    const checkAdSense = () => {
+    const checkAndInitAd = () => {
       if (window.adsbygoogle) {
         initAd();
       } else {
-        setTimeout(checkAdSense, 100); // 100msごとにチェック
+        // AdSenseスクリプトが読み込まれるまで待つ（最大5秒）
+        const startTime = Date.now();
+        const checkTimer = setInterval(() => {
+          if (window.adsbygoogle) {
+            initAd();
+            clearInterval(checkTimer);
+          } else if (Date.now() - startTime > 5000) {
+            // 5秒以上待ってもスクリプトが読み込まれない場合は終了
+            clearInterval(checkTimer);
+            console.warn("AdSense script did not load within 5 seconds");
+          }
+        }, 100);
       }
     };
 
-    checkAdSense();
+    // DOMが準備完了になるまで待つ
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", checkAndInitAd);
+      return () => document.removeEventListener("DOMContentLoaded", checkAndInitAd);
+    } else {
+      // 既に準備完了している場合は少し遅延させて実行
+      const timer = setTimeout(checkAndInitAd, 100);
+      return () => clearTimeout(timer);
+    }
   }, [path]);
 
   return (
