@@ -80,7 +80,7 @@ export const Head = (props) => {
   const { data, pageContext } = props;
   return (
     <>
-      <Seo pageClass={"post-type-archive-web-tips"} pageTitle={pageContext.typeName} pageDesc={pageContext.description} pagePath={`/class/${pageContext.typeSlug}`} pageImg={data.webTips.childImageSharp.original.src} />
+      <Seo adsence={true} pageClass={"post-type-archive-web-tips"} pageTitle={pageContext.typeName} pageDesc={pageContext.description} pagePath={`/class/${pageContext.typeSlug}`} pageImg={data.webTips.childImageSharp.original.src} />
     </>
   );
 };
