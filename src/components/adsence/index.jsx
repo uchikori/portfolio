@@ -6,13 +6,16 @@ export const Adsence = (props) => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    try {
-      if (window.adsbygoogle && adRef.current) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    const timer = setTimeout(() => {
+      try {
+        if (window.adsbygoogle && adRef.current && !adRef.current.innerHTML) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (e) {
+        console.error("Error occurred while pushing to adsbygoogle:", e);
       }
-    } catch (e) {
-      console.error("Error occurred while pushing to adsbygoogle:", e);
-    }
+    }, 1000); // 1秒遅延して広告を初期化
+    return () => clearTimeout(timer);
   }, [path]);
 
   return (
@@ -27,13 +30,16 @@ export const AdsenceContentBottom = (props) => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    try {
-      if (window.adsbygoogle && adRef.current) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+    const timer = setTimeout(() => {
+      try {
+        if (window.adsbygoogle && adRef.current && !adRef.current.innerHTML) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (e) {
+        console.error("Error occurred while pushing to adsbygoogle:", e);
       }
-    } catch (e) {
-      console.error("Error occurred while pushing to adsbygoogle:", e);
-    }
+    }, 1000); // 1秒遅延して広告を初期化
+    return () => clearTimeout(timer);
   }, [path]);
 
   return (
