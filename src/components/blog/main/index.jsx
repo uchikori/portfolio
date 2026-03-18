@@ -2,7 +2,7 @@ import * as React from "react";
 import { load } from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/vs2015.css";
-import { AdsenceContentBottom } from "../../adsence";
+// import { AdsenceContentBottom } from "../../adsence";
 import { useLocation } from "@reach/router";
 import { RelatedPosts } from "../../relatedposts";
 export const BlogContents = (props) => {
@@ -22,7 +22,7 @@ export const BlogContents = (props) => {
     <div className="flex-item ">
       <div className="singleContents" dangerouslySetInnerHTML={{ __html: content }}></div>
       <RelatedPosts id={id} catId={catId} />
-      <AdsenceContentBottom format="auto" path={location.pathname} />
+      {/* <AdsenceContentBottom format="auto" path={location.pathname} /> */}
     </div>
   );
 };
