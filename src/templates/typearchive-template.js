@@ -66,7 +66,7 @@ export default function Type(props) {
                   );
                 })}
                 <Pagenation pageContext={pageContext} />
-                <AdsenceContentBottom format={"auto"} path={location.pathname} />
+                <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
               </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />
             </div>

@@ -69,7 +69,7 @@ export default function BlogPost({ data, pageContext }) {
                   </div>
                   <BlogContents content={data.wpWebTips.content} id={data.wpWebTips.databaseId} catId={data.wpWebTips.terms.nodes.map((cat) => cat.id)[0]} />
                   <Share title={data.wpWebTips.title} url={location.href} />
-                  <AdsenceContentBottom format={"auto"} path={location.pathname} />
+                  <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
                 </article>
               </main>
               <Sidebar path={location.pathname} rankingData={rankingPostIds} />
