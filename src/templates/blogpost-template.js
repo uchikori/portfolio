@@ -12,7 +12,7 @@ import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { Share } from "../components/blog/Share";
 import { ContentBlog } from "../components/global/ContentBlog";
 import BackToTop from "../components/global/BackToTop";
-// import { AdsenceContentBottom } from "../components/adsence";
+import { AdsenceContentBottom } from "../components/adsence";
 export default function BlogPost({ data, pageContext }) {
   const rankingPostIds = pageContext.reportData;
 
