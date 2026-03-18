@@ -31,40 +31,42 @@ export default function Type(props) {
           </MainVisual>
           <Content>
             <div className="flex-block align-start">
-              <main className="flex-item nine-column article__items">
-                {data.allWpWebTips.nodes.map((node) => {
-                  return (
-                    <article id={node.databaseId}>
-                      <Link className="card" to={`/web-tips/${node.databaseId}`} currentPath={location.pathname} key={node.databaseId}>
-                        <div className="card__thumbnail">
-                          <GatsbyImage
-                            image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
-                            alt={node.featuredImage.node.altText}
-                            data-view-transition={`view-transition-${node.databaseId}`}
-                            // style={{
-                            //   viewTransitionName: `view-transition-${node.databaseId}`,
-                            // }}
-                          />
-                          <div className="card__thumbnailoverlay">READ MORE</div>
-                        </div>
-                        <div className="card__body">
-                          <div className="card__meta">
-                            <div className="term">
-                              <FontAwesomeIcon icon={faTag} />
-                              {node.terms.nodes[0].name}
-                            </div>
-                            <time dateTime={node.date}>
-                              <FontAwesomeIcon icon={faClock} />
-                              {node.date}
-                            </time>
+              <main className="flex-item nine-column">
+                <div className="article__items">
+                  {data.allWpWebTips.nodes.map((node) => {
+                    return (
+                      <article id={node.databaseId}>
+                        <Link className="card" to={`/web-tips/${node.databaseId}`} currentPath={location.pathname} key={node.databaseId}>
+                          <div className="card__thumbnail">
+                            <GatsbyImage
+                              image={node.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
+                              alt={node.featuredImage.node.altText}
+                              data-view-transition={`view-transition-${node.databaseId}`}
+                              // style={{
+                              //   viewTransitionName: `view-transition-${node.databaseId}`,
+                              // }}
+                            />
+                            <div className="card__thumbnailoverlay">READ MORE</div>
                           </div>
+                          <div className="card__body">
+                            <div className="card__meta">
+                              <div className="term">
+                                <FontAwesomeIcon icon={faTag} />
+                                {node.terms.nodes[0].name}
+                              </div>
+                              <time dateTime={node.date}>
+                                <FontAwesomeIcon icon={faClock} />
+                                {node.date}
+                              </time>
+                            </div>
 
-                          <h2 className="card__title">{node.title}</h2>
-                        </div>
-                      </Link>
-                    </article>
-                  );
-                })}
+                            <h2 className="card__title">{node.title}</h2>
+                          </div>
+                        </Link>
+                      </article>
+                    );
+                  })}
+                </div>
                 <Pagenation pageContext={pageContext} />
                 <AdsenceContentBottom format={"autorelaxed"} path={location.pathname} />
               </main>
