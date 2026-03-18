@@ -6,7 +6,7 @@ export const Adsence = (props) => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const initAd = () => {
       try {
         if (window.adsbygoogle && adRef.current && !adRef.current.innerHTML) {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -14,8 +14,18 @@ export const Adsence = (props) => {
       } catch (e) {
         console.error("Error occurred while pushing to adsbygoogle:", e);
       }
-    }, 1000); // 1秒遅延して広告を初期化
-    return () => clearTimeout(timer);
+    };
+
+    // AdSenseスクリプトが読み込まれるまで待つ
+    const checkAdSense = () => {
+      if (window.adsbygoogle) {
+        initAd();
+      } else {
+        setTimeout(checkAdSense, 100); // 100msごとにチェック
+      }
+    };
+
+    checkAdSense();
   }, [path]);
 
   return (
@@ -30,7 +40,7 @@ export const AdsenceContentBottom = (props) => {
   const adRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const initAd = () => {
       try {
         if (window.adsbygoogle && adRef.current && !adRef.current.innerHTML) {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -38,8 +48,18 @@ export const AdsenceContentBottom = (props) => {
       } catch (e) {
         console.error("Error occurred while pushing to adsbygoogle:", e);
       }
-    }, 1000); // 1秒遅延して広告を初期化
-    return () => clearTimeout(timer);
+    };
+
+    // AdSenseスクリプトが読み込まれるまで待つ
+    const checkAdSense = () => {
+      if (window.adsbygoogle) {
+        initAd();
+      } else {
+        setTimeout(checkAdSense, 100); // 100msごとにチェック
+      }
+    };
+
+    checkAdSense();
   }, [path]);
 
   return (
