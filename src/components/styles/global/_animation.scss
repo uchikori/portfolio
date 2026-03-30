@@ -37,6 +37,8 @@
   }
   to {
     height: 100vh;
+    /* iOS SafariのUI表示状態でvhがズレるためdvhで上書き */
+    height: 100dvh;
   }
 }
 

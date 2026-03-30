@@ -14,6 +14,30 @@ export function Slide() {
   //Slidesホイールアニメーション
   const [deltaNum, setDeltaNum] = useState(0); //スクロール量
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0); //slideの数
+
+  // iOS Safari: アドレスバー表示/非表示で「見えている高さ」が変わるため、
+  // visualViewport（なければ innerHeight）を元にCSS変数を更新して高さを合わせる
+  useEffect(() => {
+    const root = document.documentElement;
+    const setVh = () => {
+      const vh = window.visualViewport?.height ?? window.innerHeight;
+      root.style.setProperty("--app-vh", `${vh}px`);
+    };
+
+    setVh();
+
+    const vv = window.visualViewport;
+    vv?.addEventListener("resize", setVh);
+    window.addEventListener("resize", setVh);
+    window.addEventListener("orientationchange", setVh);
+
+    return () => {
+      vv?.removeEventListener("resize", setVh);
+      window.removeEventListener("resize", setVh);
+      window.removeEventListener("orientationchange", setVh);
+    };
+  }, []);
+
   useEffect(() => {
     const isSliding = () => {
       setDeltaNum(0);

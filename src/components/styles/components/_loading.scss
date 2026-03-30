@@ -8,6 +8,8 @@
     z-index: 1000;
     width: 100%;
     height: 100vh;
+    /* iOS SafariのUI表示状態でvhがズレるためdvhで上書き */
+    height: 100dvh;
     top: 0;
     left: 0;
     transform: scaleX(0);

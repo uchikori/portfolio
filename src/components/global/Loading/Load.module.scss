@@ -29,6 +29,8 @@
 .loading {
     width: 100%;
     height: 100vh;
+    /* iOS SafariのUI表示状態でvhがズレるためdvhで上書き */
+    height: 100dvh;
     background-color: #050523;
     position: absolute;
     top: 0;

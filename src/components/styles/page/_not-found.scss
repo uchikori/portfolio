@@ -2,6 +2,8 @@
 .notFound {
   position: relative;
   height: 100vh;
+  /* iOS SafariのUI表示状態でvhがズレるためdvhで上書き */
+  height: 100dvh;
   .background-movie {
     width: 100%;
     height: 100%;

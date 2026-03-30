@@ -212,6 +212,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  background-color: $color-trans-bg;
   &.front-page {
     overflow: hidden;
   }
