@@ -108,6 +108,13 @@
 //  Single Slide
 //-------------------------------
 .slide {
+  &.slide--about {
+    .slide__img {
+      img {
+        object-position: right;
+      }
+    }
+  }
   z-index: -1;
   padding: 0;
   position: absolute;

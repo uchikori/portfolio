@@ -162,7 +162,7 @@ export function Slide() {
           </div>
         </section>
 
-        <section className={`slide ${currentSlideIndex === 1 ? "is-active" : ""}`}>
+        <section className={`slide slide--about ${currentSlideIndex === 1 ? "is-active" : ""}`}>
           <div className="slide__content">
             <figure className="slide__figure">
               <StaticImage className="slide__img" src="../../../images/about-background.jpg" layout="fullWidth" placeholder="blurred" quality={90} alt="" />
