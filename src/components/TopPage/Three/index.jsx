@@ -31,7 +31,7 @@ export const Three = () => {
 
     //カメラを作成
     const camera = new THREE.PerspectiveCamera(45, width / height, 1, 100); //(画角, アスペクト比, 描画開始距離, 描画終了距離)
-    camera.position.set(0, 0, 7); //カメラのセット位置（x, y, z）
+    camera.position.set(0, 0, 10); // 画面に収まりやすくするため少し遠ざける
 
     //画像読み込みを定義
     const loader = new THREE.TextureLoader();
@@ -64,14 +64,50 @@ export const Three = () => {
     const light = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(light);
 
-    const degree = 3;
+    let degreeX = 3;
+    let degreeY = 3;
+
+    const updateDegree = () => {
+      const vFOV = THREE.MathUtils.degToRad(camera.fov);
+      const visibleHeight = 2 * Math.tan(vFOV / 2) * camera.position.z;
+      const visibleWidth = visibleHeight * camera.aspect;
+
+      // ボックスのサイズ(1x1x1)を考慮してマージンを持たせる
+      degreeX = visibleWidth / 2 - 1.2;
+      degreeY = visibleHeight / 2 - 1.2;
+
+      // 最小値を設定して、あまりに小さい画面でも動くようにする
+      if (degreeX < 0.5) degreeX = 0.5;
+      if (degreeY < 0.5) degreeY = 0.5;
+    };
+
+    updateDegree();
+
+    // リサイズ処理
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      updateDegree();
+    };
+
+    window.addEventListener("resize", handleResize);
 
     //速度
     const velocity = new THREE.Vector3(
-      Math.random() * 0.02,
-      Math.random() * 0.02,
-      Math.random() * 0.02
+      (Math.random() - 0.5) * 0.04,
+      (Math.random() - 0.5) * 0.04,
+      (Math.random() - 0.5) * 0.04
     );
+
+    let animationId;
+
     //フレームごとに実行されるループイベント
     function tick() {
       renderer.render(scene, camera);
@@ -82,25 +118,34 @@ export const Three = () => {
       const boxPosition = box.position;
 
       boxPosition.add(velocity);
-      if (Math.abs(boxPosition.x) > degree) {
+
+      // X方向の境界チェック
+      if (Math.abs(boxPosition.x) > degreeX) {
         velocity.x *= -1;
+        // 境界の外に出すぎないように補正
+        boxPosition.x = Math.sign(boxPosition.x) * degreeX;
       }
-      if (Math.abs(boxPosition.y) > degree) {
+      // Y方向の境界チェック
+      if (Math.abs(boxPosition.y) > degreeY) {
         velocity.y *= -1;
+        boxPosition.y = Math.sign(boxPosition.y) * degreeY;
       }
-      if (Math.abs(boxPosition.z) > degree * 1.5) {
+      // Z方向の境界（奥行きは固定でも良いが、カメラ位置に合わせて調整）
+      if (Math.abs(boxPosition.z) > 5) {
         velocity.z *= -1;
+        boxPosition.z = Math.sign(boxPosition.z) * 5;
       }
 
-      window.requestAnimationFrame(tick);
+      animationId = window.requestAnimationFrame(tick);
     }
     //初回実行
     tick();
 
     return () => {
       // コンポーネントがアンマウントされたときに実行するクリーンアップ
+      window.removeEventListener("resize", handleResize);
       renderer.dispose();
-      cancelAnimationFrame(tick);
+      cancelAnimationFrame(animationId);
     };
   }, []);
   return (
