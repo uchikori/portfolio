@@ -85,14 +85,14 @@
   position: relative;
   /* iOS Safari: address bar表示/非表示でvhがズレるので、dvhで上書き */
   height: 100svh;
-  height: 100dvh;
+  // height: 100dvh;
   width: 100%;
   /* 画面下端に“余白”が出ても白帯にならないよう、常にダーク背景に */
   background-color: $color-trans-bg;
   /* iOS Safari: -webkit-fill-available は動的vhのズレ対策になる */
   min-height: -webkit-fill-available;
   // JSで更新する「見えている高さ」に厳密に合わせる（iOS Safariのdvhズレ対策）
-  height: var(--app-vh, 100dvh);
+  // height: var(--app-vh, 100dvh);
   min-height: var(--app-vh, -webkit-fill-available);
   transition: background 1s $ease-cb-5, transform 0.5s ease;
   transform-origin: left;
